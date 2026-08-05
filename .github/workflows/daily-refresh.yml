@@ -25,7 +25,7 @@ jobs:
           cache: pip
 
       - name: Install dependencies
-        run: pip install requests pandas numpy
+        run: pip install -r requirements.txt
 
       # Full pipeline: data pulls -> 300-sim Monte Carlo -> slot deep dive ->
       # intel/depth/ECR/history -> dashboard.html + index.html.
