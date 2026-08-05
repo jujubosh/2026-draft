@@ -298,6 +298,11 @@
   footer { margin-top: 52px; color: var(--muted); font-size: 12.5px; max-width: 78ch; }
   footer p { margin: 4px 0; }
 
+  .maker { display: flex; align-items: center; gap: 12px; margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--grid); }
+  .maker img { border-radius: 8px; display: block; }
+  .maker .mk-name { font-weight: 750; font-size: 13.5px; }
+  .maker .mk-sub { font-size: 12px; color: var(--muted); }
+
   .tip {
     position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--page);
     font-size: 12px; padding: 5px 9px; border-radius: 6px; opacity: 0; transition: opacity .08s;
@@ -562,6 +567,14 @@
         Undo to fix mistakes.</p>
     </footer>
   </div><!-- /view-track -->
+
+  <div class="maker">
+    <img src="__LOGO__" alt="JF mark" width="34" height="34">
+    <div>
+      <div class="mk-name">Made by Justin French</div>
+      <div class="mk-sub">Simulator, data pipeline &amp; war room — built for the 2026 season</div>
+    </div>
+  </div>
 </div>
 
 <div class="tip" id="tip" role="presentation"></div>

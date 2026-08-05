@@ -1,4 +1,5 @@
 """Inject report.json into dashboard_template.html -> dashboard.html."""
+import base64
 import datetime
 import json
 import re
@@ -367,6 +368,13 @@ def main():
 
     html = html.replace("__DATA__", json.dumps(denan(report), separators=(",", ":")))
     html = html.replace("__DATA_DATE__", datetime.date.today().strftime("%B %-d, %Y"))
+    # Maker mark, inlined so it works everywhere (artifact CSP blocks external images)
+    try:
+        with open("logo.jpg", "rb") as f:
+            logo = "data:image/jpeg;base64," + base64.b64encode(f.read()).decode()
+    except FileNotFoundError:
+        logo = ""
+    html = html.replace("__LOGO__", logo)
     with open("dashboard.html", "w") as f:
         f.write(html)
     # index.html is what GitHub Pages serves — same page with a doc shell
