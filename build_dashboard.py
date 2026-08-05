@@ -95,12 +95,105 @@ def main():
     disagreements.sort(key=lambda x: -abs(x["gap"]))
     intel["fp_disagreements"] = disagreements[:10]
 
-    report["intel"] = intel
-
-    # Tracker pool: every draftable player incl. K/DST, with VORP + depth
+    # Pool (needed for player_id / rookie flags and the tracker below)
     from draft_sim import load_pool
 
     pool = load_pool()
+    pool_info = {}
+    for _, r in pool.iterrows():
+        ye = r.get("years_exp")
+        pool_info[(norm(r["player"]), r["pos"])] = {
+            "pid": str(r["player_id"]),
+            "rookie": bool(ye == 0),  # NaN != 0 -> False
+        }
+
+    # 2025 actual production (Sleeper, keyed by player_id)
+    hist = {}
+    try:
+        with open("history.json") as f:
+            hist = json.load(f).get("players", {})
+    except FileNotFoundError:
+        pass
+
+    # Steals / stay-aways: a player lists only when >=2 independent signals agree
+    trending_names = {t["player"] for t in intel["trending"]}
+    steals, avoids, rookies = [], [], []
+    for r in report["cheat_sheet"]:
+        info = pool_info.get((norm(r["player"]), r["pos"]))
+        r["rookie"] = info["rookie"] if info else False
+        if r["pos"] not in ("QB", "RB", "WR", "TE") or r.get("adp_ppr", 999) >= 170:
+            continue
+        adp = r["adp_ppr"]
+        ecr = r.get("ecr")
+        h = hist.get(info["pid"]) if info else None
+        gp = (h or {}).get("gp") or 0
+        ppg25 = h["pts_ppr"] / gp if h and gp >= 1 else None
+        ppg26 = r["pts_ppr"] / 17.0
+
+        plus, minus = [], []
+        if r.get("value_gap", 0) >= 8:
+            plus.append(f"projected {r['value_gap']} spots better than his draft price")
+        if ecr and round(adp) - ecr >= 12:
+            plus.append(f"experts rank him {round(adp) - ecr} spots above his ADP")
+        if r.get("depth_rank") == 1 and adp > 100:
+            plus.append("listed starter going after pick 100")
+        if r["player"] in trending_names:
+            plus.append("hot add on Sleeper this week")
+
+        if r.get("value_gap", 0) <= -8:
+            minus.append(f"drafted {-r['value_gap']} spots ahead of his projection")
+        if ecr and round(adp) - ecr <= -12:
+            minus.append(f"experts rank him {ecr - round(adp)} spots below his ADP")
+        dr = r.get("depth_rank") or 1
+        if dr >= 2 and adp < 110:
+            minus.append(f"ESPN lists him {({2: '2nd', 3: '3rd'}.get(dr, str(dr) + 'th'))} string")
+        if r.get("injury_status") in ("PUP", "IR", "Out", "Doubtful"):
+            minus.append(f"currently {r['injury_status']}")
+
+        if r["rookie"]:
+            # Rookies get their own list — 2025 production signals don't apply
+            f = fp_by_name.get((norm(r["player"]), r["pos"]))
+            best_case = int(f["rank_min"]) if f and f.get("rank_min") else None
+            up = []
+            if best_case is not None and round(adp) - best_case >= 15:
+                up.append(f"most bullish expert has him #{best_case} overall (ADP {adp:.0f})")
+            if r.get("value_gap", 0) >= 5:
+                up.append(f"projection already says {r['value_gap']} spots too cheap")
+            if r["player"] in trending_names:
+                up.append("hot add on Sleeper this week")
+            rookies.append(
+                {"player": r["player"], "pos": r["pos"], "team": r["team"],
+                 "adp": adp, "reasons": up,
+                 "upside": (round(adp) - best_case if best_case is not None else 0)
+                           + max(0, r.get("value_gap", 0))}
+            )
+            continue
+
+        if ppg25 is not None:
+            if gp >= 12 and ppg25 >= 0.9 * ppg26:
+                plus.append(f"proved it in 2025: {ppg25:.1f} PPR/gm over {gp:.0f} games")
+            if gp >= 6 and ppg26 > 1.3 * ppg25 and adp < 120:
+                minus.append(f"priced for a {(ppg26 / ppg25 - 1) * 100:.0f}% jump on his 2025 pace")
+            if gp <= 9 and adp < 100:
+                minus.append(f"played only {gp:.0f} games in 2025")
+        elif h is None and adp < 100:
+            minus.append("no 2025 stats on record")
+
+        if len(plus) >= 2:
+            steals.append({"player": r["player"], "pos": r["pos"], "team": r["team"],
+                           "adp": adp, "reasons": plus})
+        if len(minus) >= 2:
+            avoids.append({"player": r["player"], "pos": r["pos"], "team": r["team"],
+                           "adp": adp, "reasons": minus})
+
+    rookies.sort(key=lambda x: -x["upside"])
+    intel["steals"] = sorted(steals, key=lambda x: x["adp"])[:10]
+    intel["avoids"] = sorted(avoids, key=lambda x: x["adp"])[:10]
+    intel["rookies"] = [x for x in rookies if x["reasons"]][:8]
+
+    report["intel"] = intel
+
+    # Tracker pool: every draftable player incl. K/DST, with VORP + depth
     tracker = []
     for _, r in pool.iterrows():
         d = depth_by_name.get((norm(r["player"]), r["pos"]))
@@ -118,6 +211,7 @@ def main():
                 "injury": None if r["injury_status"] != r["injury_status"] else r["injury_status"],
                 "ecr": f["ecr"] if f else None,
                 "bye": f.get("bye") if f else None,
+                "rookie": pool_info.get((norm(r["player"]), r["pos"]), {}).get("rookie", False),
             }
         )
     report["tracker_pool"] = tracker
@@ -126,7 +220,7 @@ def main():
     keep = [
         "player", "pos", "team", "adp_ppr", "pts_ppr", "rec",
         "vorp", "vorp_rank", "adp_rank", "value_gap", "injury_status",
-        "depth_rank", "depth_status", "ecr", "tier", "bye",
+        "depth_rank", "depth_status", "ecr", "tier", "bye", "rookie",
     ]
     report["cheat_sheet"] = [
         {k: (None if str(r.get(k)) == "nan" else r.get(k)) for k in keep}

@@ -206,6 +206,7 @@
   .tag.risk { color: var(--t-risk); }
   .tag.watch { color: var(--t-watch); }
   .tag.upside { color: var(--t-upside); }
+  .tag.rk-tag { color: var(--accent); }
   .trow { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13.5px; border-top: 1px solid var(--grid); }
   .trow:first-of-type { border-top: 0; }
   .trow .nm { flex: 1; min-width: 0; font-weight: 650; overflow-wrap: anywhere; }
@@ -282,6 +283,15 @@
   .simnote { font-size: 12px; color: var(--ink-2); margin: 0 0 10px; }
   .simdone { font-size: 12.5px; color: var(--muted); padding: 4px 0; }
   .btn.armed { border-color: var(--t-risk); color: var(--t-risk); font-weight: 800; }
+  .brow button.mine.blocked { opacity: .35; cursor: not-allowed; }
+  .brow button.mine.blocked:hover { background: var(--surface); border-color: var(--ring); color: var(--accent); }
+  .track-alert {
+    display: none; margin: -4px 0 14px; padding: 10px 14px; border-radius: 10px;
+    border: 1px solid var(--t-risk); color: var(--t-risk); font-size: 13px; font-weight: 650;
+    background: color-mix(in srgb, var(--t-risk) 7%, transparent);
+  }
+  .track-alert.show { display: block; }
+  .clock .meta.warn { color: var(--t-watch); font-weight: 750; }
 
   footer { margin-top: 52px; color: var(--muted); font-size: 12.5px; max-width: 78ch; }
   footer p { margin: 4px 0; }
@@ -345,6 +355,31 @@
       sim most often lands round by round — your queue targets, with how often each was the pick.</p>
     <div class="slots" id="slotbtns"></div>
     <div class="card" id="plan"></div>
+  </section>
+
+  <section>
+    <h2>Steals &amp; stay-aways</h2>
+    <p class="desc">Every data source, cross-checked: projection value (VORP vs ADP),
+      FantasyPros expert consensus, ESPN depth charts, injury status, Sleeper add trends,
+      and <b>2025 actual production</b>. A player only makes a list when at least two
+      independent signals point the same way — one signal is an opinion, two is a pattern.</p>
+    <div class="intel-grid">
+      <div class="intel-card">
+        <h3 style="color:var(--t-upside)">Steals — worth more than their price</h3>
+        <div id="steals"></div>
+      </div>
+      <div class="intel-card">
+        <h3 style="color:var(--t-risk)">Stay-aways — the price ignores a problem</h3>
+        <div id="avoids"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Rookie upside — no floor, real ceiling</h3>
+        <div class="simnote">2026 rookies (no NFL track record) where the most bullish
+          FantasyPros expert ranks them far above their draft price — the gap between
+          their ADP and their believer's rank is the free upside if the believer is right.</div>
+        <div id="rookie-upside"></div>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -446,6 +481,7 @@
       <button class="btn danger" id="track-reset">Reset draft</button>
     </div>
     <div class="clock" id="track-clock"></div>
+    <div class="track-alert" id="track-alert" role="alert"></div>
     <div class="track-grid">
       <div>
         <div class="intel-card" style="margin-bottom:14px">
@@ -636,6 +672,21 @@ const NOTE_BY_PLAYER = {};
       <span class="meta">${fmt(d.pts_ppr)} pts</span></div>`).join("")
     || '<div class="trow">No cheap listed starters found.</div>';
 
+  const signalRow = s => `
+    <div class="note">
+      <span class="chip ${s.pos}">${s.pos}</span>
+      <span class="who">${s.player}</span>
+      <span class="tm" style="color:var(--muted);font-weight:500">${s.team}</span>
+      <span style="float:right;color:var(--ink-2);font-size:12.5px;font-variant-numeric:tabular-nums">ADP ${fmt1(s.adp)}</span>
+      <div class="txt">${s.reasons.join(" · ")}</div>
+    </div>`;
+  $("#steals").innerHTML = (I.steals || []).map(signalRow).join("")
+    || '<div class="note">No multi-signal steals right now.</div>';
+  $("#avoids").innerHTML = (I.avoids || []).map(signalRow).join("")
+    || '<div class="note">No multi-signal stay-aways right now.</div>';
+  $("#rookie-upside").innerHTML = (I.rookies || []).map(signalRow).join("")
+    || '<div class="note">No rookie data — run fetch_fp.py + build.</div>';
+
   if (I.fp_as_of) $("#fp-date").textContent = `FantasyPros, ${I.fp_experts} experts`;
   $("#fp-gaps").innerHTML = (I.fp_disagreements || []).map(d => `
     <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
@@ -677,7 +728,7 @@ function depthCell(r) {
     const shown = rows.slice(0, limit);
     $("#sheetbody").innerHTML = shown.map(r => `<tr>
       <td class="rk">${r.vorp_rank}</td>
-      <td class="nm">${r.player}<span class="tm">${r.team}</span>${r.injury_status&&r.injury_status!=="Questionable"?`<span class="inj">${r.injury_status.toUpperCase()}</span>`:""}${NOTE_BY_PLAYER[r.player]?`<span class="tag ${NOTE_BY_PLAYER[r.player].tag}" data-tip="${NOTE_BY_PLAYER[r.player].note.replace(/"/g,"&quot;")}">${NOTE_BY_PLAYER[r.player].tag}</span>`:""}</td>
+      <td class="nm">${r.player}<span class="tm">${r.team}</span>${r.rookie?'<span class="tag rk-tag" data-tip="2026 rookie — no NFL track record behind the projection">R</span>':""}${r.injury_status&&r.injury_status!=="Questionable"?`<span class="inj">${r.injury_status.toUpperCase()}</span>`:""}${NOTE_BY_PLAYER[r.player]?`<span class="tag ${NOTE_BY_PLAYER[r.player].tag}" data-tip="${NOTE_BY_PLAYER[r.player].note.replace(/"/g,"&quot;")}">${NOTE_BY_PLAYER[r.player].tag}</span>`:""}</td>
       <td><span class="chip ${r.pos}">${r.pos}</span></td>
       <td>${depthCell(r)}</td>
       <td class="rk">${r.bye ?? "—"}</td>
@@ -754,6 +805,48 @@ function depthCell(r) {
     const c = {QB:0,RB:0,WR:0,TE:0,K:0,DST:0};
     roster.forEach(p => c[p.pos]++);
     return c;
+  }
+
+  /* ----- roster validation -----
+     Starting lineup is 1QB 2RB 2WR 1TE 1FLEX 1K 1DST. A pick is blocked if it
+     busts a position cap or leaves fewer picks than unfilled required slots. */
+  function requiredSlots(c) {
+    const need = Math.max(0, 1 - c.QB) + Math.max(0, 2 - c.RB) + Math.max(0, 2 - c.WR)
+      + Math.max(0, 1 - c.TE) + Math.max(0, 1 - c.K) + Math.max(0, 1 - c.DST);
+    const flexSurplus = Math.max(0, c.RB - 2) + Math.max(0, c.WR - 2) + Math.max(0, c.TE - 1);
+    return need + (flexSurplus >= 1 ? 0 : 1);
+  }
+  function needsList(c) {
+    const parts = [];
+    if (c.QB < 1) parts.push("QB");
+    if (c.RB < 2) parts.push(c.RB === 0 ? "2 RB" : "RB");
+    if (c.WR < 2) parts.push(c.WR === 0 ? "2 WR" : "WR");
+    if (c.TE < 1) parts.push("TE");
+    if (c.K < 1) parts.push("K");
+    if (c.DST < 1) parts.push("DST");
+    if (Math.max(0, c.RB - 2) + Math.max(0, c.WR - 2) + Math.max(0, c.TE - 1) < 1) parts.push("FLEX");
+    return parts.join(" · ");
+  }
+  function draftBlock(p) {
+    const roster = mine(), c = counts(roster);
+    if (roster.length >= ROUNDS) return "Roster full — all 15 picks are made. Use Undo if one is wrong.";
+    if (c[p.pos] >= CAPS[p.pos])
+      return `You already have ${c[p.pos]} ${p.pos}${c[p.pos] > 1 && p.pos !== "DST" ? "s" : ""} — the cap is ${CAPS[p.pos]}`;
+    const after = {...c};
+    after[p.pos]++;
+    const picksLeft = ROUNDS - roster.length - 1;
+    const req = requiredSlots(after);
+    if (req > picksLeft)
+      return `That pick strands your lineup: ${picksLeft} pick${picksLeft === 1 ? "" : "s"} would remain but you'd still need ${needsList(after)}`;
+    return null;
+  }
+  let alertTimer = null;
+  function showAlert(msg) {
+    const el = $("#track-alert");
+    el.textContent = "⚠ " + msg;
+    el.classList.add("show");
+    clearTimeout(alertTimer);
+    alertTimer = setTimeout(() => el.classList.remove("show"), 6000);
   }
 
   function recommend() {
@@ -1124,6 +1217,11 @@ function depthCell(r) {
   function act(e) {
     const btn = e.target.closest("button[data-act]");
     if (!btn) return;
+    if (btn.dataset.act === "mine") {
+      const p = BY_KEY[btn.dataset.k];
+      const blocked = p && draftBlock(p);
+      if (blocked) { showAlert(blocked); return; }
+    }
     state.events.push({k: btn.dataset.k, mine: btn.dataset.act === "mine"});
     save(); renderAll();
     const sb = $("#track-search");
@@ -1137,10 +1235,14 @@ function depthCell(r) {
     if (pk > total) { $("#track-clock").innerHTML = '<span class="big">Draft complete</span>'; return; }
     const onClock = slotOnClock(pk), meNow = onClock === state.slot;
     const next = nextMyPick();
+    const c = counts(mine());
+    const req = requiredSlots(c), left = ROUNDS - mine().length;
+    const tight = left > 0 && req > 0 && left - req <= 1
+      ? `<span class="meta warn">⚠ ${left} pick${left === 1 ? "" : "s"} left — still need ${needsList(c)}</span>` : "";
     $("#track-clock").innerHTML =
       `<span class="big${meNow ? " me" : ""}">${meNow ? "You're on the clock" : "Team " + onClock + " on the clock"}</span>
        <span class="meta">Round ${roundOf(pk)} · Pick ${pk} of ${total}</span>
-       ${next !== null && !meNow ? `<span class="meta">Your next pick: #${next} (${next - pk} away)</span>` : ""}`;
+       ${next !== null && !meNow ? `<span class="meta">Your next pick: #${next} (${next - pk} away)</span>` : ""}${tight}`;
   }
 
   function renderRecs() {
@@ -1186,15 +1288,18 @@ function depthCell(r) {
     if (posFilter !== "ALL") rows = rows.filter(p => p.pos === posFilter);
     if (q) rows = rows.filter(p => (p.player + " " + p.team).toLowerCase().includes(q));
     [...ptab.children].forEach(el => el.classList.toggle("on", el.textContent === posFilter));
-    $("#board").innerHTML = rows.slice(0, 120).map(p => `
+    $("#board").innerHTML = rows.slice(0, 120).map(p => {
+      const blocked = draftBlock(p);
+      return `
       <div class="brow">
         <span class="adp">${p.adp < 900 ? p.adp.toFixed(0) : "—"}</span>
         <span class="chip ${p.pos}">${p.pos}</span>
-        <span class="nm">${p.player}<span class="tm">${p.team}</span>${p.injury && p.injury !== "Questionable" ? `<span class="inj">${p.injury.toUpperCase()}</span>` : ""}${NOTES[p.player] ? `<span class="tag ${NOTES[p.player].tag}" data-tip="${NOTES[p.player].note.replace(/"/g,"&quot;")}">${NOTES[p.player].tag}</span>` : ""}</span>
+        <span class="nm">${p.player}<span class="tm">${p.team}</span>${p.rookie ? '<span class="tag rk-tag" data-tip="2026 rookie">R</span>' : ""}${p.injury && p.injury !== "Questionable" ? `<span class="inj">${p.injury.toUpperCase()}</span>` : ""}${NOTES[p.player] ? `<span class="tag ${NOTES[p.player].tag}" data-tip="${NOTES[p.player].note.replace(/"/g,"&quot;")}">${NOTES[p.player].tag}</span>` : ""}</span>
         <span class="v">${p.vorp.toFixed(0)}</span>
-        <button data-act="mine" data-k="${key(p)}" class="mine">Draft</button>
+        <button data-act="mine" data-k="${key(p)}" class="mine${blocked ? " blocked" : ""}"${blocked ? ` data-tip="${blocked}"` : ""}>Draft</button>
         <button data-act="gone" data-k="${key(p)}" class="gone" aria-label="Mark ${p.player} drafted by another team">✕</button>
-      </div>`).join("") || '<div class="brow">No players match.</div>';
+      </div>`;
+    }).join("") || '<div class="brow">No players match.</div>';
   }
 
   function renderAll() {

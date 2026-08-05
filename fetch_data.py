@@ -50,6 +50,7 @@ def main():
                     "pass_yd": stats.get("pass_yd"),
                     "pass_td": stats.get("pass_td"),
                     "injury_status": player.get("injury_status"),
+                    "years_exp": player.get("years_exp"),
                 }
             )
     df = pd.DataFrame(rows)

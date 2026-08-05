@@ -20,6 +20,7 @@ STEPS = [
     ("Injuries + trending        -> intel.json", ["fetch_intel.py"], False),
     ("ESPN depth charts          -> depth.json", ["fetch_depth.py"], False),
     ("FantasyPros consensus      -> fp_rankings.json", ["fetch_fp.py"], False),
+    ("2025 actual stats          -> history.json", ["fetch_history.py"], False),
     ("Dashboard                  -> dashboard.html + index.html", ["build_dashboard.py"], True),
 ]
 
