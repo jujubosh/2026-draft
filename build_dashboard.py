@@ -127,11 +127,32 @@ def main():
         moves.sort(key=lambda x: -abs(x["delta"]))
         intel["adp_movers"] = {"since": prev["date"], "moves": moves[:10]}
 
-    # 2025 actual production (Sleeper, keyed by player_id)
-    hist = {}
+    # 2025 actual production + team defenses (Sleeper, keyed by player_id / team)
+    hist, defenses = {}, {}
     try:
         with open("history.json") as f:
-            hist = json.load(f).get("players", {})
+            hraw = json.load(f)
+        hist = hraw.get("players", {})
+        defenses = hraw.get("defenses", {})
+    except FileNotFoundError:
+        pass
+
+    # Defense quality rank: blend points-allowed (game script: fewer opponent
+    # points = more drives for your offense) with fantasy production
+    def_rank = {}
+    if defenses:
+        teams = list(defenses)
+        by_allow = sorted(teams, key=lambda t: defenses[t].get("pts_allow") or 999)
+        by_pts = sorted(teams, key=lambda t: -(defenses[t].get("pts_std") or 0))
+        blend = {t: by_allow.index(t) + by_pts.index(t) for t in teams}
+        for i, t in enumerate(sorted(teams, key=lambda t: blend[t]), 1):
+            def_rank[t] = i
+
+    # Curated O-line tiers (team_context.json — hand-edited, 1 elite .. 5 bad)
+    oline = {}
+    try:
+        with open("team_context.json") as f:
+            oline = {t: v["tier"] for t, v in json.load(f).get("oline", {}).items()}
     except FileNotFoundError:
         pass
 
@@ -170,6 +191,20 @@ def main():
         if r.get("injury_status") in ("PUP", "IR", "Out", "Doubtful"):
             minus.append(f"currently {r['injury_status']}")
 
+        # Environment (football context): supporting evidence only — a steal
+        # still needs at least one price-based signal (see env_plus below)
+        env_plus = []
+        team = r.get("team")
+        ol = oline.get(team)
+        dteam = def_rank.get(team)
+        if r["pos"] == "RB":
+            if ol and ol <= 2:
+                env_plus.append(f"runs behind a {'top-tier' if ol == 1 else 'good'} O-line")
+            if dteam and dteam <= 8:
+                env_plus.append(f"2025 top-{dteam} defense keeps his offense on the field")
+            if ol and ol >= 4 and adp < 120:
+                minus.append("below-average O-line in front of him")
+
         if r["rookie"]:
             # Rookies get their own list — 2025 production signals don't apply
             f = fp_by_name.get((norm(r["player"]), r["pos"]))
@@ -187,11 +222,16 @@ def main():
                  "upside": (round(adp) - best_case if best_case is not None else 0)
                            + max(0, r.get("value_gap", 0))}
             )
+            if len(up) >= 2:
+                r["_steal"] = ["rookie upside: " + " · ".join(up)]
+            if len(minus) >= 2:
+                r["_avoid"] = minus
             continue
 
         if ppg25 is not None:
+            # Support evidence, not a price signal — production alone isn't a steal
             if gp >= 12 and ppg25 >= 0.9 * ppg26:
-                plus.append(f"proved it in 2025: {ppg25:.1f} PPR/gm over {gp:.0f} games")
+                env_plus.append(f"proved it in 2025: {ppg25:.1f} PPR/gm over {gp:.0f} games")
             if gp >= 6 and ppg26 > 1.3 * ppg25 and adp < 120:
                 minus.append(f"priced for a {(ppg26 / ppg25 - 1) * 100:.0f}% jump on his 2025 pace")
             if gp <= 9 and adp < 100:
@@ -199,10 +239,12 @@ def main():
         elif h is None and adp < 100:
             minus.append("no 2025 stats on record")
 
-        if len(plus) >= 2:
+        if plus and len(plus) + len(env_plus) >= 2:
+            r["_steal"] = plus + env_plus
             steals.append({"player": r["player"], "pos": r["pos"], "team": r["team"],
-                           "adp": adp, "reasons": plus})
+                           "adp": adp, "reasons": plus + env_plus})
         if len(minus) >= 2:
+            r["_avoid"] = minus
             avoids.append({"player": r["player"], "pos": r["pos"], "team": r["team"],
                            "adp": adp, "reasons": minus})
 
@@ -211,13 +253,61 @@ def main():
     intel["avoids"] = sorted(avoids, key=lambda x: x["adp"])[:10]
     intel["rookies"] = [x for x in rookies if x["reasons"]][:8]
 
+    # QB + pass-catcher stacks priced as values (correlated weekly upside)
+    by_team_qb, by_team_pc = {}, {}
+    for r in report["cheat_sheet"]:
+        if r.get("adp_ppr", 999) >= 170 or not r.get("team"):
+            continue
+        if r["pos"] == "QB":
+            by_team_qb.setdefault(r["team"], []).append(r)
+        elif r["pos"] in ("WR", "TE"):
+            by_team_pc.setdefault(r["team"], []).append(r)
+    stacks = []
+    for team, qbs in by_team_qb.items():
+        qb = max(qbs, key=lambda x: x["pts_ppr"])
+        for pc in sorted(by_team_pc.get(team, []), key=lambda x: -x["pts_ppr"])[:2]:
+            stacks.append(
+                {"team": team,
+                 "qb": qb["player"], "qb_adp": qb["adp_ppr"],
+                 "pc": pc["player"], "pc_pos": pc["pos"], "pc_adp": pc["adp_ppr"],
+                 "pts": round(qb["pts_ppr"] + pc["pts_ppr"]),
+                 "value": (qb.get("value_gap") or 0) + (pc.get("value_gap") or 0)}
+            )
+    stacks.sort(key=lambda x: (-x["value"], x["qb_adp"]))
+    intel["stacks"] = [s for s in stacks if s["value"] >= 8][:8]
+
+    # RB situations: curated O-line tier + 2025 defense rank
+    good_env, bad_env = [], []
+    for r in report["cheat_sheet"]:
+        if r["pos"] != "RB" or r.get("adp_ppr", 999) >= 140:
+            continue
+        ol = oline.get(r.get("team"))
+        if not ol:
+            continue
+        entry = {"player": r["player"], "pos": "RB", "team": r["team"],
+                 "adp": r["adp_ppr"], "oline": ol,
+                 "def_rank": def_rank.get(r.get("team"))}
+        (good_env if ol <= 2 else bad_env if ol >= 4 else []).append(entry)
+    intel["rb_env"] = {
+        "good": sorted(good_env, key=lambda x: x["adp"])[:8],
+        "bad": sorted(bad_env, key=lambda x: x["adp"])[:6],
+    }
+
     report["intel"] = intel
 
-    # Tracker pool: every draftable player incl. K/DST, with VORP + depth
+    # Tracker pool: every draftable player incl. K/DST, with the full rollup
+    # (flags, environment, ECR, bye) so draft day never needs the other tab
+    flag_by_key = {}
+    for r in report["cheat_sheet"]:
+        flag_by_key[(norm(r["player"]), r["pos"])] = {
+            "steal": " · ".join(r.get("_steal") or []) or None,
+            "avoid": " · ".join(r.get("_avoid") or []) or None,
+        }
     tracker = []
     for _, r in pool.iterrows():
         d = depth_by_name.get((norm(r["player"]), r["pos"]))
         f = fp_by_name.get((norm(r["player"]), r["pos"]))
+        fl = flag_by_key.get((norm(r["player"]), r["pos"]), {})
         tracker.append(
             {
                 "player": r["player"],
@@ -232,6 +322,10 @@ def main():
                 "ecr": f["ecr"] if f else None,
                 "bye": f.get("bye") if f else None,
                 "rookie": pool_info.get((norm(r["player"]), r["pos"]), {}).get("rookie", False),
+                "oline": oline.get(r["team"]),
+                "def_rank": def_rank.get(r["team"]),
+                "steal": fl.get("steal"),
+                "avoid": fl.get("avoid"),
             }
         )
     report["tracker_pool"] = tracker

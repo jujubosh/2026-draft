@@ -35,8 +35,9 @@ git add -A && git commit -m "Refresh data" && git push   # deploys the page
 | Sleeper trending + injuries | `fetch_intel.py` | `intel.json` |
 | ESPN depth charts (32 teams) | `fetch_depth.py` | `depth.json` |
 | FantasyPros expert consensus | `fetch_fp.py` | `fp_rankings.json` |
-| Sleeper 2025 actual stats | `fetch_history.py` | `history.json` |
+| Sleeper 2025 actual stats + team defenses | `fetch_history.py` | `history.json` |
 | Hand-curated camp notes | (edit by hand) | `curated_notes.json` |
+| Hand-curated O-line tiers (2025 play) | (edit by hand) | `team_context.json` |
 
 `draft_sim.py` → `sim_results.json` + `cheat_sheet.csv`, `analyze.py` →
 `report.json`, `build_dashboard.py` → `dashboard.html` + `index.html`

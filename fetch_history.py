@@ -32,14 +32,32 @@ def main():
             players[e["player_id"]] = {
                 "player": f"{pl.get('first_name', '')} {pl.get('last_name', '')}".strip(),
                 "pos": pos,
+                "team": e.get("team"),
                 "pts_ppr": round(pts, 1),
                 "gp": st.get("gp"),
                 "gms_active": st.get("gms_active"),
             }
 
+    # Team defenses 2025: fantasy pts (playmaking) + points allowed (game script)
+    r = requests.get(
+        URL,
+        params={"season_type": "regular", "position[]": "DEF", "order_by": "pts_std"},
+        timeout=60,
+    )
+    r.raise_for_status()
+    defenses = {}
+    for e in r.json():
+        st = e.get("stats") or {}
+        defenses[e["player_id"]] = {
+            "pts_std": st.get("pts_std"),
+            "pts_allow": st.get("pts_allow"),
+            "forced_punts": st.get("def_forced_punts"),
+        }
+    print(f"DEF: {len(defenses)} teams")
+
     with open("history.json", "w") as f:
-        json.dump({"season": 2025, "players": players}, f, indent=1)
-    print(f"\nSaved {len(players)} players to history.json")
+        json.dump({"season": 2025, "players": players, "defenses": defenses}, f, indent=1)
+    print(f"\nSaved {len(players)} players + {len(defenses)} defenses to history.json")
 
 
 if __name__ == "__main__":
