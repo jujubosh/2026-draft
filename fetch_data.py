@@ -57,6 +57,25 @@ def main():
     df = df.sort_values("adp_ppr").reset_index(drop=True)
     df.to_csv("players.csv", index=False)
     print(f"\nSaved {len(df)} players to players.csv")
+
+    # Daily ADP snapshot so the dashboard can show risers/fallers between refreshes
+    import datetime
+    import json
+    try:
+        with open("adp_snapshots.json") as f:
+            snaps = json.load(f)
+    except FileNotFoundError:
+        snaps = []
+    today = datetime.date.today().isoformat()
+    snaps = [s for s in snaps if s["date"] != today]
+    snaps.append(
+        {"date": today,
+         "adp": {str(r["player_id"]): r["adp_ppr"] for r in rows if r["adp_ppr"] < 300}}
+    )
+    snaps = snaps[-30:]
+    with open("adp_snapshots.json", "w") as f:
+        json.dump(snaps, f)
+    print(f"ADP snapshot saved ({len(snaps)} day{'s' if len(snaps) != 1 else ''} on file)")
     print(df.head(15)[["player", "pos", "team", "adp_ppr", "pts_ppr", "rec"]].to_string())
 
 

@@ -107,6 +107,26 @@ def main():
             "rookie": bool(ye == 0),  # NaN != 0 -> False
         }
 
+    # ADP movement between the two most recent snapshots (news shows up as ADP moves)
+    try:
+        with open("adp_snapshots.json") as f:
+            snaps = json.load(f)
+    except FileNotFoundError:
+        snaps = []
+    if len(snaps) >= 2:
+        cur, prev = snaps[-1], snaps[-2]
+        moves = []
+        for _, r in pool.iterrows():
+            pid = str(r["player_id"])
+            a, b = prev["adp"].get(pid), cur["adp"].get(pid)
+            if a and b and min(a, b) < 130 and abs(a - b) >= 6:
+                moves.append(
+                    {"player": r["player"], "pos": r["pos"], "team": r["team"],
+                     "from": round(a, 1), "to": round(b, 1), "delta": round(a - b, 1)}
+                )
+        moves.sort(key=lambda x: -abs(x["delta"]))
+        intel["adp_movers"] = {"since": prev["date"], "moves": moves[:10]}
+
     # 2025 actual production (Sleeper, keyed by player_id)
     hist = {}
     try:

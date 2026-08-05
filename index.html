@@ -411,6 +411,13 @@
         <div id="intel-trend"></div>
       </div>
       <div class="intel-card">
+        <h3>ADP movers <span class="eyebrow" id="movers-date" style="margin-left:6px"></span></h3>
+        <div class="simnote">Draft-price changes since the previous data refresh. News shows up
+          here before it shows up anywhere else — a big riser means the market learned something;
+          a big faller means bad news is already being priced in.</div>
+        <div id="adp-movers"></div>
+      </div>
+      <div class="intel-card">
         <h3>Depth chart red flags</h3>
         <div class="simnote">Being drafted like starters (top-110 ADP) but ESPN lists them 2nd
           string or worse — you may be paying a starter price for a backup.</div>
@@ -488,11 +495,14 @@
     <div class="track-grid">
       <div>
         <div class="intel-card" style="margin-bottom:14px">
-          <h3>Rest-of-draft sim — what wins from here</h3>
-          <div class="simnote">Each option replays the remaining rounds 100× from this exact
-            board: you take that player at your next pick, every opponent keeps drafting off
-            noisy ADP from the roster they've actually built, and your later picks go
-            best-value. Number = average final roster points.</div>
+          <h3>Rest-of-draft sim — what wins from here
+            <button class="btn" id="sim-rerun" style="float:right;margin-top:-4px;padding:3px 10px;font-size:11px"
+              data-tip="Re-run with 300 sims per option and fresh randomness — use it to double-check a close call">↻ ×300</button></h3>
+          <div class="simnote">Each option replays the remaining rounds from this exact
+            board (100 sims each; ↻ re-runs at 300 with fresh randomness): you take that
+            player at your next pick, every opponent keeps drafting off noisy ADP from the
+            roster they've actually built, and your later picks go best-value.
+            Number = average final roster points.</div>
           <div id="livesim"></div>
         </div>
         <div class="intel-card" style="margin-bottom:14px">
@@ -674,6 +684,15 @@ const NOTE_BY_PLAYER = {};
       <span class="meta">ADP ${fmt1(d.adp_ppr)}</span>
       <span class="meta">${fmt(d.pts_ppr)} pts</span></div>`).join("")
     || '<div class="trow">No cheap listed starters found.</div>';
+
+  const mv = I.adp_movers;
+  if (mv) $("#movers-date").textContent = "since " + mv.since;
+  $("#adp-movers").innerHTML = mv && mv.moves.length ? mv.moves.map(m => `
+    <div class="trow"><span class="chip ${m.pos}">${m.pos}</span>
+      <span class="nm">${m.player} <span class="tm" style="color:var(--muted);font-weight:500">${m.team}</span></span>
+      <span class="meta">ADP ${fmt1(m.from)} → ${fmt1(m.to)}</span>
+      <span class="meta" style="color:var(${m.delta > 0 ? "--t-upside" : "--t-risk"});font-weight:700">${m.delta > 0 ? "▲" : "▼"} ${Math.abs(m.delta).toFixed(0)}</span></div>`).join("")
+    : '<div class="trow">Needs two refreshes on different days — movement shows up after the next one.</div>';
 
   const signalRow = s => `
     <div class="note">
@@ -1103,12 +1122,21 @@ function depthCell(r) {
     arrays: () => ({S_posi, S_adp, S_pts, S_vorp, percept, POOL, N}),
   };
 
-  let simToken = 0, simTimer = null;
+  let simToken = 0, simTimer = null, simDepth = SIMS, simSeedBase = 0;
   function scheduleLiveSim() {
     simToken++;
+    simDepth = SIMS;      // auto-runs are deterministic and fast
+    simSeedBase = 0;
     clearTimeout(simTimer);
     simTimer = setTimeout(runLiveSim, 120);
   }
+  $("#sim-rerun").addEventListener("click", () => {
+    simToken++;
+    simDepth = 300;       // manual re-run: deeper, fresh draws
+    simSeedBase = 1 + ((Math.random() * 1e6) | 0);
+    clearTimeout(simTimer);
+    runLiveSim();
+  });
   function runLiveSim() {
     const box = $("#livesim");
     const token = ++simToken;
@@ -1129,13 +1157,14 @@ function depthCell(r) {
       if (token !== simToken) return;
       if (ci >= cands.length) { paintSim(rows, false); return; }
       const idx = cands[ci++];
-      const vals = new Float64Array(SIMS);
+      const n = simDepth;
+      const vals = new Float64Array(n);
       let sum = 0, got = 0;
-      for (let s = 0; s < SIMS; s++) {
-        const r = simOnce(s, idx, base);
+      for (let s = 0; s < n; s++) {
+        const r = simOnce(simSeedBase + s, idx, base);
         vals[s] = r.v; sum += r.v; got += r.gotCand;
       }
-      rows.push({idx, mean: sum / SIMS, there: got / SIMS, vals});
+      rows.push({idx, mean: sum / n, there: got / n, vals});
       paintSim(rows, ci < cands.length);
       setTimeout(step, 0);
     })();
@@ -1149,12 +1178,13 @@ function depthCell(r) {
     for (const r of sorted) {
       if (r === best) { r.tied = false; continue; }
       const m = best.mean - r.mean;
+      const n = r.vals.length;
       let v = 0;
-      for (let s = 0; s < SIMS; s++) {
+      for (let s = 0; s < n; s++) {
         const d = best.vals[s] - r.vals[s] - m;
         v += d * d;
       }
-      const se = Math.sqrt(v / (SIMS - 1) / SIMS);
+      const se = Math.sqrt(v / (n - 1) / n);
       r.tied = m < Math.max(2, 2 * se);
       anyTied = anyTied || r.tied;
     }
@@ -1278,9 +1308,15 @@ function depthCell(r) {
     const bench = roster.filter(x => !used.has(key(x)));
     bench.forEach(p => rows.push({lbl: "BN", p}));
     for (let i = rows.length; i < 15; i++) rows.push({lbl: "BN", p: null});
-    $("#myroster").innerHTML = rows.map(r => `
+    const byes = {};
+    roster.forEach(p => { if (p.bye) byes[p.bye] = (byes[p.bye] || 0) + 1; });
+    const clash = Object.entries(byes).filter(([, n]) => n >= 3)
+      .map(([w, n]) => `${n} players share bye week ${w}`);
+    const warn = clash.length
+      ? `<div class="simnote" style="color:var(--t-watch);font-weight:650">⚠ ${clash.join(" · ")}</div>` : "";
+    $("#myroster").innerHTML = warn + rows.map(r => `
       <div class="rslot"><span class="pos-lbl">${r.lbl}</span>
-        ${r.p ? `<span class="who">${r.p.player} <span style="color:var(--muted);font-weight:500">${r.p.team}</span></span><span class="p">${r.p.pts.toFixed(0)} pts</span>`
+        ${r.p ? `<span class="who">${r.p.player} <span style="color:var(--muted);font-weight:500">${r.p.team}</span></span><span class="p" style="color:var(--muted)">${r.p.bye ? "bye " + r.p.bye : ""}</span><span class="p">${r.p.pts.toFixed(0)} pts</span>`
               : `<span class="who empty">—</span>`}
       </div>`).join("");
   }
