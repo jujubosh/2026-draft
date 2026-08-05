@@ -298,6 +298,13 @@ def main():
 
     report["intel"] = intel
 
+    # Slot deep dive (deep_dive.py) — page renders a fallback note without it
+    try:
+        with open("deep_dive.json") as f:
+            report["deep"] = json.load(f)
+    except FileNotFoundError:
+        report["deep"] = None
+
     # Player news: ESPN headlines matched to pool players (newest first)
     news_by_player = {}
     for art in news_raw:

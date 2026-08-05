@@ -13,15 +13,16 @@ import sys
 import time
 
 STEPS = [
-    # (label, argv, required)
-    ("Sleeper projections + ADP  -> players.csv", ["fetch_data.py"], True),
-    ("Monte Carlo sim            -> sim_results.json", None, True),  # filled in below
-    ("Report tables              -> report.json", ["analyze.py"], True),
-    ("Injuries + trending        -> intel.json", ["fetch_intel.py"], False),
-    ("ESPN depth charts          -> depth.json", ["fetch_depth.py"], False),
-    ("FantasyPros consensus      -> fp_rankings.json", ["fetch_fp.py"], False),
-    ("2025 actual stats          -> history.json", ["fetch_history.py"], False),
-    ("Dashboard                  -> dashboard.html + index.html", ["build_dashboard.py"], True),
+    # (label, argv, required, needs_sim)
+    ("Sleeper projections + ADP  -> players.csv", ["fetch_data.py"], True, False),
+    ("Monte Carlo sim            -> sim_results.json", None, True, True),  # filled in below
+    ("Report tables              -> report.json", ["analyze.py"], True, False),
+    ("Slot deep dive             -> deep_dive.json", ["deep_dive.py"], False, True),
+    ("Injuries + trending        -> intel.json", ["fetch_intel.py"], False, False),
+    ("ESPN depth charts          -> depth.json", ["fetch_depth.py"], False, False),
+    ("FantasyPros consensus      -> fp_rankings.json", ["fetch_fp.py"], False, False),
+    ("2025 actual stats          -> history.json", ["fetch_history.py"], False, False),
+    ("Dashboard                  -> dashboard.html + index.html", ["build_dashboard.py"], True, False),
 ]
 
 
@@ -32,11 +33,11 @@ def main():
     args = ap.parse_args()
 
     t0 = time.time()
-    for label, argv, required in STEPS:
+    for label, argv, required, needs_sim in STEPS:
+        if needs_sim and args.no_sim:
+            print(f"~ SKIP  {label}")
+            continue
         if argv is None:  # the sim step
-            if args.no_sim:
-                print(f"~ SKIP  {label}")
-                continue
             argv = ["draft_sim.py", str(args.sims)]
         t = time.time()
         r = subprocess.run([sys.executable] + argv, capture_output=True, text=True)

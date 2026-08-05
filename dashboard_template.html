@@ -357,9 +357,12 @@
   </section>
 
   <section>
-    <h2>Your draft plan</h2>
-    <p class="desc">Pick your slot. You get the winning strategy there and the players the
-      sim most often lands round by round — your queue targets, with how often each was the pick.</p>
+    <h2>Slot deep dive — your round-by-round script</h2>
+    <p class="desc">Pick your draft slot. Its winning strategy is re-simulated 1,500 times
+      and every round becomes a decision chain: the sim's most common pick first, then —
+      for the sims where he was already gone — who it took instead (a ↳ percentage is that
+      conditional rate, not a share of all drafts). The position line at the bottom of each
+      round shows what the round is <i>for</i>, even when the names vary.</p>
     <div class="slots" id="slotbtns"></div>
     <div class="card" id="plan"></div>
   </section>
@@ -662,22 +665,35 @@ const fmt1 = n => n.toLocaleString("en-US", {minimumFractionDigits: 1, maximumFr
   });
   function render(slot) {
     [...btns.children].forEach((el,i)=>el.classList.toggle("on", i===slot-1));
-    const b = DATA.best_by_slot[slot-1];
-    const byRound = {};
-    b.common_picks.forEach(p => (byRound[p.round] ??= []).push(p));
-    const rounds = Object.keys(byRound).sort((a,b)=>a-b).map(r => `
-      <div class="round"><h4>Round ${r}</h4>${byRound[r].slice(0,4).map(p=>`
-        <div class="target"><span class="chip ${p.pos}">${p.pos}</span>
-          <span class="nm">${p.player}</span>
-          <span class="rate">${Math.round(p.rate*100)}%</span></div>`).join("")}
-      </div>`).join("");
-    $("#plan").innerHTML = `
+    const deep = DATA.deep && DATA.deep.slots && DATA.deep.slots[String(slot)];
+    if (!deep) {
+      const b = DATA.best_by_slot[slot-1];
+      $("#plan").innerHTML = `<div class="plan-head"><span class="strat">${b.strategy}</span>
+        <span class="edge">${fmt(b.mean_starters)} starter pts — run deep_dive.py for the round-by-round chains.</span></div>`;
+      return;
+    }
+    const head = `
       <div class="plan-head">
-        <span class="eyebrow">Pick ${b.slot} of 12</span>
-        <span class="strat">${b.strategy}</span>
-        <span class="edge">${fmt(b.mean_starters)} starter pts · +${fmt1(b.edge_over_2nd)} over ${b.second}</span>
-      </div>
-      <div class="rounds">${rounds}</div>`;
+        <span class="eyebrow">Pick ${slot} of 12</span>
+        <span class="strat">${deep.strategy}</span>
+        <span class="edge">${fmt(deep.mean_starters)} starter pts avg · floor ${fmt(deep.floor_p10)} ·
+          ceiling ${fmt(deep.ceiling_p90)} · top-3 finish ${Math.round(deep.top3_rate*100)}% ·
+          ${DATA.deep.n_sims.toLocaleString()} sims</span>
+      </div>`;
+    const rounds = deep.rounds.map(r => {
+      const opts = r.options.map((o, i) => `
+        <div class="target"><span class="chip ${o.pos}">${o.pos}</span>
+          <span class="nm">${i ? "↳ " : ""}${o.player}</span>
+          <span class="rate" data-tip="${i
+            ? `When the picks above were gone, the sim took ${o.player} ${Math.round(o.cond*100)}% of the time`
+            : `The sim's pick in ${Math.round(o.rate*100)}% of all drafts`}">${Math.round((i ? o.cond : o.rate) * 100)}%</span>
+        </div>`).join("");
+      const mix = Object.entries(r.pos_mix).slice(0, 3)
+        .map(([p, v]) => `${p} ${Math.round(v*100)}%`).join(" · ");
+      return `<div class="round"><h4>Round ${r.round} · Pick ${r.pick}</h4>${opts}
+        <div style="margin-top:6px;font-size:11px;color:var(--muted)">${mix}</div></div>`;
+    }).join("");
+    $("#plan").innerHTML = head + `<div class="rounds">${rounds}</div>`;
   }
   render(5);
 }
