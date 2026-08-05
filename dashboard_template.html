@@ -1,0 +1,1154 @@
+<title>2026 Draft War Room</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --ring: rgba(11, 11, 11, 0.10);
+    --accent: #2a78d6;
+    --good: #006300;
+    --bad: #b3261e;
+    --rb: #1baf7a; --wr: #2a78d6; --te: #eb6834; --qb: #eda100;
+    --rb-soft: rgba(27,175,122,.14); --wr-soft: rgba(42,120,214,.13);
+    --te-soft: rgba(235,104,52,.14); --qb-soft: rgba(237,161,0,.16);
+    --heat-0: #cde2fb; --heat-1: #9ec5f4; --heat-2: #6da7ec;
+    --heat-3: #3987e5; --heat-4: #256abf; --heat-5: #184f95;
+    --t-risk: #b3261e; --t-watch: #8a5a00; --t-upside: #006300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19;
+      --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --baseline: #383835; --ring: rgba(255,255,255,.10);
+      --accent: #3987e5; --good: #0ca30c; --bad: #e66767;
+      --rb: #199e70; --wr: #3987e5; --te: #d95926; --qb: #c98500;
+      --rb-soft: rgba(25,158,112,.20); --wr-soft: rgba(57,135,229,.18);
+      --te-soft: rgba(217,89,38,.20); --qb-soft: rgba(201,133,0,.22);
+      --heat-0: #10305a; --heat-1: #184f95; --heat-2: #1c5cab;
+      --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #86b6ef;
+      --t-risk: #e66767; --t-watch: #fab219; --t-upside: #0ca30c;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --baseline: #383835; --ring: rgba(255,255,255,.10);
+    --accent: #3987e5; --good: #0ca30c; --bad: #e66767;
+    --rb: #199e70; --wr: #3987e5; --te: #d95926; --qb: #c98500;
+    --rb-soft: rgba(25,158,112,.20); --wr-soft: rgba(57,135,229,.18);
+    --te-soft: rgba(217,89,38,.20); --qb-soft: rgba(201,133,0,.22);
+    --heat-0: #10305a; --heat-1: #184f95; --heat-2: #1c5cab;
+    --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #86b6ef;
+    --t-risk: #e66767; --t-watch: #fab219; --t-upside: #0ca30c;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb;
+    --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --baseline: #c3c2b7; --ring: rgba(11,11,11,.10);
+    --accent: #2a78d6; --good: #006300; --bad: #b3261e;
+    --rb: #1baf7a; --wr: #2a78d6; --te: #eb6834; --qb: #eda100;
+    --rb-soft: rgba(27,175,122,.14); --wr-soft: rgba(42,120,214,.13);
+    --te-soft: rgba(235,104,52,.14); --qb-soft: rgba(237,161,0,.16);
+    --heat-0: #cde2fb; --heat-1: #9ec5f4; --heat-2: #6da7ec;
+    --heat-3: #3987e5; --heat-4: #256abf; --heat-5: #184f95;
+    --t-risk: #b3261e; --t-watch: #8a5a00; --t-upside: #006300;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .10em; font-size: 11.5px;
+    font-weight: 700; color: var(--muted);
+  }
+  header h1 {
+    margin: 6px 0 4px; font-size: clamp(28px, 5vw, 42px); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  header .sub { color: var(--ink-2); max-width: 62ch; margin: 0; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 28px 0 8px; }
+  .tile {
+    background: var(--surface); border: 1px solid var(--ring); border-radius: 10px;
+    padding: 16px 18px 14px;
+  }
+  .tile .label { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--muted); }
+  .tile .value { font-size: 30px; font-weight: 800; letter-spacing: -.01em; margin-top: 2px; }
+  .tile .note { font-size: 13px; color: var(--ink-2); margin-top: 2px; }
+
+  section { margin-top: 44px; }
+  section > h2 { font-size: 21px; font-weight: 750; letter-spacing: -.01em; margin: 4px 0 2px; }
+  section > .desc { color: var(--ink-2); margin: 0 0 16px; max-width: 72ch; }
+
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; }
+
+  /* ------- strategy dot plot ------- */
+  .strat-row { display: grid; grid-template-columns: 108px 1fr 128px; gap: 12px; align-items: center; padding: 7px 0; }
+  .strat-row + .strat-row { border-top: 1px solid var(--grid); }
+  .strat-name { font-weight: 650; font-size: 13.5px; text-align: right; }
+  .strat-track { position: relative; height: 18px; }
+  .strat-track .rail { position: absolute; left: 0; right: 0; top: 8.5px; height: 1px; background: var(--grid); }
+  .strat-track .dot {
+    position: absolute; top: 3px; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--surface); transform: translateX(-50%);
+  }
+  .strat-track .band {
+    position: absolute; top: 6.5px; height: 5px; border-radius: 3px;
+    background: color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+  .strat-row.winner .dot { width: 14px; height: 14px; top: 2px; }
+  .strat-val { font-variant-numeric: tabular-nums; font-size: 13.5px; color: var(--ink-2); }
+  .strat-val b { color: var(--ink); font-weight: 700; }
+  .delta-neg { color: var(--bad); }
+
+  /* ------- heatmap ------- */
+  .scrollbox { overflow-x: auto; }
+  table.heat { border-collapse: separate; border-spacing: 2px; min-width: 720px; }
+  table.heat th { font-size: 11.5px; color: var(--muted); font-weight: 700; padding: 2px 4px; }
+  table.heat th.rowh { text-align: right; padding-right: 10px; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; }
+  table.heat td {
+    width: 44px; height: 30px; border-radius: 4px; text-align: center;
+    font-size: 11px; font-variant-numeric: tabular-nums; cursor: default;
+  }
+  table.heat td.best { outline: 2px solid var(--ink); outline-offset: -2px; }
+  .legend { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12px; color: var(--ink-2); flex-wrap: wrap; }
+  .legend .swatches { display: flex; gap: 2px; }
+  .legend .sw { width: 26px; height: 12px; border-radius: 3px; }
+
+  /* ------- slot picker / plan ------- */
+  .slots { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+  .slots button {
+    font: inherit; font-weight: 700; font-size: 13.5px; padding: 7px 0; width: 44px;
+    border-radius: 8px; border: 1px solid var(--ring); background: var(--surface);
+    color: var(--ink-2); cursor: pointer;
+  }
+  .slots button:hover { border-color: var(--accent); color: var(--ink); }
+  .slots button:focus-visible, .postab button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .slots button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .plan-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+  .plan-head .strat { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+  .plan-head .edge { color: var(--ink-2); font-size: 13.5px; }
+  .rounds { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 12px; margin-top: 14px; }
+  .round { border: 1px solid var(--grid); border-radius: 10px; padding: 12px 14px 10px; }
+  .round h4 { margin: 0 0 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .target { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 13.5px; }
+  .target .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+  .target .rate { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; width: 34px; text-align: right; }
+
+  .chip {
+    display: inline-block; min-width: 30px; text-align: center; padding: 1px 5px;
+    border-radius: 5px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em;
+  }
+  .chip.RB { background: var(--rb-soft); color: var(--rb); }
+  .chip.WR { background: var(--wr-soft); color: var(--wr); }
+  .chip.TE { background: var(--te-soft); color: var(--te); }
+  .chip.QB { background: var(--qb-soft); color: var(--qb); }
+  :root[data-theme="light"] .chip, :root:not([data-theme="dark"]) .chip { filter: saturate(1); }
+  .chip.RB, .chip.WR, .chip.TE, .chip.QB { border: 1px solid currentColor; }
+
+  /* ------- cheat sheet ------- */
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .postab { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--ring); border-radius: 9px; padding: 3px; }
+  .postab button {
+    font: inherit; font-size: 13px; font-weight: 700; border: 0; background: transparent;
+    color: var(--ink-2); padding: 5px 12px; border-radius: 6px; cursor: pointer;
+  }
+  .postab button.on { background: var(--accent); color: #fff; }
+  .controls input {
+    font: inherit; font-size: 13.5px; padding: 7px 12px; border-radius: 9px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink); width: 190px;
+  }
+  .controls input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  table.sheet { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 700px; }
+  table.sheet th {
+    text-align: right; font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--muted); font-weight: 700; padding: 6px 10px; border-bottom: 1px solid var(--baseline);
+    white-space: nowrap;
+  }
+  table.sheet th:nth-child(2), table.sheet th:nth-child(3) { text-align: left; }
+  table.sheet td { padding: 6px 10px; border-bottom: 1px solid var(--grid); text-align: right; font-variant-numeric: tabular-nums; }
+  table.sheet td:nth-child(2), table.sheet td:nth-child(3) { text-align: left; }
+  table.sheet td.rk { color: var(--muted); }
+  table.sheet td.nm { font-weight: 650; white-space: nowrap; }
+  table.sheet td.nm .tm { color: var(--muted); font-weight: 500; font-size: 12px; margin-left: 6px; }
+  table.sheet tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .gap-pos { color: var(--good); font-weight: 700; }
+  .gap-neg { color: var(--bad); }
+  .inj { font-size: 10.5px; color: var(--bad); font-weight: 700; margin-left: 5px; }
+  .showmore { margin: 14px auto 0; display: block; font: inherit; font-weight: 650; font-size: 13.5px;
+    color: var(--accent); background: none; border: 1px solid var(--ring); border-radius: 8px; padding: 7px 18px; cursor: pointer; }
+
+  /* ------- intel ------- */
+  .intel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .intel-card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 18px 20px; }
+  .intel-card h3 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .note { padding: 10px 0; border-top: 1px solid var(--grid); font-size: 13.5px; }
+  .note:first-of-type { border-top: 0; padding-top: 0; }
+  .note .who { font-weight: 700; margin-right: 6px; }
+  .note .txt { color: var(--ink-2); margin-top: 2px; }
+  .tag {
+    display: inline-block; padding: 1px 7px; border-radius: 5px; font-size: 10px;
+    font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-left: 6px;
+    border: 1px solid currentColor;
+  }
+  .tag.risk { color: var(--t-risk); }
+  .tag.watch { color: var(--t-watch); }
+  .tag.upside { color: var(--t-upside); }
+  .trow { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13.5px; border-top: 1px solid var(--grid); }
+  .trow:first-of-type { border-top: 0; }
+  .trow .nm { flex: 1; min-width: 0; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .trow .meta { color: var(--ink-2); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .adds { color: var(--t-upside); font-weight: 700; }
+  .dchip {
+    display: inline-block; min-width: 22px; text-align: center; padding: 1px 4px;
+    border-radius: 5px; font-size: 10.5px; font-weight: 800; cursor: default;
+  }
+  .dchip.s1 { color: var(--t-upside); border: 1px solid currentColor; }
+  .dchip.s2 { color: var(--t-watch); border: 1px solid currentColor; }
+  .dchip.s3 { color: var(--t-risk); border: 1px solid currentColor; }
+  .dchip.none { color: var(--muted); }
+
+  /* ------- tabs + tracker ------- */
+  .tabs { display: flex; gap: 6px; margin: 22px 0 6px; position: sticky; top: 0; z-index: 5;
+    background: var(--page); padding: 10px 0; }
+  .tabs button {
+    font: inherit; font-weight: 750; font-size: 14px; padding: 8px 18px; cursor: pointer;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); border-radius: 9px;
+  }
+  .tabs button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .view { display: none; }
+  .view.on { display: block; }
+
+  .clock {
+    border-radius: 12px; padding: 14px 18px; margin-bottom: 14px;
+    background: var(--surface); border: 1px solid var(--ring);
+    display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap;
+  }
+  .clock .big { font-size: 19px; font-weight: 800; letter-spacing: -.01em; }
+  .clock .big.me { color: var(--accent); }
+  .clock .meta { color: var(--ink-2); font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  .track-setup { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .track-setup .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--muted); }
+  .btn {
+    font: inherit; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 8px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--ink); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .btn.danger:hover { border-color: var(--t-risk); color: var(--t-risk); }
+  .track-grid { display: grid; grid-template-columns: minmax(320px, 400px) 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .track-grid { grid-template-columns: 1fr; } }
+  .rec { border: 1px solid var(--grid); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; }
+  .rec.top { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+  .rec .body { flex: 1; min-width: 0; }
+  .rec .nm { font-weight: 700; font-size: 14.5px; }
+  .rec .why { font-size: 12px; color: var(--ink-2); margin-top: 1px; }
+  .rec .score { font-variant-numeric: tabular-nums; text-align: right; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; }
+  .rec .score b { display: block; font-size: 15px; color: var(--ink); }
+  .rslot { display: flex; gap: 8px; align-items: center; padding: 4px 0; font-size: 13.5px; border-top: 1px solid var(--grid); }
+  .rslot:first-of-type { border-top: 0; }
+  .rslot .pos-lbl { width: 38px; font-size: 10.5px; font-weight: 800; letter-spacing: .05em; color: var(--muted); }
+  .rslot .who { flex: 1; font-weight: 650; }
+  .rslot .who.empty { color: var(--muted); font-weight: 400; }
+  .rslot .p { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+  .board-wrap { max-height: 68vh; overflow-y: auto; margin-top: 10px; }
+  .brow { display: flex; gap: 8px; align-items: center; padding: 5px 2px; border-top: 1px solid var(--grid); font-size: 13.5px; }
+  .brow:first-of-type { border-top: 0; }
+  .brow .adp { width: 44px; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12px; }
+  .brow .nm { flex: 1; min-width: 0; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brow .nm .tm { color: var(--muted); font-weight: 500; font-size: 12px; margin-left: 5px; }
+  .brow .v { width: 52px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+  .brow button { font: inherit; font-size: 11.5px; font-weight: 750; padding: 4px 9px; border-radius: 7px;
+    border: 1px solid var(--ring); background: var(--surface); cursor: pointer; }
+  .brow button.mine { color: var(--accent); }
+  .brow button.mine:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .brow button.gone { color: var(--ink-2); }
+  .brow button.gone:hover { border-color: var(--t-risk); color: var(--t-risk); }
+  .chip.K, .chip.DST { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--ink-2); border: 1px solid currentColor; }
+  .simnote { font-size: 12px; color: var(--ink-2); margin: 0 0 10px; }
+  .simdone { font-size: 12.5px; color: var(--muted); padding: 4px 0; }
+
+  footer { margin-top: 52px; color: var(--muted); font-size: 12.5px; max-width: 78ch; }
+  footer p { margin: 4px 0; }
+
+  .tip {
+    position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--page);
+    font-size: 12px; padding: 5px 9px; border-radius: 6px; opacity: 0; transition: opacity .08s;
+    max-width: 320px; line-height: 1.4;
+  }
+  @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">12-team · Full PPR · 1QB 2RB 2WR 1TE 1FLEX · Snake, 15 rounds</div>
+    <h1>2026 Draft War Room</h1>
+    <p class="sub">32,400 simulated drafts against ADP-realistic opponents, built to maximize
+      season-long starting-lineup points — reception volume weighted exactly as full PPR pays it.
+      Projections + ADP: Sleeper, pulled __DATA_DATE__.</p>
+  </header>
+
+  <nav class="tabs">
+    <button id="tab-war" class="on">War Room</button>
+    <button id="tab-track">Live Tracker</button>
+  </nav>
+
+  <div class="view on" id="view-war">
+
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <h2>Which strategy wins</h2>
+    <p class="desc">Dot = average projected starter points across all 12 draft slots
+      (300 sims per slot per strategy); labels show the gap to the winner. The band is the
+      10th–90th percentile <i>season outcome</i> once player-level busts, breakouts, and
+      injuries are sampled on top of the projections — hover it for the floor, ceiling,
+      and how often the roster finishes top-3 in the league.</p>
+    <div class="card" id="stratplot"></div>
+  </section>
+
+  <section>
+    <h2>Strategy by draft slot</h2>
+    <p class="desc">Points behind the best strategy at that slot — darker is better, outlined cell
+      is the slot's winner. Hover for exact starter points.</p>
+    <div class="card">
+      <div class="scrollbox"><table class="heat" id="heat"></table></div>
+      <div class="legend">
+        <span>Behind slot best:</span>
+        <div class="swatches" id="heatlegend"></div>
+        <span id="heatlegendlabels"></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your draft plan</h2>
+    <p class="desc">Pick your slot. You get the winning strategy there and the players the
+      sim most often lands round by round — your queue targets, with how often each was the pick.</p>
+    <div class="slots" id="slotbtns"></div>
+    <div class="card" id="plan"></div>
+  </section>
+
+  <section>
+    <h2>Live intel <span class="eyebrow" id="intel-date" style="margin-left:8px"></span></h2>
+    <p class="desc">Camp injuries, depth-chart movement, and Sleeper add/drop trends layered on top
+      of the sim. Projections are left untouched — ADP already prices most of this in; use these
+      flags to break ties and size risk on draft day. Tagged players also carry their flag in the
+      cheat sheet below.</p>
+    <div class="intel-grid">
+      <div class="intel-card" style="grid-column: 1 / -1;">
+        <h3>What changes the plan</h3>
+        <div id="intel-notes"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Injury report — draftable range</h3>
+        <div id="intel-inj"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Trending adds · Sleeper, last 48h</h3>
+        <div id="intel-trend"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Depth chart red flags — drafted like starters, not listed as one</h3>
+        <div id="depth-notstarters"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Listed starters going cheap — ADP 100+</h3>
+        <div id="depth-cheap"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Experts vs the market <span class="eyebrow" id="fp-date" style="margin-left:6px"></span></h3>
+        <div id="fp-gaps"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cheat sheet — ranked by value over replacement</h2>
+    <p class="desc">VORP = projected PPR points above the last startable player at the position
+      (QB14 / RB34 / WR36 / TE14). <b>Value</b> is ADP rank minus VORP rank — green players are
+      going later in drafts than their production says they should.</p>
+    <div class="controls">
+      <div class="postab" id="postab"></div>
+      <input id="search" type="search" placeholder="Search player or team" aria-label="Search player or team">
+    </div>
+    <div class="card scrollbox">
+      <table class="sheet">
+        <thead><tr>
+          <th>#</th><th>Player</th><th>Pos</th><th>Depth</th><th>Bye</th><th>ADP</th>
+          <th data-tip="FantasyPros expert consensus rank — a second opinion vs Sleeper">ECR</th>
+          <th>Proj PPR</th><th>Rec</th><th>VORP</th><th>Value</th>
+        </tr></thead>
+        <tbody id="sheetbody"></tbody>
+      </table>
+      <button class="showmore" id="showmore">Show all 180</button>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Method.</b> Player pool: Sleeper 2026 season projections (full PPR) and PPR ADP.
+      Each simulated draft gives every opponent a private board of ADP plus noise that grows with
+      ADP (top picks barely move; round-10 players swing by rounds), with roster-need logic and
+      late K/DST. Your team follows the strategy script for the early rounds, then best VORP with
+      need urgency. Team score = optimal lineup (QB, 2RB, 2WR, TE, flex, K, DST) projected points
+      plus a 12% credit on the top three bench players. Each simulated season then re-samples
+      every player's actual output with position-sized error (RB ±34%, WR ±30%, TE ±32%,
+      QB ±22%, lognormal) — league rank, floor, and ceiling come from those sampled outcomes,
+      so strategy risk reflects that early RBs bust harder than early WRs.</p>
+    <p>Strategies define rounds 1–4 only (* = best value). Hero RB — one elite RB, then three
+      straight WRs — wins nearly every slot in full PPR: the round-1 RB clears replacement by
+      100+ points, while rounds 2–4 are the reception-heavy WR sweet spot and startable
+      pass-catching RBs (Swift, Skattebo) are still on the board in round 5.</p>
+  </footer>
+  </div><!-- /view-war -->
+
+  <div class="view" id="view-track">
+    <div class="track-setup">
+      <span class="lbl">My slot</span>
+      <div class="slots" id="track-slots" style="margin:0"></div>
+      <button class="btn" id="track-undo">Undo last pick</button>
+      <button class="btn danger" id="track-reset">Reset draft</button>
+    </div>
+    <div class="clock" id="track-clock"></div>
+    <div class="track-grid">
+      <div>
+        <div class="intel-card" style="margin-bottom:14px">
+          <h3>Rest-of-draft sim — what wins from here</h3>
+          <div class="simnote">Each option replays the remaining rounds 100× from this exact
+            board: you take that player at your next pick, every opponent keeps drafting off
+            noisy ADP from the roster they've actually built, and your later picks go
+            best-value. Number = average final roster points.</div>
+          <div id="livesim"></div>
+        </div>
+        <div class="intel-card" style="margin-bottom:14px">
+          <h3>Best picks right now</h3>
+          <div id="recs"></div>
+        </div>
+        <div class="intel-card">
+          <h3>My roster</h3>
+          <div id="myroster"></div>
+        </div>
+      </div>
+      <div class="intel-card">
+        <h3>Player board — ✕ when someone else drafts a player, Draft when you do</h3>
+        <div class="controls" style="margin:10px 0 0">
+          <div class="postab" id="track-postab"></div>
+          <input id="track-search" type="search" placeholder="Search player or team" aria-label="Search player or team">
+        </div>
+        <div class="board-wrap" id="board"></div>
+      </div>
+    </div>
+    <footer>
+      <p><b>How it works.</b> Check off every pick as it happens and both panels
+        re-rank live. The rest-of-draft sim is the deep answer: it replays the remaining
+        rounds 100 times per option from the actual board — every opponent drafting off
+        noisy ADP from the roster they've really built — and reports the roster points you
+        end up with, so it prices in position runs and what each pick costs you later.
+        "Best picks right now" is the instant heuristic: value over replacement, plus
+        urgency when a roster need is running out of rounds, plus a boost for players
+        unlikely to survive to your next pick. When they disagree, trust the sim.
+        State saves in this browser; refreshing mid-draft is safe. Recommendations depend
+        mostly on who's gone and your roster, so an imperfect pick count is fine — use
+        Undo to fix mistakes.</p>
+    </footer>
+  </div><!-- /view-track -->
+</div>
+
+<div class="tip" id="tip" role="presentation"></div>
+
+<script>
+const DATA = __DATA__;
+
+const $ = (s, el=document) => el.querySelector(s);
+const fmt = n => n.toLocaleString("en-US", {maximumFractionDigits: 0});
+const fmt1 = n => n.toLocaleString("en-US", {minimumFractionDigits: 1, maximumFractionDigits: 1});
+
+/* ---------- tiles ---------- */
+{
+  const best = DATA.overall[0], worst = DATA.overall[DATA.overall.length-1];
+  const field = DATA.overall.reduce((a,o)=>a+o.mean_starters,0)/DATA.overall.length;
+  const topVal = DATA.cheat_sheet.filter(p=>p.adp_ppr<120).sort((a,b)=>b.value_gap-a.value_gap)[0];
+  $("#tiles").innerHTML = `
+    <div class="tile"><div class="label">Winning strategy</div>
+      <div class="value">${best.strategy}</div>
+      <div class="note">${fmt(best.mean_starters)} projected starter pts / season</div></div>
+    <div class="tile"><div class="label">Edge over average strategy</div>
+      <div class="value">+${fmt1(best.mean_starters-field)} pts</div>
+      <div class="note">+${fmt1(best.mean_starters-worst.mean_starters)} vs ${worst.strategy}, the worst plan</div></div>
+    <div class="tile"><div class="label">Biggest draft-day value</div>
+      <div class="value">${topVal.player}</div>
+      <div class="note">${topVal.pos} · ADP ${fmt1(topVal.adp_ppr)}, ranked ${topVal.value_gap} spots too late</div></div>`;
+}
+
+/* ---------- strategy dot plot ---------- */
+{
+  const rows = DATA.overall;
+  const max = rows[0].mean_starters, min = rows[rows.length-1].mean_starters;
+  const hasRisk = rows[0].floor_p10 != null;
+  const lo = hasRisk ? Math.min(...rows.map(r=>r.floor_p10)) - 10 : min - (max-min)*0.08;
+  const hi = hasRisk ? Math.max(...rows.map(r=>r.ceiling_p90)) + 10 : max + (max-min)*0.08;
+  const X = v => ((v-lo)/(hi-lo)*100).toFixed(1);
+  $("#stratplot").innerHTML = rows.map((r,i) => {
+    const d = r.mean_starters - max;
+    const band = hasRisk
+      ? `<div class="band" style="left:${X(r.floor_p10)}%;width:${(X(r.ceiling_p90)-X(r.floor_p10)).toFixed(1)}%"
+           data-tip="${r.strategy}: 10th–90th percentile season outcome ${fmt(r.floor_p10)}–${fmt(r.ceiling_p90)} starter pts · top-3 finish ${Math.round(r.top3_rate*100)}%"></div>`
+      : "";
+    return `<div class="strat-row${i===0?" winner":""}">
+      <div class="strat-name">${r.strategy}</div>
+      <div class="strat-track"><div class="rail"></div>${band}<div class="dot" style="left:${X(r.mean_starters)}%"></div></div>
+      <div class="strat-val"><b>${fmt(r.mean_starters)}</b> ${i===0?"pts":`<span class="delta-neg">−${fmt1(-d)}</span>`}${hasRisk?`<span style="color:var(--muted)"> · floor ${fmt(r.floor_p10)}</span>`:""}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------- heatmap ---------- */
+{
+  const m = DATA.matrix;
+  const colMax = m.slots.map((_,c) => Math.max(...m.values.map(row=>row[c])));
+  const order = [...m.strategies.keys()].sort((a,b) =>
+    DATA.overall.findIndex(o=>o.strategy===m.strategies[a]) -
+    DATA.overall.findIndex(o=>o.strategy===m.strategies[b]));
+  const ramp = ["--heat-5","--heat-4","--heat-3","--heat-2","--heat-1","--heat-0"];
+  const bins = [2, 5, 10, 18, 30, Infinity];
+  const binOf = d => bins.findIndex(b => d < b);
+  let html = `<thead><tr><th class="rowh"></th>${m.slots.map(s=>`<th scope="col">${s}</th>`).join("")}</tr></thead><tbody>`;
+  for (const ri of order) {
+    html += `<tr><th class="rowh" scope="row">${m.strategies[ri]}</th>`;
+    m.slots.forEach((s,c) => {
+      const v = m.values[ri][c], d = colMax[c]-v, bin = binOf(d);
+      const dark = bin <= 1;
+      html += `<td class="${d===0?"best":""}" style="background:var(${ramp[bin]});color:${dark?"#fff":"var(--ink)"}"
+        data-tip="${m.strategies[ri]} · slot ${s}: ${fmt(v)} pts${d===0?" (slot best)":` (−${fmt1(d)})`}">${d===0?"★":"−"+Math.round(d)}</td>`;
+    });
+    html += "</tr>";
+  }
+  $("#heat").innerHTML = html + "</tbody>";
+  $("#heatlegend").innerHTML = ramp.map(c=>`<div class="sw" style="background:var(${c})"></div>`).join("");
+  $("#heatlegendlabels").textContent = "0 · <2 · <5 · <10 · <18 · <30 · 30+ pts";
+}
+
+/* ---------- slot plan ---------- */
+{
+  const btns = $("#slotbtns");
+  DATA.best_by_slot.forEach(b => {
+    const el = document.createElement("button");
+    el.textContent = b.slot;
+    el.addEventListener("click", () => render(b.slot));
+    btns.appendChild(el);
+  });
+  function render(slot) {
+    [...btns.children].forEach((el,i)=>el.classList.toggle("on", i===slot-1));
+    const b = DATA.best_by_slot[slot-1];
+    const byRound = {};
+    b.common_picks.forEach(p => (byRound[p.round] ??= []).push(p));
+    const rounds = Object.keys(byRound).sort((a,b)=>a-b).map(r => `
+      <div class="round"><h4>Round ${r}</h4>${byRound[r].slice(0,4).map(p=>`
+        <div class="target"><span class="chip ${p.pos}">${p.pos}</span>
+          <span class="nm">${p.player}</span>
+          <span class="rate">${Math.round(p.rate*100)}%</span></div>`).join("")}
+      </div>`).join("");
+    $("#plan").innerHTML = `
+      <div class="plan-head">
+        <span class="eyebrow">Pick ${b.slot} of 12</span>
+        <span class="strat">${b.strategy}</span>
+        <span class="edge">${fmt(b.mean_starters)} starter pts · +${fmt1(b.edge_over_2nd)} over ${b.second}</span>
+      </div>
+      <div class="rounds">${rounds}</div>`;
+  }
+  render(5);
+}
+
+/* ---------- live intel ---------- */
+const NOTE_BY_PLAYER = {};
+{
+  const I = DATA.intel || {injuries: [], trending: [], notes: []};
+  (I.notes || []).forEach(n => NOTE_BY_PLAYER[n.player] = n);
+  if (I.as_of) $("#intel-date").textContent = "as of " + I.as_of;
+
+  $("#intel-notes").innerHTML = (I.notes || []).map(n => `
+    <div class="note"><span class="who">${n.player}</span><span class="tag ${n.tag}">${n.tag}</span>
+      <div class="txt">${n.note}</div></div>`).join("") || '<div class="note">No curated notes.</div>';
+
+  const sev = s => s === "PUP" || s === "IR" || s === "Out" ? "risk" : "watch";
+  $("#intel-inj").innerHTML = (I.injuries || []).slice(0, 14).map(i => `
+    <div class="trow"><span class="chip ${i.pos}">${i.pos}</span>
+      <span class="nm">${i.player}</span>
+      <span class="meta">ADP ${fmt1(i.adp_ppr)}</span>
+      <span class="tag ${sev(i.injury_status)}">${i.injury_status}</span></div>`).join("")
+    || '<div class="trow">No injuries in the draftable range.</div>';
+
+  $("#intel-trend").innerHTML = (I.trending || []).filter(t => t.pos !== "DST").slice(0, 10).map(t => `
+    <div class="trow"><span class="chip ${t.pos}">${t.pos}</span>
+      <span class="nm">${t.player}</span>
+      <span class="meta">ADP ${t.adp_ppr < 900 ? fmt1(t.adp_ppr) : "—"}</span>
+      <span class="meta adds">+${t.trend_add.toLocaleString()}</span></div>`).join("")
+    || '<div class="trow">No trending data.</div>';
+
+  const df = I.depth_flags || {not_starters: [], cheap_starters: []};
+  $("#depth-notstarters").innerHTML = (df.not_starters || []).map(d => `
+    <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
+      <span class="nm">${d.player} <span class="tm" style="color:var(--muted);font-weight:500">${d.team}</span></span>
+      <span class="meta">ADP ${fmt1(d.adp_ppr)}</span>
+      <span class="tag watch">${d.rank}${d.rank===2?"nd":d.rank===3?"rd":"th"} string</span></div>`).join("")
+    || '<div class="trow">None — every top-110 ADP pick is a listed starter.</div>';
+
+  $("#depth-cheap").innerHTML = (df.cheap_starters || []).map(d => `
+    <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
+      <span class="nm">${d.player} <span class="tm" style="color:var(--muted);font-weight:500">${d.team}</span></span>
+      <span class="meta">ADP ${fmt1(d.adp_ppr)}</span>
+      <span class="meta">${fmt(d.pts_ppr)} pts</span></div>`).join("")
+    || '<div class="trow">No cheap listed starters found.</div>';
+
+  if (I.fp_as_of) $("#fp-date").textContent = `FantasyPros, ${I.fp_experts} experts`;
+  $("#fp-gaps").innerHTML = (I.fp_disagreements || []).map(d => `
+    <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
+      <span class="nm">${d.player} <span class="tm" style="color:var(--muted);font-weight:500">${d.team}</span></span>
+      <span class="meta">ADP ${fmt1(d.adp_ppr)} · ECR ${d.ecr}</span>
+      <span class="tag ${d.gap > 0 ? "upside" : "risk"}"
+        data-tip="Expert consensus ranks ${d.player} ${Math.abs(d.gap)} spots ${d.gap > 0 ? "ahead of" : "behind"} where drafts are taking him">
+        ${d.gap > 0 ? "+" : ""}${d.gap}</span></div>`).join("")
+    || '<div class="trow">No expert-consensus data — run fetch_fp.py.</div>';
+}
+
+/* ---------- cheat sheet ---------- */
+function depthCell(r) {
+  if (!r.depth_rank) return '<span class="dchip none">—</span>';
+  const label = r.depth_rank === 1 ? "S" : r.depth_rank;
+  const cls = r.depth_rank === 1 ? "s1" : r.depth_rank === 2 ? "s2" : "s3";
+  const asOf = (DATA.intel && DATA.intel.depth_as_of) || "";
+  const st = r.depth_status ? ` (${r.depth_status})` : "";
+  const word = r.depth_rank === 1 ? "listed starter" : `listed ${r.depth_rank}${r.depth_rank===2?"nd":r.depth_rank===3?"rd":"th"} string`;
+  return `<span class="dchip ${cls}" data-tip="ESPN depth chart ${asOf}: ${word}${st}">${label}</span>`;
+}
+{
+  const POS = ["ALL","RB","WR","TE","QB"];
+  let pos = "ALL", q = "", limit = 60;
+  const tab = $("#postab");
+  POS.forEach(p => {
+    const el = document.createElement("button");
+    el.textContent = p;
+    el.addEventListener("click", () => { pos = p; render(); });
+    tab.appendChild(el);
+  });
+  $("#search").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); render(); });
+  $("#showmore").addEventListener("click", () => { limit = 999; render(); });
+  function render() {
+    [...tab.children].forEach(el=>el.classList.toggle("on", el.textContent===pos));
+    let rows = DATA.cheat_sheet;
+    if (pos !== "ALL") rows = rows.filter(r=>r.pos===pos);
+    if (q) rows = rows.filter(r=>(r.player+" "+r.team).toLowerCase().includes(q));
+    const shown = rows.slice(0, limit);
+    $("#sheetbody").innerHTML = shown.map(r => `<tr>
+      <td class="rk">${r.vorp_rank}</td>
+      <td class="nm">${r.player}<span class="tm">${r.team}</span>${r.injury_status&&r.injury_status!=="Questionable"?`<span class="inj">${r.injury_status.toUpperCase()}</span>`:""}${NOTE_BY_PLAYER[r.player]?`<span class="tag ${NOTE_BY_PLAYER[r.player].tag}" data-tip="${NOTE_BY_PLAYER[r.player].note.replace(/"/g,"&quot;")}">${NOTE_BY_PLAYER[r.player].tag}</span>`:""}</td>
+      <td><span class="chip ${r.pos}">${r.pos}</span></td>
+      <td>${depthCell(r)}</td>
+      <td class="rk">${r.bye ?? "—"}</td>
+      <td>${fmt1(r.adp_ppr)}</td>
+      <td class="rk">${r.ecr != null ? (r.tier != null ? `<span data-tip="Expert consensus rank ${r.ecr} · tier ${r.tier}">${r.ecr}</span>` : r.ecr) : "—"}</td>
+      <td>${fmt1(r.pts_ppr)}</td>
+      <td>${r.rec!=null&&r.pos!=="QB"?Math.round(r.rec):"—"}</td>
+      <td>${fmt1(r.vorp)}</td>
+      <td class="${r.value_gap>4?"gap-pos":r.value_gap<-4?"gap-neg":""}">${r.value_gap>0?"+":""}${r.value_gap}</td>
+    </tr>`).join("");
+    $("#showmore").style.display = shown.length < rows.length ? "block" : "none";
+    $("#showmore").textContent = `Show all ${rows.length}`;
+  }
+  render();
+}
+
+/* ---------- tabs ---------- */
+{
+  const views = {war: [$("#tab-war"), $("#view-war")], track: [$("#tab-track"), $("#view-track")]};
+  function show(which) {
+    for (const k in views) {
+      views[k][0].classList.toggle("on", k === which);
+      views[k][1].classList.toggle("on", k === which);
+    }
+    try { localStorage.setItem("draft2026.view", which); } catch(e) {}
+  }
+  $("#tab-war").addEventListener("click", () => show("war"));
+  $("#tab-track").addEventListener("click", () => show("track"));
+  let saved = null;
+  try { saved = localStorage.getItem("draft2026.view"); } catch(e) {}
+  if (saved === "track") show("track");
+}
+
+/* ---------- live tracker ---------- */
+{
+  const POOL = (DATA.tracker_pool || []).slice().sort((a, b) => a.adp - b.adp);
+  const key = p => p.player + "|" + p.pos;
+  const BY_KEY = {};
+  POOL.forEach(p => BY_KEY[key(p)] = p);
+  const NOTES = NOTE_BY_PLAYER;
+
+  const TEAMS = 12, ROUNDS = 15;
+  const CAPS = {QB: 2, RB: 8, WR: 8, TE: 3, K: 1, DST: 1};
+  const LINEUP = [["QB",1],["RB",2],["WR",2],["TE",1],["FLEX",1],["K",1],["DST",1]];
+
+  let state = {slot: 5, events: []}; // events: {k, mine}
+  try {
+    const raw = localStorage.getItem("draft2026.state");
+    if (raw) { const s = JSON.parse(raw); if (s && Array.isArray(s.events)) state = s; }
+  } catch(e) {}
+  function save() { try { localStorage.setItem("draft2026.state", JSON.stringify(state)); } catch(e) {} }
+
+  const drafted = () => new Set(state.events.map(e => e.k));
+  const mine = () => state.events.filter(e => e.mine).map(e => BY_KEY[e.k]).filter(Boolean);
+  const pickNo = () => state.events.length + 1;
+  const roundOf = pk => Math.ceil(pk / TEAMS);
+  const slotOnClock = pk => {
+    const r = roundOf(pk), idx = pk - (r - 1) * TEAMS;
+    return r % 2 === 1 ? idx : TEAMS + 1 - idx;
+  };
+  const myOveralls = () => {
+    const out = [];
+    for (let r = 1; r <= ROUNDS; r++)
+      out.push((r - 1) * TEAMS + (r % 2 === 1 ? state.slot : TEAMS + 1 - state.slot));
+    return out;
+  };
+  const nextMyPick = () => myOveralls().find(pk => pk >= pickNo()) ?? null;
+  const pickAfterMine = () => {
+    const next = nextMyPick();
+    return next === null ? null : myOveralls().find(pk => pk > next) ?? null;
+  };
+
+  function counts(roster) {
+    const c = {QB:0,RB:0,WR:0,TE:0,K:0,DST:0};
+    roster.forEach(p => c[p.pos]++);
+    return c;
+  }
+
+  function recommend() {
+    const gone = drafted();
+    const roster = mine();
+    const c = counts(roster);
+    const myRound = roster.length + 1;
+    const roundsLeft = ROUNDS - roster.length;
+    if (roundsLeft <= 0) return [];
+    const avail = POOL.filter(p => !gone.has(key(p)));
+
+    // Endgame: force K/DST when rounds run out
+    const needK = c.K < 1, needD = c.DST < 1;
+    const forcedPos = [];
+    if (needK && roundsLeft <= (needD ? 2 : 1)) forcedPos.push("K");
+    if (needD && roundsLeft <= (needK ? 2 : 1)) forcedPos.push("DST");
+    if (forcedPos.length) {
+      return avail.filter(p => forcedPos.includes(p.pos))
+        .sort((a, b) => b.pts - a.pts).slice(0, 6)
+        .map(p => ({p, score: p.vorp, why: "Lineup needs a " + p.pos + " — rounds are up"}));
+    }
+
+    const legal = p => {
+      if (c[p.pos] >= CAPS[p.pos]) return false;
+      if ((p.pos === "K" || p.pos === "DST") && myRound < 13) return false;
+      if (p.pos === "QB" && (myRound < 5 || (c.QB >= 1 && myRound < 12))) return false;
+      if (p.pos === "TE" && c.TE >= 2) return false;
+      return true;
+    };
+    const cands = avail.filter(legal);
+
+    const next = nextMyPick(), after = pickAfterMine();
+    const horizon = after ?? (next ?? pickNo()) + TEAMS;
+    const surv = p => 1 / (1 + Math.exp((horizon - p.adp) / 6));
+    const waitBest = {};
+    for (const p of cands) {
+      const w = p.vorp * surv(p);
+      if (!(p.pos in waitBest) || w > waitBest[p.pos]) waitBest[p.pos] = w;
+    }
+    const needBonus = p => {
+      let b = 0;
+      if (p.pos === "QB" && c.QB === 0 && myRound >= 8) b += 15;
+      if (p.pos === "TE" && c.TE === 0 && myRound >= 9) b += 12;
+      if (p.pos === "RB" && c.RB < 2 && myRound >= 6) b += 8;
+      if (p.pos === "WR" && c.WR < 2 && myRound >= 6) b += 8;
+      return b;
+    };
+    return cands
+      .map(p => {
+        const nb = needBonus(p);
+        const urg = p.vorp - (waitBest[p.pos] ?? 0);
+        const score = p.vorp + nb + Math.max(0, urg) * 0.5;
+        let why;
+        if (surv(p) < 0.3) why = "Unlikely to survive to your next pick (ADP " + p.adp.toFixed(0) + ")";
+        else if (nb >= 12) why = "Roster needs a " + p.pos + " soon";
+        else if (nb > 0) why = "Fills a starting " + p.pos + " slot";
+        else why = "Best value on the board";
+        const n = NOTES[p.player];
+        if (n && n.tag !== "upside") why += " · " + n.tag.toUpperCase() + " flag";
+        return {p, score, why};
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 6);
+  }
+
+  /* ----- rest-of-draft re-simulation -----
+     Same engine as the Python Monte Carlo, replayed from the live board:
+     opponents pick argmin of (ADP + noise) with need logic off the rosters
+     they've actually built (reconstructed from pick order); our later picks
+     go best-VORP with need urgency. Common random numbers across candidates
+     keep the deltas stable. */
+  const SIMS = 100;
+  const N = POOL.length;
+  const POSI = {QB: 0, RB: 1, WR: 2, TE: 3, K: 4, DST: 5};
+  const CAPS6 = [3, 8, 8, 3, 1, 1];
+  const NEED6 = [1, 2, 2, 1, 1, 1];
+  const S_posi = Int8Array.from(POOL, p => POSI[p.pos]);
+  const S_adp = Float64Array.from(POOL, p => p.adp < 900 ? p.adp : 999);
+  const S_pts = Float64Array.from(POOL, p => p.pts);
+  const S_vorp = Float64Array.from(POOL, p => p.vorp);
+  const S_sigma = Float64Array.from(S_adp, a => Math.min(25, Math.max(0.8, 0.8 + 0.09 * a)));
+  const IDX_OF = new Map(POOL.map((p, i) => [key(p), i]));
+  const percept = new Float64Array(TEAMS * N);
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function fillPercepts(s) {
+    const rnd = mulberry32(Math.imul(s + 1, 2654435761) ^ 0x9E3779B9);
+    const L = percept.length;
+    for (let k = 0; k < L; k += 2) {
+      const r = Math.sqrt(-2 * Math.log(rnd() + 1e-12)), th = 6.283185307179586 * rnd();
+      percept[k] = r * Math.cos(th);
+      if (k + 1 < L) percept[k + 1] = r * Math.sin(th);
+    }
+    for (let t = 0; t < TEAMS; t++) {
+      const o = t * N;
+      for (let i = 0; i < N; i++) percept[o + i] = S_adp[i] + percept[o + i] * S_sigma[i];
+    }
+  }
+
+  function simBase() {
+    const avail = new Uint8Array(N).fill(1);
+    const cnt = new Int8Array(TEAMS * 6);
+    state.events.forEach((e, i) => {
+      const idx = IDX_OF.get(e.k);
+      if (idx == null) return;
+      avail[idx] = 0;
+      const team = e.mine ? state.slot - 1 : slotOnClock(i + 1) - 1;
+      cnt[team * 6 + S_posi[idx]]++;
+    });
+    // My counts come from my actual roster, not pick-order inference
+    const myOff = (state.slot - 1) * 6;
+    for (let j = 0; j < 6; j++) cnt[myOff + j] = 0;
+    const myPicks = [];
+    mine().forEach(p => {
+      const idx = IDX_OF.get(key(p));
+      if (idx == null) return;
+      myPicks.push(idx);
+      cnt[myOff + S_posi[idx]]++;
+    });
+    return {avail, cnt, myPicks};
+  }
+
+  function forcedEndgame(avail, cnt, off, rnd, byPts) {
+    const roundsLeft = ROUNDS - rnd + 1;
+    const needK = cnt[off + 4] < 1, needD = cnt[off + 5] < 1;
+    const forceK = needK && roundsLeft <= (needD ? 2 : 1);
+    const forceD = needD && roundsLeft <= (needK ? 2 : 1);
+    if (!forceK && !forceD) return -1;
+    let best = -1;
+    for (let i = 0; i < N; i++) {
+      if (!avail[i]) continue;
+      const pi = S_posi[i];
+      if (!((forceK && pi === 4) || (forceD && pi === 5))) continue;
+      if (best < 0 || (byPts ? S_pts[i] > S_pts[best] : S_adp[i] < S_adp[best])) best = i;
+    }
+    return best;
+  }
+
+  function oppNext(avail, cnt, off, rnd, pOff) {
+    const forced = forcedEndgame(avail, cnt, off, rnd, false);
+    if (forced >= 0) return forced;
+    let best = -1, bestP = Infinity, fb = -1, fbP = Infinity;
+    for (let i = 0; i < N; i++) {
+      if (!avail[i]) continue;
+      const v = percept[pOff + i];
+      if (v < fbP) { fbP = v; fb = i; }
+      const pi = S_posi[i];
+      if (cnt[off + pi] >= CAPS6[pi]) continue;
+      if ((pi === 4 || pi === 5) && rnd < 13) continue;
+      if (pi === 0 && cnt[off] >= 1 && rnd < 8) continue;
+      if (pi === 3 && cnt[off + 3] >= 1 && rnd < 8) continue;
+      if (v < bestP) { bestP = v; best = i; }
+    }
+    return best >= 0 ? best : fb;
+  }
+
+  function ourNext(avail, cnt, off, rnd) {
+    const forced = forcedEndgame(avail, cnt, off, rnd, true);
+    if (forced >= 0) return forced;
+    let best = -1, bestScore = -Infinity, fb = -1;
+    for (let i = 0; i < N; i++) {
+      if (!avail[i]) continue;
+      if (fb < 0) fb = i;
+      const pi = S_posi[i];
+      if (cnt[off + pi] >= CAPS6[pi]) continue;
+      if ((pi === 4 || pi === 5) && rnd < 13) continue;
+      if (pi === 0 && (cnt[off] >= 1 || rnd < 5)) continue;
+      if (pi === 3 && cnt[off + 3] >= 2) continue;
+      let sc = S_vorp[i];
+      if (pi === 0 && cnt[off] === 0 && rnd >= 8) sc += 15;
+      if (pi === 3 && cnt[off + 3] === 0 && rnd >= 9) sc += 12;
+      if (sc > bestScore) { bestScore = sc; best = i; }
+    }
+    return best >= 0 ? best : fb;
+  }
+
+  function scoreMine(picks) {
+    const byPos = [[], [], [], [], [], []];
+    picks.forEach(i => byPos[S_posi[i]].push(S_pts[i]));
+    byPos.forEach(a => a.sort((x, y) => y - x));
+    let starters = 0;
+    for (let p = 0; p < 6; p++)
+      for (let k = 0; k < NEED6[p] && k < byPos[p].length; k++) starters += byPos[p][k];
+    const flexPool = [];
+    for (const p of [1, 2, 3]) flexPool.push(...byPos[p].slice(NEED6[p]));
+    flexPool.sort((x, y) => y - x);
+    if (flexPool.length) starters += flexPool[0];
+    const bench = flexPool.slice(1, 4).reduce((a, b) => a + b, 0);
+    return starters + 0.12 * bench;
+  }
+
+  function simOnce(s, candIdx, base) {
+    fillPercepts(s);
+    const avail = base.avail.slice();
+    const cnt = base.cnt.slice();
+    const myTeam = state.slot - 1;
+    const picks = base.myPicks.slice();
+    let firstMine = true, gotCand = 0;
+    const total = TEAMS * ROUNDS;
+    for (let pk = pickNo(); pk <= total; pk++) {
+      const rnd = roundOf(pk), team = slotOnClock(pk) - 1;
+      let idx;
+      if (team === myTeam) {
+        if (firstMine && candIdx != null && avail[candIdx]) { idx = candIdx; gotCand = 1; }
+        else idx = ourNext(avail, cnt, team * 6, rnd);
+        firstMine = false;
+        if (idx >= 0) picks.push(idx);
+      } else {
+        idx = oppNext(avail, cnt, team * 6, rnd, team * N);
+      }
+      if (idx < 0) continue;
+      avail[idx] = 0;
+      cnt[team * 6 + S_posi[idx]]++;
+    }
+    return {v: scoreMine(picks), gotCand};
+  }
+
+  function simCandidates() {
+    const gone = drafted(), c = counts(mine());
+    const myRound = mine().length + 1;
+    const out = [], seen = new Set();
+    const add = p => {
+      if (!p) return;
+      const i = IDX_OF.get(key(p));
+      if (i == null || seen.has(i)) return;
+      seen.add(i); out.push(i);
+    };
+    recommend().slice(0, 5).forEach(r => add(r.p));
+    for (const pos of ["RB", "WR", "TE", "QB"]) {
+      if (out.length >= 8) break;
+      if (pos === "QB" && (c.QB >= 1 || myRound < 5)) continue;
+      if (pos === "TE" && c.TE >= 2) continue;
+      if (c[pos] >= CAPS[pos]) continue;
+      add(POOL.filter(p => p.pos === pos && !gone.has(key(p)))
+        .sort((a, b) => b.vorp - a.vorp)[0]);
+    }
+    return out.slice(0, 8);
+  }
+
+  let simToken = 0, simTimer = null;
+  function scheduleLiveSim() {
+    simToken++;
+    clearTimeout(simTimer);
+    simTimer = setTimeout(runLiveSim, 120);
+  }
+  function runLiveSim() {
+    const box = $("#livesim");
+    const token = ++simToken;
+    if (pickNo() > TEAMS * ROUNDS || mine().length >= ROUNDS || nextMyPick() === null) {
+      box.innerHTML = '<div class="simdone">Draft over for you — nothing left to simulate.</div>';
+      return;
+    }
+    const cands = simCandidates();
+    if (!cands.length) {
+      box.innerHTML = '<div class="simdone">No legal candidates to compare.</div>';
+      return;
+    }
+    const base = simBase();
+    const rows = [];
+    let ci = 0;
+    box.innerHTML = '<div class="simdone">Simulating…</div>';
+    (function step() {
+      if (token !== simToken) return;
+      if (ci >= cands.length) { paintSim(rows, false); return; }
+      const idx = cands[ci++];
+      let sum = 0, got = 0;
+      for (let s = 0; s < SIMS; s++) {
+        const r = simOnce(s, idx, base);
+        sum += r.v; got += r.gotCand;
+      }
+      rows.push({idx, mean: sum / SIMS, there: got / SIMS});
+      paintSim(rows, ci < cands.length);
+      setTimeout(step, 0);
+    })();
+  }
+  function paintSim(rows, pending) {
+    const sorted = rows.slice().sort((a, b) => b.mean - a.mean);
+    const best = sorted[0].mean;
+    $("#livesim").innerHTML = sorted.map((r, i) => {
+      const p = POOL[r.idx];
+      return `<div class="trow">
+        <span class="chip ${p.pos}">${p.pos}</span>
+        <span class="nm">${p.player} <span class="tm" style="color:var(--muted);font-weight:500">${p.team}</span></span>
+        ${r.there < 0.995 ? `<span class="meta" data-tip="How often ${p.player} is still on the board at your pick #${nextMyPick()}">${Math.round(r.there * 100)}% there</span>` : ""}
+        <span class="meta"><b style="color:var(--ink)">${fmt(r.mean)}</b> pts</span>
+        <span class="meta">${i === 0 ? '<span class="tag upside">sim pick</span>' : `<span class="delta-neg">−${(best - r.mean).toFixed(1)}</span>`}</span>
+      </div>`;
+    }).join("") + (pending ? '<div class="simdone">simulating…</div>' : "");
+  }
+
+  /* ----- rendering ----- */
+  const slotBox = $("#track-slots");
+  for (let s = 1; s <= TEAMS; s++) {
+    const el = document.createElement("button");
+    el.textContent = s;
+    el.addEventListener("click", () => { state.slot = s; save(); renderAll(); });
+    slotBox.appendChild(el);
+  }
+  $("#track-undo").addEventListener("click", () => { state.events.pop(); save(); renderAll(); });
+  $("#track-reset").addEventListener("click", () => {
+    if (confirm("Clear the whole draft board and start over?")) { state.events = []; save(); renderAll(); }
+  });
+
+  const POSF = ["ALL","RB","WR","TE","QB","K","DST"];
+  let posFilter = "ALL", q = "";
+  const ptab = $("#track-postab");
+  POSF.forEach(p => {
+    const el = document.createElement("button");
+    el.textContent = p;
+    el.addEventListener("click", () => { posFilter = p; renderBoard(); });
+    ptab.appendChild(el);
+  });
+  $("#track-search").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); renderBoard(); });
+
+  function act(e) {
+    const btn = e.target.closest("button[data-act]");
+    if (!btn) return;
+    state.events.push({k: btn.dataset.k, mine: btn.dataset.act === "mine"});
+    save(); renderAll();
+    const sb = $("#track-search");
+    if (sb.value) { sb.value = ""; q = ""; renderBoard(); }
+  }
+  $("#board").addEventListener("click", act);
+  $("#recs").addEventListener("click", act);
+
+  function renderClock() {
+    const pk = pickNo(), total = TEAMS * ROUNDS;
+    if (pk > total) { $("#track-clock").innerHTML = '<span class="big">Draft complete</span>'; return; }
+    const onClock = slotOnClock(pk), meNow = onClock === state.slot;
+    const next = nextMyPick();
+    $("#track-clock").innerHTML =
+      `<span class="big${meNow ? " me" : ""}">${meNow ? "You're on the clock" : "Team " + onClock + " on the clock"}</span>
+       <span class="meta">Round ${roundOf(pk)} · Pick ${pk} of ${total}</span>
+       ${next !== null && !meNow ? `<span class="meta">Your next pick: #${next} (${next - pk} away)</span>` : ""}`;
+  }
+
+  function renderRecs() {
+    const recs = recommend();
+    $("#recs").innerHTML = recs.length ? recs.map((r, i) => `
+      <div class="rec${i === 0 ? " top" : ""}">
+        <span class="chip ${r.p.pos}">${r.p.pos}</span>
+        <div class="body">
+          <div class="nm">${r.p.player} <span class="tm" style="color:var(--muted);font-weight:500">${r.p.team}</span></div>
+          <div class="why">${r.why}</div>
+        </div>
+        <div class="score"><b>${r.p.vorp.toFixed(0)}</b>VORP · ADP ${r.p.adp.toFixed(0)}</div>
+        <button data-act="mine" data-k="${key(r.p)}" class="mine" style="font:inherit;font-size:11.5px;font-weight:750;padding:5px 10px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer">Draft</button>
+      </div>`).join("") : '<div class="why" style="color:var(--ink-2)">Roster full — draft complete.</div>';
+  }
+
+  function renderRoster() {
+    const roster = mine().slice();
+    roster.sort((a, b) => b.pts - a.pts);
+    const used = new Set();
+    const rows = [];
+    for (const [slotPos, n] of LINEUP) {
+      for (let i = 0; i < n; i++) {
+        const p = roster.find(x => !used.has(key(x)) &&
+          (slotPos === "FLEX" ? ["RB","WR","TE"].includes(x.pos) : x.pos === slotPos));
+        if (p) used.add(key(p));
+        rows.push({lbl: slotPos, p});
+      }
+    }
+    const bench = roster.filter(x => !used.has(key(x)));
+    bench.forEach(p => rows.push({lbl: "BN", p}));
+    for (let i = rows.length; i < 15; i++) rows.push({lbl: "BN", p: null});
+    $("#myroster").innerHTML = rows.map(r => `
+      <div class="rslot"><span class="pos-lbl">${r.lbl}</span>
+        ${r.p ? `<span class="who">${r.p.player} <span style="color:var(--muted);font-weight:500">${r.p.team}</span></span><span class="p">${r.p.pts.toFixed(0)} pts</span>`
+              : `<span class="who empty">—</span>`}
+      </div>`).join("");
+  }
+
+  function renderBoard() {
+    const gone = drafted();
+    let rows = POOL.filter(p => !gone.has(key(p)));
+    if (posFilter !== "ALL") rows = rows.filter(p => p.pos === posFilter);
+    if (q) rows = rows.filter(p => (p.player + " " + p.team).toLowerCase().includes(q));
+    [...ptab.children].forEach(el => el.classList.toggle("on", el.textContent === posFilter));
+    $("#board").innerHTML = rows.slice(0, 120).map(p => `
+      <div class="brow">
+        <span class="adp">${p.adp < 900 ? p.adp.toFixed(0) : "—"}</span>
+        <span class="chip ${p.pos}">${p.pos}</span>
+        <span class="nm">${p.player}<span class="tm">${p.team}</span>${p.injury && p.injury !== "Questionable" ? `<span class="inj">${p.injury.toUpperCase()}</span>` : ""}${NOTES[p.player] ? `<span class="tag ${NOTES[p.player].tag}" data-tip="${NOTES[p.player].note.replace(/"/g,"&quot;")}">${NOTES[p.player].tag}</span>` : ""}</span>
+        <span class="v">${p.vorp.toFixed(0)}</span>
+        <button data-act="mine" data-k="${key(p)}" class="mine">Draft</button>
+        <button data-act="gone" data-k="${key(p)}" class="gone" aria-label="Mark ${p.player} drafted by another team">✕</button>
+      </div>`).join("") || '<div class="brow">No players match.</div>';
+  }
+
+  function renderAll() {
+    [...slotBox.children].forEach((el, i) => el.classList.toggle("on", i === state.slot - 1));
+    renderClock(); renderRecs(); renderRoster(); renderBoard();
+    scheduleLiveSim();
+  }
+  renderAll();
+}
+
+/* ---------- tooltip ---------- */
+{
+  const tip = $("#tip");
+  document.addEventListener("mousemove", e => {
+    const t = e.target.closest("[data-tip]");
+    if (t) {
+      tip.textContent = t.dataset.tip;
+      tip.style.opacity = 1;
+      const w = tip.offsetWidth;
+      tip.style.left = Math.min(e.clientX + 12, innerWidth - w - 8) + "px";
+      tip.style.top = (e.clientY + 14) + "px";
+    } else tip.style.opacity = 0;
+  });
+}
+</script>

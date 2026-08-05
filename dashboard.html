@@ -1,0 +1,1154 @@
+<title>2026 Draft War Room</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --ring: rgba(11, 11, 11, 0.10);
+    --accent: #2a78d6;
+    --good: #006300;
+    --bad: #b3261e;
+    --rb: #1baf7a; --wr: #2a78d6; --te: #eb6834; --qb: #eda100;
+    --rb-soft: rgba(27,175,122,.14); --wr-soft: rgba(42,120,214,.13);
+    --te-soft: rgba(235,104,52,.14); --qb-soft: rgba(237,161,0,.16);
+    --heat-0: #cde2fb; --heat-1: #9ec5f4; --heat-2: #6da7ec;
+    --heat-3: #3987e5; --heat-4: #256abf; --heat-5: #184f95;
+    --t-risk: #b3261e; --t-watch: #8a5a00; --t-upside: #006300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19;
+      --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --baseline: #383835; --ring: rgba(255,255,255,.10);
+      --accent: #3987e5; --good: #0ca30c; --bad: #e66767;
+      --rb: #199e70; --wr: #3987e5; --te: #d95926; --qb: #c98500;
+      --rb-soft: rgba(25,158,112,.20); --wr-soft: rgba(57,135,229,.18);
+      --te-soft: rgba(217,89,38,.20); --qb-soft: rgba(201,133,0,.22);
+      --heat-0: #10305a; --heat-1: #184f95; --heat-2: #1c5cab;
+      --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #86b6ef;
+      --t-risk: #e66767; --t-watch: #fab219; --t-upside: #0ca30c;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --baseline: #383835; --ring: rgba(255,255,255,.10);
+    --accent: #3987e5; --good: #0ca30c; --bad: #e66767;
+    --rb: #199e70; --wr: #3987e5; --te: #d95926; --qb: #c98500;
+    --rb-soft: rgba(25,158,112,.20); --wr-soft: rgba(57,135,229,.18);
+    --te-soft: rgba(217,89,38,.20); --qb-soft: rgba(201,133,0,.22);
+    --heat-0: #10305a; --heat-1: #184f95; --heat-2: #1c5cab;
+    --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #86b6ef;
+    --t-risk: #e66767; --t-watch: #fab219; --t-upside: #0ca30c;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb;
+    --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --baseline: #c3c2b7; --ring: rgba(11,11,11,.10);
+    --accent: #2a78d6; --good: #006300; --bad: #b3261e;
+    --rb: #1baf7a; --wr: #2a78d6; --te: #eb6834; --qb: #eda100;
+    --rb-soft: rgba(27,175,122,.14); --wr-soft: rgba(42,120,214,.13);
+    --te-soft: rgba(235,104,52,.14); --qb-soft: rgba(237,161,0,.16);
+    --heat-0: #cde2fb; --heat-1: #9ec5f4; --heat-2: #6da7ec;
+    --heat-3: #3987e5; --heat-4: #256abf; --heat-5: #184f95;
+    --t-risk: #b3261e; --t-watch: #8a5a00; --t-upside: #006300;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .10em; font-size: 11.5px;
+    font-weight: 700; color: var(--muted);
+  }
+  header h1 {
+    margin: 6px 0 4px; font-size: clamp(28px, 5vw, 42px); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  header .sub { color: var(--ink-2); max-width: 62ch; margin: 0; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 28px 0 8px; }
+  .tile {
+    background: var(--surface); border: 1px solid var(--ring); border-radius: 10px;
+    padding: 16px 18px 14px;
+  }
+  .tile .label { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--muted); }
+  .tile .value { font-size: 30px; font-weight: 800; letter-spacing: -.01em; margin-top: 2px; }
+  .tile .note { font-size: 13px; color: var(--ink-2); margin-top: 2px; }
+
+  section { margin-top: 44px; }
+  section > h2 { font-size: 21px; font-weight: 750; letter-spacing: -.01em; margin: 4px 0 2px; }
+  section > .desc { color: var(--ink-2); margin: 0 0 16px; max-width: 72ch; }
+
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; }
+
+  /* ------- strategy dot plot ------- */
+  .strat-row { display: grid; grid-template-columns: 108px 1fr 128px; gap: 12px; align-items: center; padding: 7px 0; }
+  .strat-row + .strat-row { border-top: 1px solid var(--grid); }
+  .strat-name { font-weight: 650; font-size: 13.5px; text-align: right; }
+  .strat-track { position: relative; height: 18px; }
+  .strat-track .rail { position: absolute; left: 0; right: 0; top: 8.5px; height: 1px; background: var(--grid); }
+  .strat-track .dot {
+    position: absolute; top: 3px; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--surface); transform: translateX(-50%);
+  }
+  .strat-track .band {
+    position: absolute; top: 6.5px; height: 5px; border-radius: 3px;
+    background: color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+  .strat-row.winner .dot { width: 14px; height: 14px; top: 2px; }
+  .strat-val { font-variant-numeric: tabular-nums; font-size: 13.5px; color: var(--ink-2); }
+  .strat-val b { color: var(--ink); font-weight: 700; }
+  .delta-neg { color: var(--bad); }
+
+  /* ------- heatmap ------- */
+  .scrollbox { overflow-x: auto; }
+  table.heat { border-collapse: separate; border-spacing: 2px; min-width: 720px; }
+  table.heat th { font-size: 11.5px; color: var(--muted); font-weight: 700; padding: 2px 4px; }
+  table.heat th.rowh { text-align: right; padding-right: 10px; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; }
+  table.heat td {
+    width: 44px; height: 30px; border-radius: 4px; text-align: center;
+    font-size: 11px; font-variant-numeric: tabular-nums; cursor: default;
+  }
+  table.heat td.best { outline: 2px solid var(--ink); outline-offset: -2px; }
+  .legend { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12px; color: var(--ink-2); flex-wrap: wrap; }
+  .legend .swatches { display: flex; gap: 2px; }
+  .legend .sw { width: 26px; height: 12px; border-radius: 3px; }
+
+  /* ------- slot picker / plan ------- */
+  .slots { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+  .slots button {
+    font: inherit; font-weight: 700; font-size: 13.5px; padding: 7px 0; width: 44px;
+    border-radius: 8px; border: 1px solid var(--ring); background: var(--surface);
+    color: var(--ink-2); cursor: pointer;
+  }
+  .slots button:hover { border-color: var(--accent); color: var(--ink); }
+  .slots button:focus-visible, .postab button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .slots button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .plan-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+  .plan-head .strat { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+  .plan-head .edge { color: var(--ink-2); font-size: 13.5px; }
+  .rounds { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 12px; margin-top: 14px; }
+  .round { border: 1px solid var(--grid); border-radius: 10px; padding: 12px 14px 10px; }
+  .round h4 { margin: 0 0 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .target { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 13.5px; }
+  .target .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+  .target .rate { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; width: 34px; text-align: right; }
+
+  .chip {
+    display: inline-block; min-width: 30px; text-align: center; padding: 1px 5px;
+    border-radius: 5px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em;
+  }
+  .chip.RB { background: var(--rb-soft); color: var(--rb); }
+  .chip.WR { background: var(--wr-soft); color: var(--wr); }
+  .chip.TE { background: var(--te-soft); color: var(--te); }
+  .chip.QB { background: var(--qb-soft); color: var(--qb); }
+  :root[data-theme="light"] .chip, :root:not([data-theme="dark"]) .chip { filter: saturate(1); }
+  .chip.RB, .chip.WR, .chip.TE, .chip.QB { border: 1px solid currentColor; }
+
+  /* ------- cheat sheet ------- */
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .postab { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--ring); border-radius: 9px; padding: 3px; }
+  .postab button {
+    font: inherit; font-size: 13px; font-weight: 700; border: 0; background: transparent;
+    color: var(--ink-2); padding: 5px 12px; border-radius: 6px; cursor: pointer;
+  }
+  .postab button.on { background: var(--accent); color: #fff; }
+  .controls input {
+    font: inherit; font-size: 13.5px; padding: 7px 12px; border-radius: 9px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink); width: 190px;
+  }
+  .controls input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  table.sheet { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 700px; }
+  table.sheet th {
+    text-align: right; font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--muted); font-weight: 700; padding: 6px 10px; border-bottom: 1px solid var(--baseline);
+    white-space: nowrap;
+  }
+  table.sheet th:nth-child(2), table.sheet th:nth-child(3) { text-align: left; }
+  table.sheet td { padding: 6px 10px; border-bottom: 1px solid var(--grid); text-align: right; font-variant-numeric: tabular-nums; }
+  table.sheet td:nth-child(2), table.sheet td:nth-child(3) { text-align: left; }
+  table.sheet td.rk { color: var(--muted); }
+  table.sheet td.nm { font-weight: 650; white-space: nowrap; }
+  table.sheet td.nm .tm { color: var(--muted); font-weight: 500; font-size: 12px; margin-left: 6px; }
+  table.sheet tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .gap-pos { color: var(--good); font-weight: 700; }
+  .gap-neg { color: var(--bad); }
+  .inj { font-size: 10.5px; color: var(--bad); font-weight: 700; margin-left: 5px; }
+  .showmore { margin: 14px auto 0; display: block; font: inherit; font-weight: 650; font-size: 13.5px;
+    color: var(--accent); background: none; border: 1px solid var(--ring); border-radius: 8px; padding: 7px 18px; cursor: pointer; }
+
+  /* ------- intel ------- */
+  .intel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .intel-card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 18px 20px; }
+  .intel-card h3 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .note { padding: 10px 0; border-top: 1px solid var(--grid); font-size: 13.5px; }
+  .note:first-of-type { border-top: 0; padding-top: 0; }
+  .note .who { font-weight: 700; margin-right: 6px; }
+  .note .txt { color: var(--ink-2); margin-top: 2px; }
+  .tag {
+    display: inline-block; padding: 1px 7px; border-radius: 5px; font-size: 10px;
+    font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-left: 6px;
+    border: 1px solid currentColor;
+  }
+  .tag.risk { color: var(--t-risk); }
+  .tag.watch { color: var(--t-watch); }
+  .tag.upside { color: var(--t-upside); }
+  .trow { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13.5px; border-top: 1px solid var(--grid); }
+  .trow:first-of-type { border-top: 0; }
+  .trow .nm { flex: 1; min-width: 0; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .trow .meta { color: var(--ink-2); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .adds { color: var(--t-upside); font-weight: 700; }
+  .dchip {
+    display: inline-block; min-width: 22px; text-align: center; padding: 1px 4px;
+    border-radius: 5px; font-size: 10.5px; font-weight: 800; cursor: default;
+  }
+  .dchip.s1 { color: var(--t-upside); border: 1px solid currentColor; }
+  .dchip.s2 { color: var(--t-watch); border: 1px solid currentColor; }
+  .dchip.s3 { color: var(--t-risk); border: 1px solid currentColor; }
+  .dchip.none { color: var(--muted); }
+
+  /* ------- tabs + tracker ------- */
+  .tabs { display: flex; gap: 6px; margin: 22px 0 6px; position: sticky; top: 0; z-index: 5;
+    background: var(--page); padding: 10px 0; }
+  .tabs button {
+    font: inherit; font-weight: 750; font-size: 14px; padding: 8px 18px; cursor: pointer;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); border-radius: 9px;
+  }
+  .tabs button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .view { display: none; }
+  .view.on { display: block; }
+
+  .clock {
+    border-radius: 12px; padding: 14px 18px; margin-bottom: 14px;
+    background: var(--surface); border: 1px solid var(--ring);
+    display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap;
+  }
+  .clock .big { font-size: 19px; font-weight: 800; letter-spacing: -.01em; }
+  .clock .big.me { color: var(--accent); }
+  .clock .meta { color: var(--ink-2); font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  .track-setup { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .track-setup .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--muted); }
+  .btn {
+    font: inherit; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 8px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--ink); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .btn.danger:hover { border-color: var(--t-risk); color: var(--t-risk); }
+  .track-grid { display: grid; grid-template-columns: minmax(320px, 400px) 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .track-grid { grid-template-columns: 1fr; } }
+  .rec { border: 1px solid var(--grid); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; }
+  .rec.top { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+  .rec .body { flex: 1; min-width: 0; }
+  .rec .nm { font-weight: 700; font-size: 14.5px; }
+  .rec .why { font-size: 12px; color: var(--ink-2); margin-top: 1px; }
+  .rec .score { font-variant-numeric: tabular-nums; text-align: right; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; }
+  .rec .score b { display: block; font-size: 15px; color: var(--ink); }
+  .rslot { display: flex; gap: 8px; align-items: center; padding: 4px 0; font-size: 13.5px; border-top: 1px solid var(--grid); }
+  .rslot:first-of-type { border-top: 0; }
+  .rslot .pos-lbl { width: 38px; font-size: 10.5px; font-weight: 800; letter-spacing: .05em; color: var(--muted); }
+  .rslot .who { flex: 1; font-weight: 650; }
+  .rslot .who.empty { color: var(--muted); font-weight: 400; }
+  .rslot .p { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+  .board-wrap { max-height: 68vh; overflow-y: auto; margin-top: 10px; }
+  .brow { display: flex; gap: 8px; align-items: center; padding: 5px 2px; border-top: 1px solid var(--grid); font-size: 13.5px; }
+  .brow:first-of-type { border-top: 0; }
+  .brow .adp { width: 44px; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12px; }
+  .brow .nm { flex: 1; min-width: 0; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brow .nm .tm { color: var(--muted); font-weight: 500; font-size: 12px; margin-left: 5px; }
+  .brow .v { width: 52px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+  .brow button { font: inherit; font-size: 11.5px; font-weight: 750; padding: 4px 9px; border-radius: 7px;
+    border: 1px solid var(--ring); background: var(--surface); cursor: pointer; }
+  .brow button.mine { color: var(--accent); }
+  .brow button.mine:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .brow button.gone { color: var(--ink-2); }
+  .brow button.gone:hover { border-color: var(--t-risk); color: var(--t-risk); }
+  .chip.K, .chip.DST { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--ink-2); border: 1px solid currentColor; }
+  .simnote { font-size: 12px; color: var(--ink-2); margin: 0 0 10px; }
+  .simdone { font-size: 12.5px; color: var(--muted); padding: 4px 0; }
+
+  footer { margin-top: 52px; color: var(--muted); font-size: 12.5px; max-width: 78ch; }
+  footer p { margin: 4px 0; }
+
+  .tip {
+    position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--page);
+    font-size: 12px; padding: 5px 9px; border-radius: 6px; opacity: 0; transition: opacity .08s;
+    max-width: 320px; line-height: 1.4;
+  }
+  @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">12-team · Full PPR · 1QB 2RB 2WR 1TE 1FLEX · Snake, 15 rounds</div>
+    <h1>2026 Draft War Room</h1>
+    <p class="sub">32,400 simulated drafts against ADP-realistic opponents, built to maximize
+      season-long starting-lineup points — reception volume weighted exactly as full PPR pays it.
+      Projections + ADP: Sleeper, pulled August 5, 2026.</p>
+  </header>
+
+  <nav class="tabs">
+    <button id="tab-war" class="on">War Room</button>
+    <button id="tab-track">Live Tracker</button>
+  </nav>
+
+  <div class="view on" id="view-war">
+
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <h2>Which strategy wins</h2>
+    <p class="desc">Dot = average projected starter points across all 12 draft slots
+      (300 sims per slot per strategy); labels show the gap to the winner. The band is the
+      10th–90th percentile <i>season outcome</i> once player-level busts, breakouts, and
+      injuries are sampled on top of the projections — hover it for the floor, ceiling,
+      and how often the roster finishes top-3 in the league.</p>
+    <div class="card" id="stratplot"></div>
+  </section>
+
+  <section>
+    <h2>Strategy by draft slot</h2>
+    <p class="desc">Points behind the best strategy at that slot — darker is better, outlined cell
+      is the slot's winner. Hover for exact starter points.</p>
+    <div class="card">
+      <div class="scrollbox"><table class="heat" id="heat"></table></div>
+      <div class="legend">
+        <span>Behind slot best:</span>
+        <div class="swatches" id="heatlegend"></div>
+        <span id="heatlegendlabels"></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your draft plan</h2>
+    <p class="desc">Pick your slot. You get the winning strategy there and the players the
+      sim most often lands round by round — your queue targets, with how often each was the pick.</p>
+    <div class="slots" id="slotbtns"></div>
+    <div class="card" id="plan"></div>
+  </section>
+
+  <section>
+    <h2>Live intel <span class="eyebrow" id="intel-date" style="margin-left:8px"></span></h2>
+    <p class="desc">Camp injuries, depth-chart movement, and Sleeper add/drop trends layered on top
+      of the sim. Projections are left untouched — ADP already prices most of this in; use these
+      flags to break ties and size risk on draft day. Tagged players also carry their flag in the
+      cheat sheet below.</p>
+    <div class="intel-grid">
+      <div class="intel-card" style="grid-column: 1 / -1;">
+        <h3>What changes the plan</h3>
+        <div id="intel-notes"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Injury report — draftable range</h3>
+        <div id="intel-inj"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Trending adds · Sleeper, last 48h</h3>
+        <div id="intel-trend"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Depth chart red flags — drafted like starters, not listed as one</h3>
+        <div id="depth-notstarters"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Listed starters going cheap — ADP 100+</h3>
+        <div id="depth-cheap"></div>
+      </div>
+      <div class="intel-card">
+        <h3>Experts vs the market <span class="eyebrow" id="fp-date" style="margin-left:6px"></span></h3>
+        <div id="fp-gaps"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cheat sheet — ranked by value over replacement</h2>
+    <p class="desc">VORP = projected PPR points above the last startable player at the position
+      (QB14 / RB34 / WR36 / TE14). <b>Value</b> is ADP rank minus VORP rank — green players are
+      going later in drafts than their production says they should.</p>
+    <div class="controls">
+      <div class="postab" id="postab"></div>
+      <input id="search" type="search" placeholder="Search player or team" aria-label="Search player or team">
+    </div>
+    <div class="card scrollbox">
+      <table class="sheet">
+        <thead><tr>
+          <th>#</th><th>Player</th><th>Pos</th><th>Depth</th><th>Bye</th><th>ADP</th>
+          <th data-tip="FantasyPros expert consensus rank — a second opinion vs Sleeper">ECR</th>
+          <th>Proj PPR</th><th>Rec</th><th>VORP</th><th>Value</th>
+        </tr></thead>
+        <tbody id="sheetbody"></tbody>
+      </table>
+      <button class="showmore" id="showmore">Show all 180</button>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Method.</b> Player pool: Sleeper 2026 season projections (full PPR) and PPR ADP.
+      Each simulated draft gives every opponent a private board of ADP plus noise that grows with
+      ADP (top picks barely move; round-10 players swing by rounds), with roster-need logic and
+      late K/DST. Your team follows the strategy script for the early rounds, then best VORP with
+      need urgency. Team score = optimal lineup (QB, 2RB, 2WR, TE, flex, K, DST) projected points
+      plus a 12% credit on the top three bench players. Each simulated season then re-samples
+      every player's actual output with position-sized error (RB ±34%, WR ±30%, TE ±32%,
+      QB ±22%, lognormal) — league rank, floor, and ceiling come from those sampled outcomes,
+      so strategy risk reflects that early RBs bust harder than early WRs.</p>
+    <p>Strategies define rounds 1–4 only (* = best value). Hero RB — one elite RB, then three
+      straight WRs — wins nearly every slot in full PPR: the round-1 RB clears replacement by
+      100+ points, while rounds 2–4 are the reception-heavy WR sweet spot and startable
+      pass-catching RBs (Swift, Skattebo) are still on the board in round 5.</p>
+  </footer>
+  </div><!-- /view-war -->
+
+  <div class="view" id="view-track">
+    <div class="track-setup">
+      <span class="lbl">My slot</span>
+      <div class="slots" id="track-slots" style="margin:0"></div>
+      <button class="btn" id="track-undo">Undo last pick</button>
+      <button class="btn danger" id="track-reset">Reset draft</button>
+    </div>
+    <div class="clock" id="track-clock"></div>
+    <div class="track-grid">
+      <div>
+        <div class="intel-card" style="margin-bottom:14px">
+          <h3>Rest-of-draft sim — what wins from here</h3>
+          <div class="simnote">Each option replays the remaining rounds 100× from this exact
+            board: you take that player at your next pick, every opponent keeps drafting off
+            noisy ADP from the roster they've actually built, and your later picks go
+            best-value. Number = average final roster points.</div>
+          <div id="livesim"></div>
+        </div>
+        <div class="intel-card" style="margin-bottom:14px">
+          <h3>Best picks right now</h3>
+          <div id="recs"></div>
+        </div>
+        <div class="intel-card">
+          <h3>My roster</h3>
+          <div id="myroster"></div>
+        </div>
+      </div>
+      <div class="intel-card">
+        <h3>Player board — ✕ when someone else drafts a player, Draft when you do</h3>
+        <div class="controls" style="margin:10px 0 0">
+          <div class="postab" id="track-postab"></div>
+          <input id="track-search" type="search" placeholder="Search player or team" aria-label="Search player or team">
+        </div>
+        <div class="board-wrap" id="board"></div>
+      </div>
+    </div>
+    <footer>
+      <p><b>How it works.</b> Check off every pick as it happens and both panels
+        re-rank live. The rest-of-draft sim is the deep answer: it replays the remaining
+        rounds 100 times per option from the actual board — every opponent drafting off
+        noisy ADP from the roster they've really built — and reports the roster points you
+        end up with, so it prices in position runs and what each pick costs you later.
+        "Best picks right now" is the instant heuristic: value over replacement, plus
+        urgency when a roster need is running out of rounds, plus a boost for players
+        unlikely to survive to your next pick. When they disagree, trust the sim.
+        State saves in this browser; refreshing mid-draft is safe. Recommendations depend
+        mostly on who's gone and your roster, so an imperfect pick count is fine — use
+        Undo to fix mistakes.</p>
+    </footer>
+  </div><!-- /view-track -->
+</div>
+
+<div class="tip" id="tip" role="presentation"></div>
+
+<script>
+const DATA = {"matrix":{"strategies":["Anchor+TE","Early TE","Hero RB","Pure VORP","RB-WR-RB","Robust RB","TE Round 3","WR-WR","Zero RB"],"slots":[1,2,3,4,5,6,7,8,9,10,11,12],"values":[[1952.8,1948.9,1918.2,1906.6,1900.5,1890.9,1884.6,1877.8,1874.6,1875.1,1875.7,1877.1],[1900.9,1899.1,1878.8,1867.1,1871.7,1850.6,1828.4,1818.2,1822.1,1823.8,1828.3,1830.3],[1971.3,1967.7,1935.0,1924.4,1914.8,1905.5,1898.3,1888.7,1884.1,1881.6,1877.7,1874.4],[1932.5,1928.6,1890.4,1874.1,1870.9,1847.3,1820.2,1811.1,1813.8,1814.4,1820.3,1826.7],[1944.7,1933.5,1894.7,1876.2,1861.9,1852.5,1845.5,1840.7,1837.2,1841.0,1846.2,1851.0],[1926.9,1931.8,1889.1,1854.1,1833.0,1817.5,1814.0,1809.2,1809.3,1813.3,1821.6,1824.9],[1895.6,1886.4,1857.5,1855.9,1867.7,1856.5,1833.8,1823.5,1821.6,1821.9,1824.7,1830.3],[1944.5,1941.4,1933.4,1919.7,1900.8,1885.5,1874.7,1866.8,1860.7,1849.7,1846.0,1843.7],[1925.5,1926.7,1929.1,1923.7,1912.3,1897.3,1886.4,1880.4,1873.1,1857.1,1852.9,1843.7]]},"overall":[{"strategy":"Hero RB","mean_starters":1910.3,"floor_p10":1789.8,"ceiling_p90":2280.6,"top3_rate":0.473},{"strategy":"Anchor+TE","mean_starters":1898.6,"floor_p10":1758.8,"ceiling_p90":2264.4,"top3_rate":0.446},{"strategy":"Zero RB","mean_starters":1892.3,"floor_p10":1755.1,"ceiling_p90":2244.5,"top3_rate":0.419},{"strategy":"WR-WR","mean_starters":1888.9,"floor_p10":1771.7,"ceiling_p90":2255.4,"top3_rate":0.448},{"strategy":"RB-WR-RB","mean_starters":1868.8,"floor_p10":1764.1,"ceiling_p90":2263.1,"top3_rate":0.441},{"strategy":"Pure VORP","mean_starters":1854.2,"floor_p10":1751.9,"ceiling_p90":2264.6,"top3_rate":0.45},{"strategy":"Early TE","mean_starters":1851.6,"floor_p10":1758.9,"ceiling_p90":2263.1,"top3_rate":0.441},{"strategy":"TE Round 3","mean_starters":1848.0,"floor_p10":1757.6,"ceiling_p90":2244.2,"top3_rate":0.428},{"strategy":"Robust RB","mean_starters":1845.4,"floor_p10":1748.0,"ceiling_p90":2253.8,"top3_rate":0.425}],"best_by_slot":[{"slot":1,"strategy":"Hero RB","mean_starters":1971.3,"edge_over_2nd":18.5,"second":"Anchor+TE","common_picks":[{"round":1,"player":"Jahmyr Gibbs","pos":"RB","rate":1.0},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.81},{"round":3,"player":"George Pickens","pos":"WR","rate":0.43},{"round":3,"player":"Rashee Rice","pos":"WR","rate":0.3},{"round":3,"player":"Malik Nabers","pos":"WR","rate":0.24666666666666667},{"round":4,"player":"Mike Evans","pos":"WR","rate":0.6533333333333333},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.21333333333333335},{"round":5,"player":"Cam Skattebo","pos":"RB","rate":0.6566666666666666},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.31333333333333335},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.8033333333333333},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.5},{"round":7,"player":"Jalen Hurts","pos":"QB","rate":0.23333333333333334},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.8133333333333334}]},{"slot":2,"strategy":"Hero RB","mean_starters":1967.7,"edge_over_2nd":18.8,"second":"Anchor+TE","common_picks":[{"round":1,"player":"Bijan Robinson","pos":"RB","rate":0.5166666666666667},{"round":1,"player":"Jahmyr Gibbs","pos":"RB","rate":0.48333333333333334},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.8866666666666667},{"round":3,"player":"Malik Nabers","pos":"WR","rate":0.44666666666666666},{"round":3,"player":"George Pickens","pos":"WR","rate":0.27666666666666667},{"round":3,"player":"Rashee Rice","pos":"WR","rate":0.23666666666666666},{"round":4,"player":"Mike Evans","pos":"WR","rate":0.5133333333333333},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.2866666666666667},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.16666666666666666},{"round":5,"player":"Cam Skattebo","pos":"RB","rate":0.51},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.47},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.8566666666666667},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.63},{"round":7,"player":"Jalen Hurts","pos":"QB","rate":0.18333333333333332},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.8033333333333333}]},{"slot":3,"strategy":"Hero RB","mean_starters":1935.0,"edge_over_2nd":1.6,"second":"WR-WR","common_picks":[{"round":1,"player":"Christian McCaffrey","pos":"RB","rate":0.81},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.9433333333333334},{"round":3,"player":"Malik Nabers","pos":"WR","rate":0.6233333333333333},{"round":3,"player":"George Pickens","pos":"WR","rate":0.16333333333333333},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.39666666666666667},{"round":4,"player":"Mike Evans","pos":"WR","rate":0.38},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.16},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.6033333333333334},{"round":5,"player":"Cam Skattebo","pos":"RB","rate":0.38},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.89},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.76},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.81}]},{"slot":4,"strategy":"Hero RB","mean_starters":1924.4,"edge_over_2nd":0.6,"second":"Zero RB","common_picks":[{"round":1,"player":"Christian McCaffrey","pos":"RB","rate":0.8733333333333333},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.9666666666666667},{"round":3,"player":"Malik Nabers","pos":"WR","rate":0.6033333333333334},{"round":3,"player":"Chris Olave","pos":"WR","rate":0.18666666666666668},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.49},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.22666666666666666},{"round":4,"player":"Mike Evans","pos":"WR","rate":0.20333333333333334},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.7333333333333333},{"round":5,"player":"Cam Skattebo","pos":"RB","rate":0.25},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.9066666666666666},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.72},{"round":7,"player":"Jalen Hurts","pos":"QB","rate":0.15333333333333332},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.77}]},{"slot":5,"strategy":"Hero RB","mean_starters":1914.8,"edge_over_2nd":2.4,"second":"Zero RB","common_picks":[{"round":1,"player":"Christian McCaffrey","pos":"RB","rate":0.6066666666666667},{"round":1,"player":"Jonathan Taylor","pos":"RB","rate":0.3933333333333333},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.9866666666666667},{"round":3,"player":"Malik Nabers","pos":"WR","rate":0.4666666666666667},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.25666666666666665},{"round":3,"player":"Chris Olave","pos":"WR","rate":0.24666666666666667},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.5766666666666667},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.15},{"round":4,"player":"Mike Evans","pos":"WR","rate":0.14},{"round":4,"player":"Garrett Wilson","pos":"WR","rate":0.13333333333333333},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.8566666666666667},{"round":5,"player":"Cam Skattebo","pos":"RB","rate":0.13666666666666666},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.94},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.8133333333333334},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.7766666666666666}]},{"slot":6,"strategy":"Hero RB","mean_starters":1905.5,"edge_over_2nd":8.2,"second":"Zero RB","common_picks":[{"round":1,"player":"Jonathan Taylor","pos":"RB","rate":0.6766666666666666},{"round":1,"player":"Christian McCaffrey","pos":"RB","rate":0.31333333333333335},{"round":2,"player":"Nico Collins","pos":"WR","rate":1.0},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.5866666666666667},{"round":3,"player":"Malik Nabers","pos":"WR","rate":0.26666666666666666},{"round":3,"player":"Chris Olave","pos":"WR","rate":0.13666666666666666},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.6466666666666666},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.15333333333333332},{"round":4,"player":"Garrett Wilson","pos":"WR","rate":0.15},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.91},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.9266666666666666},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.8433333333333334},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.6366666666666667},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.14}]},{"slot":7,"strategy":"Hero RB","mean_starters":1898.3,"edge_over_2nd":11.8,"second":"Zero RB","common_picks":[{"round":1,"player":"Jonathan Taylor","pos":"RB","rate":0.8666666666666667},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.9933333333333333},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.8033333333333333},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.7666666666666667},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.15666666666666668},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.9366666666666666},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.93},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.8266666666666667},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.5866666666666667},{"round":8,"player":"Rhamondre Stevenson","pos":"RB","rate":0.15},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.14333333333333334}]},{"slot":8,"strategy":"Hero RB","mean_starters":1888.7,"edge_over_2nd":8.3,"second":"Zero RB","common_picks":[{"round":1,"player":"James Cook","pos":"RB","rate":0.52},{"round":1,"player":"Jonathan Taylor","pos":"RB","rate":0.48},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.9966666666666667},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.92},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.83},{"round":4,"player":"Zay Flowers","pos":"WR","rate":0.12},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.9166666666666666},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.8566666666666667},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.87},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.48},{"round":8,"player":"Rhamondre Stevenson","pos":"RB","rate":0.19},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.18333333333333332}]},{"slot":9,"strategy":"Hero RB","mean_starters":1884.1,"edge_over_2nd":9.5,"second":"Anchor+TE","common_picks":[{"round":1,"player":"James Cook","pos":"RB","rate":0.8866666666666667},{"round":2,"player":"Nico Collins","pos":"WR","rate":1.0},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.9666666666666667},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.8733333333333333},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.9233333333333333},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.8133333333333334},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.81},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.38333333333333336},{"round":8,"player":"Rhamondre Stevenson","pos":"RB","rate":0.24333333333333335},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.14666666666666667}]},{"slot":10,"strategy":"Hero RB","mean_starters":1881.6,"edge_over_2nd":6.5,"second":"Anchor+TE","common_picks":[{"round":1,"player":"James Cook","pos":"RB","rate":0.8466666666666667},{"round":1,"player":"Ashton Jeanty","pos":"RB","rate":0.13333333333333333},{"round":2,"player":"Nico Collins","pos":"WR","rate":1.0},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.9766666666666667},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.91},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.9066666666666666},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.7833333333333333},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.86},{"round":8,"player":"Rhamondre Stevenson","pos":"RB","rate":0.29},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.26666666666666666},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.18666666666666668},{"round":8,"player":"Jadarian Price","pos":"RB","rate":0.14}]},{"slot":11,"strategy":"Hero RB","mean_starters":1877.7,"edge_over_2nd":2.0,"second":"Anchor+TE","common_picks":[{"round":1,"player":"James Cook","pos":"RB","rate":0.6933333333333334},{"round":1,"player":"Ashton Jeanty","pos":"RB","rate":0.30666666666666664},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.99},{"round":3,"player":"Garrett Wilson","pos":"WR","rate":0.91},{"round":4,"player":"DeVonta Smith","pos":"WR","rate":0.8866666666666667},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.89},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.6266666666666667},{"round":6,"player":"Mike Evans","pos":"WR","rate":0.13333333333333333},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.7933333333333333},{"round":7,"player":"Sam LaPorta","pos":"TE","rate":0.14},{"round":8,"player":"Rhamondre Stevenson","pos":"RB","rate":0.26666666666666666},{"round":8,"player":"Travis Kelce","pos":"TE","rate":0.21333333333333335},{"round":8,"player":"Jadarian Price","pos":"RB","rate":0.20666666666666667},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.14666666666666667},{"round":8,"player":"Dak Prescott","pos":"QB","rate":0.13333333333333333}]},{"slot":12,"strategy":"Anchor+TE","mean_starters":1877.1,"edge_over_2nd":2.7,"second":"Hero RB","common_picks":[{"round":1,"player":"Ashton Jeanty","pos":"RB","rate":0.5},{"round":1,"player":"James Cook","pos":"RB","rate":0.48},{"round":2,"player":"Nico Collins","pos":"WR","rate":0.94},{"round":3,"player":"Colston Loveland","pos":"TE","rate":0.9433333333333334},{"round":4,"player":"Garrett Wilson","pos":"WR","rate":0.9133333333333333},{"round":5,"player":"D'Andre Swift","pos":"RB","rate":0.8166666666666667},{"round":6,"player":"Sam LaPorta","pos":"TE","rate":0.53},{"round":6,"player":"Mike Evans","pos":"WR","rate":0.20666666666666667},{"round":7,"player":"Dak Prescott","pos":"QB","rate":0.7766666666666666},{"round":8,"player":"Rhamondre Stevenson","pos":"RB","rate":0.23666666666666666},{"round":8,"player":"Jadarian Price","pos":"RB","rate":0.21666666666666667},{"round":8,"player":"Parker Washington","pos":"WR","rate":0.19}]}],"cheat_sheet":[{"player":"Jahmyr Gibbs","pos":"RB","team":"DET","adp_ppr":1.6,"pts_ppr":331.4,"rec":63.0,"vorp":177.7,"vorp_rank":1,"adp_rank":1,"value_gap":0,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":3,"tier":1,"bye":"6"},{"player":"Bijan Robinson","pos":"RB","team":"ATL","adp_ppr":1.8,"pts_ppr":324.9,"rec":64.0,"vorp":171.2,"vorp_rank":2,"adp_rank":2,"value_gap":0,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":4,"tier":1,"bye":"11"},{"player":"Christian McCaffrey","pos":"RB","team":"SF","adp_ppr":5.0,"pts_ppr":291.0,"rec":70.0,"vorp":137.3,"vorp_rank":3,"adp_rank":5,"value_gap":2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":7,"tier":2,"bye":"8"},{"player":"Puka Nacua","pos":"WR","team":"LAR","adp_ppr":4.9,"pts_ppr":312.5,"rec":107.0,"vorp":133.9,"vorp_rank":4,"adp_rank":4,"value_gap":0,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":2,"tier":1,"bye":"11"},{"player":"Ja'Marr Chase","pos":"WR","team":"CIN","adp_ppr":3.4,"pts_ppr":311.1,"rec":109.0,"vorp":132.50000000000003,"vorp_rank":5,"adp_rank":3,"value_gap":-2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":1,"tier":1,"bye":"6"},{"player":"Jonathan Taylor","pos":"RB","team":"IND","adp_ppr":7.7,"pts_ppr":272.3,"rec":36.0,"vorp":118.60000000000002,"vorp_rank":6,"adp_rank":7,"value_gap":1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":10,"tier":2,"bye":"13"},{"player":"James Cook","pos":"RB","team":"BUF","adp_ppr":12.7,"pts_ppr":260.8,"rec":31.0,"vorp":107.10000000000002,"vorp_rank":7,"adp_rank":12,"value_gap":5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":17,"tier":3,"bye":"7"},{"player":"Jaxon Smith-Njigba","pos":"WR","team":"SEA","adp_ppr":5.4,"pts_ppr":284.6,"rec":99.0,"vorp":106.00000000000004,"vorp_rank":8,"adp_rank":6,"value_gap":-2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":5,"tier":1,"bye":"11"},{"player":"Ashton Jeanty","pos":"RB","team":"LV","adp_ppr":15.4,"pts_ppr":259.5,"rec":50.0,"vorp":105.8,"vorp_rank":9,"adp_rank":14,"value_gap":5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":14,"tier":3,"bye":"13"},{"player":"Amon-Ra St. Brown","pos":"WR","team":"DET","adp_ppr":8.1,"pts_ppr":280.5,"rec":106.0,"vorp":101.9,"vorp_rank":10,"adp_rank":8,"value_gap":-2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":6,"tier":2,"bye":"6"},{"player":"Chase Brown","pos":"RB","team":"CIN","adp_ppr":19.0,"pts_ppr":255.2,"rec":57.0,"vorp":101.5,"vorp_rank":11,"adp_rank":18,"value_gap":7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":15,"tier":3,"bye":"6"},{"player":"Brock Bowers","pos":"TE","team":"LV","adp_ppr":20.2,"pts_ppr":253.5,"rec":102.0,"vorp":93.7,"vorp_rank":12,"adp_rank":21,"value_gap":9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":20,"tier":3,"bye":"13"},{"player":"Derrick Henry","pos":"RB","team":"BAL","adp_ppr":24.6,"pts_ppr":246.9,"rec":17.0,"vorp":93.20000000000002,"vorp_rank":13,"adp_rank":25,"value_gap":12,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":35,"tier":5,"bye":"13"},{"player":"Saquon Barkley","pos":"RB","team":"PHI","adp_ppr":16.6,"pts_ppr":246.7,"rec":37.0,"vorp":93.0,"vorp_rank":14,"adp_rank":15,"value_gap":1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":25,"tier":4,"bye":"10"},{"player":"CeeDee Lamb","pos":"WR","team":"DAL","adp_ppr":10.6,"pts_ppr":270.5,"rec":96.0,"vorp":91.9,"vorp_rank":15,"adp_rank":9,"value_gap":-6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":8,"tier":2,"bye":"14"},{"player":"De'Von Achane","pos":"RB","team":"MIA","adp_ppr":12.5,"pts_ppr":245.4,"rec":55.0,"vorp":91.70000000000002,"vorp_rank":16,"adp_rank":11,"value_gap":-5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":21,"tier":3,"bye":"6"},{"player":"Kenneth Walker","pos":"RB","team":"KC","adp_ppr":22.9,"pts_ppr":244.0,"rec":37.0,"vorp":90.3,"vorp_rank":17,"adp_rank":23,"value_gap":6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":27,"tier":4,"bye":"5"},{"player":"Omarion Hampton","pos":"RB","team":"LAC","adp_ppr":18.8,"pts_ppr":242.9,"rec":48.0,"vorp":89.20000000000002,"vorp_rank":18,"adp_rank":17,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":23,"tier":4,"bye":"7"},{"player":"Jeremiyah Love","pos":"RB","team":"ARI","adp_ppr":19.7,"pts_ppr":238.5,"rec":53.0,"vorp":84.80000000000001,"vorp_rank":19,"adp_rank":20,"value_gap":1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":39,"tier":5,"bye":"14"},{"player":"Trey McBride","pos":"TE","team":"ARI","adp_ppr":18.7,"pts_ppr":234.9,"rec":96.0,"vorp":75.1,"vorp_rank":20,"adp_rank":16,"value_gap":-4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":18,"tier":3,"bye":"14"},{"player":"Josh Allen","pos":"QB","team":"BUF","adp_ppr":28.2,"pts_ppr":361.5,"rec":null,"vorp":74.82,"vorp_rank":21,"adp_rank":30,"value_gap":9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":26,"tier":4,"bye":"7"},{"player":"Nico Collins","pos":"WR","team":"HOU","adp_ppr":25.2,"pts_ppr":251.5,"rec":82.0,"vorp":72.9,"vorp_rank":22,"adp_rank":26,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":13,"tier":3,"bye":"8"},{"player":"Justin Jefferson","pos":"WR","team":"MIN","adp_ppr":12.4,"pts_ppr":250.4,"rec":90.0,"vorp":71.80000000000001,"vorp_rank":23,"adp_rank":10,"value_gap":-13,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":9,"tier":2,"bye":"6"},{"player":"Drake London","pos":"WR","team":"ATL","adp_ppr":14.1,"pts_ppr":250.2,"rec":90.0,"vorp":71.6,"vorp_rank":24,"adp_rank":13,"value_gap":-11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":11,"tier":2,"bye":"11"},{"player":"A.J. Brown","pos":"WR","team":"NE","adp_ppr":19.4,"pts_ppr":249.5,"rec":80.0,"vorp":70.9,"vorp_rank":25,"adp_rank":19,"value_gap":-6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":12,"tier":3,"bye":"11"},{"player":"George Pickens","pos":"WR","team":"DAL","adp_ppr":23.1,"pts_ppr":245.7,"rec":80.0,"vorp":67.1,"vorp_rank":26,"adp_rank":24,"value_gap":-2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":16,"tier":3,"bye":"14"},{"player":"Rashee Rice","pos":"WR","team":"KC","adp_ppr":22.7,"pts_ppr":239.6,"rec":93.0,"vorp":61.0,"vorp_rank":27,"adp_rank":22,"value_gap":-5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":19,"tier":3,"bye":"5"},{"player":"Breece Hall","pos":"RB","team":"NYJ","adp_ppr":32.3,"pts_ppr":214.6,"rec":38.0,"vorp":60.900000000000006,"vorp_rank":28,"adp_rank":32,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":41,"tier":5,"bye":"13"},{"player":"Cam Skattebo","pos":"RB","team":"NYG","adp_ppr":48.7,"pts_ppr":209.5,"rec":44.0,"vorp":55.80000000000001,"vorp_rank":29,"adp_rank":49,"value_gap":20,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":52,"tier":5,"bye":"8"},{"player":"Colston Loveland","pos":"TE","team":"CHI","adp_ppr":41.2,"pts_ppr":215.4,"rec":84.0,"vorp":55.599999999999994,"vorp_rank":30,"adp_rank":41,"value_gap":11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":38,"tier":5,"bye":"10"},{"player":"Malik Nabers","pos":"WR","team":"NYG","adp_ppr":27.3,"pts_ppr":233.3,"rec":82.0,"vorp":54.70000000000002,"vorp_rank":31,"adp_rank":28,"value_gap":-3,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":32,"tier":4,"bye":"8"},{"player":"Kyren Williams","pos":"RB","team":"LAR","adp_ppr":32.2,"pts_ppr":208.0,"rec":32.0,"vorp":54.30000000000001,"vorp_rank":32,"adp_rank":31,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":42,"tier":5,"bye":"11"},{"player":"Travis Etienne","pos":"RB","team":"NO","adp_ppr":36.7,"pts_ppr":207.7,"rec":36.0,"vorp":54.0,"vorp_rank":33,"adp_rank":35,"value_gap":2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":49,"tier":5,"bye":"8"},{"player":"Javonte Williams","pos":"RB","team":"DAL","adp_ppr":38.3,"pts_ppr":207.3,"rec":37.0,"vorp":53.60000000000002,"vorp_rank":34,"adp_rank":38,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":46,"tier":5,"bye":"14"},{"player":"Chris Olave","pos":"WR","team":"NO","adp_ppr":26.4,"pts_ppr":231.8,"rec":80.0,"vorp":53.20000000000002,"vorp_rank":35,"adp_rank":27,"value_gap":-8,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":22,"tier":3,"bye":"8"},{"player":"Garrett Wilson","pos":"WR","team":"NYJ","adp_ppr":40.9,"pts_ppr":231.1,"rec":86.0,"vorp":52.5,"vorp_rank":36,"adp_rank":39,"value_gap":3,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":29,"tier":4,"bye":"13"},{"player":"D'Andre Swift","pos":"RB","team":"CHI","adp_ppr":65.1,"pts_ppr":205.7,"rec":37.0,"vorp":52.0,"vorp_rank":37,"adp_rank":64,"value_gap":27,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":61,"tier":6,"bye":"10"},{"player":"DeVonta Smith","pos":"WR","team":"PHI","adp_ppr":44.9,"pts_ppr":229.2,"rec":80.0,"vorp":50.599999999999994,"vorp_rank":38,"adp_rank":44,"value_gap":6,"injury_status":"Questionable","depth_rank":1,"depth_status":null,"ecr":24,"tier":4,"bye":"10"},{"player":"Zay Flowers","pos":"WR","team":"BAL","adp_ppr":43.8,"pts_ppr":228.2,"rec":81.0,"vorp":49.599999999999994,"vorp_rank":39,"adp_rank":43,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":28,"tier":4,"bye":"13"},{"player":"Josh Jacobs","pos":"RB","team":"GB","adp_ppr":27.6,"pts_ppr":202.6,"rec":33.0,"vorp":48.900000000000006,"vorp_rank":40,"adp_rank":29,"value_gap":-11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":44,"tier":5,"bye":"11"},{"player":"David Montgomery","pos":"RB","team":"HOU","adp_ppr":56.3,"pts_ppr":202.1,"rec":33.0,"vorp":48.400000000000006,"vorp_rank":41,"adp_rank":54,"value_gap":13,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":62,"tier":6,"bye":"8"},{"player":"Bucky Irving","pos":"RB","team":"TB","adp_ppr":34.4,"pts_ppr":197.3,"rec":36.0,"vorp":43.60000000000002,"vorp_rank":42,"adp_rank":33,"value_gap":-9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":59,"tier":6,"bye":"10"},{"player":"Mike Evans","pos":"WR","team":"SF","adp_ppr":57.8,"pts_ppr":222.2,"rec":70.0,"vorp":43.599999999999994,"vorp_rank":43,"adp_rank":57,"value_gap":14,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":51,"tier":5,"bye":"8"},{"player":"Quinshon Judkins","pos":"RB","team":"CLE","adp_ppr":55.0,"pts_ppr":196.0,"rec":32.0,"vorp":42.30000000000001,"vorp_rank":44,"adp_rank":53,"value_gap":9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":60,"tier":6,"bye":"11"},{"player":"Emeka Egbuka","pos":"WR","team":"TB","adp_ppr":45.8,"pts_ppr":220.0,"rec":75.0,"vorp":41.400000000000006,"vorp_rank":45,"adp_rank":45,"value_gap":0,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":40,"tier":5,"bye":"10"},{"player":"Tyler Warren","pos":"TE","team":"IND","adp_ppr":50.1,"pts_ppr":201.1,"rec":83.0,"vorp":41.29999999999998,"vorp_rank":46,"adp_rank":50,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":53,"tier":6,"bye":"13"},{"player":"Lamar Jackson","pos":"QB","team":"BAL","adp_ppr":37.9,"pts_ppr":326.0,"rec":null,"vorp":39.31999999999999,"vorp_rank":47,"adp_rank":37,"value_gap":-10,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":30,"tier":4,"bye":"13"},{"player":"Terry McLaurin","pos":"WR","team":"WAS","adp_ppr":56.6,"pts_ppr":216.2,"rec":75.0,"vorp":37.599999999999994,"vorp_rank":48,"adp_rank":55,"value_gap":7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":43,"tier":5,"bye":"7"},{"player":"Tetairoa McMillan","pos":"WR","team":"CAR","adp_ppr":37.3,"pts_ppr":215.9,"rec":74.0,"vorp":37.30000000000001,"vorp_rank":49,"adp_rank":36,"value_gap":-13,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":31,"tier":4,"bye":"5"},{"player":"Tee Higgins","pos":"WR","team":"CIN","adp_ppr":35.5,"pts_ppr":215.4,"rec":71.0,"vorp":36.80000000000001,"vorp_rank":50,"adp_rank":34,"value_gap":-16,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":33,"tier":4,"bye":"6"},{"player":"Sam LaPorta","pos":"TE","team":"DET","adp_ppr":76.4,"pts_ppr":196.5,"rec":76.0,"vorp":36.69999999999999,"vorp_rank":51,"adp_rank":76,"value_gap":25,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":85,"tier":7,"bye":"6"},{"player":"Drake Maye","pos":"QB","team":"NE","adp_ppr":51.2,"pts_ppr":320.76,"rec":null,"vorp":34.079999999999984,"vorp_rank":52,"adp_rank":51,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":37,"tier":5,"bye":"11"},{"player":"Ladd McConkey","pos":"WR","team":"LAC","adp_ppr":41.9,"pts_ppr":210.3,"rec":77.0,"vorp":31.700000000000017,"vorp_rank":53,"adp_rank":42,"value_gap":-11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":34,"tier":4,"bye":"7"},{"player":"Jameson Williams","pos":"WR","team":"DET","adp_ppr":51.6,"pts_ppr":206.2,"rec":60.0,"vorp":27.59999999999999,"vorp_rank":54,"adp_rank":52,"value_gap":-2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":55,"tier":6,"bye":"6"},{"player":"Jayden Daniels","pos":"QB","team":"WAS","adp_ppr":62.1,"pts_ppr":313.72,"rec":null,"vorp":27.04000000000002,"vorp_rank":55,"adp_rank":60,"value_gap":5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":50,"tier":5,"bye":"7"},{"player":"TreVeyon Henderson","pos":"RB","team":"NE","adp_ppr":47.8,"pts_ppr":179.5,"rec":35.0,"vorp":25.80000000000001,"vorp_rank":56,"adp_rank":48,"value_gap":-8,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":63,"tier":6,"bye":"11"},{"player":"Luther Burden","pos":"WR","team":"CHI","adp_ppr":41.1,"pts_ppr":202.7,"rec":72.0,"vorp":24.09999999999999,"vorp_rank":57,"adp_rank":40,"value_gap":-17,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":47,"tier":5,"bye":"10"},{"player":"Jalen Hurts","pos":"QB","team":"PHI","adp_ppr":67.2,"pts_ppr":310.54,"rec":null,"vorp":23.860000000000017,"vorp_rank":58,"adp_rank":65,"value_gap":7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":57,"tier":6,"bye":"10"},{"player":"Rome Odunze","pos":"WR","team":"CHI","adp_ppr":64.2,"pts_ppr":201.9,"rec":68.0,"vorp":23.30000000000001,"vorp_rank":59,"adp_rank":63,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":58,"tier":6,"bye":"10"},{"player":"Bhayshul Tuten","pos":"RB","team":"JAX","adp_ppr":60.4,"pts_ppr":174.8,"rec":32.0,"vorp":21.100000000000023,"vorp_rank":60,"adp_rank":59,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":67,"tier":6,"bye":"7"},{"player":"Harold Fannin","pos":"TE","team":"CLE","adp_ppr":62.6,"pts_ppr":180.4,"rec":74.0,"vorp":20.59999999999999,"vorp_rank":61,"adp_rank":61,"value_gap":0,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":71,"tier":7,"bye":"11"},{"player":"Jaylen Waddle","pos":"WR","team":"DEN","adp_ppr":46.2,"pts_ppr":198.7,"rec":70.0,"vorp":20.09999999999999,"vorp_rank":62,"adp_rank":46,"value_gap":-16,"injury_status":"Questionable","depth_rank":1,"depth_status":null,"ecr":36,"tier":5,"bye":"10"},{"player":"Joe Burrow","pos":"QB","team":"CIN","adp_ppr":57.1,"pts_ppr":306.12,"rec":null,"vorp":19.44,"vorp_rank":63,"adp_rank":56,"value_gap":-7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":45,"tier":5,"bye":"6"},{"player":"Dak Prescott","pos":"QB","team":"DAL","adp_ppr":90.3,"pts_ppr":303.88,"rec":null,"vorp":17.19999999999999,"vorp_rank":64,"adp_rank":91,"value_gap":27,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":78,"tier":7,"bye":"14"},{"player":"Jaylen Warren","pos":"RB","team":"PIT","adp_ppr":74.8,"pts_ppr":170.6,"rec":36.0,"vorp":16.900000000000006,"vorp_rank":65,"adp_rank":73,"value_gap":8,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":70,"tier":7,"bye":"9"},{"player":"Brian Thomas","pos":"WR","team":"JAX","adp_ppr":69.6,"pts_ppr":195.4,"rec":62.0,"vorp":16.80000000000001,"vorp_rank":66,"adp_rank":70,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":73,"tier":7,"bye":"7"},{"player":"Trevor Lawrence","pos":"QB","team":"JAX","adp_ppr":92.3,"pts_ppr":303.42,"rec":null,"vorp":16.74000000000001,"vorp_rank":67,"adp_rank":92,"value_gap":25,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":75,"tier":7,"bye":"7"},{"player":"Brock Purdy","pos":"QB","team":"SF","adp_ppr":103.5,"pts_ppr":303.2,"rec":null,"vorp":16.519999999999982,"vorp_rank":68,"adp_rank":104,"value_gap":36,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":94,"tier":7,"bye":"8"},{"player":"Jadarian Price","pos":"RB","team":"SEA","adp_ppr":80.3,"pts_ppr":170.0,"rec":19.0,"vorp":16.30000000000001,"vorp_rank":69,"adp_rank":80,"value_gap":11,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":72,"tier":7,"bye":"11"},{"player":"Tucker Kraft","pos":"TE","team":"GB","adp_ppr":67.3,"pts_ppr":174.4,"rec":67.0,"vorp":14.599999999999994,"vorp_rank":70,"adp_rank":66,"value_gap":-4,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":69,"tier":6,"bye":"11"},{"player":"Caleb Williams","pos":"QB","team":"CHI","adp_ppr":82.9,"pts_ppr":299.34,"rec":null,"vorp":12.659999999999968,"vorp_rank":71,"adp_rank":83,"value_gap":12,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":65,"tier":6,"bye":"10"},{"player":"Rhamondre Stevenson","pos":"RB","team":"NE","adp_ppr":82.7,"pts_ppr":166.3,"rec":29.0,"vorp":12.600000000000025,"vorp_rank":72,"adp_rank":82,"value_gap":10,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":83,"tier":7,"bye":"11"},{"player":"Parker Washington","pos":"WR","team":"JAX","adp_ppr":83.2,"pts_ppr":190.7,"rec":65.0,"vorp":12.099999999999994,"vorp_rank":73,"adp_rank":84,"value_gap":11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":77,"tier":7,"bye":"7"},{"player":"Kyle Pitts","pos":"TE","team":"ATL","adp_ppr":71.3,"pts_ppr":171.6,"rec":66.0,"vorp":11.799999999999985,"vorp_rank":74,"adp_rank":71,"value_gap":-3,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":79,"tier":7,"bye":"11"},{"player":"Carnell Tate","pos":"WR","team":"TEN","adp_ppr":62.9,"pts_ppr":190.3,"rec":71.0,"vorp":11.700000000000015,"vorp_rank":75,"adp_rank":62,"value_gap":-13,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":64,"tier":6,"bye":"9"},{"player":"Travis Kelce","pos":"TE","team":"KC","adp_ppr":107.1,"pts_ppr":171.4,"rec":70.0,"vorp":11.599999999999994,"vorp_rank":76,"adp_rank":108,"value_gap":32,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":97,"tier":7,"bye":"5"},{"player":"Jaxson Dart","pos":"QB","team":"NYG","adp_ppr":80.6,"pts_ppr":296.54,"rec":null,"vorp":9.860000000000014,"vorp_rank":77,"adp_rank":81,"value_gap":4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":92,"tier":7,"bye":"8"},{"player":"Christian Watson","pos":"WR","team":"GB","adp_ppr":68.4,"pts_ppr":188.4,"rec":57.0,"vorp":9.800000000000011,"vorp_rank":78,"adp_rank":67,"value_gap":-11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":56,"tier":6,"bye":"11"},{"player":"Davante Adams","pos":"WR","team":"LAR","adp_ppr":46.9,"pts_ppr":188.2,"rec":61.0,"vorp":9.599999999999994,"vorp_rank":79,"adp_rank":47,"value_gap":-32,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":48,"tier":5,"bye":"11"},{"player":"George Kittle","pos":"TE","team":"SF","adp_ppr":97.4,"pts_ppr":169.3,"rec":62.0,"vorp":9.5,"vorp_rank":80,"adp_rank":97,"value_gap":17,"injury_status":"PUP","depth_rank":1,"depth_status":"O","ecr":106,"tier":8,"bye":"8"},{"player":"Chuba Hubbard","pos":"RB","team":"CAR","adp_ppr":74.9,"pts_ppr":162.9,"rec":29.0,"vorp":9.200000000000015,"vorp_rank":81,"adp_rank":74,"value_gap":-7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":86,"tier":7,"bye":"5"},{"player":"Bo Nix","pos":"QB","team":"DEN","adp_ppr":118.7,"pts_ppr":295.72,"rec":null,"vorp":9.04000000000002,"vorp_rank":82,"adp_rank":118,"value_gap":36,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":100,"tier":8,"bye":"10"},{"player":"Justin Herbert","pos":"QB","team":"LAC","adp_ppr":83.7,"pts_ppr":295.48,"rec":null,"vorp":8.800000000000011,"vorp_rank":83,"adp_rank":86,"value_gap":3,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":66,"tier":6,"bye":"7"},{"player":"Marvin Harrison","pos":"WR","team":"ARI","adp_ppr":75.8,"pts_ppr":186.2,"rec":62.0,"vorp":7.599999999999994,"vorp_rank":84,"adp_rank":75,"value_gap":-9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":68,"tier":6,"bye":"14"},{"player":"Rico Dowdle","pos":"RB","team":"PIT","adp_ppr":88.1,"pts_ppr":161.1,"rec":38.0,"vorp":7.400000000000006,"vorp_rank":85,"adp_rank":89,"value_gap":4,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":89,"tier":7,"bye":"9"},{"player":"Jayden Reed","pos":"WR","team":"GB","adp_ppr":116.0,"pts_ppr":185.8,"rec":64.0,"vorp":7.200000000000017,"vorp_rank":86,"adp_rank":115,"value_gap":29,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":108,"tier":8,"bye":"11"},{"player":"J.K. Dobbins","pos":"RB","team":"DEN","adp_ppr":92.5,"pts_ppr":160.2,"rec":26.0,"vorp":6.5,"vorp_rank":87,"adp_rank":93,"value_gap":6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":101,"tier":8,"bye":"10"},{"player":"Tony Pollard","pos":"RB","team":"TEN","adp_ppr":85.6,"pts_ppr":160.1,"rec":28.0,"vorp":6.400000000000006,"vorp_rank":88,"adp_rank":87,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":84,"tier":7,"bye":"9"},{"player":"DK Metcalf","pos":"WR","team":"PIT","adp_ppr":74.4,"pts_ppr":183.3,"rec":62.0,"vorp":4.700000000000017,"vorp_rank":89,"adp_rank":72,"value_gap":-17,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":74,"tier":7,"bye":"9"},{"player":"Dalton Kincaid","pos":"TE","team":"BUF","adp_ppr":97.1,"pts_ppr":163.6,"rec":66.0,"vorp":3.799999999999983,"vorp_rank":90,"adp_rank":96,"value_gap":6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":114,"tier":8,"bye":"7"},{"player":"Mark Andrews","pos":"TE","team":"BAL","adp_ppr":110.7,"pts_ppr":162.5,"rec":60.0,"vorp":2.6999999999999886,"vorp_rank":91,"adp_rank":111,"value_gap":20,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":126,"tier":8,"bye":"13"},{"player":"Brenton Strange","pos":"TE","team":"JAX","adp_ppr":128.8,"pts_ppr":161.0,"rec":63.0,"vorp":1.1999999999999886,"vorp_rank":92,"adp_rank":126,"value_gap":34,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":147,"tier":9,"bye":"7"},{"player":"Kyle Monangai","pos":"RB","team":"CHI","adp_ppr":89.5,"pts_ppr":154.6,"rec":23.0,"vorp":0.9000000000000057,"vorp_rank":93,"adp_rank":90,"value_gap":-3,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":103,"tier":8,"bye":"10"},{"player":"DJ Moore","pos":"WR","team":"BUF","adp_ppr":59.3,"pts_ppr":179.0,"rec":63.0,"vorp":0.4000000000000057,"vorp_rank":94,"adp_rank":58,"value_gap":-36,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":54,"tier":6,"bye":"7"},{"player":"Jake Ferguson","pos":"TE","team":"DAL","adp_ppr":104.0,"pts_ppr":159.8,"rec":70.0,"vorp":0.0,"vorp_rank":95,"adp_rank":105,"value_gap":10,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":112,"tier":8,"bye":"14"},{"player":"Patrick Mahomes","pos":"QB","team":"KC","adp_ppr":100.1,"pts_ppr":286.68,"rec":null,"vorp":0.0,"vorp_rank":96,"adp_rank":99,"value_gap":3,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":99,"tier":8,"bye":"5"},{"player":"Jordan Mason","pos":"RB","team":"MIN","adp_ppr":130.5,"pts_ppr":153.7,"rec":20.0,"vorp":0.0,"vorp_rank":97,"adp_rank":127,"value_gap":30,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":124,"tier":8,"bye":"6"},{"player":"Jordyn Tyson","pos":"WR","team":"NO","adp_ppr":69.0,"pts_ppr":178.6,"rec":66.0,"vorp":0.0,"vorp_rank":98,"adp_rank":69,"value_gap":-29,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":91,"tier":7,"bye":"8"},{"player":"Alec Pierce","pos":"WR","team":"IND","adp_ppr":83.6,"pts_ppr":177.9,"rec":54.0,"vorp":-0.6999999999999886,"vorp_rank":99,"adp_rank":85,"value_gap":-14,"injury_status":"PUP","depth_rank":1,"depth_status":"O","ecr":81,"tier":7,"bye":"13"},{"player":"Kenny Gainwell","pos":"RB","team":"TB","adp_ppr":106.9,"pts_ppr":152.3,"rec":47.0,"vorp":-1.3999999999999773,"vorp_rank":100,"adp_rank":107,"value_gap":7,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":98,"tier":8,"bye":"10"},{"player":"Isaiah Likely","pos":"TE","team":"NYG","adp_ppr":117.3,"pts_ppr":157.3,"rec":62.0,"vorp":-2.5,"vorp_rank":101,"adp_rank":116,"value_gap":15,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":123,"tier":8,"bye":"8"},{"player":"Jared Goff","pos":"QB","team":"DET","adp_ppr":122.0,"pts_ppr":283.46,"rec":null,"vorp":-3.2200000000000273,"vorp_rank":102,"adp_rank":119,"value_gap":17,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":109,"tier":8,"bye":"6"},{"player":"Courtland Sutton","pos":"WR","team":"DEN","adp_ppr":77.9,"pts_ppr":174.3,"rec":59.0,"vorp":-4.299999999999983,"vorp_rank":103,"adp_rank":78,"value_gap":-25,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":80,"tier":7,"bye":"10"},{"player":"T.J. Hockenson","pos":"TE","team":"MIN","adp_ppr":141.2,"pts_ppr":155.0,"rec":66.0,"vorp":-4.800000000000011,"vorp_rank":104,"adp_rank":139,"value_gap":35,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":174,"tier":10,"bye":"6"},{"player":"Chris Godwin","pos":"WR","team":"TB","adp_ppr":92.6,"pts_ppr":173.6,"rec":68.0,"vorp":-5.0,"vorp_rank":105,"adp_rank":94,"value_gap":-11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":76,"tier":7,"bye":"10"},{"player":"Josh Downs","pos":"WR","team":"IND","adp_ppr":125.1,"pts_ppr":172.4,"rec":70.0,"vorp":-6.199999999999989,"vorp_rank":106,"adp_rank":122,"value_gap":16,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":90,"tier":7,"bye":"13"},{"player":"Hunter Henry","pos":"TE","team":"NE","adp_ppr":106.2,"pts_ppr":153.5,"rec":58.0,"vorp":-6.300000000000011,"vorp_rank":107,"adp_rank":106,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":153,"tier":9,"bye":"11"},{"player":"Matthew Stafford","pos":"QB","team":"LAR","adp_ppr":115.2,"pts_ppr":280.22,"rec":null,"vorp":-6.4599999999999795,"vorp_rank":108,"adp_rank":113,"value_gap":5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":104,"tier":8,"bye":"11"},{"player":"Jordan Addison","pos":"WR","team":"MIN","adp_ppr":100.7,"pts_ppr":171.7,"rec":60.0,"vorp":-6.900000000000006,"vorp_rank":109,"adp_rank":100,"value_gap":-9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":105,"tier":8,"bye":"6"},{"player":"Michael Pittman","pos":"WR","team":"PIT","adp_ppr":102.9,"pts_ppr":170.9,"rec":69.0,"vorp":-7.699999999999989,"vorp_rank":110,"adp_rank":102,"value_gap":-8,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":82,"tier":7,"bye":"9"},{"player":"Jordan Love","pos":"QB","team":"GB","adp_ppr":124.8,"pts_ppr":278.52,"rec":null,"vorp":-8.160000000000025,"vorp_rank":111,"adp_rank":121,"value_gap":10,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":117,"tier":8,"bye":"11"},{"player":"Jakobi Meyers","pos":"WR","team":"JAX","adp_ppr":87.6,"pts_ppr":169.3,"rec":64.0,"vorp":-9.299999999999985,"vorp_rank":112,"adp_rank":88,"value_gap":-24,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":95,"tier":7,"bye":"7"},{"player":"RJ Harvey","pos":"RB","team":"DEN","adp_ppr":68.4,"pts_ppr":144.1,"rec":37.0,"vorp":-9.599999999999994,"vorp_rank":113,"adp_rank":68,"value_gap":-45,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":93,"tier":7,"bye":"10"},{"player":"Makai Lemon","pos":"WR","team":"PHI","adp_ppr":76.6,"pts_ppr":168.5,"rec":60.0,"vorp":-10.099999999999994,"vorp_rank":114,"adp_rank":77,"value_gap":-37,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":102,"tier":8,"bye":"10"},{"player":"Baker Mayfield","pos":"QB","team":"TB","adp_ppr":140.9,"pts_ppr":274.88,"rec":null,"vorp":-11.800000000000011,"vorp_rank":115,"adp_rank":138,"value_gap":23,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":115,"tier":8,"bye":"10"},{"player":"Khalil Shakir","pos":"WR","team":"BUF","adp_ppr":133.8,"pts_ppr":166.5,"rec":69.0,"vorp":-12.099999999999994,"vorp_rank":116,"adp_rank":130,"value_gap":14,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":119,"tier":8,"bye":"7"},{"player":"Michael Wilson","pos":"WR","team":"ARI","adp_ppr":80.2,"pts_ppr":166.0,"rec":59.0,"vorp":-12.599999999999994,"vorp_rank":117,"adp_rank":79,"value_gap":-38,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":88,"tier":7,"bye":"14"},{"player":"Jalen Coker","pos":"WR","team":"CAR","adp_ppr":136.3,"pts_ppr":165.9,"rec":60.0,"vorp":-12.699999999999989,"vorp_rank":118,"adp_rank":134,"value_gap":16,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":127,"tier":8,"bye":"5"},{"player":"Jayden Higgins","pos":"WR","team":"HOU","adp_ppr":131.1,"pts_ppr":165.4,"rec":57.0,"vorp":-13.199999999999989,"vorp_rank":119,"adp_rank":128,"value_gap":9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":118,"tier":8,"bye":"8"},{"player":"Wan'Dale Robinson","pos":"WR","team":"TEN","adp_ppr":103.0,"pts_ppr":164.1,"rec":68.0,"vorp":-14.5,"vorp_rank":120,"adp_rank":103,"value_gap":-17,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":87,"tier":7,"bye":"9"},{"player":"Quentin Johnston","pos":"WR","team":"LAC","adp_ppr":102.6,"pts_ppr":163.9,"rec":58.0,"vorp":-14.699999999999989,"vorp_rank":121,"adp_rank":101,"value_gap":-20,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":96,"tier":7,"bye":"7"},{"player":"Stefon Diggs","pos":"WR","team":"FA","adp_ppr":125.9,"pts_ppr":163.5,"rec":62.0,"vorp":-15.099999999999994,"vorp_rank":122,"adp_rank":124,"value_gap":2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":178,"tier":10,"bye":null},{"player":"Chig Okonkwo","pos":"TE","team":"WAS","adp_ppr":146.2,"pts_ppr":144.1,"rec":61.0,"vorp":-15.700000000000015,"vorp_rank":123,"adp_rank":147,"value_gap":24,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":144,"tier":9,"bye":"7"},{"player":"Tyler Shough","pos":"QB","team":"NO","adp_ppr":144.4,"pts_ppr":270.94,"rec":null,"vorp":-15.740000000000007,"vorp_rank":124,"adp_rank":144,"value_gap":20,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":121,"tier":8,"bye":"8"},{"player":"Malik Willis","pos":"QB","team":"MIA","adp_ppr":137.8,"pts_ppr":270.12,"rec":null,"vorp":-16.560000000000002,"vorp_rank":125,"adp_rank":136,"value_gap":11,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":130,"tier":9,"bye":"6"},{"player":"Aaron Jones","pos":"RB","team":"MIN","adp_ppr":108.8,"pts_ppr":137.1,"rec":34.0,"vorp":-16.599999999999994,"vorp_rank":126,"adp_rank":109,"value_gap":-17,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":111,"tier":8,"bye":"6"},{"player":"Xavier Worthy","pos":"WR","team":"KC","adp_ppr":134.9,"pts_ppr":161.5,"rec":55.0,"vorp":-17.099999999999994,"vorp_rank":127,"adp_rank":132,"value_gap":5,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":122,"tier":8,"bye":"5"},{"player":"AJ Barner","pos":"TE","team":"SEA","adp_ppr":150.1,"pts_ppr":142.4,"rec":58.0,"vorp":-17.400000000000006,"vorp_rank":128,"adp_rank":152,"value_gap":24,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":191,"tier":10,"bye":"11"},{"player":"Romeo Doubs","pos":"WR","team":"NE","adp_ppr":115.3,"pts_ppr":161.2,"rec":57.0,"vorp":-17.400000000000006,"vorp_rank":129,"adp_rank":114,"value_gap":-15,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":128,"tier":8,"bye":"11"},{"player":"Oronde Gadsden","pos":"TE","team":"LAC","adp_ppr":94.7,"pts_ppr":141.8,"rec":56.0,"vorp":-18.0,"vorp_rank":130,"adp_rank":95,"value_gap":-35,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":163,"tier":9,"bye":"7"},{"player":"Blake Corum","pos":"RB","team":"LAR","adp_ppr":98.3,"pts_ppr":135.3,"rec":15.0,"vorp":-18.399999999999977,"vorp_rank":131,"adp_rank":98,"value_gap":-33,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":110,"tier":8,"bye":"11"},{"player":"Matthew Golden","pos":"WR","team":"GB","adp_ppr":134.1,"pts_ppr":158.8,"rec":53.0,"vorp":-19.799999999999983,"vorp_rank":132,"adp_rank":131,"value_gap":-1,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":132,"tier":9,"bye":"11"},{"player":"Chris Rodriguez","pos":"RB","team":"JAX","adp_ppr":141.6,"pts_ppr":132.5,"rec":15.0,"vorp":-21.19999999999999,"vorp_rank":133,"adp_rank":141,"value_gap":8,"injury_status":null,"depth_rank":2,"depth_status":"Q","ecr":139,"tier":9,"bye":"7"},{"player":"Kyler Murray","pos":"QB","team":"MIN","adp_ppr":142.2,"pts_ppr":265.2,"rec":null,"vorp":-21.480000000000015,"vorp_rank":134,"adp_rank":142,"value_gap":8,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":113,"tier":8,"bye":"6"},{"player":"KC Concepcion","pos":"WR","team":"CLE","adp_ppr":143.2,"pts_ppr":156.4,"rec":58.0,"vorp":-22.19999999999999,"vorp_rank":135,"adp_rank":143,"value_gap":8,"injury_status":"Questionable","depth_rank":1,"depth_status":"Q","ecr":129,"tier":9,"bye":"11"},{"player":"Deebo Samuel","pos":"WR","team":"SF","adp_ppr":164.3,"pts_ppr":155.7,"rec":56.0,"vorp":-22.90000000000001,"vorp_rank":136,"adp_rank":162,"value_gap":26,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":159,"tier":9,"bye":"8"},{"player":"Juwan Johnson","pos":"TE","team":"NO","adp_ppr":135.3,"pts_ppr":136.6,"rec":54.0,"vorp":-23.200000000000017,"vorp_rank":137,"adp_rank":133,"value_gap":-4,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":143,"tier":9,"bye":"8"},{"player":"Dallas Goedert","pos":"TE","team":"PHI","adp_ppr":109.1,"pts_ppr":136.0,"rec":53.0,"vorp":-23.80000000000001,"vorp_rank":138,"adp_rank":110,"value_gap":-28,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":120,"tier":8,"bye":"10"},{"player":"Sam Darnold","pos":"QB","team":"SEA","adp_ppr":165.3,"pts_ppr":262.74,"rec":null,"vorp":-23.94,"vorp_rank":139,"adp_rank":164,"value_gap":25,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":137,"tier":9,"bye":"11"},{"player":"Rachaad White","pos":"RB","team":"WAS","adp_ppr":127.2,"pts_ppr":128.1,"rec":34.0,"vorp":-25.59999999999999,"vorp_rank":140,"adp_rank":125,"value_gap":-15,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":107,"tier":8,"bye":"7"},{"player":"Jacory Croskey-Merritt","pos":"RB","team":"WAS","adp_ppr":114.9,"pts_ppr":127.9,"rec":19.0,"vorp":-25.799999999999983,"vorp_rank":141,"adp_rank":112,"value_gap":-29,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":125,"tier":8,"bye":"7"},{"player":"Dalton Schultz","pos":"TE","team":"HOU","adp_ppr":137.0,"pts_ppr":133.5,"rec":55.0,"vorp":-26.30000000000001,"vorp_rank":142,"adp_rank":135,"value_gap":-7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":166,"tier":10,"bye":"8"},{"player":"Kenyon Sadiq","pos":"TE","team":"NYJ","adp_ppr":118.2,"pts_ppr":131.1,"rec":52.0,"vorp":-28.700000000000017,"vorp_rank":143,"adp_rank":117,"value_gap":-26,"injury_status":"Questionable","depth_rank":1,"depth_status":null,"ecr":201,"tier":10,"bye":"13"},{"player":"Gunnar Helm","pos":"TE","team":"TEN","adp_ppr":200.8,"pts_ppr":130.3,"rec":57.0,"vorp":-29.5,"vorp_rank":144,"adp_rank":196,"value_gap":52,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":206,"tier":10,"bye":"9"},{"player":"Cade Otton","pos":"TE","team":"TB","adp_ppr":162.7,"pts_ppr":128.0,"rec":56.0,"vorp":-31.80000000000001,"vorp_rank":145,"adp_rank":159,"value_gap":14,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":232,"tier":11,"bye":"10"},{"player":"Jonathon Brooks","pos":"RB","team":"CAR","adp_ppr":138.0,"pts_ppr":120.0,"rec":23.0,"vorp":-33.69999999999999,"vorp_rank":146,"adp_rank":137,"value_gap":-9,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":116,"tier":8,"bye":"5"},{"player":"Tyjae Spears","pos":"RB","team":"TEN","adp_ppr":151.9,"pts_ppr":114.6,"rec":35.0,"vorp":-39.099999999999994,"vorp_rank":147,"adp_rank":153,"value_gap":6,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":136,"tier":9,"bye":"9"},{"player":"Rashid Shaheed","pos":"WR","team":"SEA","adp_ppr":152.2,"pts_ppr":138.1,"rec":45.0,"vorp":-40.5,"vorp_rank":148,"adp_rank":154,"value_gap":6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":141,"tier":9,"bye":"11"},{"player":"Tyrone Tracy","pos":"RB","team":"NYG","adp_ppr":145.3,"pts_ppr":111.3,"rec":21.0,"vorp":-42.39999999999999,"vorp_rank":149,"adp_rank":146,"value_gap":-3,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":131,"tier":9,"bye":"8"},{"player":"Jalen Nailor","pos":"WR","team":"LV","adp_ppr":166.5,"pts_ppr":130.6,"rec":46.0,"vorp":-48.0,"vorp_rank":150,"adp_rank":167,"value_gap":17,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":184,"tier":10,"bye":"13"},{"player":"C.J. Stroud","pos":"QB","team":"HOU","adp_ppr":163.4,"pts_ppr":238.2,"rec":null,"vorp":-48.48000000000002,"vorp_rank":151,"adp_rank":160,"value_gap":9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":134,"tier":9,"bye":"8"},{"player":"De'Zhaun Stribling","pos":"WR","team":"SF","adp_ppr":202.4,"pts_ppr":128.4,"rec":46.0,"vorp":-50.19999999999999,"vorp_rank":152,"adp_rank":198,"value_gap":46,"injury_status":"Questionable","depth_rank":2,"depth_status":"Q","ecr":177,"tier":10,"bye":"8"},{"player":"Bryce Young","pos":"QB","team":"CAR","adp_ppr":194.2,"pts_ppr":235.58,"rec":null,"vorp":-51.099999999999994,"vorp_rank":153,"adp_rank":189,"value_gap":36,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":152,"tier":9,"bye":"5"},{"player":"Jalen McMillan","pos":"WR","team":"TB","adp_ppr":163.7,"pts_ppr":127.4,"rec":44.0,"vorp":-51.19999999999999,"vorp_rank":154,"adp_rank":161,"value_gap":7,"injury_status":"Questionable","depth_rank":1,"depth_status":null,"ecr":155,"tier":9,"bye":"10"},{"player":"Omar Cooper","pos":"WR","team":"NYJ","adp_ppr":149.3,"pts_ppr":127.1,"rec":45.0,"vorp":-51.5,"vorp_rank":155,"adp_rank":150,"value_gap":-5,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":162,"tier":9,"bye":"13"},{"player":"Denzel Boston","pos":"WR","team":"CLE","adp_ppr":147.5,"pts_ppr":123.9,"rec":48.0,"vorp":-54.69999999999999,"vorp_rank":156,"adp_rank":149,"value_gap":-7,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":156,"tier":9,"bye":"11"},{"player":"Keaton Mitchell","pos":"RB","team":"LAC","adp_ppr":164.9,"pts_ppr":96.9,"rec":18.0,"vorp":-56.79999999999998,"vorp_rank":157,"adp_rank":163,"value_gap":6,"injury_status":null,"depth_rank":3,"depth_status":null,"ecr":151,"tier":9,"bye":"7"},{"player":"Ryan Flournoy","pos":"WR","team":"DAL","adp_ppr":227.6,"pts_ppr":121.2,"rec":47.0,"vorp":-57.39999999999999,"vorp_rank":158,"adp_rank":220,"value_gap":62,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":173,"tier":10,"bye":"14"},{"player":"Cam Ward","pos":"QB","team":"TEN","adp_ppr":165.9,"pts_ppr":227.84,"rec":null,"vorp":-58.84,"vorp_rank":159,"adp_rank":165,"value_gap":6,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":145,"tier":9,"bye":"9"},{"player":"Jerry Jeudy","pos":"WR","team":"CLE","adp_ppr":173.5,"pts_ppr":119.6,"rec":43.0,"vorp":-59.0,"vorp_rank":160,"adp_rank":172,"value_gap":12,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":149,"tier":9,"bye":"11"},{"player":"Daniel Jones","pos":"QB","team":"IND","adp_ppr":195.1,"pts_ppr":223.54,"rec":null,"vorp":-63.140000000000015,"vorp_rank":161,"adp_rank":191,"value_gap":30,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":150,"tier":9,"bye":"13"},{"player":"Dylan Sampson","pos":"RB","team":"CLE","adp_ppr":166.4,"pts_ppr":88.7,"rec":23.0,"vorp":-64.99999999999999,"vorp_rank":162,"adp_rank":166,"value_gap":4,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":142,"tier":9,"bye":"11"},{"player":"Tre' Harris","pos":"WR","team":"LAC","adp_ppr":194.5,"pts_ppr":112.9,"rec":39.0,"vorp":-65.69999999999999,"vorp_rank":163,"adp_rank":190,"value_gap":27,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":168,"tier":10,"bye":"7"},{"player":"Tre Tucker","pos":"WR","team":"LV","adp_ppr":207.2,"pts_ppr":111.8,"rec":40.0,"vorp":-66.8,"vorp_rank":164,"adp_rank":201,"value_gap":37,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":164,"tier":9,"bye":"13"},{"player":"Woody Marks","pos":"RB","team":"HOU","adp_ppr":141.2,"pts_ppr":83.8,"rec":19.0,"vorp":-69.89999999999999,"vorp_rank":165,"adp_rank":140,"value_gap":-25,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":133,"tier":9,"bye":"8"},{"player":"Terrance Ferguson","pos":"TE","team":"LAR","adp_ppr":158.7,"pts_ppr":87.5,"rec":32.0,"vorp":-72.30000000000001,"vorp_rank":166,"adp_rank":157,"value_gap":-9,"injury_status":null,"depth_rank":3,"depth_status":null,"ecr":237,"tier":11,"bye":"11"},{"player":"Jauan Jennings","pos":"WR","team":"MIN","adp_ppr":146.3,"pts_ppr":105.7,"rec":39.0,"vorp":-72.89999999999999,"vorp_rank":167,"adp_rank":148,"value_gap":-19,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":148,"tier":9,"bye":"6"},{"player":"Isaac TeSlaa","pos":"WR","team":"DET","adp_ppr":198.6,"pts_ppr":105.4,"rec":33.0,"vorp":-73.19999999999999,"vorp_rank":168,"adp_rank":193,"value_gap":25,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":202,"tier":10,"bye":"6"},{"player":"Fernando Mendoza","pos":"QB","team":"LV","adp_ppr":169.5,"pts_ppr":212.16,"rec":null,"vorp":-74.52000000000001,"vorp_rank":169,"adp_rank":170,"value_gap":1,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":250,"tier":11,"bye":"13"},{"player":"Travis Hunter","pos":"WR","team":"JAX","adp_ppr":160.2,"pts_ppr":100.6,"rec":35.0,"vorp":-78.0,"vorp_rank":170,"adp_rank":158,"value_gap":-12,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":165,"tier":9,"bye":"7"},{"player":"Zachariah Branch","pos":"WR","team":"ATL","adp_ppr":180.4,"pts_ppr":100.6,"rec":37.0,"vorp":-78.0,"vorp_rank":171,"adp_rank":180,"value_gap":9,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":231,"tier":11,"bye":"11"},{"player":"Eli Stowers","pos":"TE","team":"PHI","adp_ppr":173.9,"pts_ppr":81.4,"rec":31.0,"vorp":-78.4,"vorp_rank":172,"adp_rank":173,"value_gap":1,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":266,"tier":12,"bye":"10"},{"player":"Germie Bernard","pos":"WR","team":"PIT","adp_ppr":220.8,"pts_ppr":98.9,"rec":36.0,"vorp":-79.69999999999999,"vorp_rank":173,"adp_rank":210,"value_gap":37,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":234,"tier":11,"bye":"9"},{"player":"David Njoku","pos":"TE","team":"LAC","adp_ppr":172.4,"pts_ppr":79.7,"rec":31.0,"vorp":-80.10000000000001,"vorp_rank":174,"adp_rank":171,"value_gap":-3,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":244,"tier":11,"bye":"7"},{"player":"Adonai Mitchell","pos":"WR","team":"NYJ","adp_ppr":177.9,"pts_ppr":98.3,"rec":35.0,"vorp":-80.3,"vorp_rank":175,"adp_rank":177,"value_gap":2,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":154,"tier":9,"bye":"13"},{"player":"Ted Hurst","pos":"WR","team":"TB","adp_ppr":223.5,"pts_ppr":97.9,"rec":36.0,"vorp":-80.69999999999999,"vorp_rank":176,"adp_rank":214,"value_gap":38,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":239,"tier":11,"bye":"10"},{"player":"Colby Parkinson","pos":"TE","team":"LAR","adp_ppr":200.2,"pts_ppr":78.8,"rec":30.0,"vorp":-81.00000000000001,"vorp_rank":177,"adp_rank":195,"value_gap":18,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":251,"tier":11,"bye":"11"},{"player":"Antonio Williams","pos":"WR","team":"WAS","adp_ppr":168.1,"pts_ppr":97.0,"rec":35.0,"vorp":-81.6,"vorp_rank":178,"adp_rank":169,"value_gap":-9,"injury_status":null,"depth_rank":1,"depth_status":null,"ecr":198,"tier":10,"bye":"7"},{"player":"Pat Bryant","pos":"WR","team":"DEN","adp_ppr":222.5,"pts_ppr":96.4,"rec":35.0,"vorp":-82.19999999999999,"vorp_rank":179,"adp_rank":213,"value_gap":34,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":207,"tier":10,"bye":"10"},{"player":"Mason Taylor","pos":"TE","team":"NYJ","adp_ppr":224.3,"pts_ppr":77.3,"rec":33.0,"vorp":-82.50000000000001,"vorp_rank":180,"adp_rank":216,"value_gap":36,"injury_status":null,"depth_rank":2,"depth_status":null,"ecr":269,"tier":12,"bye":"13"}],"intel":{"injuries":[{"player":"Jahmyr Gibbs","pos":"RB","team":"DET","adp_ppr":1.6,"injury_status":"Questionable"},{"player":"Malik Nabers","pos":"WR","team":"NYG","adp_ppr":27.3,"injury_status":"Questionable"},{"player":"DeVonta Smith","pos":"WR","team":"PHI","adp_ppr":44.9,"injury_status":"Questionable"},{"player":"Jaylen Waddle","pos":"WR","team":"DEN","adp_ppr":46.2,"injury_status":"Questionable"},{"player":"Mike Evans","pos":"WR","team":"SF","adp_ppr":57.8,"injury_status":"Questionable"},{"player":"Tucker Kraft","pos":"TE","team":"GB","adp_ppr":67.3,"injury_status":"Questionable"},{"player":"Makai Lemon","pos":"WR","team":"PHI","adp_ppr":76.6,"injury_status":"Questionable"},{"player":"Alec Pierce","pos":"WR","team":"IND","adp_ppr":83.6,"injury_status":"PUP"},{"player":"George Kittle","pos":"TE","team":"SF","adp_ppr":97.4,"injury_status":"PUP"},{"player":"Patrick Mahomes","pos":"QB","team":"KC","adp_ppr":100.1,"injury_status":"Questionable"},{"player":"Kenyon Sadiq","pos":"TE","team":"NYJ","adp_ppr":118.2,"injury_status":"Questionable"},{"player":"Zach Charbonnet","pos":"RB","team":"SEA","adp_ppr":125.8,"injury_status":"PUP"},{"player":"Xavier Worthy","pos":"WR","team":"KC","adp_ppr":134.9,"injury_status":"Questionable"},{"player":"KC Concepcion","pos":"WR","team":"CLE","adp_ppr":143.2,"injury_status":"Questionable"},{"player":"James Conner","pos":"RB","team":"ARI","adp_ppr":152.2,"injury_status":"Questionable"},{"player":"Jalen McMillan","pos":"WR","team":"TB","adp_ppr":163.7,"injury_status":"Questionable"},{"player":"Tyreek Hill","pos":"WR","team":"FA","adp_ppr":174.0,"injury_status":"Questionable"},{"player":"Brandon Aiyuk","pos":"WR","team":"SF","adp_ppr":190.2,"injury_status":"DNR"}],"trending":[{"player":"Jalen Nailor","pos":"WR","team":"LV","adp_ppr":166.5,"trend_add":14931,"trend_drop":0,"injury_status":null},{"player":"Malik Willis","pos":"QB","team":"MIA","adp_ppr":137.8,"trend_add":10381,"trend_drop":0,"injury_status":null},{"player":"Keaton Mitchell","pos":"RB","team":"LAC","adp_ppr":164.9,"trend_add":9792,"trend_drop":0,"injury_status":null},{"player":"Tank Bigsby","pos":"RB","team":"PHI","adp_ppr":187.7,"trend_add":5761,"trend_drop":0,"injury_status":null},{"player":"Jacksonville Jaguars","pos":"DST","team":"JAX","adp_ppr":177.2,"trend_add":5094,"trend_drop":0,"injury_status":null},{"player":"Chris Rodriguez","pos":"RB","team":"JAX","adp_ppr":141.6,"trend_add":4995,"trend_drop":3267,"injury_status":null},{"player":"Detroit Lions","pos":"DST","team":"DET","adp_ppr":162.2,"trend_add":4680,"trend_drop":0,"injury_status":null},{"player":"Adonai Mitchell","pos":"WR","team":"NYJ","adp_ppr":177.9,"trend_add":4608,"trend_drop":6320,"injury_status":null},{"player":"Terrance Ferguson","pos":"TE","team":"LAR","adp_ppr":158.7,"trend_add":4224,"trend_drop":0,"injury_status":null},{"player":"Tyreek Hill","pos":"WR","team":"FA","adp_ppr":174.0,"trend_add":3808,"trend_drop":12824,"injury_status":"Questionable"},{"player":"Parker Washington","pos":"WR","team":"JAX","adp_ppr":83.2,"trend_add":3501,"trend_drop":0,"injury_status":null},{"player":"Jake Tonges","pos":"TE","team":"SF","adp_ppr":191.4,"trend_add":2940,"trend_drop":4200,"injury_status":null}],"notes":[{"player":"Jahmyr Gibbs","tag":"watch","note":"Back tightness from the conditioning test (Campbell: not severe) AND holding in over contract talks \u2014 watching practice, not participating. Soft-tissue history. Still the 1.01 today, but if the hold-in drags into late August, Bijan is the safer top pick."},{"player":"Bijan Robinson","tag":"upside","note":"Zero camp flags. If Gibbs' hold-in or back lingers, he's the clean 1.01."},{"player":"Malik Nabers","tag":"risk","note":"Returning from January ACL tear; back at practice and reportedly ahead of schedule, but lost ~2 weeks to a minor back tweak. His ADP (27) already prices the risk \u2014 the sim likes him in R3, size the risk yourself."},{"player":"Mike Evans","tag":"watch","note":"Sitting 49ers camp practices with a quad injury, on a new team where reps with Purdy matter. Sim's favorite R4 pick from early slots \u2014 have a pivot ready (DeVonta Smith, Zay Flowers). Rookie De'Zhaun Stribling is rising behind him."},{"player":"George Kittle","tag":"risk","note":"Torn Achilles in January, opened camp on PUP. Says he's on track for Week 1 (in Australia) but could miss early weeks and return diminished at 32. Sim already prefers LaPorta R6 / Kelce R8 \u2014 let someone else pay ADP 97 for the name."},{"player":"Zach Charbonnet","tag":"risk","note":"Opened camp on PUP (ADP 126). Don't draft for the handcuff role until he's practicing."},{"player":"Patrick Mahomes","tag":"watch","note":"Questionable tag in camp. Sim never targets him \u2014 Dak/Purdy/Nix tier is free 4 rounds later anyway."},{"player":"Jalen Nailor","tag":"upside","note":"#1 trending add on Sleeper (14k adds/48h): signed 3yr/$35M with the Raiders, no established WR1 ahead of him, existing Kirk Cousins chemistry. Legit last-round flier for the bench."},{"player":"Christian Kirk","tag":"watch","note":"Calf injury in 49ers camp \u2014 one more reason the SF receiver room (Evans quad, Kittle PUP) is shaky early."},{"player":"Tez Johnson","tag":"upside","note":"Named one of Bucs camp's biggest risers \u2014 vertical role. Deep-league watchlist only for now."}],"as_of":"2026-08-05","depth_as_of":"2026-08-05","depth_flags":{"not_starters":[{"player":"TreVeyon Henderson","pos":"RB","team":"NE","adp_ppr":47.8,"rank":2},{"player":"RJ Harvey","pos":"RB","team":"DEN","adp_ppr":68.4,"rank":2},{"player":"Jadarian Price","pos":"RB","team":"SEA","adp_ppr":80.3,"rank":2},{"player":"Rico Dowdle","pos":"RB","team":"PIT","adp_ppr":88.1,"rank":2},{"player":"Kyle Monangai","pos":"RB","team":"CHI","adp_ppr":89.5,"rank":2},{"player":"Blake Corum","pos":"RB","team":"LAR","adp_ppr":98.3,"rank":2},{"player":"Kenny Gainwell","pos":"RB","team":"TB","adp_ppr":106.9,"rank":2}],"cheap_starters":[{"player":"Jayden Reed","pos":"WR","team":"GB","adp_ppr":116.0,"pts_ppr":185.8},{"player":"Josh Downs","pos":"WR","team":"IND","adp_ppr":125.1,"pts_ppr":172.4},{"player":"Jordan Addison","pos":"WR","team":"MIN","adp_ppr":100.7,"pts_ppr":171.7},{"player":"Travis Kelce","pos":"TE","team":"KC","adp_ppr":107.1,"pts_ppr":171.4},{"player":"Michael Pittman","pos":"WR","team":"PIT","adp_ppr":102.9,"pts_ppr":170.9},{"player":"Khalil Shakir","pos":"WR","team":"BUF","adp_ppr":133.8,"pts_ppr":166.5},{"player":"Jalen Coker","pos":"WR","team":"CAR","adp_ppr":136.3,"pts_ppr":165.9},{"player":"Jayden Higgins","pos":"WR","team":"HOU","adp_ppr":131.1,"pts_ppr":165.4},{"player":"Wan'Dale Robinson","pos":"WR","team":"TEN","adp_ppr":103.0,"pts_ppr":164.1},{"player":"Quentin Johnston","pos":"WR","team":"LAC","adp_ppr":102.6,"pts_ppr":163.9}]},"fp_as_of":"8/05","fp_experts":86,"fp_disagreements":[{"player":"Kenyon Sadiq","pos":"TE","team":"NYJ","adp_ppr":118.2,"ecr":201,"gap":-83},{"player":"Oronde Gadsden","pos":"TE","team":"LAC","adp_ppr":94.7,"ecr":163,"gap":-68},{"player":"Stefon Diggs","pos":"WR","team":"FA","adp_ppr":125.9,"ecr":178,"gap":-52},{"player":"Hunter Henry","pos":"TE","team":"NE","adp_ppr":106.2,"ecr":153,"gap":-47},{"player":"Josh Downs","pos":"WR","team":"IND","adp_ppr":125.1,"ecr":90,"gap":35},{"player":"T.J. Hockenson","pos":"TE","team":"MIN","adp_ppr":141.2,"ecr":174,"gap":-33},{"player":"Kyler Murray","pos":"QB","team":"MIN","adp_ppr":142.2,"ecr":113,"gap":29},{"player":"Dalton Schultz","pos":"TE","team":"HOU","adp_ppr":137.0,"ecr":166,"gap":-29},{"player":"Baker Mayfield","pos":"QB","team":"TB","adp_ppr":140.9,"ecr":115,"gap":26},{"player":"Bucky Irving","pos":"RB","team":"TB","adp_ppr":34.4,"ecr":59,"gap":-25}]},"tracker_pool":[{"player":"Jahmyr Gibbs","pos":"RB","team":"DET","adp":1.6,"pts":331.4,"vorp":177.7,"rec":63.0,"depth_rank":1,"injury":"Questionable","ecr":3,"bye":"6"},{"player":"Bijan Robinson","pos":"RB","team":"ATL","adp":1.8,"pts":324.9,"vorp":171.2,"rec":64.0,"depth_rank":1,"injury":null,"ecr":4,"bye":"11"},{"player":"Ja'Marr Chase","pos":"WR","team":"CIN","adp":3.4,"pts":311.1,"vorp":132.5,"rec":109.0,"depth_rank":1,"injury":null,"ecr":1,"bye":"6"},{"player":"Puka Nacua","pos":"WR","team":"LAR","adp":4.9,"pts":312.5,"vorp":133.9,"rec":107.0,"depth_rank":1,"injury":null,"ecr":2,"bye":"11"},{"player":"Christian McCaffrey","pos":"RB","team":"SF","adp":5.0,"pts":291.0,"vorp":137.3,"rec":70.0,"depth_rank":1,"injury":null,"ecr":7,"bye":"8"},{"player":"Jaxon Smith-Njigba","pos":"WR","team":"SEA","adp":5.4,"pts":284.6,"vorp":106.0,"rec":99.0,"depth_rank":1,"injury":null,"ecr":5,"bye":"11"},{"player":"Jonathan Taylor","pos":"RB","team":"IND","adp":7.7,"pts":272.3,"vorp":118.6,"rec":36.0,"depth_rank":1,"injury":null,"ecr":10,"bye":"13"},{"player":"Amon-Ra St. Brown","pos":"WR","team":"DET","adp":8.1,"pts":280.5,"vorp":101.9,"rec":106.0,"depth_rank":1,"injury":null,"ecr":6,"bye":"6"},{"player":"CeeDee Lamb","pos":"WR","team":"DAL","adp":10.6,"pts":270.5,"vorp":91.9,"rec":96.0,"depth_rank":1,"injury":null,"ecr":8,"bye":"14"},{"player":"Justin Jefferson","pos":"WR","team":"MIN","adp":12.4,"pts":250.4,"vorp":71.8,"rec":90.0,"depth_rank":1,"injury":null,"ecr":9,"bye":"6"},{"player":"De'Von Achane","pos":"RB","team":"MIA","adp":12.5,"pts":245.4,"vorp":91.7,"rec":55.0,"depth_rank":1,"injury":null,"ecr":21,"bye":"6"},{"player":"James Cook","pos":"RB","team":"BUF","adp":12.7,"pts":260.8,"vorp":107.1,"rec":31.0,"depth_rank":1,"injury":null,"ecr":17,"bye":"7"},{"player":"Drake London","pos":"WR","team":"ATL","adp":14.1,"pts":250.2,"vorp":71.6,"rec":90.0,"depth_rank":1,"injury":null,"ecr":11,"bye":"11"},{"player":"Ashton Jeanty","pos":"RB","team":"LV","adp":15.4,"pts":259.5,"vorp":105.8,"rec":50.0,"depth_rank":1,"injury":null,"ecr":14,"bye":"13"},{"player":"Saquon Barkley","pos":"RB","team":"PHI","adp":16.6,"pts":246.7,"vorp":93.0,"rec":37.0,"depth_rank":1,"injury":null,"ecr":25,"bye":"10"},{"player":"Trey McBride","pos":"TE","team":"ARI","adp":18.7,"pts":234.9,"vorp":75.1,"rec":96.0,"depth_rank":1,"injury":null,"ecr":18,"bye":"14"},{"player":"Omarion Hampton","pos":"RB","team":"LAC","adp":18.8,"pts":242.9,"vorp":89.2,"rec":48.0,"depth_rank":1,"injury":null,"ecr":23,"bye":"7"},{"player":"Chase Brown","pos":"RB","team":"CIN","adp":19.0,"pts":255.2,"vorp":101.5,"rec":57.0,"depth_rank":1,"injury":null,"ecr":15,"bye":"6"},{"player":"A.J. Brown","pos":"WR","team":"NE","adp":19.4,"pts":249.5,"vorp":70.9,"rec":80.0,"depth_rank":1,"injury":null,"ecr":12,"bye":"11"},{"player":"Jeremiyah Love","pos":"RB","team":"ARI","adp":19.7,"pts":238.5,"vorp":84.8,"rec":53.0,"depth_rank":1,"injury":null,"ecr":39,"bye":"14"},{"player":"Brock Bowers","pos":"TE","team":"LV","adp":20.2,"pts":253.5,"vorp":93.7,"rec":102.0,"depth_rank":1,"injury":null,"ecr":20,"bye":"13"},{"player":"Rashee Rice","pos":"WR","team":"KC","adp":22.7,"pts":239.6,"vorp":61.0,"rec":93.0,"depth_rank":1,"injury":null,"ecr":19,"bye":"5"},{"player":"Kenneth Walker","pos":"RB","team":"KC","adp":22.9,"pts":244.0,"vorp":90.3,"rec":37.0,"depth_rank":1,"injury":null,"ecr":27,"bye":"5"},{"player":"George Pickens","pos":"WR","team":"DAL","adp":23.1,"pts":245.7,"vorp":67.1,"rec":80.0,"depth_rank":1,"injury":null,"ecr":16,"bye":"14"},{"player":"Derrick Henry","pos":"RB","team":"BAL","adp":24.6,"pts":246.9,"vorp":93.2,"rec":17.0,"depth_rank":1,"injury":null,"ecr":35,"bye":"13"},{"player":"Nico Collins","pos":"WR","team":"HOU","adp":25.2,"pts":251.5,"vorp":72.9,"rec":82.0,"depth_rank":1,"injury":null,"ecr":13,"bye":"8"},{"player":"Chris Olave","pos":"WR","team":"NO","adp":26.4,"pts":231.8,"vorp":53.2,"rec":80.0,"depth_rank":1,"injury":null,"ecr":22,"bye":"8"},{"player":"Malik Nabers","pos":"WR","team":"NYG","adp":27.3,"pts":233.3,"vorp":54.7,"rec":82.0,"depth_rank":1,"injury":"Questionable","ecr":32,"bye":"8"},{"player":"Josh Jacobs","pos":"RB","team":"GB","adp":27.6,"pts":202.6,"vorp":48.9,"rec":33.0,"depth_rank":1,"injury":null,"ecr":44,"bye":"11"},{"player":"Josh Allen","pos":"QB","team":"BUF","adp":28.2,"pts":361.5,"vorp":74.8,"rec":null,"depth_rank":1,"injury":null,"ecr":26,"bye":"7"},{"player":"Kyren Williams","pos":"RB","team":"LAR","adp":32.2,"pts":208.0,"vorp":54.3,"rec":32.0,"depth_rank":1,"injury":null,"ecr":42,"bye":"11"},{"player":"Breece Hall","pos":"RB","team":"NYJ","adp":32.3,"pts":214.6,"vorp":60.9,"rec":38.0,"depth_rank":1,"injury":null,"ecr":41,"bye":"13"},{"player":"Bucky Irving","pos":"RB","team":"TB","adp":34.4,"pts":197.3,"vorp":43.6,"rec":36.0,"depth_rank":1,"injury":null,"ecr":59,"bye":"10"},{"player":"Tee Higgins","pos":"WR","team":"CIN","adp":35.5,"pts":215.4,"vorp":36.8,"rec":71.0,"depth_rank":1,"injury":null,"ecr":33,"bye":"6"},{"player":"Travis Etienne","pos":"RB","team":"NO","adp":36.7,"pts":207.7,"vorp":54.0,"rec":36.0,"depth_rank":1,"injury":null,"ecr":49,"bye":"8"},{"player":"Tetairoa McMillan","pos":"WR","team":"CAR","adp":37.3,"pts":215.9,"vorp":37.3,"rec":74.0,"depth_rank":1,"injury":null,"ecr":31,"bye":"5"},{"player":"Lamar Jackson","pos":"QB","team":"BAL","adp":37.9,"pts":326.0,"vorp":39.3,"rec":null,"depth_rank":1,"injury":null,"ecr":30,"bye":"13"},{"player":"Javonte Williams","pos":"RB","team":"DAL","adp":38.3,"pts":207.3,"vorp":53.6,"rec":37.0,"depth_rank":1,"injury":null,"ecr":46,"bye":"14"},{"player":"Garrett Wilson","pos":"WR","team":"NYJ","adp":40.9,"pts":231.1,"vorp":52.5,"rec":86.0,"depth_rank":1,"injury":null,"ecr":29,"bye":"13"},{"player":"Luther Burden","pos":"WR","team":"CHI","adp":41.1,"pts":202.7,"vorp":24.1,"rec":72.0,"depth_rank":1,"injury":null,"ecr":47,"bye":"10"},{"player":"Colston Loveland","pos":"TE","team":"CHI","adp":41.2,"pts":215.4,"vorp":55.6,"rec":84.0,"depth_rank":1,"injury":null,"ecr":38,"bye":"10"},{"player":"Ladd McConkey","pos":"WR","team":"LAC","adp":41.9,"pts":210.3,"vorp":31.7,"rec":77.0,"depth_rank":1,"injury":null,"ecr":34,"bye":"7"},{"player":"Zay Flowers","pos":"WR","team":"BAL","adp":43.8,"pts":228.2,"vorp":49.6,"rec":81.0,"depth_rank":1,"injury":null,"ecr":28,"bye":"13"},{"player":"DeVonta Smith","pos":"WR","team":"PHI","adp":44.9,"pts":229.2,"vorp":50.6,"rec":80.0,"depth_rank":1,"injury":"Questionable","ecr":24,"bye":"10"},{"player":"Emeka Egbuka","pos":"WR","team":"TB","adp":45.8,"pts":220.0,"vorp":41.4,"rec":75.0,"depth_rank":1,"injury":null,"ecr":40,"bye":"10"},{"player":"Jaylen Waddle","pos":"WR","team":"DEN","adp":46.2,"pts":198.7,"vorp":20.1,"rec":70.0,"depth_rank":1,"injury":"Questionable","ecr":36,"bye":"10"},{"player":"Davante Adams","pos":"WR","team":"LAR","adp":46.9,"pts":188.2,"vorp":9.6,"rec":61.0,"depth_rank":1,"injury":null,"ecr":48,"bye":"11"},{"player":"TreVeyon Henderson","pos":"RB","team":"NE","adp":47.8,"pts":179.5,"vorp":25.8,"rec":35.0,"depth_rank":2,"injury":null,"ecr":63,"bye":"11"},{"player":"Cam Skattebo","pos":"RB","team":"NYG","adp":48.7,"pts":209.5,"vorp":55.8,"rec":44.0,"depth_rank":1,"injury":null,"ecr":52,"bye":"8"},{"player":"Tyler Warren","pos":"TE","team":"IND","adp":50.1,"pts":201.1,"vorp":41.3,"rec":83.0,"depth_rank":1,"injury":null,"ecr":53,"bye":"13"},{"player":"Drake Maye","pos":"QB","team":"NE","adp":51.2,"pts":320.8,"vorp":34.1,"rec":null,"depth_rank":1,"injury":null,"ecr":37,"bye":"11"},{"player":"Jameson Williams","pos":"WR","team":"DET","adp":51.6,"pts":206.2,"vorp":27.6,"rec":60.0,"depth_rank":1,"injury":null,"ecr":55,"bye":"6"},{"player":"Quinshon Judkins","pos":"RB","team":"CLE","adp":55.0,"pts":196.0,"vorp":42.3,"rec":32.0,"depth_rank":1,"injury":null,"ecr":60,"bye":"11"},{"player":"David Montgomery","pos":"RB","team":"HOU","adp":56.3,"pts":202.1,"vorp":48.4,"rec":33.0,"depth_rank":1,"injury":null,"ecr":62,"bye":"8"},{"player":"Terry McLaurin","pos":"WR","team":"WAS","adp":56.6,"pts":216.2,"vorp":37.6,"rec":75.0,"depth_rank":1,"injury":null,"ecr":43,"bye":"7"},{"player":"Joe Burrow","pos":"QB","team":"CIN","adp":57.1,"pts":306.1,"vorp":19.4,"rec":null,"depth_rank":1,"injury":null,"ecr":45,"bye":"6"},{"player":"Mike Evans","pos":"WR","team":"SF","adp":57.8,"pts":222.2,"vorp":43.6,"rec":70.0,"depth_rank":1,"injury":"Questionable","ecr":51,"bye":"8"},{"player":"DJ Moore","pos":"WR","team":"BUF","adp":59.3,"pts":179.0,"vorp":0.4,"rec":63.0,"depth_rank":1,"injury":null,"ecr":54,"bye":"7"},{"player":"Bhayshul Tuten","pos":"RB","team":"JAX","adp":60.4,"pts":174.8,"vorp":21.1,"rec":32.0,"depth_rank":1,"injury":null,"ecr":67,"bye":"7"},{"player":"Jayden Daniels","pos":"QB","team":"WAS","adp":62.1,"pts":313.7,"vorp":27.0,"rec":null,"depth_rank":1,"injury":null,"ecr":50,"bye":"7"},{"player":"Harold Fannin","pos":"TE","team":"CLE","adp":62.6,"pts":180.4,"vorp":20.6,"rec":74.0,"depth_rank":1,"injury":null,"ecr":71,"bye":"11"},{"player":"Carnell Tate","pos":"WR","team":"TEN","adp":62.9,"pts":190.3,"vorp":11.7,"rec":71.0,"depth_rank":1,"injury":null,"ecr":64,"bye":"9"},{"player":"Rome Odunze","pos":"WR","team":"CHI","adp":64.2,"pts":201.9,"vorp":23.3,"rec":68.0,"depth_rank":1,"injury":null,"ecr":58,"bye":"10"},{"player":"D'Andre Swift","pos":"RB","team":"CHI","adp":65.1,"pts":205.7,"vorp":52.0,"rec":37.0,"depth_rank":1,"injury":null,"ecr":61,"bye":"10"},{"player":"Jalen Hurts","pos":"QB","team":"PHI","adp":67.2,"pts":310.5,"vorp":23.9,"rec":null,"depth_rank":1,"injury":null,"ecr":57,"bye":"10"},{"player":"Tucker Kraft","pos":"TE","team":"GB","adp":67.3,"pts":174.4,"vorp":14.6,"rec":67.0,"depth_rank":1,"injury":"Questionable","ecr":69,"bye":"11"},{"player":"Christian Watson","pos":"WR","team":"GB","adp":68.4,"pts":188.4,"vorp":9.8,"rec":57.0,"depth_rank":1,"injury":null,"ecr":56,"bye":"11"},{"player":"RJ Harvey","pos":"RB","team":"DEN","adp":68.4,"pts":144.1,"vorp":-9.6,"rec":37.0,"depth_rank":2,"injury":null,"ecr":93,"bye":"10"},{"player":"Jordyn Tyson","pos":"WR","team":"NO","adp":69.0,"pts":178.6,"vorp":0.0,"rec":66.0,"depth_rank":1,"injury":null,"ecr":91,"bye":"8"},{"player":"Brian Thomas","pos":"WR","team":"JAX","adp":69.6,"pts":195.4,"vorp":16.8,"rec":62.0,"depth_rank":1,"injury":null,"ecr":73,"bye":"7"},{"player":"Kyle Pitts","pos":"TE","team":"ATL","adp":71.3,"pts":171.6,"vorp":11.8,"rec":66.0,"depth_rank":1,"injury":null,"ecr":79,"bye":"11"},{"player":"DK Metcalf","pos":"WR","team":"PIT","adp":74.4,"pts":183.3,"vorp":4.7,"rec":62.0,"depth_rank":1,"injury":null,"ecr":74,"bye":"9"},{"player":"Jaylen Warren","pos":"RB","team":"PIT","adp":74.8,"pts":170.6,"vorp":16.9,"rec":36.0,"depth_rank":1,"injury":null,"ecr":70,"bye":"9"},{"player":"Chuba Hubbard","pos":"RB","team":"CAR","adp":74.9,"pts":162.9,"vorp":9.2,"rec":29.0,"depth_rank":1,"injury":null,"ecr":86,"bye":"5"},{"player":"Marvin Harrison","pos":"WR","team":"ARI","adp":75.8,"pts":186.2,"vorp":7.6,"rec":62.0,"depth_rank":1,"injury":null,"ecr":68,"bye":"14"},{"player":"Sam LaPorta","pos":"TE","team":"DET","adp":76.4,"pts":196.5,"vorp":36.7,"rec":76.0,"depth_rank":1,"injury":null,"ecr":85,"bye":"6"},{"player":"Makai Lemon","pos":"WR","team":"PHI","adp":76.6,"pts":168.5,"vorp":-10.1,"rec":60.0,"depth_rank":1,"injury":"Questionable","ecr":102,"bye":"10"},{"player":"Courtland Sutton","pos":"WR","team":"DEN","adp":77.9,"pts":174.3,"vorp":-4.3,"rec":59.0,"depth_rank":1,"injury":null,"ecr":80,"bye":"10"},{"player":"Michael Wilson","pos":"WR","team":"ARI","adp":80.2,"pts":166.0,"vorp":-12.6,"rec":59.0,"depth_rank":1,"injury":null,"ecr":88,"bye":"14"},{"player":"Jadarian Price","pos":"RB","team":"SEA","adp":80.3,"pts":170.0,"vorp":16.3,"rec":19.0,"depth_rank":2,"injury":null,"ecr":72,"bye":"11"},{"player":"Jaxson Dart","pos":"QB","team":"NYG","adp":80.6,"pts":296.5,"vorp":9.9,"rec":null,"depth_rank":1,"injury":null,"ecr":92,"bye":"8"},{"player":"Rhamondre Stevenson","pos":"RB","team":"NE","adp":82.7,"pts":166.3,"vorp":12.6,"rec":29.0,"depth_rank":1,"injury":null,"ecr":83,"bye":"11"},{"player":"Caleb Williams","pos":"QB","team":"CHI","adp":82.9,"pts":299.3,"vorp":12.7,"rec":null,"depth_rank":1,"injury":null,"ecr":65,"bye":"10"},{"player":"Parker Washington","pos":"WR","team":"JAX","adp":83.2,"pts":190.7,"vorp":12.1,"rec":65.0,"depth_rank":1,"injury":null,"ecr":77,"bye":"7"},{"player":"Alec Pierce","pos":"WR","team":"IND","adp":83.6,"pts":177.9,"vorp":-0.7,"rec":54.0,"depth_rank":1,"injury":"PUP","ecr":81,"bye":"13"},{"player":"Justin Herbert","pos":"QB","team":"LAC","adp":83.7,"pts":295.5,"vorp":8.8,"rec":null,"depth_rank":1,"injury":null,"ecr":66,"bye":"7"},{"player":"Tony Pollard","pos":"RB","team":"TEN","adp":85.6,"pts":160.1,"vorp":6.4,"rec":28.0,"depth_rank":1,"injury":null,"ecr":84,"bye":"9"},{"player":"Jakobi Meyers","pos":"WR","team":"JAX","adp":87.6,"pts":169.3,"vorp":-9.3,"rec":64.0,"depth_rank":1,"injury":null,"ecr":95,"bye":"7"},{"player":"Rico Dowdle","pos":"RB","team":"PIT","adp":88.1,"pts":161.1,"vorp":7.4,"rec":38.0,"depth_rank":2,"injury":null,"ecr":89,"bye":"9"},{"player":"Kyle Monangai","pos":"RB","team":"CHI","adp":89.5,"pts":154.6,"vorp":0.9,"rec":23.0,"depth_rank":2,"injury":null,"ecr":103,"bye":"10"},{"player":"Dak Prescott","pos":"QB","team":"DAL","adp":90.3,"pts":303.9,"vorp":17.2,"rec":null,"depth_rank":1,"injury":null,"ecr":78,"bye":"14"},{"player":"Trevor Lawrence","pos":"QB","team":"JAX","adp":92.3,"pts":303.4,"vorp":16.7,"rec":null,"depth_rank":1,"injury":null,"ecr":75,"bye":"7"},{"player":"J.K. Dobbins","pos":"RB","team":"DEN","adp":92.5,"pts":160.2,"vorp":6.5,"rec":26.0,"depth_rank":1,"injury":null,"ecr":101,"bye":"10"},{"player":"Chris Godwin","pos":"WR","team":"TB","adp":92.6,"pts":173.6,"vorp":-5.0,"rec":68.0,"depth_rank":1,"injury":null,"ecr":76,"bye":"10"},{"player":"Oronde Gadsden","pos":"TE","team":"LAC","adp":94.7,"pts":141.8,"vorp":-18.0,"rec":56.0,"depth_rank":1,"injury":null,"ecr":163,"bye":"7"},{"player":"Dalton Kincaid","pos":"TE","team":"BUF","adp":97.1,"pts":163.6,"vorp":3.8,"rec":66.0,"depth_rank":1,"injury":null,"ecr":114,"bye":"7"},{"player":"George Kittle","pos":"TE","team":"SF","adp":97.4,"pts":169.3,"vorp":9.5,"rec":62.0,"depth_rank":1,"injury":"PUP","ecr":106,"bye":"8"},{"player":"Blake Corum","pos":"RB","team":"LAR","adp":98.3,"pts":135.3,"vorp":-18.4,"rec":15.0,"depth_rank":2,"injury":null,"ecr":110,"bye":"11"},{"player":"Patrick Mahomes","pos":"QB","team":"KC","adp":100.1,"pts":286.7,"vorp":0.0,"rec":null,"depth_rank":1,"injury":"Questionable","ecr":99,"bye":"5"},{"player":"Jordan Addison","pos":"WR","team":"MIN","adp":100.7,"pts":171.7,"vorp":-6.9,"rec":60.0,"depth_rank":1,"injury":null,"ecr":105,"bye":"6"},{"player":"Quentin Johnston","pos":"WR","team":"LAC","adp":102.6,"pts":163.9,"vorp":-14.7,"rec":58.0,"depth_rank":1,"injury":null,"ecr":96,"bye":"7"},{"player":"Michael Pittman","pos":"WR","team":"PIT","adp":102.9,"pts":170.9,"vorp":-7.7,"rec":69.0,"depth_rank":1,"injury":null,"ecr":82,"bye":"9"},{"player":"Wan'Dale Robinson","pos":"WR","team":"TEN","adp":103.0,"pts":164.1,"vorp":-14.5,"rec":68.0,"depth_rank":1,"injury":null,"ecr":87,"bye":"9"},{"player":"Brock Purdy","pos":"QB","team":"SF","adp":103.5,"pts":303.2,"vorp":16.5,"rec":null,"depth_rank":1,"injury":null,"ecr":94,"bye":"8"},{"player":"Jake Ferguson","pos":"TE","team":"DAL","adp":104.0,"pts":159.8,"vorp":0.0,"rec":70.0,"depth_rank":1,"injury":null,"ecr":112,"bye":"14"},{"player":"Hunter Henry","pos":"TE","team":"NE","adp":106.2,"pts":153.5,"vorp":-6.3,"rec":58.0,"depth_rank":1,"injury":null,"ecr":153,"bye":"11"},{"player":"Kenny Gainwell","pos":"RB","team":"TB","adp":106.9,"pts":152.3,"vorp":-1.4,"rec":47.0,"depth_rank":2,"injury":null,"ecr":98,"bye":"10"},{"player":"Travis Kelce","pos":"TE","team":"KC","adp":107.1,"pts":171.4,"vorp":11.6,"rec":70.0,"depth_rank":1,"injury":null,"ecr":97,"bye":"5"},{"player":"Aaron Jones","pos":"RB","team":"MIN","adp":108.8,"pts":137.1,"vorp":-16.6,"rec":34.0,"depth_rank":1,"injury":null,"ecr":111,"bye":"6"},{"player":"Dallas Goedert","pos":"TE","team":"PHI","adp":109.1,"pts":136.0,"vorp":-23.8,"rec":53.0,"depth_rank":1,"injury":null,"ecr":120,"bye":"10"},{"player":"Mark Andrews","pos":"TE","team":"BAL","adp":110.7,"pts":162.5,"vorp":2.7,"rec":60.0,"depth_rank":1,"injury":null,"ecr":126,"bye":"13"},{"player":"Jacory Croskey-Merritt","pos":"RB","team":"WAS","adp":114.9,"pts":127.9,"vorp":-25.8,"rec":19.0,"depth_rank":1,"injury":null,"ecr":125,"bye":"7"},{"player":"Matthew Stafford","pos":"QB","team":"LAR","adp":115.2,"pts":280.2,"vorp":-6.5,"rec":null,"depth_rank":1,"injury":null,"ecr":104,"bye":"11"},{"player":"Romeo Doubs","pos":"WR","team":"NE","adp":115.3,"pts":161.2,"vorp":-17.4,"rec":57.0,"depth_rank":1,"injury":null,"ecr":128,"bye":"11"},{"player":"Los Angeles Rams","pos":"DST","team":"LAR","adp":115.5,"pts":106.0,"vorp":19.0,"rec":null,"depth_rank":null,"injury":null,"ecr":170,"bye":"11"},{"player":"Jayden Reed","pos":"WR","team":"GB","adp":116.0,"pts":185.8,"vorp":7.2,"rec":64.0,"depth_rank":1,"injury":null,"ecr":108,"bye":"11"},{"player":"Isaiah Likely","pos":"TE","team":"NYG","adp":117.3,"pts":157.3,"vorp":-2.5,"rec":62.0,"depth_rank":1,"injury":null,"ecr":123,"bye":"8"},{"player":"Kenyon Sadiq","pos":"TE","team":"NYJ","adp":118.2,"pts":131.1,"vorp":-28.7,"rec":52.0,"depth_rank":1,"injury":"Questionable","ecr":201,"bye":"13"},{"player":"Bo Nix","pos":"QB","team":"DEN","adp":118.7,"pts":295.7,"vorp":9.0,"rec":null,"depth_rank":1,"injury":null,"ecr":100,"bye":"10"},{"player":"Houston Texans","pos":"DST","team":"HOU","adp":119.0,"pts":104.0,"vorp":17.0,"rec":null,"depth_rank":null,"injury":null,"ecr":158,"bye":"8"},{"player":"Jared Goff","pos":"QB","team":"DET","adp":122.0,"pts":283.5,"vorp":-3.2,"rec":null,"depth_rank":1,"injury":null,"ecr":109,"bye":"6"},{"player":"Brian Robinson","pos":"RB","team":"ATL","adp":123.8,"pts":69.9,"vorp":-83.8,"rec":13.0,"depth_rank":2,"injury":null,"ecr":157,"bye":"11"},{"player":"Seattle Seahawks","pos":"DST","team":"SEA","adp":124.2,"pts":103.0,"vorp":16.0,"rec":null,"depth_rank":null,"injury":null,"ecr":169,"bye":"11"},{"player":"Jordan Love","pos":"QB","team":"GB","adp":124.8,"pts":278.5,"vorp":-8.2,"rec":null,"depth_rank":1,"injury":null,"ecr":117,"bye":"11"},{"player":"Josh Downs","pos":"WR","team":"IND","adp":125.1,"pts":172.4,"vorp":-6.2,"rec":70.0,"depth_rank":1,"injury":null,"ecr":90,"bye":"13"},{"player":"Zach Charbonnet","pos":"RB","team":"SEA","adp":125.8,"pts":67.2,"vorp":-86.5,"rec":11.0,"depth_rank":1,"injury":"PUP","ecr":140,"bye":"11"},{"player":"Stefon Diggs","pos":"WR","team":"FA","adp":125.9,"pts":163.5,"vorp":-15.1,"rec":62.0,"depth_rank":1,"injury":null,"ecr":178,"bye":null},{"player":"Rachaad White","pos":"RB","team":"WAS","adp":127.2,"pts":128.1,"vorp":-25.6,"rec":34.0,"depth_rank":2,"injury":null,"ecr":107,"bye":"7"},{"player":"Brenton Strange","pos":"TE","team":"JAX","adp":128.8,"pts":161.0,"vorp":1.2,"rec":63.0,"depth_rank":1,"injury":null,"ecr":147,"bye":"7"},{"player":"Philadelphia Eagles","pos":"DST","team":"PHI","adp":129.0,"pts":98.0,"vorp":11.0,"rec":null,"depth_rank":null,"injury":null,"ecr":172,"bye":"10"},{"player":"Jordan Mason","pos":"RB","team":"MIN","adp":130.5,"pts":153.7,"vorp":0.0,"rec":20.0,"depth_rank":2,"injury":null,"ecr":124,"bye":"6"},{"player":"Jayden Higgins","pos":"WR","team":"HOU","adp":131.1,"pts":165.4,"vorp":-13.2,"rec":57.0,"depth_rank":1,"injury":null,"ecr":118,"bye":"8"},{"player":"Tyler Allgeier","pos":"RB","team":"ARI","adp":132.5,"pts":69.4,"vorp":-84.3,"rec":8.0,"depth_rank":2,"injury":null,"ecr":135,"bye":"14"},{"player":"Denver Broncos","pos":"DST","team":"DEN","adp":132.8,"pts":96.0,"vorp":9.0,"rec":null,"depth_rank":null,"injury":null,"ecr":167,"bye":"10"},{"player":"Khalil Shakir","pos":"WR","team":"BUF","adp":133.8,"pts":166.5,"vorp":-12.1,"rec":69.0,"depth_rank":1,"injury":null,"ecr":119,"bye":"7"},{"player":"Matthew Golden","pos":"WR","team":"GB","adp":134.1,"pts":158.8,"vorp":-19.8,"rec":53.0,"depth_rank":1,"injury":null,"ecr":132,"bye":"11"},{"player":"Xavier Worthy","pos":"WR","team":"KC","adp":134.9,"pts":161.5,"vorp":-17.1,"rec":55.0,"depth_rank":1,"injury":"Questionable","ecr":122,"bye":"5"},{"player":"Juwan Johnson","pos":"TE","team":"NO","adp":135.3,"pts":136.6,"vorp":-23.2,"rec":54.0,"depth_rank":1,"injury":null,"ecr":143,"bye":"8"},{"player":"Jalen Coker","pos":"WR","team":"CAR","adp":136.3,"pts":165.9,"vorp":-12.7,"rec":60.0,"depth_rank":1,"injury":null,"ecr":127,"bye":"5"},{"player":"Dalton Schultz","pos":"TE","team":"HOU","adp":137.0,"pts":133.5,"vorp":-26.3,"rec":55.0,"depth_rank":1,"injury":null,"ecr":166,"bye":"8"},{"player":"Malik Willis","pos":"QB","team":"MIA","adp":137.8,"pts":270.1,"vorp":-16.6,"rec":null,"depth_rank":1,"injury":null,"ecr":130,"bye":"6"},{"player":"Jonathon Brooks","pos":"RB","team":"CAR","adp":138.0,"pts":120.0,"vorp":-33.7,"rec":23.0,"depth_rank":2,"injury":null,"ecr":116,"bye":"5"},{"player":"Baker Mayfield","pos":"QB","team":"TB","adp":140.9,"pts":274.9,"vorp":-11.8,"rec":null,"depth_rank":1,"injury":null,"ecr":115,"bye":"10"},{"player":"T.J. Hockenson","pos":"TE","team":"MIN","adp":141.2,"pts":155.0,"vorp":-4.8,"rec":66.0,"depth_rank":1,"injury":null,"ecr":174,"bye":"6"},{"player":"Woody Marks","pos":"RB","team":"HOU","adp":141.2,"pts":83.8,"vorp":-69.9,"rec":19.0,"depth_rank":2,"injury":null,"ecr":133,"bye":"8"},{"player":"Chris Rodriguez","pos":"RB","team":"JAX","adp":141.6,"pts":132.5,"vorp":-21.2,"rec":15.0,"depth_rank":2,"injury":null,"ecr":139,"bye":"7"},{"player":"Baltimore Ravens","pos":"DST","team":"BAL","adp":142.2,"pts":95.0,"vorp":8.0,"rec":null,"depth_rank":null,"injury":null,"ecr":204,"bye":"13"},{"player":"Kyler Murray","pos":"QB","team":"MIN","adp":142.2,"pts":265.2,"vorp":-21.5,"rec":null,"depth_rank":1,"injury":null,"ecr":113,"bye":"6"},{"player":"KC Concepcion","pos":"WR","team":"CLE","adp":143.2,"pts":156.4,"vorp":-22.2,"rec":58.0,"depth_rank":1,"injury":"Questionable","ecr":129,"bye":"11"},{"player":"Tyler Shough","pos":"QB","team":"NO","adp":144.4,"pts":270.9,"vorp":-15.7,"rec":null,"depth_rank":1,"injury":null,"ecr":121,"bye":"8"},{"player":"Jonah Coleman","pos":"RB","team":"DEN","adp":145.0,"pts":63.9,"vorp":-89.8,"rec":10.0,"depth_rank":3,"injury":null,"ecr":160,"bye":"10"},{"player":"Tyrone Tracy","pos":"RB","team":"NYG","adp":145.3,"pts":111.3,"vorp":-42.4,"rec":21.0,"depth_rank":2,"injury":null,"ecr":131,"bye":"8"},{"player":"Chig Okonkwo","pos":"TE","team":"WAS","adp":146.2,"pts":144.1,"vorp":-15.7,"rec":61.0,"depth_rank":1,"injury":null,"ecr":144,"bye":"7"},{"player":"Jauan Jennings","pos":"WR","team":"MIN","adp":146.3,"pts":105.7,"vorp":-72.9,"rec":39.0,"depth_rank":1,"injury":null,"ecr":148,"bye":"6"},{"player":"Denzel Boston","pos":"WR","team":"CLE","adp":147.5,"pts":123.9,"vorp":-54.7,"rec":48.0,"depth_rank":1,"injury":null,"ecr":156,"bye":"11"},{"player":"Omar Cooper","pos":"WR","team":"NYJ","adp":149.3,"pts":127.1,"vorp":-51.5,"rec":45.0,"depth_rank":1,"injury":null,"ecr":162,"bye":"13"},{"player":"New England Patriots","pos":"DST","team":"NE","adp":149.4,"pts":92.0,"vorp":5.0,"rec":null,"depth_rank":null,"injury":null,"ecr":187,"bye":"11"},{"player":"Emmett Johnson","pos":"RB","team":"KC","adp":149.7,"pts":65.2,"vorp":-88.5,"rec":12.0,"depth_rank":2,"injury":null,"ecr":195,"bye":"5"},{"player":"AJ Barner","pos":"TE","team":"SEA","adp":150.1,"pts":142.4,"vorp":-17.4,"rec":58.0,"depth_rank":1,"injury":null,"ecr":191,"bye":"11"},{"player":"Tyjae Spears","pos":"RB","team":"TEN","adp":151.9,"pts":114.6,"vorp":-39.1,"rec":35.0,"depth_rank":2,"injury":null,"ecr":136,"bye":"9"},{"player":"Rashid Shaheed","pos":"WR","team":"SEA","adp":152.2,"pts":138.1,"vorp":-40.5,"rec":45.0,"depth_rank":1,"injury":null,"ecr":141,"bye":"11"},{"player":"James Conner","pos":"RB","team":"ARI","adp":152.2,"pts":57.2,"vorp":-96.5,"rec":11.0,"depth_rank":3,"injury":"Questionable","ecr":179,"bye":"14"},{"player":"Alvin Kamara","pos":"RB","team":"NO","adp":157.7,"pts":63.0,"vorp":-90.7,"rec":20.0,"depth_rank":2,"injury":null,"ecr":138,"bye":"8"},{"player":"Terrance Ferguson","pos":"TE","team":"LAR","adp":158.7,"pts":87.5,"vorp":-72.3,"rec":32.0,"depth_rank":3,"injury":null,"ecr":237,"bye":"11"},{"player":"Minnesota Vikings","pos":"DST","team":"MIN","adp":160.0,"pts":92.0,"vorp":5.0,"rec":null,"depth_rank":null,"injury":null,"ecr":186,"bye":"6"},{"player":"Travis Hunter","pos":"WR","team":"JAX","adp":160.2,"pts":100.6,"vorp":-78.0,"rec":35.0,"depth_rank":2,"injury":null,"ecr":165,"bye":"7"},{"player":"Detroit Lions","pos":"DST","team":"DET","adp":162.2,"pts":92.0,"vorp":5.0,"rec":null,"depth_rank":null,"injury":null,"ecr":222,"bye":"6"},{"player":"Cade Otton","pos":"TE","team":"TB","adp":162.7,"pts":128.0,"vorp":-31.8,"rec":56.0,"depth_rank":1,"injury":null,"ecr":232,"bye":"10"},{"player":"C.J. Stroud","pos":"QB","team":"HOU","adp":163.4,"pts":238.2,"vorp":-48.5,"rec":null,"depth_rank":1,"injury":null,"ecr":134,"bye":"8"},{"player":"Jalen McMillan","pos":"WR","team":"TB","adp":163.7,"pts":127.4,"vorp":-51.2,"rec":44.0,"depth_rank":1,"injury":"Questionable","ecr":155,"bye":"10"},{"player":"Deebo Samuel","pos":"WR","team":"SF","adp":164.3,"pts":155.7,"vorp":-22.9,"rec":56.0,"depth_rank":1,"injury":null,"ecr":159,"bye":"8"},{"player":"Keaton Mitchell","pos":"RB","team":"LAC","adp":164.9,"pts":96.9,"vorp":-56.8,"rec":18.0,"depth_rank":3,"injury":null,"ecr":151,"bye":"7"},{"player":"Sam Darnold","pos":"QB","team":"SEA","adp":165.3,"pts":262.7,"vorp":-23.9,"rec":null,"depth_rank":1,"injury":null,"ecr":137,"bye":"11"},{"player":"Cam Ward","pos":"QB","team":"TEN","adp":165.9,"pts":227.8,"vorp":-58.8,"rec":null,"depth_rank":1,"injury":null,"ecr":145,"bye":"9"},{"player":"Dylan Sampson","pos":"RB","team":"CLE","adp":166.4,"pts":88.7,"vorp":-65.0,"rec":23.0,"depth_rank":2,"injury":null,"ecr":142,"bye":"11"},{"player":"Jalen Nailor","pos":"WR","team":"LV","adp":166.5,"pts":130.6,"vorp":-48.0,"rec":46.0,"depth_rank":1,"injury":null,"ecr":184,"bye":"13"},{"player":"Isiah Pacheco","pos":"RB","team":"DET","adp":167.2,"pts":53.6,"vorp":-100.1,"rec":10.0,"depth_rank":2,"injury":null,"ecr":146,"bye":"6"},{"player":"Antonio Williams","pos":"WR","team":"WAS","adp":168.1,"pts":97.0,"vorp":-81.6,"rec":35.0,"depth_rank":1,"injury":null,"ecr":198,"bye":"7"},{"player":"Fernando Mendoza","pos":"QB","team":"LV","adp":169.5,"pts":212.2,"vorp":-74.5,"rec":null,"depth_rank":2,"injury":null,"ecr":250,"bye":"13"},{"player":"Brandon Aubrey","pos":"K","team":"DAL","adp":171.1,"pts":116.0,"vorp":11.0,"rec":null,"depth_rank":null,"injury":null,"ecr":180,"bye":"14"},{"player":"Cameron Dicker","pos":"K","team":"LAC","adp":172.2,"pts":106.0,"vorp":1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":196,"bye":"7"},{"player":"David Njoku","pos":"TE","team":"LAC","adp":172.4,"pts":79.7,"vorp":-80.1,"rec":31.0,"depth_rank":2,"injury":null,"ecr":244,"bye":"7"},{"player":"Jerry Jeudy","pos":"WR","team":"CLE","adp":173.5,"pts":119.6,"vorp":-59.0,"rec":43.0,"depth_rank":1,"injury":null,"ecr":149,"bye":"11"},{"player":"Eli Stowers","pos":"TE","team":"PHI","adp":173.9,"pts":81.4,"vorp":-78.4,"rec":31.0,"depth_rank":2,"injury":null,"ecr":266,"bye":"10"},{"player":"Tyreek Hill","pos":"WR","team":"FA","adp":174.0,"pts":93.7,"vorp":-84.9,"rec":33.0,"depth_rank":null,"injury":"Questionable","ecr":293,"bye":null},{"player":"Braelon Allen","pos":"RB","team":"NYJ","adp":174.1,"pts":52.2,"vorp":-101.5,"rec":10.0,"depth_rank":2,"injury":null,"ecr":171,"bye":"13"},{"player":"Jason Myers","pos":"K","team":"SEA","adp":175.5,"pts":111.0,"vorp":6.0,"rec":null,"depth_rank":null,"injury":null,"ecr":205,"bye":"11"},{"player":"Nicholas Singleton","pos":"RB","team":"TEN","adp":176.4,"pts":63.7,"vorp":-90.0,"rec":12.0,"depth_rank":3,"injury":null,"ecr":216,"bye":"9"},{"player":"Jacksonville Jaguars","pos":"DST","team":"JAX","adp":177.2,"pts":91.0,"vorp":4.0,"rec":null,"depth_rank":null,"injury":null,"ecr":185,"bye":"7"},{"player":"Adonai Mitchell","pos":"WR","team":"NYJ","adp":177.9,"pts":98.3,"vorp":-80.3,"rec":35.0,"depth_rank":1,"injury":null,"ecr":154,"bye":"13"},{"player":"Kayshon Boutte","pos":"WR","team":"NE","adp":178.7,"pts":94.6,"vorp":-84.0,"rec":31.0,"depth_rank":1,"injury":null,"ecr":176,"bye":"11"},{"player":"Mike Washington","pos":"RB","team":"LV","adp":179.1,"pts":62.0,"vorp":-91.7,"rec":9.0,"depth_rank":2,"injury":null,"ecr":213,"bye":"13"},{"player":"Zachariah Branch","pos":"WR","team":"ATL","adp":180.4,"pts":100.6,"vorp":-78.0,"rec":37.0,"depth_rank":2,"injury":null,"ecr":231,"bye":"11"},{"player":"Harrison Mevis","pos":"K","team":"LAR","adp":181.0,"pts":106.0,"vorp":1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":235,"bye":"11"},{"player":"Kimani Vidal","pos":"RB","team":"LAC","adp":181.1,"pts":60.0,"vorp":-93.7,"rec":14.0,"depth_rank":2,"injury":null,"ecr":183,"bye":"7"},{"player":"Kaytron Allen","pos":"RB","team":"WAS","adp":181.2,"pts":45.9,"vorp":-107.8,"rec":8.0,"depth_rank":3,"injury":null,"ecr":225,"bye":"7"},{"player":"Pittsburgh Steelers","pos":"DST","team":"PIT","adp":181.2,"pts":88.0,"vorp":1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":182,"bye":"9"},{"player":"Trey Benson","pos":"RB","team":"ARI","adp":182.2,"pts":27.2,"vorp":-126.5,"rec":3.0,"depth_rank":4,"injury":null,"ecr":273,"bye":"14"},{"player":"Andy Borregales","pos":"K","team":"NE","adp":184.0,"pts":96.0,"vorp":-9.0,"rec":null,"depth_rank":null,"injury":null,"ecr":224,"bye":"11"},{"player":"Troy Franklin","pos":"WR","team":"DEN","adp":184.7,"pts":85.6,"vorp":-93.0,"rec":30.0,"depth_rank":1,"injury":null,"ecr":181,"bye":"10"},{"player":"Tank Bigsby","pos":"RB","team":"PHI","adp":187.7,"pts":65.2,"vorp":-88.5,"rec":8.0,"depth_rank":2,"injury":null,"ecr":161,"bye":"10"},{"player":"Kansas City Chiefs","pos":"DST","team":"KC","adp":189.2,"pts":87.0,"vorp":0.0,"rec":null,"depth_rank":null,"injury":null,"ecr":215,"bye":"5"},{"player":"Brandon Aiyuk","pos":"WR","team":"SF","adp":190.2,"pts":49.6,"vorp":-129.0,"rec":16.0,"depth_rank":3,"injury":"DNR","ecr":256,"bye":"8"},{"player":"Jake Tonges","pos":"TE","team":"SF","adp":191.4,"pts":70.8,"vorp":-89.0,"rec":30.0,"depth_rank":2,"injury":null,"ecr":314,"bye":"8"},{"player":"Ka'imi Fairbairn","pos":"K","team":"HOU","adp":192.0,"pts":113.0,"vorp":8.0,"rec":null,"depth_rank":null,"injury":null,"ecr":197,"bye":"8"},{"player":"New York Giants","pos":"DST","team":"NYG","adp":192.5,"pts":86.0,"vorp":-1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":360,"bye":"8"},{"player":"Sean Tucker","pos":"RB","team":"TB","adp":192.8,"pts":52.5,"vorp":-101.2,"rec":8.0,"depth_rank":3,"injury":null,"ecr":194,"bye":"10"},{"player":"Bryce Young","pos":"QB","team":"CAR","adp":194.2,"pts":235.6,"vorp":-51.1,"rec":null,"depth_rank":1,"injury":null,"ecr":152,"bye":"5"},{"player":"Tre' Harris","pos":"WR","team":"LAC","adp":194.5,"pts":112.9,"vorp":-65.7,"rec":39.0,"depth_rank":1,"injury":null,"ecr":168,"bye":"7"},{"player":"Daniel Jones","pos":"QB","team":"IND","adp":195.1,"pts":223.5,"vorp":-63.1,"rec":null,"depth_rank":1,"injury":null,"ecr":150,"bye":"13"},{"player":"Los Angeles Chargers","pos":"DST","team":"LAC","adp":197.6,"pts":86.0,"vorp":-1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":192,"bye":"7"},{"player":"Ja'Kobi Lane","pos":"WR","team":"BAL","adp":197.8,"pts":90.1,"vorp":-88.5,"rec":32.0,"depth_rank":2,"injury":null,"ecr":305,"bye":"13"},{"player":"Isaac TeSlaa","pos":"WR","team":"DET","adp":198.6,"pts":105.4,"vorp":-73.2,"rec":33.0,"depth_rank":1,"injury":null,"ecr":202,"bye":"6"},{"player":"Elic Ayomanor","pos":"WR","team":"TEN","adp":199.8,"pts":56.7,"vorp":-121.9,"rec":20.0,"depth_rank":2,"injury":null,"ecr":246,"bye":"9"},{"player":"Colby Parkinson","pos":"TE","team":"LAR","adp":200.2,"pts":78.8,"vorp":-81.0,"rec":30.0,"depth_rank":1,"injury":null,"ecr":251,"bye":"11"},{"player":"Gunnar Helm","pos":"TE","team":"TEN","adp":200.8,"pts":130.3,"vorp":-29.5,"rec":57.0,"depth_rank":1,"injury":null,"ecr":206,"bye":"9"},{"player":"Jacoby Brissett","pos":"QB","team":"ARI","adp":200.9,"pts":160.0,"vorp":-126.7,"rec":null,"depth_rank":1,"injury":null,"ecr":175,"bye":"14"},{"player":"Cam Little","pos":"K","team":"JAX","adp":201.0,"pts":112.0,"vorp":7.0,"rec":null,"depth_rank":null,"injury":null,"ecr":203,"bye":"7"},{"player":"De'Zhaun Stribling","pos":"WR","team":"SF","adp":202.4,"pts":128.4,"vorp":-50.2,"rec":46.0,"depth_rank":2,"injury":"Questionable","ecr":177,"bye":"8"},{"player":"Emanuel Wilson","pos":"RB","team":"SEA","adp":203.3,"pts":56.5,"vorp":-97.2,"rec":11.0,"depth_rank":4,"injury":null,"ecr":209,"bye":"11"},{"player":"Green Bay Packers","pos":"DST","team":"GB","adp":203.4,"pts":86.0,"vorp":-1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":211,"bye":"11"},{"player":"Eddy Pineiro","pos":"K","team":"SF","adp":204.0,"pts":101.0,"vorp":-4.0,"rec":null,"depth_rank":null,"injury":null,"ecr":208,"bye":"8"},{"player":"Will Reichard","pos":"K","team":"MIN","adp":204.4,"pts":109.0,"vorp":4.0,"rec":null,"depth_rank":null,"injury":null,"ecr":278,"bye":"6"},{"player":"Dallas Cowboys","pos":"DST","team":"DAL","adp":205.5,"pts":86.0,"vorp":-1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":348,"bye":"14"},{"player":"Tank Dell","pos":"WR","team":"HOU","adp":206.7,"pts":69.4,"vorp":-109.2,"rec":24.0,"depth_rank":2,"injury":"Questionable","ecr":218,"bye":"8"},{"player":"Tre Tucker","pos":"WR","team":"LV","adp":207.2,"pts":111.8,"vorp":-66.8,"rec":40.0,"depth_rank":1,"injury":null,"ecr":164,"bye":"13"},{"player":"Ray Davis","pos":"RB","team":"BUF","adp":208.6,"pts":65.1,"vorp":-88.6,"rec":9.0,"depth_rank":2,"injury":null,"ecr":189,"bye":"7"},{"player":"Chicago Bears","pos":"DST","team":"CHI","adp":209.2,"pts":85.0,"vorp":-2.0,"rec":null,"depth_rank":null,"injury":null,"ecr":315,"bye":"10"},{"player":"Devin Neal","pos":"RB","team":"NO","adp":211.9,"pts":31.9,"vorp":-121.8,"rec":7.0,"depth_rank":3,"injury":null,"ecr":276,"bye":"8"},{"player":"Najee Harris","pos":"RB","team":"FA","adp":212.3,"pts":26.3,"vorp":-127.4,"rec":5.0,"depth_rank":null,"injury":"Questionable","ecr":303,"bye":"7"},{"player":"Jaylin Noel","pos":"WR","team":"HOU","adp":213.7,"pts":82.9,"vorp":-95.7,"rec":31.0,"depth_rank":1,"injury":"PUP","ecr":190,"bye":"8"},{"player":"San Francisco 49ers","pos":"DST","team":"SF","adp":214.0,"pts":84.0,"vorp":-3.0,"rec":null,"depth_rank":null,"injury":null,"ecr":279,"bye":"8"},{"player":"Jaylen Wright","pos":"RB","team":"MIA","adp":215.1,"pts":44.1,"vorp":-109.6,"rec":6.0,"depth_rank":2,"injury":null,"ecr":236,"bye":"6"},{"player":"Kaleb Johnson","pos":"RB","team":"PIT","adp":217.5,"pts":32.0,"vorp":-121.7,"rec":5.0,"depth_rank":3,"injury":null,"ecr":288,"bye":"9"},{"player":"Demond Claiborne","pos":"RB","team":"MIN","adp":218.3,"pts":33.5,"vorp":-120.2,"rec":9.0,"depth_rank":3,"injury":null,"ecr":258,"bye":"6"},{"player":"Indianapolis Colts","pos":"DST","team":"IND","adp":219.0,"pts":84.0,"vorp":-3.0,"rec":null,"depth_rank":null,"injury":null,"ecr":311,"bye":"13"},{"player":"Marvin Mims","pos":"WR","team":"DEN","adp":219.5,"pts":69.9,"vorp":-108.7,"rec":27.0,"depth_rank":2,"injury":null,"ecr":268,"bye":"10"},{"player":"Germie Bernard","pos":"WR","team":"PIT","adp":220.8,"pts":98.9,"vorp":-79.7,"rec":36.0,"depth_rank":2,"injury":null,"ecr":234,"bye":"9"},{"player":"Darnell Mooney","pos":"WR","team":"NYG","adp":221.1,"pts":58.6,"vorp":-120.0,"rec":19.0,"depth_rank":1,"injury":null,"ecr":200,"bye":"8"},{"player":"Kyle Williams","pos":"WR","team":"NE","adp":222.1,"pts":31.2,"vorp":-147.4,"rec":10.0,"depth_rank":2,"injury":null,"ecr":298,"bye":"11"},{"player":"Cairo Santos","pos":"K","team":"CHI","adp":222.2,"pts":100.0,"vorp":-5.0,"rec":null,"depth_rank":null,"injury":null,"ecr":220,"bye":"10"},{"player":"Pat Bryant","pos":"WR","team":"DEN","adp":222.5,"pts":96.4,"vorp":-82.2,"rec":35.0,"depth_rank":2,"injury":null,"ecr":207,"bye":"10"},{"player":"Ted Hurst","pos":"WR","team":"TB","adp":223.5,"pts":97.9,"vorp":-80.7,"rec":36.0,"depth_rank":2,"injury":null,"ecr":239,"bye":"10"},{"player":"Harrison Butker","pos":"K","team":"KC","adp":224.0,"pts":100.0,"vorp":-5.0,"rec":null,"depth_rank":null,"injury":null,"ecr":241,"bye":"5"},{"player":"J.J. McCarthy","pos":"QB","team":"MIN","adp":224.2,"pts":19.6,"vorp":-267.1,"rec":null,"depth_rank":2,"injury":null,"ecr":329,"bye":"6"},{"player":"Evan McPherson","pos":"K","team":"CIN","adp":224.2,"pts":106.0,"vorp":1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":221,"bye":"6"},{"player":"Mason Taylor","pos":"TE","team":"NYJ","adp":224.3,"pts":77.3,"vorp":-82.5,"rec":33.0,"depth_rank":2,"injury":null,"ecr":269,"bye":"13"},{"player":"Kendre Miller","pos":"RB","team":"NO","adp":224.8,"pts":5.6,"vorp":-148.1,"rec":2.0,"depth_rank":4,"injury":null,"ecr":290,"bye":"8"},{"player":"Buffalo Bills","pos":"DST","team":"BUF","adp":225.2,"pts":84.0,"vorp":-3.0,"rec":null,"depth_rank":null,"injury":null,"ecr":230,"bye":"7"},{"player":"Shedeur Sanders","pos":"QB","team":"CLE","adp":225.8,"pts":97.1,"vorp":-189.6,"rec":null,"depth_rank":2,"injury":null,"ecr":292,"bye":"11"},{"player":"Brashard Smith","pos":"RB","team":"KC","adp":226.3,"pts":19.9,"vorp":-133.8,"rec":4.0,"depth_rank":4,"injury":null,"ecr":295,"bye":"5"},{"player":"Ryan Flournoy","pos":"WR","team":"DAL","adp":227.6,"pts":121.2,"vorp":-57.4,"rec":47.0,"depth_rank":1,"injury":null,"ecr":173,"bye":"14"},{"player":"Calvin Ridley","pos":"WR","team":"TEN","adp":227.7,"pts":77.3,"vorp":-101.3,"rec":27.0,"depth_rank":1,"injury":null,"ecr":188,"bye":"9"},{"player":"Michael Penix","pos":"QB","team":"ATL","adp":227.9,"pts":108.4,"vorp":-178.3,"rec":null,"depth_rank":2,"injury":"Questionable","ecr":282,"bye":"11"},{"player":"Atlanta Falcons","pos":"DST","team":"ATL","adp":228.4,"pts":83.0,"vorp":-4.0,"rec":null,"depth_rank":null,"injury":null,"ecr":280,"bye":"11"},{"player":"Tory Horton","pos":"WR","team":"SEA","adp":228.7,"pts":92.0,"vorp":-86.6,"rec":31.0,"depth_rank":2,"injury":null,"ecr":254,"bye":"11"},{"player":"Elijah Sarratt","pos":"WR","team":"BAL","adp":229.2,"pts":89.1,"vorp":-89.5,"rec":32.0,"depth_rank":2,"injury":null,"ecr":261,"bye":"13"},{"player":"Chimere Dike","pos":"WR","team":"TEN","adp":229.4,"pts":89.4,"vorp":-89.2,"rec":38.0,"depth_rank":2,"injury":null,"ecr":233,"bye":"9"},{"player":"Chris Bell","pos":"WR","team":"MIA","adp":231.4,"pts":91.2,"vorp":-87.4,"rec":33.0,"depth_rank":2,"injury":"PUP","ecr":257,"bye":"6"},{"player":"Theo Johnson","pos":"TE","team":"NYG","adp":232.2,"pts":77.0,"vorp":-82.8,"rec":31.0,"depth_rank":2,"injury":null,"ecr":274,"bye":"8"},{"player":"Tampa Bay Buccaneers","pos":"DST","team":"TB","adp":232.4,"pts":81.0,"vorp":-6.0,"rec":null,"depth_rank":null,"injury":null,"ecr":368,"bye":"10"},{"player":"Rashod Bateman","pos":"WR","team":"BAL","adp":232.7,"pts":84.1,"vorp":-94.5,"rec":28.0,"depth_rank":1,"injury":null,"ecr":212,"bye":"13"},{"player":"Jake Bates","pos":"K","team":"DET","adp":233.0,"pts":105.0,"vorp":0.0,"rec":null,"depth_rank":null,"injury":null,"ecr":223,"bye":"6"},{"player":"Keenan Allen","pos":"WR","team":"FA","adp":233.2,"pts":95.0,"vorp":-83.6,"rec":38.0,"depth_rank":null,"injury":null,"ecr":294,"bye":"7"},{"player":"Keon Coleman","pos":"WR","team":"BUF","adp":234.8,"pts":38.8,"vorp":-139.8,"rec":14.0,"depth_rank":2,"injury":null,"ecr":243,"bye":"7"},{"player":"Cooper Kupp","pos":"WR","team":"SEA","adp":235.2,"pts":86.4,"vorp":-92.2,"rec":32.0,"depth_rank":1,"injury":null,"ecr":217,"bye":"11"},{"player":"Tua Tagovailoa","pos":"QB","team":"ATL","adp":236.5,"pts":137.9,"vorp":-148.7,"rec":null,"depth_rank":1,"injury":"Questionable","ecr":252,"bye":"11"},{"player":"Jaydon Blue","pos":"RB","team":"DAL","adp":236.6,"pts":44.9,"vorp":-108.8,"rec":7.0,"depth_rank":2,"injury":null,"ecr":238,"bye":"14"},{"player":"Audric Estime","pos":"RB","team":"NO","adp":237.4,"pts":22.6,"vorp":-131.1,"rec":3.0,"depth_rank":null,"injury":null,"ecr":319,"bye":"8"},{"player":"Jack Bech","pos":"WR","team":"LV","adp":238.2,"pts":89.2,"vorp":-89.4,"rec":35.0,"depth_rank":1,"injury":null,"ecr":240,"bye":"13"},{"player":"Carolina Panthers","pos":"DST","team":"CAR","adp":238.4,"pts":81.0,"vorp":-6.0,"rec":null,"depth_rank":null,"injury":null,"ecr":339,"bye":"5"},{"player":"Tyler Loop","pos":"K","team":"BAL","adp":238.4,"pts":106.0,"vorp":1.0,"rec":null,"depth_rank":null,"injury":null,"ecr":210,"bye":"13"},{"player":"Chris Boswell","pos":"K","team":"PIT","adp":239.4,"pts":107.0,"vorp":2.0,"rec":null,"depth_rank":null,"injury":null,"ecr":247,"bye":"9"},{"player":"Devaughn Vele","pos":"WR","team":"NO","adp":239.8,"pts":91.0,"vorp":-87.6,"rec":33.0,"depth_rank":1,"injury":null,"ecr":281,"bye":"8"},{"player":"Chase McLaughlin","pos":"K","team":"TB","adp":240.2,"pts":105.0,"vorp":0.0,"rec":null,"depth_rank":null,"injury":null,"ecr":228,"bye":"10"},{"player":"Jarquez Hunter","pos":"RB","team":"LAR","adp":240.6,"pts":9.6,"vorp":-144.1,"rec":2.0,"depth_rank":4,"injury":null,"ecr":317,"bye":"11"},{"player":"Jake Elliott","pos":"K","team":"PHI","adp":240.9,"pts":90.0,"vorp":-15.0,"rec":null,"depth_rank":null,"injury":null,"ecr":350,"bye":"10"},{"player":"Cincinnati Bengals","pos":"DST","team":"CIN","adp":241.2,"pts":79.0,"vorp":-8.0,"rec":null,"depth_rank":null,"injury":null,"ecr":392,"bye":"6"},{"player":"Christian Kirk","pos":"WR","team":"SF","adp":241.7,"pts":46.4,"vorp":-132.2,"rec":19.0,"depth_rank":1,"injury":"Questionable","ecr":262,"bye":"8"},{"player":"Ty Simpson","pos":"QB","team":"LAR","adp":241.8,"pts":13.6,"vorp":-273.1,"rec":null,"depth_rank":2,"injury":null,"ecr":365,"bye":"11"},{"player":"Malachi Fields","pos":"WR","team":"NYG","adp":242.4,"pts":81.6,"vorp":-97.0,"rec":28.0,"depth_rank":2,"injury":null,"ecr":259,"bye":"8"},{"player":"New Orleans Saints","pos":"DST","team":"NO","adp":244.6,"pts":77.0,"vorp":-10.0,"rec":null,"depth_rank":null,"injury":null,"ecr":306,"bye":"8"},{"player":"Max Klare","pos":"TE","team":"LAR","adp":248.8,"pts":56.1,"vorp":-103.7,"rec":22.0,"depth_rank":4,"injury":null,"ecr":333,"bye":"11"},{"player":"Michael Trigg","pos":"TE","team":"DAL","adp":249.7,"pts":33.8,"vorp":-126.0,"rec":14.0,"depth_rank":4,"injury":null,"ecr":499,"bye":"14"},{"player":"Wil Lutz","pos":"K","team":"DEN","adp":253.3,"pts":100.0,"vorp":-5.0,"rec":null,"depth_rank":null,"injury":null,"ecr":263,"bye":"10"},{"player":"Matt Gay","pos":"K","team":"LV","adp":263.3,"pts":75.0,"vorp":-30.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Cleveland Browns","pos":"DST","team":"CLE","adp":266.6,"pts":74.0,"vorp":-13.0,"rec":null,"depth_rank":null,"injury":null,"ecr":226,"bye":"11"},{"player":"Riley Patterson","pos":"K","team":"MIA","adp":267.0,"pts":37.0,"vorp":-68.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Charlie Smyth","pos":"K","team":"NO","adp":269.0,"pts":93.0,"vorp":-12.0,"rec":null,"depth_rank":null,"injury":null,"ecr":308,"bye":"8"},{"player":"Tennessee Titans","pos":"DST","team":"TEN","adp":270.2,"pts":67.0,"vorp":-20.0,"rec":null,"depth_rank":null,"injury":null,"ecr":381,"bye":"9"},{"player":"Arizona Cardinals","pos":"DST","team":"ARI","adp":273.0,"pts":66.0,"vorp":-21.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Las Vegas Raiders","pos":"DST","team":"LV","adp":279.3,"pts":65.0,"vorp":-22.0,"rec":null,"depth_rank":null,"injury":null,"ecr":462,"bye":"13"},{"player":"New York Jets","pos":"DST","team":"NYJ","adp":282.2,"pts":64.0,"vorp":-23.0,"rec":null,"depth_rank":null,"injury":null,"ecr":460,"bye":"13"},{"player":"Nick Folk","pos":"K","team":"ATL","adp":285.5,"pts":95.0,"vorp":-10.0,"rec":null,"depth_rank":null,"injury":null,"ecr":380,"bye":"11"},{"player":"Miami Dolphins","pos":"DST","team":"MIA","adp":299.0,"pts":62.0,"vorp":-25.0,"rec":null,"depth_rank":null,"injury":null,"ecr":387,"bye":"6"},{"player":"Tyler Bass","pos":"K","team":"BUF","adp":299.0,"pts":103.0,"vorp":-2.0,"rec":null,"depth_rank":null,"injury":null,"ecr":375,"bye":"7"},{"player":"Jake Moody","pos":"K","team":"WAS","adp":333.0,"pts":91.0,"vorp":-14.0,"rec":null,"depth_rank":null,"injury":null,"ecr":440,"bye":"7"},{"player":"Younghoe Koo","pos":"K","team":"FA","adp":339.0,"pts":22.0,"vorp":-83.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Andre Szmyt","pos":"K","team":"CLE","adp":342.0,"pts":84.0,"vorp":-21.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Ryan Fitzgerald","pos":"K","team":"CAR","adp":347.0,"pts":92.0,"vorp":-13.0,"rec":null,"depth_rank":null,"injury":null,"ecr":397,"bye":"5"},{"player":"Chad Ryland","pos":"K","team":"ARI","adp":350.0,"pts":89.0,"vorp":-16.0,"rec":null,"depth_rank":null,"injury":null,"ecr":404,"bye":"14"},{"player":"Cade York","pos":"K","team":"NYJ","adp":350.0,"pts":13.0,"vorp":-92.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Joey Slye","pos":"K","team":"TEN","adp":351.0,"pts":84.0,"vorp":-21.0,"rec":null,"depth_rank":null,"injury":null,"ecr":416,"bye":"9"},{"player":"Trey Smack","pos":"K","team":"GB","adp":353.2,"pts":70.0,"vorp":-35.0,"rec":null,"depth_rank":null,"injury":null,"ecr":389,"bye":"11"},{"player":"Dominic Zvada","pos":"K","team":"NYG","adp":355.3,"pts":56.0,"vorp":-49.0,"rec":null,"depth_rank":null,"injury":null,"ecr":null,"bye":null},{"player":"Ben Sauls","pos":"K","team":"NYG","adp":369.0,"pts":41.0,"vorp":-64.0,"rec":null,"depth_rank":null,"injury":null,"ecr":403,"bye":"8"}]};
+
+const $ = (s, el=document) => el.querySelector(s);
+const fmt = n => n.toLocaleString("en-US", {maximumFractionDigits: 0});
+const fmt1 = n => n.toLocaleString("en-US", {minimumFractionDigits: 1, maximumFractionDigits: 1});
+
+/* ---------- tiles ---------- */
+{
+  const best = DATA.overall[0], worst = DATA.overall[DATA.overall.length-1];
+  const field = DATA.overall.reduce((a,o)=>a+o.mean_starters,0)/DATA.overall.length;
+  const topVal = DATA.cheat_sheet.filter(p=>p.adp_ppr<120).sort((a,b)=>b.value_gap-a.value_gap)[0];
+  $("#tiles").innerHTML = `
+    <div class="tile"><div class="label">Winning strategy</div>
+      <div class="value">${best.strategy}</div>
+      <div class="note">${fmt(best.mean_starters)} projected starter pts / season</div></div>
+    <div class="tile"><div class="label">Edge over average strategy</div>
+      <div class="value">+${fmt1(best.mean_starters-field)} pts</div>
+      <div class="note">+${fmt1(best.mean_starters-worst.mean_starters)} vs ${worst.strategy}, the worst plan</div></div>
+    <div class="tile"><div class="label">Biggest draft-day value</div>
+      <div class="value">${topVal.player}</div>
+      <div class="note">${topVal.pos} · ADP ${fmt1(topVal.adp_ppr)}, ranked ${topVal.value_gap} spots too late</div></div>`;
+}
+
+/* ---------- strategy dot plot ---------- */
+{
+  const rows = DATA.overall;
+  const max = rows[0].mean_starters, min = rows[rows.length-1].mean_starters;
+  const hasRisk = rows[0].floor_p10 != null;
+  const lo = hasRisk ? Math.min(...rows.map(r=>r.floor_p10)) - 10 : min - (max-min)*0.08;
+  const hi = hasRisk ? Math.max(...rows.map(r=>r.ceiling_p90)) + 10 : max + (max-min)*0.08;
+  const X = v => ((v-lo)/(hi-lo)*100).toFixed(1);
+  $("#stratplot").innerHTML = rows.map((r,i) => {
+    const d = r.mean_starters - max;
+    const band = hasRisk
+      ? `<div class="band" style="left:${X(r.floor_p10)}%;width:${(X(r.ceiling_p90)-X(r.floor_p10)).toFixed(1)}%"
+           data-tip="${r.strategy}: 10th–90th percentile season outcome ${fmt(r.floor_p10)}–${fmt(r.ceiling_p90)} starter pts · top-3 finish ${Math.round(r.top3_rate*100)}%"></div>`
+      : "";
+    return `<div class="strat-row${i===0?" winner":""}">
+      <div class="strat-name">${r.strategy}</div>
+      <div class="strat-track"><div class="rail"></div>${band}<div class="dot" style="left:${X(r.mean_starters)}%"></div></div>
+      <div class="strat-val"><b>${fmt(r.mean_starters)}</b> ${i===0?"pts":`<span class="delta-neg">−${fmt1(-d)}</span>`}${hasRisk?`<span style="color:var(--muted)"> · floor ${fmt(r.floor_p10)}</span>`:""}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------- heatmap ---------- */
+{
+  const m = DATA.matrix;
+  const colMax = m.slots.map((_,c) => Math.max(...m.values.map(row=>row[c])));
+  const order = [...m.strategies.keys()].sort((a,b) =>
+    DATA.overall.findIndex(o=>o.strategy===m.strategies[a]) -
+    DATA.overall.findIndex(o=>o.strategy===m.strategies[b]));
+  const ramp = ["--heat-5","--heat-4","--heat-3","--heat-2","--heat-1","--heat-0"];
+  const bins = [2, 5, 10, 18, 30, Infinity];
+  const binOf = d => bins.findIndex(b => d < b);
+  let html = `<thead><tr><th class="rowh"></th>${m.slots.map(s=>`<th scope="col">${s}</th>`).join("")}</tr></thead><tbody>`;
+  for (const ri of order) {
+    html += `<tr><th class="rowh" scope="row">${m.strategies[ri]}</th>`;
+    m.slots.forEach((s,c) => {
+      const v = m.values[ri][c], d = colMax[c]-v, bin = binOf(d);
+      const dark = bin <= 1;
+      html += `<td class="${d===0?"best":""}" style="background:var(${ramp[bin]});color:${dark?"#fff":"var(--ink)"}"
+        data-tip="${m.strategies[ri]} · slot ${s}: ${fmt(v)} pts${d===0?" (slot best)":` (−${fmt1(d)})`}">${d===0?"★":"−"+Math.round(d)}</td>`;
+    });
+    html += "</tr>";
+  }
+  $("#heat").innerHTML = html + "</tbody>";
+  $("#heatlegend").innerHTML = ramp.map(c=>`<div class="sw" style="background:var(${c})"></div>`).join("");
+  $("#heatlegendlabels").textContent = "0 · <2 · <5 · <10 · <18 · <30 · 30+ pts";
+}
+
+/* ---------- slot plan ---------- */
+{
+  const btns = $("#slotbtns");
+  DATA.best_by_slot.forEach(b => {
+    const el = document.createElement("button");
+    el.textContent = b.slot;
+    el.addEventListener("click", () => render(b.slot));
+    btns.appendChild(el);
+  });
+  function render(slot) {
+    [...btns.children].forEach((el,i)=>el.classList.toggle("on", i===slot-1));
+    const b = DATA.best_by_slot[slot-1];
+    const byRound = {};
+    b.common_picks.forEach(p => (byRound[p.round] ??= []).push(p));
+    const rounds = Object.keys(byRound).sort((a,b)=>a-b).map(r => `
+      <div class="round"><h4>Round ${r}</h4>${byRound[r].slice(0,4).map(p=>`
+        <div class="target"><span class="chip ${p.pos}">${p.pos}</span>
+          <span class="nm">${p.player}</span>
+          <span class="rate">${Math.round(p.rate*100)}%</span></div>`).join("")}
+      </div>`).join("");
+    $("#plan").innerHTML = `
+      <div class="plan-head">
+        <span class="eyebrow">Pick ${b.slot} of 12</span>
+        <span class="strat">${b.strategy}</span>
+        <span class="edge">${fmt(b.mean_starters)} starter pts · +${fmt1(b.edge_over_2nd)} over ${b.second}</span>
+      </div>
+      <div class="rounds">${rounds}</div>`;
+  }
+  render(5);
+}
+
+/* ---------- live intel ---------- */
+const NOTE_BY_PLAYER = {};
+{
+  const I = DATA.intel || {injuries: [], trending: [], notes: []};
+  (I.notes || []).forEach(n => NOTE_BY_PLAYER[n.player] = n);
+  if (I.as_of) $("#intel-date").textContent = "as of " + I.as_of;
+
+  $("#intel-notes").innerHTML = (I.notes || []).map(n => `
+    <div class="note"><span class="who">${n.player}</span><span class="tag ${n.tag}">${n.tag}</span>
+      <div class="txt">${n.note}</div></div>`).join("") || '<div class="note">No curated notes.</div>';
+
+  const sev = s => s === "PUP" || s === "IR" || s === "Out" ? "risk" : "watch";
+  $("#intel-inj").innerHTML = (I.injuries || []).slice(0, 14).map(i => `
+    <div class="trow"><span class="chip ${i.pos}">${i.pos}</span>
+      <span class="nm">${i.player}</span>
+      <span class="meta">ADP ${fmt1(i.adp_ppr)}</span>
+      <span class="tag ${sev(i.injury_status)}">${i.injury_status}</span></div>`).join("")
+    || '<div class="trow">No injuries in the draftable range.</div>';
+
+  $("#intel-trend").innerHTML = (I.trending || []).filter(t => t.pos !== "DST").slice(0, 10).map(t => `
+    <div class="trow"><span class="chip ${t.pos}">${t.pos}</span>
+      <span class="nm">${t.player}</span>
+      <span class="meta">ADP ${t.adp_ppr < 900 ? fmt1(t.adp_ppr) : "—"}</span>
+      <span class="meta adds">+${t.trend_add.toLocaleString()}</span></div>`).join("")
+    || '<div class="trow">No trending data.</div>';
+
+  const df = I.depth_flags || {not_starters: [], cheap_starters: []};
+  $("#depth-notstarters").innerHTML = (df.not_starters || []).map(d => `
+    <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
+      <span class="nm">${d.player} <span class="tm" style="color:var(--muted);font-weight:500">${d.team}</span></span>
+      <span class="meta">ADP ${fmt1(d.adp_ppr)}</span>
+      <span class="tag watch">${d.rank}${d.rank===2?"nd":d.rank===3?"rd":"th"} string</span></div>`).join("")
+    || '<div class="trow">None — every top-110 ADP pick is a listed starter.</div>';
+
+  $("#depth-cheap").innerHTML = (df.cheap_starters || []).map(d => `
+    <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
+      <span class="nm">${d.player} <span class="tm" style="color:var(--muted);font-weight:500">${d.team}</span></span>
+      <span class="meta">ADP ${fmt1(d.adp_ppr)}</span>
+      <span class="meta">${fmt(d.pts_ppr)} pts</span></div>`).join("")
+    || '<div class="trow">No cheap listed starters found.</div>';
+
+  if (I.fp_as_of) $("#fp-date").textContent = `FantasyPros, ${I.fp_experts} experts`;
+  $("#fp-gaps").innerHTML = (I.fp_disagreements || []).map(d => `
+    <div class="trow"><span class="chip ${d.pos}">${d.pos}</span>
+      <span class="nm">${d.player} <span class="tm" style="color:var(--muted);font-weight:500">${d.team}</span></span>
+      <span class="meta">ADP ${fmt1(d.adp_ppr)} · ECR ${d.ecr}</span>
+      <span class="tag ${d.gap > 0 ? "upside" : "risk"}"
+        data-tip="Expert consensus ranks ${d.player} ${Math.abs(d.gap)} spots ${d.gap > 0 ? "ahead of" : "behind"} where drafts are taking him">
+        ${d.gap > 0 ? "+" : ""}${d.gap}</span></div>`).join("")
+    || '<div class="trow">No expert-consensus data — run fetch_fp.py.</div>';
+}
+
+/* ---------- cheat sheet ---------- */
+function depthCell(r) {
+  if (!r.depth_rank) return '<span class="dchip none">—</span>';
+  const label = r.depth_rank === 1 ? "S" : r.depth_rank;
+  const cls = r.depth_rank === 1 ? "s1" : r.depth_rank === 2 ? "s2" : "s3";
+  const asOf = (DATA.intel && DATA.intel.depth_as_of) || "";
+  const st = r.depth_status ? ` (${r.depth_status})` : "";
+  const word = r.depth_rank === 1 ? "listed starter" : `listed ${r.depth_rank}${r.depth_rank===2?"nd":r.depth_rank===3?"rd":"th"} string`;
+  return `<span class="dchip ${cls}" data-tip="ESPN depth chart ${asOf}: ${word}${st}">${label}</span>`;
+}
+{
+  const POS = ["ALL","RB","WR","TE","QB"];
+  let pos = "ALL", q = "", limit = 60;
+  const tab = $("#postab");
+  POS.forEach(p => {
+    const el = document.createElement("button");
+    el.textContent = p;
+    el.addEventListener("click", () => { pos = p; render(); });
+    tab.appendChild(el);
+  });
+  $("#search").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); render(); });
+  $("#showmore").addEventListener("click", () => { limit = 999; render(); });
+  function render() {
+    [...tab.children].forEach(el=>el.classList.toggle("on", el.textContent===pos));
+    let rows = DATA.cheat_sheet;
+    if (pos !== "ALL") rows = rows.filter(r=>r.pos===pos);
+    if (q) rows = rows.filter(r=>(r.player+" "+r.team).toLowerCase().includes(q));
+    const shown = rows.slice(0, limit);
+    $("#sheetbody").innerHTML = shown.map(r => `<tr>
+      <td class="rk">${r.vorp_rank}</td>
+      <td class="nm">${r.player}<span class="tm">${r.team}</span>${r.injury_status&&r.injury_status!=="Questionable"?`<span class="inj">${r.injury_status.toUpperCase()}</span>`:""}${NOTE_BY_PLAYER[r.player]?`<span class="tag ${NOTE_BY_PLAYER[r.player].tag}" data-tip="${NOTE_BY_PLAYER[r.player].note.replace(/"/g,"&quot;")}">${NOTE_BY_PLAYER[r.player].tag}</span>`:""}</td>
+      <td><span class="chip ${r.pos}">${r.pos}</span></td>
+      <td>${depthCell(r)}</td>
+      <td class="rk">${r.bye ?? "—"}</td>
+      <td>${fmt1(r.adp_ppr)}</td>
+      <td class="rk">${r.ecr != null ? (r.tier != null ? `<span data-tip="Expert consensus rank ${r.ecr} · tier ${r.tier}">${r.ecr}</span>` : r.ecr) : "—"}</td>
+      <td>${fmt1(r.pts_ppr)}</td>
+      <td>${r.rec!=null&&r.pos!=="QB"?Math.round(r.rec):"—"}</td>
+      <td>${fmt1(r.vorp)}</td>
+      <td class="${r.value_gap>4?"gap-pos":r.value_gap<-4?"gap-neg":""}">${r.value_gap>0?"+":""}${r.value_gap}</td>
+    </tr>`).join("");
+    $("#showmore").style.display = shown.length < rows.length ? "block" : "none";
+    $("#showmore").textContent = `Show all ${rows.length}`;
+  }
+  render();
+}
+
+/* ---------- tabs ---------- */
+{
+  const views = {war: [$("#tab-war"), $("#view-war")], track: [$("#tab-track"), $("#view-track")]};
+  function show(which) {
+    for (const k in views) {
+      views[k][0].classList.toggle("on", k === which);
+      views[k][1].classList.toggle("on", k === which);
+    }
+    try { localStorage.setItem("draft2026.view", which); } catch(e) {}
+  }
+  $("#tab-war").addEventListener("click", () => show("war"));
+  $("#tab-track").addEventListener("click", () => show("track"));
+  let saved = null;
+  try { saved = localStorage.getItem("draft2026.view"); } catch(e) {}
+  if (saved === "track") show("track");
+}
+
+/* ---------- live tracker ---------- */
+{
+  const POOL = (DATA.tracker_pool || []).slice().sort((a, b) => a.adp - b.adp);
+  const key = p => p.player + "|" + p.pos;
+  const BY_KEY = {};
+  POOL.forEach(p => BY_KEY[key(p)] = p);
+  const NOTES = NOTE_BY_PLAYER;
+
+  const TEAMS = 12, ROUNDS = 15;
+  const CAPS = {QB: 2, RB: 8, WR: 8, TE: 3, K: 1, DST: 1};
+  const LINEUP = [["QB",1],["RB",2],["WR",2],["TE",1],["FLEX",1],["K",1],["DST",1]];
+
+  let state = {slot: 5, events: []}; // events: {k, mine}
+  try {
+    const raw = localStorage.getItem("draft2026.state");
+    if (raw) { const s = JSON.parse(raw); if (s && Array.isArray(s.events)) state = s; }
+  } catch(e) {}
+  function save() { try { localStorage.setItem("draft2026.state", JSON.stringify(state)); } catch(e) {} }
+
+  const drafted = () => new Set(state.events.map(e => e.k));
+  const mine = () => state.events.filter(e => e.mine).map(e => BY_KEY[e.k]).filter(Boolean);
+  const pickNo = () => state.events.length + 1;
+  const roundOf = pk => Math.ceil(pk / TEAMS);
+  const slotOnClock = pk => {
+    const r = roundOf(pk), idx = pk - (r - 1) * TEAMS;
+    return r % 2 === 1 ? idx : TEAMS + 1 - idx;
+  };
+  const myOveralls = () => {
+    const out = [];
+    for (let r = 1; r <= ROUNDS; r++)
+      out.push((r - 1) * TEAMS + (r % 2 === 1 ? state.slot : TEAMS + 1 - state.slot));
+    return out;
+  };
+  const nextMyPick = () => myOveralls().find(pk => pk >= pickNo()) ?? null;
+  const pickAfterMine = () => {
+    const next = nextMyPick();
+    return next === null ? null : myOveralls().find(pk => pk > next) ?? null;
+  };
+
+  function counts(roster) {
+    const c = {QB:0,RB:0,WR:0,TE:0,K:0,DST:0};
+    roster.forEach(p => c[p.pos]++);
+    return c;
+  }
+
+  function recommend() {
+    const gone = drafted();
+    const roster = mine();
+    const c = counts(roster);
+    const myRound = roster.length + 1;
+    const roundsLeft = ROUNDS - roster.length;
+    if (roundsLeft <= 0) return [];
+    const avail = POOL.filter(p => !gone.has(key(p)));
+
+    // Endgame: force K/DST when rounds run out
+    const needK = c.K < 1, needD = c.DST < 1;
+    const forcedPos = [];
+    if (needK && roundsLeft <= (needD ? 2 : 1)) forcedPos.push("K");
+    if (needD && roundsLeft <= (needK ? 2 : 1)) forcedPos.push("DST");
+    if (forcedPos.length) {
+      return avail.filter(p => forcedPos.includes(p.pos))
+        .sort((a, b) => b.pts - a.pts).slice(0, 6)
+        .map(p => ({p, score: p.vorp, why: "Lineup needs a " + p.pos + " — rounds are up"}));
+    }
+
+    const legal = p => {
+      if (c[p.pos] >= CAPS[p.pos]) return false;
+      if ((p.pos === "K" || p.pos === "DST") && myRound < 13) return false;
+      if (p.pos === "QB" && (myRound < 5 || (c.QB >= 1 && myRound < 12))) return false;
+      if (p.pos === "TE" && c.TE >= 2) return false;
+      return true;
+    };
+    const cands = avail.filter(legal);
+
+    const next = nextMyPick(), after = pickAfterMine();
+    const horizon = after ?? (next ?? pickNo()) + TEAMS;
+    const surv = p => 1 / (1 + Math.exp((horizon - p.adp) / 6));
+    const waitBest = {};
+    for (const p of cands) {
+      const w = p.vorp * surv(p);
+      if (!(p.pos in waitBest) || w > waitBest[p.pos]) waitBest[p.pos] = w;
+    }
+    const needBonus = p => {
+      let b = 0;
+      if (p.pos === "QB" && c.QB === 0 && myRound >= 8) b += 15;
+      if (p.pos === "TE" && c.TE === 0 && myRound >= 9) b += 12;
+      if (p.pos === "RB" && c.RB < 2 && myRound >= 6) b += 8;
+      if (p.pos === "WR" && c.WR < 2 && myRound >= 6) b += 8;
+      return b;
+    };
+    return cands
+      .map(p => {
+        const nb = needBonus(p);
+        const urg = p.vorp - (waitBest[p.pos] ?? 0);
+        const score = p.vorp + nb + Math.max(0, urg) * 0.5;
+        let why;
+        if (surv(p) < 0.3) why = "Unlikely to survive to your next pick (ADP " + p.adp.toFixed(0) + ")";
+        else if (nb >= 12) why = "Roster needs a " + p.pos + " soon";
+        else if (nb > 0) why = "Fills a starting " + p.pos + " slot";
+        else why = "Best value on the board";
+        const n = NOTES[p.player];
+        if (n && n.tag !== "upside") why += " · " + n.tag.toUpperCase() + " flag";
+        return {p, score, why};
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 6);
+  }
+
+  /* ----- rest-of-draft re-simulation -----
+     Same engine as the Python Monte Carlo, replayed from the live board:
+     opponents pick argmin of (ADP + noise) with need logic off the rosters
+     they've actually built (reconstructed from pick order); our later picks
+     go best-VORP with need urgency. Common random numbers across candidates
+     keep the deltas stable. */
+  const SIMS = 100;
+  const N = POOL.length;
+  const POSI = {QB: 0, RB: 1, WR: 2, TE: 3, K: 4, DST: 5};
+  const CAPS6 = [3, 8, 8, 3, 1, 1];
+  const NEED6 = [1, 2, 2, 1, 1, 1];
+  const S_posi = Int8Array.from(POOL, p => POSI[p.pos]);
+  const S_adp = Float64Array.from(POOL, p => p.adp < 900 ? p.adp : 999);
+  const S_pts = Float64Array.from(POOL, p => p.pts);
+  const S_vorp = Float64Array.from(POOL, p => p.vorp);
+  const S_sigma = Float64Array.from(S_adp, a => Math.min(25, Math.max(0.8, 0.8 + 0.09 * a)));
+  const IDX_OF = new Map(POOL.map((p, i) => [key(p), i]));
+  const percept = new Float64Array(TEAMS * N);
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function fillPercepts(s) {
+    const rnd = mulberry32(Math.imul(s + 1, 2654435761) ^ 0x9E3779B9);
+    const L = percept.length;
+    for (let k = 0; k < L; k += 2) {
+      const r = Math.sqrt(-2 * Math.log(rnd() + 1e-12)), th = 6.283185307179586 * rnd();
+      percept[k] = r * Math.cos(th);
+      if (k + 1 < L) percept[k + 1] = r * Math.sin(th);
+    }
+    for (let t = 0; t < TEAMS; t++) {
+      const o = t * N;
+      for (let i = 0; i < N; i++) percept[o + i] = S_adp[i] + percept[o + i] * S_sigma[i];
+    }
+  }
+
+  function simBase() {
+    const avail = new Uint8Array(N).fill(1);
+    const cnt = new Int8Array(TEAMS * 6);
+    state.events.forEach((e, i) => {
+      const idx = IDX_OF.get(e.k);
+      if (idx == null) return;
+      avail[idx] = 0;
+      const team = e.mine ? state.slot - 1 : slotOnClock(i + 1) - 1;
+      cnt[team * 6 + S_posi[idx]]++;
+    });
+    // My counts come from my actual roster, not pick-order inference
+    const myOff = (state.slot - 1) * 6;
+    for (let j = 0; j < 6; j++) cnt[myOff + j] = 0;
+    const myPicks = [];
+    mine().forEach(p => {
+      const idx = IDX_OF.get(key(p));
+      if (idx == null) return;
+      myPicks.push(idx);
+      cnt[myOff + S_posi[idx]]++;
+    });
+    return {avail, cnt, myPicks};
+  }
+
+  function forcedEndgame(avail, cnt, off, rnd, byPts) {
+    const roundsLeft = ROUNDS - rnd + 1;
+    const needK = cnt[off + 4] < 1, needD = cnt[off + 5] < 1;
+    const forceK = needK && roundsLeft <= (needD ? 2 : 1);
+    const forceD = needD && roundsLeft <= (needK ? 2 : 1);
+    if (!forceK && !forceD) return -1;
+    let best = -1;
+    for (let i = 0; i < N; i++) {
+      if (!avail[i]) continue;
+      const pi = S_posi[i];
+      if (!((forceK && pi === 4) || (forceD && pi === 5))) continue;
+      if (best < 0 || (byPts ? S_pts[i] > S_pts[best] : S_adp[i] < S_adp[best])) best = i;
+    }
+    return best;
+  }
+
+  function oppNext(avail, cnt, off, rnd, pOff) {
+    const forced = forcedEndgame(avail, cnt, off, rnd, false);
+    if (forced >= 0) return forced;
+    let best = -1, bestP = Infinity, fb = -1, fbP = Infinity;
+    for (let i = 0; i < N; i++) {
+      if (!avail[i]) continue;
+      const v = percept[pOff + i];
+      if (v < fbP) { fbP = v; fb = i; }
+      const pi = S_posi[i];
+      if (cnt[off + pi] >= CAPS6[pi]) continue;
+      if ((pi === 4 || pi === 5) && rnd < 13) continue;
+      if (pi === 0 && cnt[off] >= 1 && rnd < 8) continue;
+      if (pi === 3 && cnt[off + 3] >= 1 && rnd < 8) continue;
+      if (v < bestP) { bestP = v; best = i; }
+    }
+    return best >= 0 ? best : fb;
+  }
+
+  function ourNext(avail, cnt, off, rnd) {
+    const forced = forcedEndgame(avail, cnt, off, rnd, true);
+    if (forced >= 0) return forced;
+    let best = -1, bestScore = -Infinity, fb = -1;
+    for (let i = 0; i < N; i++) {
+      if (!avail[i]) continue;
+      if (fb < 0) fb = i;
+      const pi = S_posi[i];
+      if (cnt[off + pi] >= CAPS6[pi]) continue;
+      if ((pi === 4 || pi === 5) && rnd < 13) continue;
+      if (pi === 0 && (cnt[off] >= 1 || rnd < 5)) continue;
+      if (pi === 3 && cnt[off + 3] >= 2) continue;
+      let sc = S_vorp[i];
+      if (pi === 0 && cnt[off] === 0 && rnd >= 8) sc += 15;
+      if (pi === 3 && cnt[off + 3] === 0 && rnd >= 9) sc += 12;
+      if (sc > bestScore) { bestScore = sc; best = i; }
+    }
+    return best >= 0 ? best : fb;
+  }
+
+  function scoreMine(picks) {
+    const byPos = [[], [], [], [], [], []];
+    picks.forEach(i => byPos[S_posi[i]].push(S_pts[i]));
+    byPos.forEach(a => a.sort((x, y) => y - x));
+    let starters = 0;
+    for (let p = 0; p < 6; p++)
+      for (let k = 0; k < NEED6[p] && k < byPos[p].length; k++) starters += byPos[p][k];
+    const flexPool = [];
+    for (const p of [1, 2, 3]) flexPool.push(...byPos[p].slice(NEED6[p]));
+    flexPool.sort((x, y) => y - x);
+    if (flexPool.length) starters += flexPool[0];
+    const bench = flexPool.slice(1, 4).reduce((a, b) => a + b, 0);
+    return starters + 0.12 * bench;
+  }
+
+  function simOnce(s, candIdx, base) {
+    fillPercepts(s);
+    const avail = base.avail.slice();
+    const cnt = base.cnt.slice();
+    const myTeam = state.slot - 1;
+    const picks = base.myPicks.slice();
+    let firstMine = true, gotCand = 0;
+    const total = TEAMS * ROUNDS;
+    for (let pk = pickNo(); pk <= total; pk++) {
+      const rnd = roundOf(pk), team = slotOnClock(pk) - 1;
+      let idx;
+      if (team === myTeam) {
+        if (firstMine && candIdx != null && avail[candIdx]) { idx = candIdx; gotCand = 1; }
+        else idx = ourNext(avail, cnt, team * 6, rnd);
+        firstMine = false;
+        if (idx >= 0) picks.push(idx);
+      } else {
+        idx = oppNext(avail, cnt, team * 6, rnd, team * N);
+      }
+      if (idx < 0) continue;
+      avail[idx] = 0;
+      cnt[team * 6 + S_posi[idx]]++;
+    }
+    return {v: scoreMine(picks), gotCand};
+  }
+
+  function simCandidates() {
+    const gone = drafted(), c = counts(mine());
+    const myRound = mine().length + 1;
+    const out = [], seen = new Set();
+    const add = p => {
+      if (!p) return;
+      const i = IDX_OF.get(key(p));
+      if (i == null || seen.has(i)) return;
+      seen.add(i); out.push(i);
+    };
+    recommend().slice(0, 5).forEach(r => add(r.p));
+    for (const pos of ["RB", "WR", "TE", "QB"]) {
+      if (out.length >= 8) break;
+      if (pos === "QB" && (c.QB >= 1 || myRound < 5)) continue;
+      if (pos === "TE" && c.TE >= 2) continue;
+      if (c[pos] >= CAPS[pos]) continue;
+      add(POOL.filter(p => p.pos === pos && !gone.has(key(p)))
+        .sort((a, b) => b.vorp - a.vorp)[0]);
+    }
+    return out.slice(0, 8);
+  }
+
+  let simToken = 0, simTimer = null;
+  function scheduleLiveSim() {
+    simToken++;
+    clearTimeout(simTimer);
+    simTimer = setTimeout(runLiveSim, 120);
+  }
+  function runLiveSim() {
+    const box = $("#livesim");
+    const token = ++simToken;
+    if (pickNo() > TEAMS * ROUNDS || mine().length >= ROUNDS || nextMyPick() === null) {
+      box.innerHTML = '<div class="simdone">Draft over for you — nothing left to simulate.</div>';
+      return;
+    }
+    const cands = simCandidates();
+    if (!cands.length) {
+      box.innerHTML = '<div class="simdone">No legal candidates to compare.</div>';
+      return;
+    }
+    const base = simBase();
+    const rows = [];
+    let ci = 0;
+    box.innerHTML = '<div class="simdone">Simulating…</div>';
+    (function step() {
+      if (token !== simToken) return;
+      if (ci >= cands.length) { paintSim(rows, false); return; }
+      const idx = cands[ci++];
+      let sum = 0, got = 0;
+      for (let s = 0; s < SIMS; s++) {
+        const r = simOnce(s, idx, base);
+        sum += r.v; got += r.gotCand;
+      }
+      rows.push({idx, mean: sum / SIMS, there: got / SIMS});
+      paintSim(rows, ci < cands.length);
+      setTimeout(step, 0);
+    })();
+  }
+  function paintSim(rows, pending) {
+    const sorted = rows.slice().sort((a, b) => b.mean - a.mean);
+    const best = sorted[0].mean;
+    $("#livesim").innerHTML = sorted.map((r, i) => {
+      const p = POOL[r.idx];
+      return `<div class="trow">
+        <span class="chip ${p.pos}">${p.pos}</span>
+        <span class="nm">${p.player} <span class="tm" style="color:var(--muted);font-weight:500">${p.team}</span></span>
+        ${r.there < 0.995 ? `<span class="meta" data-tip="How often ${p.player} is still on the board at your pick #${nextMyPick()}">${Math.round(r.there * 100)}% there</span>` : ""}
+        <span class="meta"><b style="color:var(--ink)">${fmt(r.mean)}</b> pts</span>
+        <span class="meta">${i === 0 ? '<span class="tag upside">sim pick</span>' : `<span class="delta-neg">−${(best - r.mean).toFixed(1)}</span>`}</span>
+      </div>`;
+    }).join("") + (pending ? '<div class="simdone">simulating…</div>' : "");
+  }
+
+  /* ----- rendering ----- */
+  const slotBox = $("#track-slots");
+  for (let s = 1; s <= TEAMS; s++) {
+    const el = document.createElement("button");
+    el.textContent = s;
+    el.addEventListener("click", () => { state.slot = s; save(); renderAll(); });
+    slotBox.appendChild(el);
+  }
+  $("#track-undo").addEventListener("click", () => { state.events.pop(); save(); renderAll(); });
+  $("#track-reset").addEventListener("click", () => {
+    if (confirm("Clear the whole draft board and start over?")) { state.events = []; save(); renderAll(); }
+  });
+
+  const POSF = ["ALL","RB","WR","TE","QB","K","DST"];
+  let posFilter = "ALL", q = "";
+  const ptab = $("#track-postab");
+  POSF.forEach(p => {
+    const el = document.createElement("button");
+    el.textContent = p;
+    el.addEventListener("click", () => { posFilter = p; renderBoard(); });
+    ptab.appendChild(el);
+  });
+  $("#track-search").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); renderBoard(); });
+
+  function act(e) {
+    const btn = e.target.closest("button[data-act]");
+    if (!btn) return;
+    state.events.push({k: btn.dataset.k, mine: btn.dataset.act === "mine"});
+    save(); renderAll();
+    const sb = $("#track-search");
+    if (sb.value) { sb.value = ""; q = ""; renderBoard(); }
+  }
+  $("#board").addEventListener("click", act);
+  $("#recs").addEventListener("click", act);
+
+  function renderClock() {
+    const pk = pickNo(), total = TEAMS * ROUNDS;
+    if (pk > total) { $("#track-clock").innerHTML = '<span class="big">Draft complete</span>'; return; }
+    const onClock = slotOnClock(pk), meNow = onClock === state.slot;
+    const next = nextMyPick();
+    $("#track-clock").innerHTML =
+      `<span class="big${meNow ? " me" : ""}">${meNow ? "You're on the clock" : "Team " + onClock + " on the clock"}</span>
+       <span class="meta">Round ${roundOf(pk)} · Pick ${pk} of ${total}</span>
+       ${next !== null && !meNow ? `<span class="meta">Your next pick: #${next} (${next - pk} away)</span>` : ""}`;
+  }
+
+  function renderRecs() {
+    const recs = recommend();
+    $("#recs").innerHTML = recs.length ? recs.map((r, i) => `
+      <div class="rec${i === 0 ? " top" : ""}">
+        <span class="chip ${r.p.pos}">${r.p.pos}</span>
+        <div class="body">
+          <div class="nm">${r.p.player} <span class="tm" style="color:var(--muted);font-weight:500">${r.p.team}</span></div>
+          <div class="why">${r.why}</div>
+        </div>
+        <div class="score"><b>${r.p.vorp.toFixed(0)}</b>VORP · ADP ${r.p.adp.toFixed(0)}</div>
+        <button data-act="mine" data-k="${key(r.p)}" class="mine" style="font:inherit;font-size:11.5px;font-weight:750;padding:5px 10px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer">Draft</button>
+      </div>`).join("") : '<div class="why" style="color:var(--ink-2)">Roster full — draft complete.</div>';
+  }
+
+  function renderRoster() {
+    const roster = mine().slice();
+    roster.sort((a, b) => b.pts - a.pts);
+    const used = new Set();
+    const rows = [];
+    for (const [slotPos, n] of LINEUP) {
+      for (let i = 0; i < n; i++) {
+        const p = roster.find(x => !used.has(key(x)) &&
+          (slotPos === "FLEX" ? ["RB","WR","TE"].includes(x.pos) : x.pos === slotPos));
+        if (p) used.add(key(p));
+        rows.push({lbl: slotPos, p});
+      }
+    }
+    const bench = roster.filter(x => !used.has(key(x)));
+    bench.forEach(p => rows.push({lbl: "BN", p}));
+    for (let i = rows.length; i < 15; i++) rows.push({lbl: "BN", p: null});
+    $("#myroster").innerHTML = rows.map(r => `
+      <div class="rslot"><span class="pos-lbl">${r.lbl}</span>
+        ${r.p ? `<span class="who">${r.p.player} <span style="color:var(--muted);font-weight:500">${r.p.team}</span></span><span class="p">${r.p.pts.toFixed(0)} pts</span>`
+              : `<span class="who empty">—</span>`}
+      </div>`).join("");
+  }
+
+  function renderBoard() {
+    const gone = drafted();
+    let rows = POOL.filter(p => !gone.has(key(p)));
+    if (posFilter !== "ALL") rows = rows.filter(p => p.pos === posFilter);
+    if (q) rows = rows.filter(p => (p.player + " " + p.team).toLowerCase().includes(q));
+    [...ptab.children].forEach(el => el.classList.toggle("on", el.textContent === posFilter));
+    $("#board").innerHTML = rows.slice(0, 120).map(p => `
+      <div class="brow">
+        <span class="adp">${p.adp < 900 ? p.adp.toFixed(0) : "—"}</span>
+        <span class="chip ${p.pos}">${p.pos}</span>
+        <span class="nm">${p.player}<span class="tm">${p.team}</span>${p.injury && p.injury !== "Questionable" ? `<span class="inj">${p.injury.toUpperCase()}</span>` : ""}${NOTES[p.player] ? `<span class="tag ${NOTES[p.player].tag}" data-tip="${NOTES[p.player].note.replace(/"/g,"&quot;")}">${NOTES[p.player].tag}</span>` : ""}</span>
+        <span class="v">${p.vorp.toFixed(0)}</span>
+        <button data-act="mine" data-k="${key(p)}" class="mine">Draft</button>
+        <button data-act="gone" data-k="${key(p)}" class="gone" aria-label="Mark ${p.player} drafted by another team">✕</button>
+      </div>`).join("") || '<div class="brow">No players match.</div>';
+  }
+
+  function renderAll() {
+    [...slotBox.children].forEach((el, i) => el.classList.toggle("on", i === state.slot - 1));
+    renderClock(); renderRecs(); renderRoster(); renderBoard();
+    scheduleLiveSim();
+  }
+  renderAll();
+}
+
+/* ---------- tooltip ---------- */
+{
+  const tip = $("#tip");
+  document.addEventListener("mousemove", e => {
+    const t = e.target.closest("[data-tip]");
+    if (t) {
+      tip.textContent = t.dataset.tip;
+      tip.style.opacity = 1;
+      const w = tip.offsetWidth;
+      tip.style.left = Math.min(e.clientX + 12, innerWidth - w - 8) + "px";
+      tip.style.top = (e.clientY + 14) + "px";
+    } else tip.style.opacity = 0;
+  });
+}
+</script>
