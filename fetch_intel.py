@@ -16,7 +16,7 @@ def fetch_trending(kind, hours=48, limit=200):
     return {str(x["player_id"]): x["count"] for x in r.json()}
 
 
-def fetch_espn_news(limit=50):
+def fetch_espn_news(limit=100):
     url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news"
     r = requests.get(url, params={"limit": limit}, headers=H, timeout=30)
     r.raise_for_status()

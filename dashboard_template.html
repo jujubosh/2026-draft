@@ -284,6 +284,7 @@
   .simnote { font-size: 12px; color: var(--ink-2); margin: 0 0 10px; }
   .simdone { font-size: 12.5px; color: var(--muted); padding: 4px 0; }
   .btn.armed { border-color: var(--t-risk); color: var(--t-risk); font-weight: 800; }
+  .btn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
   .brow button.mine.blocked { opacity: .35; cursor: not-allowed; }
   .brow button.mine.blocked:hover { background: var(--surface); border-color: var(--ring); color: var(--accent); }
   .track-alert {
@@ -425,6 +426,12 @@
         <div id="intel-trend"></div>
       </div>
       <div class="intel-card">
+        <h3>Latest player news · ESPN</h3>
+        <div class="simnote">Recent headlines mentioning draftable players. The same notes
+          appear on the Live Tracker — hover any player's name mid-draft.</div>
+        <div id="player-news"></div>
+      </div>
+      <div class="intel-card">
         <h3>ADP movers <span class="eyebrow" id="movers-date" style="margin-left:6px"></span></h3>
         <div class="simnote">Draft-price changes since the previous data refresh. News shows up
           here before it shows up anywhere else — a big riser means the market learned something;
@@ -502,6 +509,10 @@
       <span class="lbl">My slot</span>
       <div class="slots" id="track-slots" style="margin:0"></div>
       <button class="btn" id="track-undo">Undo last pick</button>
+      <button class="btn" id="track-simto"
+        data-tip="The opponent AI (same engine as the sim) makes every pick until you're on the clock.">▶ Sim to my pick</button>
+      <button class="btn" id="track-mock"
+        data-tip="Full mock draft: after every pick you make, the AI drafts all opponents to your next turn automatically. Rehearse the whole draft, then Reset.">Mock draft: off</button>
       <button class="btn danger" id="track-reset">Reset draft</button>
     </div>
     <div class="clock" id="track-clock"></div>
@@ -699,6 +710,12 @@ const NOTE_BY_PLAYER = {};
       <span class="meta">${fmt(d.pts_ppr)} pts</span></div>`).join("")
     || '<div class="trow">No cheap listed starters found.</div>';
 
+  $("#player-news").innerHTML = (I.player_news || []).slice(0, 8).map(n => `
+    <div class="note"><span class="who">${n.players.join(", ")}</span>
+      <span class="tm" style="color:var(--muted);font-weight:500">${(n.published || "").slice(0, 10)}</span>
+      <div class="txt">${n.headline}</div></div>`).join("")
+    || '<div class="note">No player-matched headlines in the current pull.</div>';
+
   const mv = I.adp_movers;
   if (mv) $("#movers-date").textContent = "since " + mv.since;
   $("#adp-movers").innerHTML = mv && mv.moves.length ? mv.moves.map(m => `
@@ -893,7 +910,7 @@ function depthCell(r) {
     return h;
   }
   const rollupTip = p =>
-    `ECR ${p.ecr ?? "—"} · bye ${p.bye ?? "—"}${p.def_rank ? " · 2025 def #" + p.def_rank : ""}${p.oline ? " · OL tier " + p.oline : ""}`;
+    `ECR ${p.ecr ?? "—"} · bye ${p.bye ?? "—"}${p.def_rank ? " · 2025 def #" + p.def_rank : ""}${p.oline ? " · OL tier " + p.oline : ""}${p.news ? " — NEWS · " + p.news : ""}`;
 
   /* ----- roster validation -----
      Starting lineup is 1QB 2RB 2WR 1TE 1FLEX 1K 1DST. A pick is blocked if it
@@ -929,9 +946,11 @@ function depthCell(r) {
     return null;
   }
   let alertTimer = null;
-  function showAlert(msg) {
+  function showAlert(msg, ok) {
     const el = $("#track-alert");
-    el.textContent = "⚠ " + msg;
+    el.textContent = (ok ? "✓ " : "⚠ ") + msg;
+    el.style.borderColor = ok ? "var(--t-upside)" : "";
+    el.style.color = ok ? "var(--t-upside)" : "";
     el.classList.add("show");
     clearTimeout(alertTimer);
     alertTimer = setTimeout(() => el.classList.remove("show"), 6000);
@@ -1122,7 +1141,7 @@ function depthCell(r) {
     return best >= 0 ? best : fb;
   }
 
-  function scoreMine(picks) {
+  function scoreMine(picks, benchWeight = 0.12) {
     const byPos = [[], [], [], [], [], []];
     picks.forEach(i => byPos[S_posi[i]].push(S_pts[i]));
     byPos.forEach(a => a.sort((x, y) => y - x));
@@ -1134,7 +1153,7 @@ function depthCell(r) {
     flexPool.sort((x, y) => y - x);
     if (flexPool.length) starters += flexPool[0];
     const bench = flexPool.slice(1, 4).reduce((a, b) => a + b, 0);
-    return starters + 0.12 * bench;
+    return starters + benchWeight * bench;
   }
 
   function simOnce(s, candIdx, base) {
@@ -1210,7 +1229,8 @@ function depthCell(r) {
   function runLiveSim() {
     const box = $("#livesim");
     const token = ++simToken;
-    if (pickNo() > TEAMS * ROUNDS || mine().length >= ROUNDS || nextMyPick() === null) {
+    if (pickNo() > TEAMS * ROUNDS || mine().length >= ROUNDS) { renderRecap(box); return; }
+    if (nextMyPick() === null) {
       box.innerHTML = '<div class="simdone">Draft over for you — nothing left to simulate.</div>';
       return;
     }
@@ -1239,6 +1259,46 @@ function depthCell(r) {
       setTimeout(step, 0);
     })();
   }
+  function renderRecap(box) {
+    const roster = mine();
+    if (!roster.length) {
+      box.innerHTML = '<div class="simdone">Draft over — no roster tracked.</div>';
+      return;
+    }
+    const picks = roster.map(p => IDX_OF.get(key(p))).filter(i => i != null);
+    const starters = scoreMine(picks, 0);
+    const m = DATA.matrix;
+    const col = m.slots.indexOf(state.slot);
+    let compare = "";
+    if (col >= 0) {
+      const colVals = m.values.map(row => row[col]);
+      const best = Math.max(...colVals);
+      const stratBest = m.strategies[colVals.indexOf(best)];
+      const d = starters - best;
+      compare = `<div class="simnote" style="margin-top:4px">${d >= 0
+        ? `Beats the sim's best plan for slot ${state.slot} (${stratBest}, ${fmt(best)} avg) by <b>${fmt1(d)}</b>.`
+        : `<b>${fmt1(-d)}</b> behind the sim's best plan for slot ${state.slot} (${stratBest}, ${fmt(best)} avg) — that average includes plenty of luckier boards than yours.`}</div>`;
+    }
+    const steals = roster.filter(p => p.steal).map(p => p.player);
+    const st = stackTeams();
+    const stackedTeams = [...new Set(roster.filter(p => isStack(p, st)).map(p => p.team))];
+    box.innerHTML = `
+      <div style="font-size:26px;font-weight:800;letter-spacing:-.01em">${fmt(starters)}
+        <span style="font-size:13px;color:var(--muted);font-weight:600">projected starter pts</span></div>
+      ${compare}
+      ${steals.length ? `<div class="simnote">Steals landed: <b>${steals.join(", ")}</b></div>` : ""}
+      ${stackedTeams.length ? `<div class="simnote">Stacks built: <b>${stackedTeams.join(", ")}</b></div>` : ""}
+      <button class="btn" id="copy-roster" style="margin-top:8px">Copy roster</button>`;
+  }
+  $("#livesim").addEventListener("click", e => {
+    if (e.target.id !== "copy-roster") return;
+    const txt = "2026 draft — slot " + state.slot + "\n"
+      + mine().map((p, i) => `${i + 1}. ${p.player} ${p.pos} ${p.team} — ${p.pts.toFixed(0)} proj pts`).join("\n");
+    const fail = () => showAlert("Copy blocked by the browser — select the roster panel and copy manually");
+    try { navigator.clipboard.writeText(txt).then(() => showAlert("Roster copied to clipboard", true), fail); }
+    catch (err) { fail(); }
+  });
+
   function paintSim(rows, pending) {
     const sorted = rows.slice().sort((a, b) => b.mean - a.mean);
     const best = sorted[0];
@@ -1306,6 +1366,38 @@ function depthCell(r) {
     }
   });
 
+  /* ----- mock draft: opponent AI drafts everyone but you ----- */
+  function simToMyPick() {
+    const total = TEAMS * ROUNDS;
+    if (pickNo() > total) { showAlert("Draft is complete"); return; }
+    if (slotOnClock(pickNo()) === state.slot) { showAlert("You're already on the clock", true); return; }
+    const base = simBase();
+    fillPercepts(1 + ((Math.random() * 1e6) | 0));
+    let pk = pickNo(), guard = 0;
+    while (pk <= total && slotOnClock(pk) !== state.slot && guard++ <= TEAMS) {
+      const team = slotOnClock(pk) - 1;
+      const idx = oppNext(base.avail, base.cnt, team * 6, roundOf(pk), team * N);
+      if (idx < 0) break;
+      base.avail[idx] = 0;
+      base.cnt[team * 6 + S_posi[idx]]++;
+      state.events.push({k: key(POOL[idx]), mine: false});
+      pk++;
+    }
+    save(); renderAll();
+  }
+  $("#track-simto").addEventListener("click", simToMyPick);
+  const mockBtn = $("#track-mock");
+  function paintMock() {
+    mockBtn.textContent = "Mock draft: " + (state.mock ? "on" : "off");
+    mockBtn.classList.toggle("on", !!state.mock);
+  }
+  mockBtn.addEventListener("click", () => {
+    state.mock = !state.mock;
+    save(); paintMock();
+    if (state.mock && pickNo() <= TEAMS * ROUNDS && slotOnClock(pickNo()) !== state.slot) simToMyPick();
+  });
+  paintMock();
+
   const POSF = ["ALL","RB","WR","TE","QB","K","DST"];
   let posFilter = "ALL", q = "";
   const ptab = $("#track-postab");
@@ -1329,6 +1421,8 @@ function depthCell(r) {
     save(); renderAll();
     const sb = $("#track-search");
     if (sb.value) { sb.value = ""; q = ""; renderBoard(); }
+    if (btn.dataset.act === "mine" && state.mock
+        && pickNo() <= TEAMS * ROUNDS && slotOnClock(pickNo()) !== state.slot) simToMyPick();
   }
   $("#board").addEventListener("click", act);
   $("#recs").addEventListener("click", act);

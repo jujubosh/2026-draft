@@ -16,10 +16,12 @@ def main():
 
     # Live intel layer (optional files — dashboard renders without them)
     intel = {"injuries": [], "trending": [], "notes": [], "as_of": None}
+    news_raw = []
     try:
         with open("intel.json") as f:
             raw = json.load(f)
         intel["injuries"] = raw.get("injuries", [])
+        news_raw = raw.get("news", [])
         intel["trending"] = [
             t for t in raw.get("trending", [])
             if t.get("trend_add", 0) >= 1000 and t.get("adp_ppr", 999) < 200
@@ -295,8 +297,18 @@ def main():
 
     report["intel"] = intel
 
+    # Player news: ESPN headlines matched to pool players (newest first)
+    news_by_player = {}
+    for art in news_raw:
+        date = (art.get("published") or "")[5:10].replace("-", "/")
+        for pname in art.get("players", []):
+            hits = news_by_player.setdefault(pname, [])
+            if len(hits) < 2:
+                hits.append(f"{date}: {art['headline']}")
+    intel["player_news"] = news_raw[:10]
+
     # Tracker pool: every draftable player incl. K/DST, with the full rollup
-    # (flags, environment, ECR, bye) so draft day never needs the other tab
+    # (flags, environment, ECR, bye, news) so draft day never needs the other tab
     flag_by_key = {}
     for r in report["cheat_sheet"]:
         flag_by_key[(norm(r["player"]), r["pos"])] = {
@@ -326,6 +338,7 @@ def main():
                 "def_rank": def_rank.get(r["team"]),
                 "steal": fl.get("steal"),
                 "avoid": fl.get("avoid"),
+                "news": " • ".join(news_by_player.get(r["player"], [])) or None,
             }
         )
     report["tracker_pool"] = tracker
