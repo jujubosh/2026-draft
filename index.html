@@ -211,7 +211,7 @@
   .tag.upside { color: var(--t-upside); }
   .trow { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13.5px; border-top: 1px solid var(--grid); }
   .trow:first-of-type { border-top: 0; }
-  .trow .nm { flex: 1; min-width: 0; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .trow .nm { flex: 1; min-width: 0; font-weight: 650; overflow-wrap: anywhere; }
   .trow .meta { color: var(--ink-2); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .adds { color: var(--t-upside); font-weight: 700; }
   .dchip {
@@ -284,6 +284,7 @@
   .chip.K, .chip.DST { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--ink-2); border: 1px solid currentColor; }
   .simnote { font-size: 12px; color: var(--ink-2); margin: 0 0 10px; }
   .simdone { font-size: 12.5px; color: var(--muted); padding: 4px 0; }
+  .btn.armed { border-color: var(--t-risk); color: var(--t-risk); font-weight: 800; }
 
   footer { margin-top: 52px; color: var(--muted); font-size: 12.5px; max-width: 78ch; }
   footer p { margin: 4px 0; }
@@ -320,7 +321,10 @@
       (300 sims per slot per strategy); labels show the gap to the winner. The band is the
       10th–90th percentile <i>season outcome</i> once player-level busts, breakouts, and
       injuries are sampled on top of the projections — hover it for the floor, ceiling,
-      and how often the roster finishes top-3 in the league.</p>
+      and how often the roster finishes top-3 in the league. The dots cluster on this scale
+      because that's the honest picture: the best strategy is worth ~65 pts over the worst
+      (about 4 pts a week — real, and free), while season luck swings ~±250. Draft the edge,
+      then hope.</p>
     <div class="card" id="stratplot"></div>
   </section>
 
@@ -355,26 +359,40 @@
     <div class="intel-grid">
       <div class="intel-card" style="grid-column: 1 / -1;">
         <h3>What changes the plan</h3>
+        <div class="simnote">Hand-curated camp notes on players the sim targets — the context
+          behind a number the model can't see.</div>
         <div id="intel-notes"></div>
       </div>
       <div class="intel-card">
         <h3>Injury report — draftable range</h3>
+        <div class="simnote">Current Sleeper injury tags on players being drafted (sorted by ADP).
+          PUP/Out is a real red flag; Questionable in August is usually just camp caution.</div>
         <div id="intel-inj"></div>
       </div>
       <div class="intel-card">
         <h3>Trending adds · Sleeper, last 48h</h3>
+        <div class="simnote">Players added to the most Sleeper rosters in the last two days —
+          the market reacting to news before ADP catches up. A cheap ADP here can be a value.</div>
         <div id="intel-trend"></div>
       </div>
       <div class="intel-card">
-        <h3>Depth chart red flags — drafted like starters, not listed as one</h3>
+        <h3>Depth chart red flags</h3>
+        <div class="simnote">Being drafted like starters (top-110 ADP) but ESPN lists them 2nd
+          string or worse — you may be paying a starter price for a backup.</div>
         <div id="depth-notstarters"></div>
       </div>
       <div class="intel-card">
-        <h3>Listed starters going cheap — ADP 100+</h3>
+        <h3>Listed starters going cheap</h3>
+        <div class="simnote">First string on ESPN's depth chart but going after pick 100 —
+          late-round picks who open the season in a real role.</div>
         <div id="depth-cheap"></div>
       </div>
       <div class="intel-card">
         <h3>Experts vs the market <span class="eyebrow" id="fp-date" style="margin-left:6px"></span></h3>
+        <div class="simnote">Biggest gaps between where drafts take a player (ADP) and where
+          FantasyPros' expert consensus ranks him (ECR). <b style="color:var(--t-upside)">Green +</b>:
+          experts say he's a bargain at his price. <b style="color:var(--t-risk)">Red −</b>:
+          experts are out on him — the room will draft him earlier than the experts would.</div>
         <div id="fp-gaps"></div>
       </div>
     </div>
@@ -382,9 +400,13 @@
 
   <section>
     <h2>Cheat sheet — ranked by value over replacement</h2>
-    <p class="desc">VORP = projected PPR points above the last startable player at the position
-      (QB14 / RB34 / WR36 / TE14). <b>Value</b> is ADP rank minus VORP rank — green players are
-      going later in drafts than their production says they should.</p>
+    <p class="desc"><b>VORP</b> = projected PPR points above the last startable player at the
+      position (QB14 / RB34 / WR36 / TE14) — how much a player actually wins you over the guy
+      you'd stream. <b>Value</b> = ADP rank minus VORP rank: green means drafts are taking him
+      later than his projection deserves. <b>Depth</b> = ESPN depth chart (S = listed starter,
+      2/3 = backup). <b>ADP</b> = average draft position on Sleeper. <b>ECR</b> = FantasyPros
+      86-expert consensus rank — a second opinion; when ECR and ADP disagree hard, someone is
+      wrong about him. <b>Rec</b> = projected receptions (the stat full PPR pays for).</p>
     <div class="controls">
       <div class="postab" id="postab"></div>
       <input id="search" type="search" placeholder="Search player or team" aria-label="Search player or team">
@@ -981,6 +1003,13 @@ function depthCell(r) {
     return out.slice(0, 8);
   }
 
+  // Debug hook for the node smoke test — not used by the page itself
+  if (typeof globalThis !== "undefined") globalThis.__DRAFT_DEBUG = {
+    simBase, simOnce, simCandidates, scoreMine, ourNext, oppNext, fillPercepts,
+    setState: s => { state = s; },
+    arrays: () => ({S_posi, S_adp, S_pts, S_vorp, percept, POOL, N}),
+  };
+
   let simToken = 0, simTimer = null;
   function scheduleLiveSim() {
     simToken++;
@@ -1007,29 +1036,52 @@ function depthCell(r) {
       if (token !== simToken) return;
       if (ci >= cands.length) { paintSim(rows, false); return; }
       const idx = cands[ci++];
+      const vals = new Float64Array(SIMS);
       let sum = 0, got = 0;
       for (let s = 0; s < SIMS; s++) {
         const r = simOnce(s, idx, base);
-        sum += r.v; got += r.gotCand;
+        vals[s] = r.v; sum += r.v; got += r.gotCand;
       }
-      rows.push({idx, mean: sum / SIMS, there: got / SIMS});
+      rows.push({idx, mean: sum / SIMS, there: got / SIMS, vals});
       paintSim(rows, ci < cands.length);
       setTimeout(step, 0);
     })();
   }
   function paintSim(rows, pending) {
     const sorted = rows.slice().sort((a, b) => b.mean - a.mean);
-    const best = sorted[0].mean;
+    const best = sorted[0];
+    // Paired per-sim deltas vs the leader (same random draws per sim index),
+    // so a candidate is only "behind" when the gap beats the noise.
+    let anyTied = false;
+    for (const r of sorted) {
+      if (r === best) { r.tied = false; continue; }
+      const m = best.mean - r.mean;
+      let v = 0;
+      for (let s = 0; s < SIMS; s++) {
+        const d = best.vals[s] - r.vals[s] - m;
+        v += d * d;
+      }
+      const se = Math.sqrt(v / (SIMS - 1) / SIMS);
+      r.tied = m < Math.max(2, 2 * se);
+      anyTied = anyTied || r.tied;
+    }
     $("#livesim").innerHTML = sorted.map((r, i) => {
       const p = POOL[r.idx];
+      const verdict = i === 0
+        ? '<span class="tag upside">sim pick</span>'
+        : r.tied
+          ? `<span style="color:var(--muted)" data-tip="Within the sim's noise of the top option — treat as equal and break the tie on injury risk, bye weeks, or your own read">≈ even</span>`
+          : `<span class="delta-neg">−${(best.mean - r.mean).toFixed(1)}</span>`;
       return `<div class="trow">
         <span class="chip ${p.pos}">${p.pos}</span>
         <span class="nm">${p.player} <span class="tm" style="color:var(--muted);font-weight:500">${p.team}</span></span>
         ${r.there < 0.995 ? `<span class="meta" data-tip="How often ${p.player} is still on the board at your pick #${nextMyPick()}">${Math.round(r.there * 100)}% there</span>` : ""}
         <span class="meta"><b style="color:var(--ink)">${fmt(r.mean)}</b> pts</span>
-        <span class="meta">${i === 0 ? '<span class="tag upside">sim pick</span>' : `<span class="delta-neg">−${(best - r.mean).toFixed(1)}</span>`}</span>
+        <span class="meta">${verdict}</span>
       </div>`;
-    }).join("") + (pending ? '<div class="simdone">simulating…</div>' : "");
+    }).join("")
+      + (pending ? '<div class="simdone">simulating…</div>' : "")
+      + (!pending && anyTied ? '<div class="simdone">≈ even = statistically tied with the top pick — the sim has no real preference between them.</div>' : "");
   }
 
   /* ----- rendering ----- */
@@ -1041,8 +1093,24 @@ function depthCell(r) {
     slotBox.appendChild(el);
   }
   $("#track-undo").addEventListener("click", () => { state.events.pop(); save(); renderAll(); });
-  $("#track-reset").addEventListener("click", () => {
-    if (confirm("Clear the whole draft board and start over?")) { state.events = []; save(); renderAll(); }
+  // Two-step confirm — window.confirm() is silently blocked in sandboxed viewers
+  const resetBtn = $("#track-reset");
+  let resetTimer = null;
+  const disarmReset = () => {
+    clearTimeout(resetTimer);
+    resetBtn.classList.remove("armed");
+    resetBtn.textContent = "Reset draft";
+  };
+  resetBtn.addEventListener("click", () => {
+    if (resetBtn.classList.contains("armed")) {
+      disarmReset();
+      state.events = [];
+      save(); renderAll();
+    } else {
+      resetBtn.classList.add("armed");
+      resetBtn.textContent = "Erase all picks?";
+      resetTimer = setTimeout(disarmReset, 4000);
+    }
   });
 
   const POSF = ["ALL","RB","WR","TE","QB","K","DST"];
