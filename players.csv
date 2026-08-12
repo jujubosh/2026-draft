@@ -2,7 +2,7 @@ player_id,player,pos,team,adp_ppr,pts_ppr,games,rec,rec_yd,rec_td,rush_att,rush_
 9221,Jahmyr Gibbs,RB,DET,1.6,331.4,18.0,63.0,533.0,3.0,255.0,1251.0,12.0,,,Questionable,3.0
 9509,Bijan Robinson,RB,ATL,1.8,324.9,18.0,64.0,537.0,3.0,280.0,1372.0,9.0,,,,3.0
 7564,Ja'Marr Chase,WR,CIN,3.4,311.1,18.0,109.0,1345.0,11.0,3.0,16.0,,,,,5.0
-9493,Puka Nacua,WR,LAR,4.9,312.5,18.0,107.0,1400.0,10.0,10.0,55.0,,,,,3.0
+9493,Puka Nacua,WR,LAR,4.9,312.5,18.0,107.0,1400.0,10.0,10.0,55.0,,,,Questionable,3.0
 4034,Christian McCaffrey,RB,SF,5.0,291.0,18.0,70.0,606.0,4.0,240.0,984.0,7.0,,,Questionable,9.0
 9488,Jaxon Smith-Njigba,WR,SEA,5.4,284.6,18.0,99.0,1343.0,8.0,6.0,33.0,,,,,3.0
 6813,Jonathan Taylor,RB,IND,7.7,272.3,18.0,36.0,278.0,1.0,287.0,1385.0,11.0,,,,6.0
@@ -71,7 +71,7 @@ player_id,player,pos,team,adp_ppr,pts_ppr,games,rec,rec_yd,rec_td,rush_att,rush_
 13286,Jadarian Price,RB,SEA,70.0,170.0,18.0,19.0,138.0,1.0,212.0,912.0,7.0,,,Questionable,0.0
 9487,Parker Washington,WR,JAX,70.2,212.4,18.0,72.0,906.0,7.0,10.0,58.0,,,,,3.0
 7553,Kyle Pitts,TE,ATL,71.3,171.6,18.0,66.0,756.0,5.0,,,,,,,5.0
-5846,DK Metcalf,WR,PIT,74.4,183.3,18.0,62.0,843.0,6.0,2.0,10.0,,,,,7.0
+5846,DK Metcalf,WR,PIT,74.4,183.3,18.0,62.0,843.0,6.0,2.0,10.0,,,,Questionable,7.0
 8228,Jaylen Warren,RB,PIT,74.8,170.6,18.0,36.0,267.0,1.0,172.0,759.0,5.0,,,,4.0
 7594,Chuba Hubbard,RB,CAR,74.9,162.9,18.0,29.0,193.0,1.0,190.0,806.0,5.0,,,,5.0
 11628,Marvin Harrison,WR,ARI,75.8,186.2,18.0,62.0,882.0,6.0,,,,,,,2.0
@@ -115,7 +115,7 @@ player_id,player,pos,team,adp_ppr,pts_ppr,games,rec,rec_yd,rec_td,rush_att,rush_
 421,Matthew Stafford,QB,LAR,115.2,280.22,18.0,,,,27.0,19.0,,4033.0,32.0,,17.0
 8121,Romeo Doubs,WR,NE,115.3,161.2,18.0,57.0,742.0,5.0,,,,,,,4.0
 LAR,Los Angeles Rams,DST,LAR,115.5,106.0,1.0,,,,,,,,,,
-10222,Jayden Reed,WR,GB,116.0,197.6,18.0,70.0,853.0,6.0,14.0,83.0,,,,Questionable,3.0
+10222,Jayden Reed,WR,GB,116.0,197.6,18.0,70.0,853.0,6.0,14.0,83.0,,,,,3.0
 8131,Isaiah Likely,TE,NYG,117.3,157.3,18.0,62.0,653.0,5.0,,,,,,,4.0
 13330,Kenyon Sadiq,TE,NYJ,118.2,131.1,18.0,52.0,542.0,4.0,2.0,9.0,,,,Questionable,0.0
 11563,Bo Nix,QB,DEN,118.7,295.72,18.0,,,,76.0,330.0,4.0,3768.0,26.0,,2.0
@@ -134,7 +134,7 @@ PHI,Philadelphia Eagles,DST,PHI,129.0,98.0,1.0,,,,,,,,,,
 8132,Tyler Allgeier,RB,ARI,132.5,69.4,18.0,8.0,54.0,,95.0,400.0,3.0,,,,4.0
 DEN,Denver Broncos,DST,DEN,132.8,96.0,1.0,,,,,,,,,,
 8134,Khalil Shakir,WR,BUF,133.8,166.5,18.0,69.0,725.0,4.0,2.0,10.0,,,,,4.0
-12501,Matthew Golden,WR,GB,134.1,170.1,18.0,58.0,770.0,5.0,8.0,51.0,,,,Questionable,1.0
+12501,Matthew Golden,WR,GB,134.1,170.1,18.0,58.0,770.0,5.0,8.0,51.0,,,,,1.0
 11624,Xavier Worthy,WR,KC,134.9,161.5,18.0,55.0,695.0,4.0,17.0,90.0,1.0,,,Questionable,2.0
 7002,Juwan Johnson,TE,NO,135.3,136.6,18.0,54.0,586.0,4.0,,,,,,,6.0
 11646,Jalen Coker,WR,CAR,136.3,165.9,18.0,60.0,753.0,5.0,1.0,6.0,,,,,2.0
@@ -390,7 +390,7 @@ WAS,Washington Commanders,DST,WAS,999.0,75.0,1.0,,,,,,,,,,
 13270,CJ Daniels,WR,LAR,999.0,39.3,18.0,15.0,177.0,1.0,1.0,6.0,,,,,0.0
 13296,Caleb Douglas,WR,MIA,999.0,32.5,18.0,12.0,145.0,1.0,,,,,,,0.0
 13297,Reggie Virgil,WR,ARI,999.0,6.6,18.0,3.0,36.0,,,,,,,,0.0
-13309,Aaron Anderson,WR,CLE,999.0,30.2,18.0,11.0,132.0,1.0,,,,,,IR,0.0
+13309,Aaron Anderson,WR,CLE,999.0,30.2,18.0,11.0,132.0,1.0,,,,,,Questionable,0.0
 13316,Eric Rivers,WR,TB,999.0,29.4,18.0,11.0,124.0,1.0,,,,,,,0.0
 13318,Noah Thomas,WR,CIN,999.0,6.6,18.0,3.0,36.0,,,,,,,,0.0
 13333,Deion Burks,WR,IND,999.0,27.6,18.0,10.0,114.0,1.0,,2.0,,,,,0.0
@@ -539,7 +539,7 @@ WAS,Washington Commanders,DST,WAS,999.0,75.0,1.0,,,,,,,,,,
 13421,Eli Raridon,TE,NE,999.0,33.0,18.0,14.0,130.0,1.0,,,,,,,0.0
 13422,Jaren Kanak,TE,TEN,999.0,31.6,18.0,13.0,126.0,1.0,,,,,,,0.0
 13429,Seydou Traore,TE,MIA,999.0,8.0,18.0,4.0,40.0,,,,,,,,0.0
-13431,Miles Kitselman,TE,DET,999.0,31.6,18.0,13.0,126.0,1.0,,,,,,IR,0.0
+13431,Miles Kitselman,TE,DET,999.0,31.6,18.0,13.0,126.0,1.0,,,,,,Questionable,0.0
 10231,Elijah Higgins,TE,ARI,999.0,41.9,18.0,18.0,179.0,1.0,,,,,,,3.0
 10871,Luke Schoonmaker,TE,DAL,999.0,31.4,18.0,13.0,124.0,1.0,,,,,,,3.0
 11201,Blake Whiteheart,TE,CLE,999.0,4.4,18.0,2.0,24.0,,,,,,,,3.0
@@ -561,7 +561,7 @@ WAS,Washington Commanders,DST,WAS,999.0,75.0,1.0,,,,,,,,,,
 6820,Clyde Edwards-Helaire,RB,FA,999.0,0.8,18.0,,,,2.0,8.0,,,,,6.0
 6938,Cam Akers,RB,FA,999.0,5.1,18.0,2.0,15.0,,4.0,16.0,,,,,6.0
 6945,Antonio Gibson,RB,FA,999.0,3.9,18.0,2.0,15.0,,1.0,4.0,,,,Questionable,6.0
-7561,Elijah Mitchell,RB,PHI,999.0,9.3,18.0,2.0,14.0,,14.0,59.0,,,,IR,5.0
+7561,Elijah Mitchell,RB,PHI,999.0,9.3,18.0,2.0,14.0,,14.0,59.0,,,,Questionable,5.0
 7607,Michael Carter,RB,TEN,999.0,8.1,18.0,3.0,22.0,,7.0,29.0,,,,,5.0
 8116,Pierre Strong,RB,GB,999.0,7.5,18.0,2.0,14.0,,10.0,41.0,,,,,4.0
 8129,Dameon Pierce,RB,PHI,999.0,21.8,18.0,3.0,22.0,,25.0,106.0,1.0,,,Questionable,4.0
@@ -578,7 +578,7 @@ WAS,Washington Commanders,DST,WAS,999.0,75.0,1.0,,,,,,,,,,
 11292,Tommy DeVito,QB,NE,999.0,12.38,18.0,,,,4.0,13.0,,202.0,1.0,,3.0
 11557,Joe Milton,QB,DAL,999.0,12.4,18.0,,,,4.0,16.0,,195.0,1.0,,2.0
 10210,Cameron Latu,TE,PHI,999.0,4.0,18.0,2.0,20.0,,,,,,,,3.0
-10212,Josh Whyle,TE,GB,999.0,6.2,18.0,3.0,32.0,,,,,,,Questionable,3.0
+10212,Josh Whyle,TE,GB,999.0,6.2,18.0,3.0,32.0,,,,,,,,3.0
 10214,Davis Allen,TE,LAR,999.0,5.9,18.0,3.0,29.0,,,,,,,Questionable,3.0
 10227,Payne Durham,TE,TB,999.0,8.1,18.0,4.0,41.0,,,,,,,,3.0
 11562,Spencer Rattler,QB,NO,999.0,12.68,18.0,,,,4.0,16.0,,202.0,1.0,,2.0
