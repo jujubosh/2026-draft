@@ -173,6 +173,18 @@
   .suggest .ev.pos { color: var(--good); }
   .suggest .ev.neg { color: var(--muted); }
   .ev-note { font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+  .badge { font-size: 9.5px; font-weight: 800; padding: 1px 5px; border-radius: 5px;
+    margin-left: 5px; letter-spacing: .04em; cursor: default; vertical-align: 1px; }
+  .badge.rk { border: 1px solid var(--muted); color: var(--ink-2); }
+  .badge.up { color: var(--good); padding: 1px 2px; }
+  .badge.dn { color: var(--bad); padding: 1px 2px; }
+  .badge.nw { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); }
+  .tip {
+    position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--page);
+    font-size: 12px; padding: 5px 9px; border-radius: 6px; opacity: 0; transition: opacity .08s;
+    max-width: 320px; line-height: 1.4;
+  }
+  @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
   .colhead { display: flex; gap: 8px; padding: 0 2px 3px; font-size: 10.5px; text-transform: uppercase;
     letter-spacing: .05em; font-weight: 700; color: var(--muted); }
   .colhead .adp { width: 44px; text-align: right; } .colhead .sp { flex: 1; }
@@ -287,6 +299,10 @@
 
       <div>
         <div class="card panel">
+          <h3>Your starting lineup <span class="pts" id="you-lineup-live-pts"></span></h3>
+          <div id="you-lineup-live"></div>
+        </div>
+        <div class="card panel">
           <h3>Your roster <span class="pts" id="you-pts"></span></h3>
           <div id="you-roster"></div>
         </div>
@@ -368,7 +384,23 @@ const P = {
   bye: players.map(p => p.bye),
   inj: players.map(p => p.injury),
   ecr: players.map(p => p.ecr),
+  rookie: players.map(p => !!p.rookie),
+  steal: players.map(p => p.steal),
+  avoid: players.map(p => p.avoid),
+  news: players.map(p => p.news),
 };
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+/* War-room badges: rookie flag, steal/avoid signals, latest ESPN news */
+function badges(i) {
+  let h = "";
+  if (P.rookie[i]) h += `<span class="badge rk" data-tip="Rookie — 2026 draft class">RK</span>`;
+  if (P.steal[i]) h += `<span class="badge up" data-tip="Steal: ${esc(P.steal[i])}">&#9650;</span>`;
+  if (P.avoid[i]) h += `<span class="badge dn" data-tip="Stay away: ${esc(P.avoid[i])}">&#9660;</span>`;
+  if (P.news[i]) h += `<span class="badge nw" data-tip="${esc(P.news[i])}">news</span>`;
+  return h;
+}
 const keyOf = i => P.name[i] + "|" + P.pos[i];
 const byKey = {};
 players.forEach((p, i) => { byKey[keyOf(i)] = i; });
@@ -596,7 +628,7 @@ function paintSuggest() {
       <div class="brow">
         <span class="adp">${P.adp[i] < 900 ? P.adp[i].toFixed(0) : "—"}</span>
         <span class="chip ${P.pos[i]}">${P.pos[i]}</span>
-        <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}</span>
+        <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}</span>${badges(i)}
           <span class="why">${s.lasts ? "may last to your next pick" : "likely gone by your next pick"}</span></span>
         <span class="v">${P.pts[i].toFixed(0)}</span>
         <span class="v">${P.vorp[i] > 0 ? "+" + P.vorp[i].toFixed(0) : P.vorp[i].toFixed(0)}</span>
@@ -721,7 +753,8 @@ function seasonSim(nSamp) {
 
 /* ============ rendering ============ */
 let posFilter = "ALL", q = "", sortBy = "adp";
-const POSES = ["ALL", "RB", "WR", "TE", "QB", "K", "DST"];
+const POSES = ["ALL", "RB", "WR", "TE", "QB", "K", "DST", "RK"];
+const POS_LABEL = {RK: "Rookies"};
 const SORTS = [
   ["adp", "ADP", (a, b) => P.adp[a] - P.adp[b]],
   ["ecr", "ECR", (a, b) => (P.ecr[a] ?? 9999) - (P.ecr[b] ?? 9999)],
@@ -739,7 +772,8 @@ function paintBoard() {
   const rows = [];
   for (let i = 0; i < N; i++) {
     if (!g.available[i]) continue;
-    if (posFilter !== "ALL" && P.pos[i] !== posFilter) continue;
+    if (posFilter === "RK") { if (!P.rookie[i]) continue; }
+    else if (posFilter !== "ALL" && P.pos[i] !== posFilter) continue;
     if (q && !P.name[i].toLowerCase().includes(q)) continue;
     rows.push(i);
   }
@@ -767,7 +801,7 @@ function paintBoard() {
     <div class="brow">
       <span class="adp">${P.adp[i] < 900 ? P.adp[i].toFixed(0) : "—"}</span>
       <span class="chip ${P.pos[i]}">${P.pos[i]}</span>
-      <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}${P.bye[i] ? " · bye " + P.bye[i] : ""}${P.ecr[i] ? " · ECR " + P.ecr[i] : ""}</span>
+      <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}${P.bye[i] ? " · bye " + P.bye[i] : ""}${P.ecr[i] ? " · ECR " + P.ecr[i] : ""}</span>${badges(i)}
         ${P.inj[i] ? `<span class="inj"> ${P.inj[i]}</span>` : ""}</span>
       <span class="v">${P.pts[i].toFixed(0)}</span>
       <span class="v">${P.vorp[i] > 0 ? "+" + P.vorp[i].toFixed(0) : P.vorp[i].toFixed(0)}</span>
@@ -780,6 +814,37 @@ function paintBoard() {
       if (g.pending === null || animating || userLegal(i)) return;
       commitUserPick(i, true);
     }));
+}
+
+/* Live starting lineup: which picks currently fill each slot, bench below */
+function lineupView(picks) {
+  const by = {};
+  for (const i of picks) (by[P.pos[i]] = by[P.pos[i]] || []).push(i);
+  for (const p in by) by[p].sort((a, b) => P.pts[b] - P.pts[a]);
+  const slots = [], used = {};
+  for (const pos of ["QB", "RB", "RB", "WR", "WR", "TE"]) {
+    const k = used[pos] || 0;
+    slots.push({lbl: pos, i: (by[pos] || [])[k]});
+    used[pos] = k + 1;
+  }
+  const flex = [];
+  for (const pos of ["RB", "WR", "TE"]) flex.push(...(by[pos] || []).slice(used[pos] || 0));
+  flex.sort((a, b) => P.pts[b] - P.pts[a]);
+  slots.push({lbl: "FLEX", i: flex[0]});
+  slots.push({lbl: "K", i: (by.K || [])[0]});
+  slots.push({lbl: "DST", i: (by.DST || [])[0]});
+  return {slots, bench: flex.slice(1)};
+}
+
+function paintLineup(el, picks) {
+  const {slots, bench} = lineupView(picks);
+  el.innerHTML = slots.map(s => `
+    <div class="rrow"><span class="rd">${s.lbl}</span>` + (s.i === undefined
+      ? `<span class="who empty">—</span></div>`
+      : `<span class="who">${P.name[s.i]}</span><span class="p">${P.pts[s.i].toFixed(0)}</span></div>`)
+  ).join("") + (bench.length ? `
+    <div class="rrow"><span class="rd">BN</span><span class="who empty" style="font-weight:400">
+      ${bench.map(i => P.name[i].split(" ").slice(-1)[0]).join(", ")}</span></div>` : "");
 }
 
 function paintRoster(el, picks, revealTo) {
@@ -815,6 +880,8 @@ function paint() {
     ? (d >= 0 ? `you +${d.toFixed(0)}` : `Claude +${(-d).toFixed(0)}`) : "";
   $("#you-pts").textContent = `${g.rosters[g.slot].length}/15`;
   $("#cl-pts").textContent = `${g.claude.picks.length}/15`;
+  $("#you-lineup-live-pts").textContent = you.starters.toFixed(0) + " pts";
+  paintLineup($("#you-lineup-live"), g.rosters[g.slot]);
   paintRoster($("#you-roster"), g.rosters[g.slot]);
   paintRoster($("#cl-roster"), g.claude.picks);
   $("#ticker").innerHTML = g.log.slice(0, 40).map(l =>
@@ -899,11 +966,12 @@ paintSlots();
 
 POSES.forEach(p => {
   const b = document.createElement("button");
-  b.textContent = p;
+  b.textContent = POS_LABEL[p] || p;
+  b.dataset.pos = p;
   b.classList.toggle("on", p === "ALL");
   b.addEventListener("click", () => {
     posFilter = p;
-    $("#postab").querySelectorAll("button").forEach(x => x.classList.toggle("on", x.textContent === p));
+    $("#postab").querySelectorAll("button").forEach(x => x.classList.toggle("on", x.dataset.pos === p));
     paintBoard();
   });
   $("#postab").appendChild(b);
@@ -941,6 +1009,27 @@ $("#btn-newslot").addEventListener("click", () => {
   $("#recap").classList.add("hide");
   $("#setup").classList.remove("hide");
   window.scrollTo({top: 0});
+});
+
+/* hover tooltips for the war-room badges (steal/avoid reasons, news) */
+const tipEl = document.createElement("div");
+tipEl.className = "tip";
+document.body.appendChild(tipEl);
+document.addEventListener("mouseover", e => {
+  const t = e.target.closest ? e.target.closest("[data-tip]") : null;
+  if (!t) { tipEl.style.opacity = 0; return; }
+  tipEl.textContent = t.dataset.tip;
+  tipEl.style.opacity = 1;
+});
+document.addEventListener("mousemove", e => {
+  if (tipEl.style.opacity == 1) {
+    const pad = 14;
+    let x = e.clientX + pad, y = e.clientY + pad;
+    const w = tipEl.offsetWidth || 0, h = tipEl.offsetHeight || 0;
+    if (x + w > innerWidth - 8) x = e.clientX - w - pad;
+    if (y + h > innerHeight - 8) y = e.clientY - h - pad;
+    tipEl.style.left = x + "px"; tipEl.style.top = y + "px";
+  }
 });
 
 /* resume an unfinished draft */
