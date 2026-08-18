@@ -164,6 +164,20 @@
   .inj { font-size: 10.5px; font-weight: 800; color: var(--t-risk); }
   .need-note { font-size: 12.5px; color: var(--ink-2); margin: 0 0 6px; min-height: 0; }
   .need-note.urgent { color: var(--t-risk); font-weight: 700; }
+  .sortbar { display: flex; gap: 8px; align-items: center; margin: 0 0 8px; }
+  .sort-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--muted); }
+  .sortbar .postab { margin: 0; }
+  .suggest { margin-bottom: 14px; }
+  .suggest .brow .why { font-size: 11.5px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+  .suggest .ev { width: 62px; text-align: right; font-variant-numeric: tabular-nums; font-size: 12.5px; font-weight: 750; }
+  .suggest .ev.pos { color: var(--good); }
+  .suggest .ev.neg { color: var(--muted); }
+  .ev-note { font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+  .colhead { display: flex; gap: 8px; padding: 0 2px 3px; font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: .05em; font-weight: 700; color: var(--muted); }
+  .colhead .adp { width: 44px; text-align: right; } .colhead .sp { flex: 1; }
+  .colhead .v { width: 52px; text-align: right; } .colhead .ev { width: 62px; text-align: right; }
+  .colhead .btnpad { width: 51px; }
 
   /* roster panels */
   .panel h3 { margin: 0 0 6px; font-size: 14px; font-weight: 800; letter-spacing: -.01em; }
@@ -255,11 +269,20 @@
     <div class="reveal" id="reveal"></div>
 
     <div class="game-grid">
-      <div class="card">
+      <div>
+        <div class="card panel suggest" id="suggest-card">
+          <h3>Suggested picks <span class="pts">same brain as Claude, scored for <i>your</i> roster</span></h3>
+          <div id="suggest"></div>
+          <div class="ev-note">EV = projected points gained by taking him now instead of the best
+            player at that position likely still on the board at your next pick.</div>
+        </div>
+        <div class="card">
         <input type="search" id="search" placeholder="Search player…" autocomplete="off">
         <div class="postab" id="postab"></div>
+        <div class="sortbar"><span class="sort-lbl">Sort</span><div class="postab" id="sorttab"></div></div>
         <div class="need-note" id="need-note"></div>
         <div class="board-wrap" id="board"></div>
+        </div>
       </div>
 
       <div>
@@ -344,6 +367,7 @@ const P = {
   vorp: players.map(p => p.vorp),
   bye: players.map(p => p.bye),
   inj: players.map(p => p.injury),
+  ecr: players.map(p => p.ecr),
 };
 const keyOf = i => P.name[i] + "|" + P.pos[i];
 const byKey = {};
@@ -514,6 +538,80 @@ function userLegal(i) {
   return null;
 }
 
+/* Suggestions: the sim brain's scoring (VORP + positional urgency + its
+   draft discipline) applied to YOUR roster, plus EV vs waiting — points over
+   the best same-position player likely still available at your next pick. */
+function suggestions() {
+  if (g.pending === null || g.cursor >= g.seq.length) return [];
+  const rnd = g.seq[g.cursor].rnd, c = g.counts[g.slot];
+  let nextNo = null;
+  for (let k = g.cursor + 1; k < g.seq.length; k++)
+    if (g.seq[k].team === g.slot) { nextNo = g.seq[k].pickNo; break; }
+  const base = availIdx().filter(i => !userLegal(i));
+  const discipline = i => {
+    const p = P.pos[i];
+    if ((p === "K" || p === "DST") && rnd < 13) return false;
+    if (p === "QB" && ((c.QB || 0) >= 1 || rnd < 5)) return false;
+    if (p === "TE" && (c.TE || 0) >= 2) return false;
+    return true;
+  };
+  let cands = base.filter(discipline);
+  if (!cands.length) cands = base;
+  const scored = cands.map(i => {
+    let s = P.vorp[i];
+    if (!(c.QB) && rnd >= 8 && P.pos[i] === "QB") s += 15;
+    if (!(c.TE) && rnd >= 9 && P.pos[i] === "TE") s += 12;
+    return {i, score: s};
+  }).sort((a, b) => b.score - a.score).slice(0, 5);
+  const bestNextAt = {};
+  for (const sug of scored) {
+    const pos = P.pos[sug.i];
+    if (!(pos in bestNextAt)) {
+      let best = null;
+      if (nextNo !== null)
+        for (const j of availIdx())
+          if (P.pos[j] === pos && j !== sug.i && P.adp[j] >= nextNo &&
+              (best === null || P.pts[j] > best)) best = P.pts[j];
+      bestNextAt[pos] = best;
+    }
+    sug.ev = nextNo === null || bestNextAt[pos] === null ? null : P.pts[sug.i] - bestNextAt[pos];
+    sug.lasts = nextNo !== null && P.adp[sug.i] >= nextNo;
+  }
+  return scored;
+}
+
+function paintSuggest() {
+  const onClock = g.pending !== null && !animating;
+  const card = $("#suggest-card");
+  if (!onClock) { card.classList.add("hide"); return; }
+  card.classList.remove("hide");
+  const sugs = suggestions();
+  $("#suggest").innerHTML = `
+    <div class="colhead"><span class="adp">ADP</span><span class="sp"></span>
+      <span class="v">Proj</span><span class="v">VORP</span><span class="ev">EV</span><span class="btnpad"></span></div>` +
+    sugs.map(s => {
+      const i = s.i;
+      const evTxt = s.ev === null ? "—" : (s.ev >= 0 ? "+" : "") + s.ev.toFixed(0);
+      return `
+      <div class="brow">
+        <span class="adp">${P.adp[i] < 900 ? P.adp[i].toFixed(0) : "—"}</span>
+        <span class="chip ${P.pos[i]}">${P.pos[i]}</span>
+        <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}</span>
+          <span class="why">${s.lasts ? "may last to your next pick" : "likely gone by your next pick"}</span></span>
+        <span class="v">${P.pts[i].toFixed(0)}</span>
+        <span class="v">${P.vorp[i] > 0 ? "+" + P.vorp[i].toFixed(0) : P.vorp[i].toFixed(0)}</span>
+        <span class="ev ${s.ev !== null && s.ev > 0 ? "pos" : "neg"}">${evTxt}</span>
+        <button data-i="${i}">Draft</button>
+      </div>`;
+    }).join("");
+  $("#suggest").querySelectorAll("button[data-i]").forEach(b =>
+    b.addEventListener("click", () => {
+      const i = +b.dataset.i;
+      if (g.pending === null || animating || userLegal(i)) return;
+      commitUserPick(i, true);
+    }));
+}
+
 /* ============ persistence: seed + user picks replays the whole draft ============ */
 function save() {
   try {
@@ -622,8 +720,14 @@ function seasonSim(nSamp) {
 }
 
 /* ============ rendering ============ */
-let posFilter = "ALL", q = "";
+let posFilter = "ALL", q = "", sortBy = "adp";
 const POSES = ["ALL", "RB", "WR", "TE", "QB", "K", "DST"];
+const SORTS = [
+  ["adp", "ADP", (a, b) => P.adp[a] - P.adp[b]],
+  ["ecr", "ECR", (a, b) => (P.ecr[a] ?? 9999) - (P.ecr[b] ?? 9999)],
+  ["vorp", "VORP", (a, b) => P.vorp[b] - P.vorp[a]],
+  ["pts", "Proj", (a, b) => P.pts[b] - P.pts[a]],
+];
 
 function pickLabel(pickNo) {
   const rnd = Math.ceil(pickNo / TEAMS);
@@ -639,7 +743,7 @@ function paintBoard() {
     if (q && !P.name[i].toLowerCase().includes(q)) continue;
     rows.push(i);
   }
-  rows.sort((a, b) => P.adp[a] - P.adp[b]);
+  rows.sort(SORTS.find(s => s[0] === sortBy)[2]);
 
   // League-rule banner: what you still owe, and whether the board is locked to it
   const needs = userNeeds();
@@ -663,7 +767,7 @@ function paintBoard() {
     <div class="brow">
       <span class="adp">${P.adp[i] < 900 ? P.adp[i].toFixed(0) : "—"}</span>
       <span class="chip ${P.pos[i]}">${P.pos[i]}</span>
-      <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}${P.bye ? (P.bye[i] ? " · bye " + P.bye[i] : "") : ""}</span>
+      <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}${P.bye[i] ? " · bye " + P.bye[i] : ""}${P.ecr[i] ? " · ECR " + P.ecr[i] : ""}</span>
         ${P.inj[i] ? `<span class="inj"> ${P.inj[i]}</span>` : ""}</span>
       <span class="v">${P.pts[i].toFixed(0)}</span>
       <span class="v">${P.vorp[i] > 0 ? "+" + P.vorp[i].toFixed(0) : P.vorp[i].toFixed(0)}</span>
@@ -717,6 +821,7 @@ function paint() {
     `<div><span class="pk">${pickLabel(l.pickNo)}</span>` +
     (l.mine ? `<span class="me">You</span>` : `Slot ${l.team + 1}`) +
     ` — ${P.name[l.idx]} <span class="pk">${P.pos[l.idx]}</span></div>`).join("");
+  paintSuggest();
   paintBoard();
 }
 
@@ -804,6 +909,18 @@ POSES.forEach(p => {
   $("#postab").appendChild(b);
 });
 $("#search").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); paintBoard(); });
+
+SORTS.forEach(([key, label]) => {
+  const b = document.createElement("button");
+  b.textContent = label;
+  b.classList.toggle("on", key === sortBy);
+  b.addEventListener("click", () => {
+    sortBy = key;
+    $("#sorttab").querySelectorAll("button").forEach(x => x.classList.toggle("on", x.textContent === label));
+    paintBoard();
+  });
+  $("#sorttab").appendChild(b);
+});
 
 function startDraft(slot, seed, picks) {
   newGame(slot - 1, seed, picks);
