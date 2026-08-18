@@ -695,7 +695,7 @@ const fmt1 = n => n.toLocaleString("en-US", {minimumFractionDigits: 1, maximumFr
     }).join("");
     $("#plan").innerHTML = head + `<div class="rounds">${rounds}</div>`;
   }
-  render(5);
+  render(3);
 }
 
 /* ---------- live intel ---------- */
@@ -878,7 +878,7 @@ function depthCell(r) {
   const CAPS = {QB: 2, RB: 8, WR: 8, TE: 3, K: 1, DST: 1};
   const LINEUP = [["QB",1],["RB",2],["WR",2],["TE",1],["FLEX",1],["K",1],["DST",1]];
 
-  let state = {slot: 5, events: []}; // events: {k, mine}
+  let state = {slot: 3, events: []}; // events: {k, mine}
   try {
     const raw = localStorage.getItem("draft2026.state");
     if (raw) { const s = JSON.parse(raw); if (s && Array.isArray(s.events)) state = s; }
