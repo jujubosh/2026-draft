@@ -231,6 +231,12 @@
   }
   .tabs button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
   .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .tabs a.tablink {
+    font-weight: 750; font-size: 14px; padding: 8px 18px; margin-left: auto;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2);
+    border-radius: 9px; text-decoration: none;
+  }
+  .tabs a.tablink:hover { border-color: var(--accent); color: var(--ink); }
   .view { display: none; }
   .view.on { display: block; }
 
@@ -323,6 +329,7 @@
   <nav class="tabs">
     <button id="tab-war" class="on">War Room</button>
     <button id="tab-track">Live Tracker</button>
+    <a class="tablink" href="versus.html">Draft vs Claude &nearr;</a>
   </nav>
 
   <div class="view on" id="view-war">

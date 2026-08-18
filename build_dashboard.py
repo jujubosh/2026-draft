@@ -391,6 +391,20 @@ def main():
                 + html)
     print(f"dashboard.html + index.html written ({len(html)//1024} KB)")
 
+    # Versus page: play a full mock draft against the sim's Pure-VORP brain
+    try:
+        with open("versus_template.html") as f:
+            vhtml = f.read()
+    except FileNotFoundError:
+        return
+    vhtml = vhtml.replace("__POOL__", json.dumps(denan(report["tracker_pool"]),
+                                                 separators=(",", ":")))
+    vhtml = vhtml.replace("__DATA_DATE__", datetime.date.today().strftime("%B %-d, %Y"))
+    vhtml = vhtml.replace("__LOGO__", logo)
+    with open("versus.html", "w") as f:
+        f.write(vhtml)
+    print(f"versus.html written ({len(vhtml)//1024} KB)")
+
 
 if __name__ == "__main__":
     main()

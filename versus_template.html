@@ -1,0 +1,790 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draft vs Claude — 2026</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --ring: rgba(11, 11, 11, 0.10);
+    --accent: #2a78d6;
+    --good: #006300;
+    --bad: #b3261e;
+    --claude: #b3541e;
+    --rb: #1baf7a; --wr: #2a78d6; --te: #eb6834; --qb: #eda100;
+    --rb-soft: rgba(27,175,122,.14); --wr-soft: rgba(42,120,214,.13);
+    --te-soft: rgba(235,104,52,.14); --qb-soft: rgba(237,161,0,.16);
+    --t-risk: #b3261e; --t-watch: #8a5a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19;
+      --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --ring: rgba(255,255,255,.10);
+      --accent: #3987e5; --good: #0ca30c; --bad: #e66767; --claude: #e08a4e;
+      --rb: #199e70; --wr: #3987e5; --te: #d95926; --qb: #c98500;
+      --rb-soft: rgba(25,158,112,.20); --wr-soft: rgba(57,135,229,.18);
+      --te-soft: rgba(217,89,38,.20); --qb-soft: rgba(201,133,0,.22);
+      --t-risk: #e66767; --t-watch: #fab219;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --ring: rgba(255,255,255,.10);
+    --accent: #3987e5; --good: #0ca30c; --bad: #e66767; --claude: #e08a4e;
+    --rb: #199e70; --wr: #3987e5; --te: #d95926; --qb: #c98500;
+    --rb-soft: rgba(25,158,112,.20); --wr-soft: rgba(57,135,229,.18);
+    --te-soft: rgba(217,89,38,.20); --qb-soft: rgba(201,133,0,.22);
+    --t-risk: #e66767; --t-watch: #fab219;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb;
+    --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --ring: rgba(11,11,11,.10);
+    --accent: #2a78d6; --good: #006300; --bad: #b3261e; --claude: #b3541e;
+    --rb: #1baf7a; --wr: #2a78d6; --te: #eb6834; --qb: #eda100;
+    --rb-soft: rgba(27,175,122,.14); --wr-soft: rgba(42,120,214,.13);
+    --te-soft: rgba(235,104,52,.14); --qb-soft: rgba(237,161,0,.16);
+    --t-risk: #b3261e; --t-watch: #8a5a00;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .10em; font-size: 11.5px;
+    font-weight: 700; color: var(--muted);
+  }
+  header h1 {
+    margin: 6px 0 4px; font-size: clamp(28px, 5vw, 42px); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  header .sub { color: var(--ink-2); max-width: 66ch; margin: 0; }
+  .backlink { display: inline-block; margin-bottom: 14px; font-size: 13.5px; font-weight: 700;
+    color: var(--accent); text-decoration: none; }
+  .backlink:hover { text-decoration: underline; }
+
+  section { margin-top: 30px; }
+  section > h2 { font-size: 21px; font-weight: 750; letter-spacing: -.01em; margin: 4px 0 2px; }
+  section > .desc { color: var(--ink-2); margin: 0 0 16px; max-width: 72ch; }
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; }
+
+  .btn {
+    font: inherit; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 8px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--ink); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-size: 14px; padding: 9px 20px; }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.danger:hover { border-color: var(--t-risk); color: var(--t-risk); }
+
+  /* setup */
+  .slots { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 18px; }
+  .slots button {
+    font: inherit; font-size: 13.5px; font-weight: 700; width: 40px; height: 34px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2);
+    border-radius: 8px; cursor: pointer;
+  }
+  .slots button:hover { border-color: var(--accent); color: var(--ink); }
+  .slots button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .setup-lbl { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--muted); }
+  .resume-note { margin: 0 0 14px; padding: 10px 14px; border-radius: 10px; font-size: 13.5px;
+    border: 1px solid var(--accent); color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .resume-note button { margin-left: 10px; }
+
+  /* clock / scoreboard */
+  .clock {
+    border-radius: 12px; padding: 14px 18px; margin-bottom: 14px;
+    background: var(--surface); border: 1px solid var(--ring);
+    display: flex; gap: 20px; align-items: baseline; flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 5;
+  }
+  .clock .big { font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+  .clock .big.me { color: var(--accent); }
+  .clock .meta { color: var(--ink-2); font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  .score { margin-left: auto; display: flex; gap: 14px; align-items: baseline; font-variant-numeric: tabular-nums; }
+  .score .you { color: var(--accent); font-weight: 800; }
+  .score .cl { color: var(--claude); font-weight: 800; }
+  .score .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+
+  .reveal {
+    display: none; margin: -4px 0 14px; padding: 10px 14px; border-radius: 10px;
+    border: 1px solid var(--grid); font-size: 13.5px; background: var(--surface);
+  }
+  .reveal.show { display: block; }
+  .reveal b.you { color: var(--accent); } .reveal b.cl { color: var(--claude); }
+
+  /* game grid */
+  .game-grid { display: grid; grid-template-columns: 1fr minmax(300px, 360px); gap: 14px; align-items: start; }
+  @media (max-width: 860px) { .game-grid { grid-template-columns: 1fr; } }
+
+  .postab { display: flex; gap: 5px; flex-wrap: wrap; margin: 0 0 8px; }
+  .postab button {
+    font: inherit; font-size: 12px; font-weight: 750; padding: 4px 11px; border-radius: 7px;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); cursor: pointer;
+  }
+  .postab button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .postab button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  input[type=search] {
+    font: inherit; font-size: 13.5px; padding: 6px 12px; border-radius: 8px; width: 100%;
+    border: 1px solid var(--ring); background: var(--surface); color: var(--ink); margin-bottom: 8px;
+  }
+  .board-wrap { max-height: 62vh; overflow-y: auto; }
+  .brow { display: flex; gap: 8px; align-items: center; padding: 5px 2px; border-top: 1px solid var(--grid); font-size: 13.5px; }
+  .brow:first-of-type { border-top: 0; }
+  .brow .adp { width: 44px; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12px; }
+  .brow .nm { flex: 1; min-width: 0; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brow .nm .tm { color: var(--muted); font-weight: 500; font-size: 12px; margin-left: 5px; }
+  .brow .v { width: 52px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+  .brow button { font: inherit; font-size: 11.5px; font-weight: 750; padding: 4px 9px; border-radius: 7px;
+    border: 1px solid var(--ring); background: var(--surface); cursor: pointer; color: var(--accent); }
+  .brow button:hover:enabled { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .brow button:disabled { opacity: .35; cursor: not-allowed; }
+  .chip { font-size: 10.5px; font-weight: 800; padding: 2px 7px; border-radius: 6px; letter-spacing: .03em; }
+  .chip.RB { background: var(--rb-soft); color: var(--rb); }
+  .chip.WR { background: var(--wr-soft); color: var(--wr); }
+  .chip.TE { background: var(--te-soft); color: var(--te); }
+  .chip.QB { background: var(--qb-soft); color: var(--qb); }
+  .chip.K, .chip.DST { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--ink-2); }
+  .inj { font-size: 10.5px; font-weight: 800; color: var(--t-risk); }
+
+  /* roster panels */
+  .panel h3 { margin: 0 0 6px; font-size: 14px; font-weight: 800; letter-spacing: -.01em; }
+  .panel h3 .pts { float: right; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink-2); font-size: 12.5px; }
+  .rrow { display: flex; gap: 8px; align-items: center; padding: 3px 0; font-size: 13px; border-top: 1px solid var(--grid); }
+  .rrow:first-of-type { border-top: 0; }
+  .rrow .rd { width: 34px; color: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+  .rrow .who { flex: 1; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rrow .who.empty { color: var(--muted); font-weight: 400; }
+  .rrow .p { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12px; }
+  .panel + .panel { margin-top: 14px; }
+  .panel.claude h3 { color: var(--claude); }
+  .ticker { margin-top: 14px; max-height: 170px; overflow-y: auto; font-size: 12.5px; color: var(--ink-2); }
+  .ticker div { padding: 2px 0; border-top: 1px solid var(--grid); }
+  .ticker div:first-child { border-top: 0; }
+  .ticker .pk { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 6px; }
+  .ticker .me { color: var(--accent); font-weight: 700; }
+
+  /* recap */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 18px 0; }
+  .tile { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 16px 18px 14px; }
+  .tile .label { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--muted); }
+  .tile .value { font-size: 28px; font-weight: 800; letter-spacing: -.01em; margin-top: 2px; }
+  .tile .note { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+  .tile .value.you { color: var(--accent); } .tile .value.cl { color: var(--claude); }
+  .verdict { font-size: 17px; font-weight: 700; margin: 6px 0 2px; }
+  .scrollbox { overflow-x: auto; }
+  table.recap { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 13px; }
+  table.recap th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--grid); }
+  table.recap td { padding: 5px 8px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+  table.recap td.edge-you { color: var(--accent); font-weight: 700; }
+  table.recap td.edge-cl { color: var(--claude); font-weight: 700; }
+  table.recap .starter { font-weight: 700; }
+  table.recap .same { color: var(--muted); }
+  .lineups { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  @media (max-width: 700px) { .lineups { grid-template-columns: 1fr; } }
+
+  footer { margin-top: 52px; color: var(--muted); font-size: 12.5px; max-width: 78ch; }
+  footer p { margin: 4px 0; }
+  .maker { display: flex; align-items: center; gap: 12px; margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--grid); }
+  .maker img { border-radius: 8px; display: block; }
+  .maker .mk-name { font-weight: 750; font-size: 13.5px; }
+  .maker .mk-sub { font-size: 12px; color: var(--muted); }
+  .hide { display: none !important; }
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="backlink" href="./">&larr; War Room</a>
+    <div class="eyebrow">12-team · Full PPR · 1QB 2RB 2WR 1TE 1FLEX · Snake, 15 rounds</div>
+    <h1>Draft vs Claude</h1>
+    <p class="sub">You and Claude draft from the <b>same seat</b> against the same 11
+      ADP-realistic opponents — the exact AI from the war room's 32,400-sim engine. Claude runs
+      the sim's winning Pure-VORP brain; its pick is revealed only after you lock yours in.
+      Projections + ADP: Sleeper, pulled __DATA_DATE__.</p>
+  </header>
+
+  <!-- ---------- setup ---------- -->
+  <section id="setup">
+    <h2>New draft</h2>
+    <p class="desc">Pick your draft slot. Opponents draft off their own noisy copy of ADP with
+      roster-need logic, so every draft plays out differently — same as the Monte Carlo runs.</p>
+    <div class="card">
+      <div class="resume-note hide" id="resume-note">
+        You have a draft in progress (<span id="resume-info"></span>).
+        <button class="btn" id="btn-resume">Resume</button>
+        <button class="btn danger" id="btn-discard">Discard</button>
+      </div>
+      <div class="setup-lbl">My slot</div>
+      <div class="slots" id="slotbtns"></div>
+      <button class="btn primary" id="btn-start">Start draft</button>
+    </div>
+  </section>
+
+  <!-- ---------- live draft ---------- -->
+  <section id="game" class="hide">
+    <div class="clock">
+      <span class="big" id="clock-status"></span>
+      <span class="meta" id="clock-pick"></span>
+      <span class="score">
+        <span><span class="lbl">You</span> <span class="you" id="score-you">0</span></span>
+        <span><span class="lbl">Claude</span> <span class="cl" id="score-cl">0</span></span>
+        <span class="meta" id="score-diff"></span>
+      </span>
+    </div>
+    <div class="reveal" id="reveal"></div>
+
+    <div class="game-grid">
+      <div class="card">
+        <input type="search" id="search" placeholder="Search player…" autocomplete="off">
+        <div class="postab" id="postab"></div>
+        <div class="board-wrap" id="board"></div>
+      </div>
+
+      <div>
+        <div class="card panel">
+          <h3>Your roster <span class="pts" id="you-pts"></span></h3>
+          <div id="you-roster"></div>
+        </div>
+        <div class="card panel claude">
+          <h3>Claude's roster <span class="pts" id="cl-pts"></span></h3>
+          <div id="cl-roster"></div>
+        </div>
+        <div class="card panel">
+          <h3>Pick ticker</h3>
+          <div class="ticker" id="ticker"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- recap ---------- -->
+  <section id="recap" class="hide">
+    <h2>Draft recap</h2>
+    <p class="verdict" id="verdict"></p>
+    <p class="desc" id="recap-sub"></p>
+    <div class="tiles" id="recap-tiles"></div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px;font-size:15px">Pick-by-pick</h3>
+      <div class="scrollbox"><table class="recap" id="pick-table"></table></div>
+    </div>
+
+    <div class="lineups">
+      <div class="card panel">
+        <h3>Your optimal lineup <span class="pts" id="you-lineup-pts"></span></h3>
+        <div id="you-lineup"></div>
+      </div>
+      <div class="card panel claude">
+        <h3>Claude's optimal lineup <span class="pts" id="cl-lineup-pts"></span></h3>
+        <div id="cl-lineup"></div>
+      </div>
+    </div>
+
+    <p style="margin-top:20px">
+      <button class="btn primary" id="btn-rematch">Rematch (same slot, new board)</button>
+      <button class="btn" id="btn-newslot">Change slot</button>
+    </p>
+  </section>
+
+  <footer>
+    <p>Bold rows in the recap lineups are the starters the score counts; win odds come from
+      2,000 season re-samples with position-sized bust/breakout noise, both teams graded
+      against the same 11 opponent rosters.</p>
+    <div class="maker">
+      <img src="__LOGO__" alt="JF mark" width="34" height="34">
+      <div>
+        <div class="mk-name">Justin French</div>
+        <div class="mk-sub">2026 Draft War Room — versus mode</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ============ data ============ */
+const RAW = __POOL__;
+const TEAMS = 12, ROUNDS = 15;
+const CAPS = {QB: 3, RB: 8, WR: 8, TE: 3, K: 1, DST: 1};
+const LINEUP = {QB: 1, RB: 2, WR: 2, TE: 1, K: 1, DST: 1}, FLEX = 1, BENCH_W = 0.12;
+const CV = {QB: .22, RB: .34, WR: .30, TE: .32, K: .25, DST: .30};
+const STORE_KEY = "draft2026.versus";
+const $ = s => document.querySelector(s);
+
+const players = RAW.filter(p => p.pts > 0);
+const N = players.length;
+const P = {
+  name: players.map(p => p.player),
+  pos: players.map(p => p.pos),
+  team: players.map(p => p.team),
+  adp: players.map(p => p.adp),
+  pts: players.map(p => p.pts),
+  vorp: players.map(p => p.vorp),
+  bye: players.map(p => p.bye),
+  inj: players.map(p => p.injury),
+};
+const keyOf = i => P.name[i] + "|" + P.pos[i];
+const byKey = {};
+players.forEach((p, i) => { byKey[keyOf(i)] = i; });
+
+/* ============ deterministic RNG (draft replays exactly from seed) ============ */
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function gaussMaker(rand) {
+  let spare = null;
+  return function () {
+    if (spare !== null) { const v = spare; spare = null; return v; }
+    let u = 0, v = 0;
+    while (u === 0) u = rand();
+    while (v === 0) v = rand();
+    const m = Math.sqrt(-2 * Math.log(u)), a = 2 * Math.PI * v;
+    spare = m * Math.sin(a);
+    return m * Math.cos(a);
+  };
+}
+
+/* ============ draft engine (port of draft_sim.py) ============ */
+let g = null; // game state
+
+function newGame(slot, seed, userKeys) {
+  const rand = mulberry32(seed), gauss = gaussMaker(rand);
+  // Each opponent's noisy view of ADP: noise scales with ADP (top picks barely move)
+  const percepts = [];
+  for (let t = 0; t < TEAMS; t++) {
+    const per = new Float64Array(N);
+    for (let i = 0; i < N; i++) {
+      const sigma = Math.min(25, Math.max(0.8, 0.8 + 0.09 * P.adp[i]));
+      per[i] = P.adp[i] + gauss() * sigma;
+    }
+    percepts.push(per);
+  }
+  const seq = [];
+  for (let rnd = 1; rnd <= ROUNDS; rnd++) {
+    const order = [];
+    for (let t = 0; t < TEAMS; t++) order.push(rnd % 2 === 1 ? t : TEAMS - 1 - t);
+    order.forEach(t => seq.push({team: t, rnd, pickNo: seq.length + 1}));
+  }
+  g = {
+    slot, seed, percepts, seq, cursor: 0,
+    available: new Array(N).fill(true),
+    counts: Array.from({length: TEAMS}, () => ({})),
+    rosters: Array.from({length: TEAMS}, () => []),
+    claude: {picks: [], counts: {}, has: new Set()},
+    userPicks: [], pending: null, // pending = claude's choice for the current user turn
+    log: [], replayKeys: userKeys || [],
+  };
+}
+
+function availIdx(excl) {
+  const out = [];
+  for (let i = 0; i < N; i++) if (g.available[i] && !(excl && excl.has(i))) out.push(i);
+  return out;
+}
+
+function forcedPos(counts, rnd) {
+  const needK = (counts.K || 0) < 1, needD = (counts.DST || 0) < 1;
+  const left = ROUNDS - rnd + 1, forced = [];
+  if (left <= (needD ? 2 : 1) && needK) forced.push("K");
+  if (left <= (needK ? 2 : 1) && needD) forced.push("DST");
+  return forced;
+}
+
+function opponentPick(t, rnd) {
+  const c = g.counts[t], per = g.percepts[t], avail = availIdx();
+  const forced = forcedPos(c, rnd);
+  if (forced.length) {
+    let best = -1;
+    for (const i of avail)
+      if (forced.includes(P.pos[i]) && (best < 0 || P.adp[i] < P.adp[best])) best = i;
+    if (best >= 0) return best;
+  }
+  const legal = i => {
+    const p = P.pos[i];
+    if ((c[p] || 0) >= CAPS[p]) return false;
+    if ((p === "K" || p === "DST") && rnd < 13) return false;
+    if (p === "QB" && (c.QB || 0) >= 1 && rnd < 8) return false;
+    if (p === "TE" && (c.TE || 0) >= 1 && rnd < 8) return false;
+    return true;
+  };
+  let cand = avail.filter(legal);
+  if (!cand.length) cand = avail;
+  let best = -1, bv = Infinity;
+  for (const i of cand) if (per[i] < bv) { bv = per[i]; best = i; }
+  return best;
+}
+
+function claudePick(rnd) {
+  const c = g.claude.counts, avail = availIdx(g.claude.has);
+  const forced = forcedPos(c, rnd);
+  if (forced.length) {
+    let best = -1;
+    for (const i of avail)
+      if (forced.includes(P.pos[i]) && (best < 0 || P.pts[i] > P.pts[best])) best = i;
+    if (best >= 0) return best;
+  }
+  const legal = i => {
+    const p = P.pos[i];
+    if ((c[p] || 0) >= CAPS[p]) return false;
+    if ((p === "K" || p === "DST") && rnd < 13) return false;
+    if (p === "QB" && ((c.QB || 0) >= 1 || rnd < 5)) return false;
+    if (p === "TE" && (c.TE || 0) >= 2) return false;
+    return true;
+  };
+  let cand = avail.filter(legal);
+  if (!cand.length) cand = avail;
+  let best = -1, bv = -Infinity;
+  for (const i of cand) {
+    let s = P.vorp[i];
+    if ((c.QB || 0) === 0 && rnd >= 8 && P.pos[i] === "QB") s += 15;
+    if ((c.TE || 0) === 0 && rnd >= 9 && P.pos[i] === "TE") s += 12;
+    if (s > bv) { bv = s; best = i; }
+  }
+  return best;
+}
+
+function scoreRoster(idxs, pts) {
+  pts = pts || P.pts;
+  const by = {};
+  for (const i of idxs) (by[P.pos[i]] = by[P.pos[i]] || []).push(i);
+  for (const p in by) by[p].sort((a, b) => pts[b] - pts[a]);
+  let starters = 0;
+  const used = {}, startSet = new Set();
+  for (const pos in LINEUP) {
+    const take = (by[pos] || []).slice(0, LINEUP[pos]);
+    for (const i of take) { starters += pts[i]; startSet.add(i); }
+    used[pos] = take.length;
+  }
+  const flex = [];
+  for (const pos of ["RB", "WR", "TE"]) flex.push(...(by[pos] || []).slice(used[pos] || 0));
+  flex.sort((a, b) => pts[b] - pts[a]);
+  for (const i of flex.slice(0, FLEX)) { starters += pts[i]; startSet.add(i); }
+  let total = starters;
+  for (const i of flex.slice(FLEX, FLEX + 3)) total += BENCH_W * pts[i];
+  return {total, starters, startSet};
+}
+
+/* ============ persistence: seed + user picks replays the whole draft ============ */
+function save() {
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify({
+      slot: g.slot, seed: g.seed, picks: g.userPicks.map(keyOf),
+    }));
+  } catch (e) {}
+}
+function clearSave() { try { localStorage.removeItem(STORE_KEY); } catch (e) {} }
+
+/* ============ draft flow ============ */
+let animating = false;
+
+function applyPick(team, idx, rnd, pickNo, mine) {
+  g.available[idx] = false;
+  g.rosters[team].push(idx);
+  g.counts[team][P.pos[idx]] = (g.counts[team][P.pos[idx]] || 0) + 1;
+  g.log.unshift({pickNo, rnd, team, idx, mine});
+}
+
+function step(animate) {
+  // Advance AI picks until it's the user's turn or the draft ends.
+  while (g.cursor < g.seq.length) {
+    const {team, rnd, pickNo} = g.seq[g.cursor];
+    if (team === g.slot) {
+      // Claude decides from the same board, before the user's pick is known
+      g.pending = claudePick(rnd);
+      if (g.replayKeys.length) { // resuming: replay the stored pick instantly
+        const idx = byKey[g.replayKeys.shift()];
+        commitUserPick(idx, false);
+        continue;
+      }
+      paint();
+      return;
+    }
+    const idx = opponentPick(team, rnd);
+    g.cursor++;
+    applyPick(team, idx, rnd, pickNo, false);
+    if (animate) {
+      paint();
+      animating = true;
+      setTimeout(() => { animating = false; step(true); }, 90);
+      return;
+    }
+  }
+  if (g.cursor >= g.seq.length) { paint(); finish(); }
+}
+
+function commitUserPick(idx, animate) {
+  const {rnd, pickNo} = g.seq[g.cursor];
+  const clIdx = g.pending;
+  g.cursor++;
+  applyPick(g.slot, idx, rnd, pickNo, true);
+  g.userPicks.push(idx);
+  g.claude.picks.push(clIdx);
+  g.claude.has.add(clIdx);
+  g.claude.counts[P.pos[clIdx]] = (g.claude.counts[P.pos[clIdx]] || 0) + 1;
+  g.pending = null;
+  save();
+  if (animate) showReveal(rnd, idx, clIdx);
+  if (g.cursor >= g.seq.length) { paint(); finish(); return; }
+  step(animate);
+}
+
+function showReveal(rnd, you, cl) {
+  const el = $("#reveal");
+  const d = P.pts[cl] - P.pts[you];
+  let tail;
+  if (you === cl) tail = "— same pick. Great minds.";
+  else if (Math.abs(d) < 1) tail = "— dead even on projection.";
+  else if (d > 0) tail = `— Claude's is projected <b class="cl">+${d.toFixed(1)}</b> on the season.`;
+  else tail = `— yours is projected <b class="you">+${(-d).toFixed(1)}</b>. Nice.`;
+  el.innerHTML = `R${rnd} · You: <b class="you">${P.name[you]} (${P.pos[you]}, ${P.pts[you].toFixed(0)} pts)</b>
+    &nbsp;·&nbsp; Claude: <b class="cl">${P.name[cl]} (${P.pos[cl]}, ${P.pts[cl].toFixed(0)} pts)</b> ${tail}`;
+  el.classList.add("show");
+}
+
+/* ============ season sim for the recap ============ */
+function seasonSim(nSamp) {
+  const oppRosters = [];
+  for (let t = 0; t < TEAMS; t++) if (t !== g.slot) oppRosters.push(g.rosters[t]);
+  const all = [g.rosters[g.slot], g.claude.picks, ...oppRosters];
+  const uni = [...new Set(all.flat())];
+  const rand = mulberry32((g.seed ^ 0x9E3779B9) >>> 0), gauss = gaussMaker(rand);
+  const out = new Array(N).fill(0);
+  let youWins = 0, ties = 0;
+  const youRanks = [], clRanks = [];
+  for (let s = 0; s < nSamp; s++) {
+    for (const i of uni) {
+      const cv = CV[P.pos[i]];
+      out[i] = P.pts[i] * Math.exp(-0.5 * cv * cv + cv * gauss());
+    }
+    const totals = all.map(r => scoreRoster(r, out).total);
+    const you = totals[0], cl = totals[1], opps = totals.slice(2);
+    if (you > cl) youWins++; else if (you === cl) ties++;
+    youRanks.push(1 + opps.filter(v => v > you).length);
+    clRanks.push(1 + opps.filter(v => v > cl).length);
+  }
+  const top3 = r => r.filter(v => v <= 3).length / r.length;
+  return {
+    youWin: (youWins + 0.5 * ties) / nSamp,
+    youTop3: top3(youRanks), clTop3: top3(clRanks),
+    youAvgRank: youRanks.reduce((a, b) => a + b, 0) / nSamp,
+    clAvgRank: clRanks.reduce((a, b) => a + b, 0) / nSamp,
+  };
+}
+
+/* ============ rendering ============ */
+let posFilter = "ALL", q = "";
+const POSES = ["ALL", "RB", "WR", "TE", "QB", "K", "DST"];
+
+function pickLabel(pickNo) {
+  const rnd = Math.ceil(pickNo / TEAMS);
+  return rnd + "." + String(pickNo - (rnd - 1) * TEAMS).padStart(2, "0");
+}
+
+function paintBoard() {
+  const onClock = g.pending !== null && !animating;
+  const rows = [];
+  for (let i = 0; i < N; i++) {
+    if (!g.available[i]) continue;
+    if (posFilter !== "ALL" && P.pos[i] !== posFilter) continue;
+    if (q && !P.name[i].toLowerCase().includes(q)) continue;
+    rows.push(i);
+  }
+  rows.sort((a, b) => P.adp[a] - P.adp[b]);
+  $("#board").innerHTML = rows.slice(0, 120).map(i => `
+    <div class="brow">
+      <span class="adp">${P.adp[i] < 900 ? P.adp[i].toFixed(0) : "—"}</span>
+      <span class="chip ${P.pos[i]}">${P.pos[i]}</span>
+      <span class="nm">${P.name[i]}<span class="tm">${P.team[i] || ""}${P.bye ? (P.bye[i] ? " · bye " + P.bye[i] : "") : ""}</span>
+        ${P.inj[i] ? `<span class="inj"> ${P.inj[i]}</span>` : ""}</span>
+      <span class="v">${P.pts[i].toFixed(0)}</span>
+      <span class="v">${P.vorp[i] > 0 ? "+" + P.vorp[i].toFixed(0) : P.vorp[i].toFixed(0)}</span>
+      <button data-i="${i}" ${onClock ? "" : "disabled"}>Draft</button>
+    </div>`).join("") || `<div class="rrow"><span class="who empty">No players match.</span></div>`;
+  $("#board").querySelectorAll("button[data-i]").forEach(b =>
+    b.addEventListener("click", () => commitUserPick(+b.dataset.i, true)));
+}
+
+function paintRoster(el, picks, revealTo) {
+  const html = [];
+  for (let r = 0; r < ROUNDS; r++) {
+    const idx = r < (revealTo === undefined ? picks.length : revealTo) ? picks[r] : undefined;
+    html.push(`<div class="rrow"><span class="rd">R${r + 1}</span>` + (idx === undefined
+      ? `<span class="who empty">—</span></div>`
+      : `<span class="chip ${P.pos[idx]}">${P.pos[idx]}</span>
+         <span class="who">${P.name[idx]}</span><span class="p">${P.pts[idx].toFixed(0)}</span></div>`));
+  }
+  el.innerHTML = html.join("");
+}
+
+function paint() {
+  const done = g.cursor >= g.seq.length;
+  const onClock = g.pending !== null && !animating;
+  if (!done) {
+    const {rnd, pickNo} = g.seq[g.cursor];
+    $("#clock-status").textContent = onClock ? "You're on the clock" : "Opponents drafting…";
+    $("#clock-status").className = "big" + (onClock ? " me" : "");
+    $("#clock-pick").textContent = `Round ${rnd} · Pick ${pickLabel(pickNo)} (#${pickNo} overall)`;
+  } else {
+    $("#clock-status").textContent = "Draft complete";
+    $("#clock-status").className = "big";
+    $("#clock-pick").textContent = "";
+  }
+  const you = scoreRoster(g.rosters[g.slot]), cl = scoreRoster(g.claude.picks);
+  $("#score-you").textContent = you.starters.toFixed(0);
+  $("#score-cl").textContent = cl.starters.toFixed(0);
+  const d = you.starters - cl.starters;
+  $("#score-diff").textContent = g.userPicks.length
+    ? (d >= 0 ? `you +${d.toFixed(0)}` : `Claude +${(-d).toFixed(0)}`) : "";
+  $("#you-pts").textContent = `${g.rosters[g.slot].length}/15`;
+  $("#cl-pts").textContent = `${g.claude.picks.length}/15`;
+  paintRoster($("#you-roster"), g.rosters[g.slot]);
+  paintRoster($("#cl-roster"), g.claude.picks);
+  $("#ticker").innerHTML = g.log.slice(0, 40).map(l =>
+    `<div><span class="pk">${pickLabel(l.pickNo)}</span>` +
+    (l.mine ? `<span class="me">You</span>` : `Slot ${l.team + 1}`) +
+    ` — ${P.name[l.idx]} <span class="pk">${P.pos[l.idx]}</span></div>`).join("");
+  paintBoard();
+}
+
+/* ============ recap ============ */
+function finish() {
+  clearSave(); // finished drafts restart fresh next visit
+  $("#game").classList.add("hide");
+  $("#recap").classList.remove("hide");
+  const you = scoreRoster(g.rosters[g.slot]), cl = scoreRoster(g.claude.picks);
+  const sim = seasonSim(2000);
+  const d = you.starters - cl.starters;
+  const w = Math.round(sim.youWin * 100);
+  $("#verdict").textContent =
+    d > 15 ? "You out-drafted Claude. Take a bow." :
+    d > 3 ? "You edged Claude on projection." :
+    d >= -3 ? "Basically a draw — this one comes down to the season." :
+    d >= -15 ? "Claude edged you on projection." :
+    "Claude out-drafted you this time. Run it back.";
+  $("#recap-sub").textContent =
+    `From slot ${g.slot + 1}, same 11 opponents for both teams. ` +
+    `Projected starters: you ${you.starters.toFixed(0)}, Claude ${cl.starters.toFixed(0)} ` +
+    `(${d >= 0 ? "you +" + d.toFixed(1) : "Claude +" + (-d).toFixed(1)}).`;
+  $("#recap-tiles").innerHTML = `
+    <div class="tile"><div class="label">Your starters</div>
+      <div class="value you">${you.starters.toFixed(0)}</div><div class="note">projected points</div></div>
+    <div class="tile"><div class="label">Claude's starters</div>
+      <div class="value cl">${cl.starters.toFixed(0)}</div><div class="note">projected points</div></div>
+    <div class="tile"><div class="label">You beat Claude</div>
+      <div class="value">${w}%</div><div class="note">of 2,000 season sims</div></div>
+    <div class="tile"><div class="label">Top-3 finish</div>
+      <div class="value">${Math.round(sim.youTop3 * 100)}% <span style="font-size:15px;color:var(--muted)">vs</span>
+        ${Math.round(sim.clTop3 * 100)}%</div>
+      <div class="note">you vs Claude, same league</div></div>`;
+
+  let rows = `<tr><th>Rd</th><th>Your pick</th><th>Proj</th><th>Claude's pick</th><th>Proj</th><th>Edge</th></tr>`;
+  for (let r = 0; r < ROUNDS; r++) {
+    const y = g.rosters[g.slot][r], c = g.claude.picks[r];
+    const ed = P.pts[c] - P.pts[y];
+    const same = y === c;
+    rows += `<tr>
+      <td>${r + 1}</td>
+      <td class="${you.startSet.has(y) ? "starter" : ""}">${P.name[y]} <span class="same">${P.pos[y]}</span></td>
+      <td>${P.pts[y].toFixed(0)}</td>
+      <td class="${cl.startSet.has(c) ? "starter" : ""}">${same ? '<span class="same">same pick</span>' : `${P.name[c]} <span class="same">${P.pos[c]}</span>`}</td>
+      <td>${same ? "" : P.pts[c].toFixed(0)}</td>
+      <td class="${same || Math.abs(ed) < 1 ? "" : ed > 0 ? "edge-cl" : "edge-you"}">${same ? "—" : (ed > 0 ? "Claude +" + ed.toFixed(0) : "you +" + (-ed).toFixed(0))}</td>
+    </tr>`;
+  }
+  $("#pick-table").innerHTML = rows;
+
+  const lineupHtml = (picks, sc) => picks.slice().sort((a, b) =>
+    (sc.startSet.has(b) ? 1 : 0) - (sc.startSet.has(a) ? 1 : 0) || P.pts[b] - P.pts[a]
+  ).map(i => `<div class="rrow"><span class="chip ${P.pos[i]}">${P.pos[i]}</span>
+      <span class="who" style="${sc.startSet.has(i) ? "" : "color:var(--muted);font-weight:400"}">${P.name[i]}</span>
+      <span class="p">${P.pts[i].toFixed(0)}</span></div>`).join("");
+  $("#you-lineup").innerHTML = lineupHtml(g.rosters[g.slot], you);
+  $("#cl-lineup").innerHTML = lineupHtml(g.claude.picks, cl);
+  $("#you-lineup-pts").textContent = you.starters.toFixed(0) + " pts";
+  $("#cl-lineup-pts").textContent = cl.starters.toFixed(0) + " pts";
+}
+
+/* ============ setup UI ============ */
+let chosenSlot = 3;
+function paintSlots() {
+  $("#slotbtns").innerHTML = "";
+  for (let s = 1; s <= TEAMS; s++) {
+    const b = document.createElement("button");
+    b.textContent = s;
+    b.classList.toggle("on", s === chosenSlot);
+    b.addEventListener("click", () => { chosenSlot = s; paintSlots(); });
+    $("#slotbtns").appendChild(b);
+  }
+}
+paintSlots();
+
+POSES.forEach(p => {
+  const b = document.createElement("button");
+  b.textContent = p;
+  b.classList.toggle("on", p === "ALL");
+  b.addEventListener("click", () => {
+    posFilter = p;
+    $("#postab").querySelectorAll("button").forEach(x => x.classList.toggle("on", x.textContent === p));
+    paintBoard();
+  });
+  $("#postab").appendChild(b);
+});
+$("#search").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); paintBoard(); });
+
+function startDraft(slot, seed, picks) {
+  newGame(slot - 1, seed, picks);
+  $("#setup").classList.add("hide");
+  $("#recap").classList.add("hide");
+  $("#game").classList.remove("hide");
+  $("#reveal").classList.remove("show");
+  step(true);
+}
+
+$("#btn-start").addEventListener("click", () => {
+  clearSave();
+  startDraft(chosenSlot, (Math.random() * 2 ** 31) | 0, null);
+});
+$("#btn-rematch").addEventListener("click", () =>
+  startDraft(g.slot + 1, (Math.random() * 2 ** 31) | 0, null));
+$("#btn-newslot").addEventListener("click", () => {
+  $("#recap").classList.add("hide");
+  $("#setup").classList.remove("hide");
+  window.scrollTo({top: 0});
+});
+
+/* resume an unfinished draft */
+let saved = null;
+try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch (e) {}
+if (saved && saved.picks && saved.picks.length < ROUNDS && saved.picks.every(k => k in byKey)) {
+  $("#resume-note").classList.remove("hide");
+  $("#resume-info").textContent = `slot ${saved.slot + 1}, ${saved.picks.length} of ${ROUNDS} picks made`;
+  $("#btn-resume").addEventListener("click", () =>
+    startDraft(saved.slot + 1, saved.seed, saved.picks.slice()));
+  $("#btn-discard").addEventListener("click", () => {
+    clearSave();
+    $("#resume-note").classList.add("hide");
+  });
+}
+</script>
