@@ -162,6 +162,8 @@
   .chip.QB { background: var(--qb-soft); color: var(--qb); }
   .chip.K, .chip.DST { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--ink-2); }
   .inj { font-size: 10.5px; font-weight: 800; color: var(--t-risk); }
+  .need-note { font-size: 12.5px; color: var(--ink-2); margin: 0 0 6px; min-height: 0; }
+  .need-note.urgent { color: var(--t-risk); font-weight: 700; }
 
   /* roster panels */
   .panel h3 { margin: 0 0 6px; font-size: 14px; font-weight: 800; letter-spacing: -.01em; }
@@ -224,7 +226,9 @@
   <section id="setup">
     <h2>New draft</h2>
     <p class="desc">Pick your draft slot. Opponents draft off their own noisy copy of ADP with
-      roster-need logic, so every draft plays out differently — same as the Monte Carlo runs.</p>
+      roster-need logic, so every draft plays out differently — same as the Monte Carlo runs.
+      League rules are enforced: max 1 K, 1 DST, 3 QB, 3 TE, 8 RB, 8 WR — and the board locks
+      to your unfilled starting slots when you're running out of picks.</p>
     <div class="card">
       <div class="resume-note hide" id="resume-note">
         You have a draft in progress (<span id="resume-info"></span>).
@@ -254,6 +258,7 @@
       <div class="card">
         <input type="search" id="search" placeholder="Search player…" autocomplete="off">
         <div class="postab" id="postab"></div>
+        <div class="need-note" id="need-note"></div>
         <div class="board-wrap" id="board"></div>
       </div>
 
@@ -486,6 +491,29 @@ function scoreRoster(idxs, pts) {
   return {total, starters, startSet};
 }
 
+/* League rules for the human: hard position caps, and you must leave enough
+   picks to fill every required starting slot (1QB 2RB 2WR 1TE 1K 1DST). */
+function userNeeds() {
+  const c = g.counts[g.slot], needs = {};
+  for (const pos in LINEUP) {
+    const m = LINEUP[pos] - (c[pos] || 0);
+    if (m > 0) needs[pos] = m;
+  }
+  return needs;
+}
+function userLegal(i) {
+  const c = g.counts[g.slot], p = P.pos[i];
+  if ((c[p] || 0) >= CAPS[p])
+    return `Roster cap: max ${CAPS[p]} ${p}`;
+  const needs = userNeeds();
+  const required = Object.values(needs).reduce((a, b) => a + b, 0);
+  const picksLeft = ROUNDS - g.rosters[g.slot].length;
+  if (required - (needs[p] ? 1 : 0) > picksLeft - 1)
+    return "Must fill required slots: " +
+      Object.entries(needs).map(([k, v]) => v > 1 ? `${k}×${v}` : k).join(", ");
+  return null;
+}
+
 /* ============ persistence: seed + user picks replays the whole draft ============ */
 function save() {
   try {
@@ -612,7 +640,26 @@ function paintBoard() {
     rows.push(i);
   }
   rows.sort((a, b) => P.adp[a] - P.adp[b]);
-  $("#board").innerHTML = rows.slice(0, 120).map(i => `
+
+  // League-rule banner: what you still owe, and whether the board is locked to it
+  const needs = userNeeds();
+  const required = Object.values(needs).reduce((a, b) => a + b, 0);
+  const picksLeft = ROUNDS - g.rosters[g.slot].length;
+  const note = $("#need-note");
+  if (picksLeft > 0 && required > 0) {
+    const list = Object.entries(needs).map(([k, v]) => v > 1 ? `${k}×${v}` : k).join(", ");
+    note.textContent = required >= picksLeft
+      ? `⚠ ${picksLeft} pick${picksLeft > 1 ? "s" : ""} left — you must draft: ${list}`
+      : `Still need for a legal lineup: ${list} (${picksLeft} picks left)`;
+    note.className = "need-note" + (required >= picksLeft ? " urgent" : "");
+  } else {
+    note.textContent = "";
+    note.className = "need-note";
+  }
+
+  $("#board").innerHTML = rows.slice(0, 120).map(i => {
+    const why = userLegal(i);
+    return `
     <div class="brow">
       <span class="adp">${P.adp[i] < 900 ? P.adp[i].toFixed(0) : "—"}</span>
       <span class="chip ${P.pos[i]}">${P.pos[i]}</span>
@@ -620,10 +667,15 @@ function paintBoard() {
         ${P.inj[i] ? `<span class="inj"> ${P.inj[i]}</span>` : ""}</span>
       <span class="v">${P.pts[i].toFixed(0)}</span>
       <span class="v">${P.vorp[i] > 0 ? "+" + P.vorp[i].toFixed(0) : P.vorp[i].toFixed(0)}</span>
-      <button data-i="${i}" ${onClock ? "" : "disabled"}>Draft</button>
-    </div>`).join("") || `<div class="rrow"><span class="who empty">No players match.</span></div>`;
+      <button data-i="${i}" ${onClock && !why ? "" : "disabled"}${why ? ` title="${why}"` : ""}>Draft</button>
+    </div>`;
+  }).join("") || `<div class="rrow"><span class="who empty">No players match.</span></div>`;
   $("#board").querySelectorAll("button[data-i]").forEach(b =>
-    b.addEventListener("click", () => commitUserPick(+b.dataset.i, true)));
+    b.addEventListener("click", () => {
+      const i = +b.dataset.i;
+      if (g.pending === null || animating || userLegal(i)) return;
+      commitUserPick(i, true);
+    }));
 }
 
 function paintRoster(el, picks, revealTo) {
