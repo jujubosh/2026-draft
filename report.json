@@ -27,195 +27,195 @@
   ],
   "values": [
    [
-    1967.4,
-    1959.8,
-    1930.3,
-    1915.3,
-    1908.1,
-    1899.3,
-    1886.4,
-    1879.1,
-    1870.6,
-    1863.5,
-    1854.4,
-    1848.5
-   ],
-   [
-    1952.5,
-    1954.1,
-    1929.4,
-    1923.4,
-    1918.5,
-    1904.3,
-    1893.0,
-    1880.9,
-    1875.1,
-    1873.5,
-    1872.7,
-    1870.2
-   ],
-   [
-    1936.1,
-    1931.7,
-    1903.9,
-    1894.3,
-    1886.1,
-    1872.0,
-    1859.4,
-    1847.0,
-    1842.1,
-    1836.0,
-    1834.3,
-    1828.8
-   ],
-   [
-    1949.2,
-    1952.2,
-    1929.1,
-    1923.1,
-    1917.1,
-    1903.4,
-    1888.9,
-    1879.2,
-    1875.3,
-    1871.1,
-    1868.6,
-    1865.9
-   ],
-   [
-    1909.4,
-    1905.5,
+    1977.1,
+    1965.3,
+    1946.3,
+    1932.3,
+    1919.4,
+    1909.7,
+    1899.0,
+    1886.7,
     1878.4,
-    1872.6,
-    1871.7,
-    1867.1,
-    1864.7,
-    1863.8,
-    1862.5,
+    1871.4,
     1865.7,
-    1863.9,
-    1862.3
+    1858.9
    ],
    [
-    1922.2,
-    1916.5,
-    1890.8,
-    1890.1,
-    1888.0,
-    1880.9,
-    1874.5,
-    1876.3,
-    1873.0,
-    1872.0,
-    1869.5,
-    1866.1
+    1961.0,
+    1959.9,
+    1946.1,
+    1928.9,
+    1919.9,
+    1903.5,
+    1888.9,
+    1878.5,
+    1876.0,
+    1873.5,
+    1873.4,
+    1871.9
    ],
    [
-    1940.2,
-    1935.0,
-    1905.6,
-    1903.4,
-    1903.3,
-    1891.6,
-    1887.6,
-    1882.1,
-    1876.8,
-    1872.0,
+    1945.6,
+    1941.4,
+    1920.3,
+    1908.8,
+    1893.7,
+    1879.7,
+    1863.1,
+    1851.3,
+    1846.5,
+    1838.5,
+    1838.3,
+    1832.1
+   ],
+   [
+    1956.2,
+    1961.6,
+    1943.1,
+    1927.6,
+    1917.0,
+    1900.7,
+    1884.9,
+    1874.3,
+    1871.0,
+    1872.3,
+    1868.2,
+    1866.7
+   ],
+   [
+    1919.5,
+    1915.9,
+    1900.4,
+    1892.3,
+    1887.5,
+    1884.0,
+    1878.5,
+    1875.4,
+    1876.4,
+    1875.6,
+    1875.0,
+    1874.1
+   ],
+   [
+    1927.9,
+    1922.0,
+    1905.1,
+    1894.0,
+    1888.9,
+    1879.1,
+    1875.9,
+    1869.8,
     1869.3,
-    1865.8
+    1870.8,
+    1867.6,
+    1868.0
    ],
    [
-    1916.6,
-    1901.7,
-    1886.9,
-    1880.3,
-    1854.4,
-    1848.2,
-    1844.6,
-    1847.9,
-    1842.1,
-    1824.1,
-    1816.0,
-    1810.1
+    1947.1,
+    1938.4,
+    1918.9,
+    1908.7,
+    1907.4,
+    1895.8,
+    1887.9,
+    1881.0,
+    1876.5,
+    1872.5,
+    1871.0,
+    1867.3
    ],
    [
-    1895.6,
-    1886.8,
-    1878.8,
-    1877.2,
-    1849.9,
-    1833.2,
-    1824.8,
-    1818.7,
-    1809.5,
-    1792.8,
-    1775.8,
-    1774.9
+    1924.8,
+    1902.2,
+    1893.7,
+    1882.1,
+    1869.8,
+    1861.2,
+    1863.1,
+    1859.4,
+    1855.6,
+    1842.4,
+    1826.7,
+    1823.9
+   ],
+   [
+    1901.8,
+    1896.9,
+    1888.3,
+    1875.1,
+    1854.1,
+    1841.7,
+    1831.5,
+    1825.5,
+    1812.9,
+    1801.1,
+    1787.2,
+    1781.7
    ]
   ]
  },
  "overall": [
   {
+   "strategy": "Anchor+TE",
+   "mean_starters": 1909.2,
+   "floor_p10": 1776.7,
+   "ceiling_p90": 2273.6,
+   "top3_rate": 0.459
+  },
+  {
    "strategy": "Early TE",
-   "mean_starters": 1904.0,
-   "floor_p10": 1762.4,
-   "ceiling_p90": 2281.7,
-   "top3_rate": 0.47
+   "mean_starters": 1906.8,
+   "floor_p10": 1775.0,
+   "ceiling_p90": 2295.7,
+   "top3_rate": 0.476
   },
   {
    "strategy": "Pure VORP",
-   "mean_starters": 1901.9,
-   "floor_p10": 1782.2,
-   "ceiling_p90": 2290.6,
-   "top3_rate": 0.471
-  },
-  {
-   "strategy": "Anchor+TE",
-   "mean_starters": 1898.6,
-   "floor_p10": 1762.6,
-   "ceiling_p90": 2268.9,
-   "top3_rate": 0.449
+   "mean_starters": 1903.6,
+   "floor_p10": 1780.5,
+   "ceiling_p90": 2272.8,
+   "top3_rate": 0.461
   },
   {
    "strategy": "TE Round 3",
-   "mean_starters": 1894.4,
-   "floor_p10": 1767.6,
-   "ceiling_p90": 2277.9,
-   "top3_rate": 0.465
-  },
-  {
-   "strategy": "Robust RB",
-   "mean_starters": 1885.0,
-   "floor_p10": 1773.5,
-   "ceiling_p90": 2274.4,
-   "top3_rate": 0.451
+   "mean_starters": 1897.7,
+   "floor_p10": 1767.1,
+   "ceiling_p90": 2276.9,
+   "top3_rate": 0.448
   },
   {
    "strategy": "RB-WR-RB",
-   "mean_starters": 1874.0,
-   "floor_p10": 1773.0,
-   "ceiling_p90": 2271.2,
-   "top3_rate": 0.454
+   "mean_starters": 1887.9,
+   "floor_p10": 1772.0,
+   "ceiling_p90": 2253.4,
+   "top3_rate": 0.433
+  },
+  {
+   "strategy": "Robust RB",
+   "mean_starters": 1886.5,
+   "floor_p10": 1771.3,
+   "ceiling_p90": 2270.6,
+   "top3_rate": 0.455
   },
   {
    "strategy": "Hero RB",
-   "mean_starters": 1872.6,
-   "floor_p10": 1762.1,
-   "ceiling_p90": 2239.2,
-   "top3_rate": 0.412
+   "mean_starters": 1879.9,
+   "floor_p10": 1766.8,
+   "ceiling_p90": 2271.5,
+   "top3_rate": 0.448
   },
   {
    "strategy": "WR-WR",
-   "mean_starters": 1856.1,
-   "floor_p10": 1734.5,
-   "ceiling_p90": 2218.7,
-   "top3_rate": 0.382
+   "mean_starters": 1867.1,
+   "floor_p10": 1743.5,
+   "ceiling_p90": 2225.6,
+   "top3_rate": 0.383
   },
   {
    "strategy": "Zero RB",
-   "mean_starters": 1834.8,
-   "floor_p10": 1730.6,
-   "ceiling_p90": 2205.2,
+   "mean_starters": 1841.5,
+   "floor_p10": 1715.4,
+   "ceiling_p90": 2202.4,
    "top3_rate": 0.366
   }
  ],
@@ -223,8 +223,8 @@
   {
    "slot": 1,
    "strategy": "Anchor+TE",
-   "mean_starters": 1967.4,
-   "edge_over_2nd": 14.9,
+   "mean_starters": 1977.1,
+   "edge_over_2nd": 16.1,
    "second": "Early TE",
    "common_picks": [
     {
@@ -237,334 +237,421 @@
      "round": 2,
      "player": "Nico Collins",
      "pos": "WR",
-     "rate": 0.8033333333333333
+     "rate": 0.8133333333333334
+    },
+    {
+     "round": 2,
+     "player": "George Pickens",
+     "pos": "WR",
+     "rate": 0.16
     },
     {
      "round": 3,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.6533333333333333
+     "rate": 0.6433333333333333
     },
     {
      "round": 3,
      "player": "Brock Bowers",
      "pos": "TE",
-     "rate": 0.3
+     "rate": 0.31666666666666665
     },
     {
      "round": 4,
      "player": "Mike Evans",
      "pos": "WR",
-     "rate": 0.86
+     "rate": 0.6733333333333333
+    },
+    {
+     "round": 4,
+     "player": "Garrett Wilson",
+     "pos": "WR",
+     "rate": 0.27666666666666667
     },
     {
      "round": 5,
      "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.96
+     "rate": 0.9466666666666667
     },
     {
      "round": 6,
      "player": "Parker Washington",
      "pos": "WR",
-     "rate": 0.8233333333333334
-    },
-    {
-     "round": 7,
-     "player": "Christian Watson",
-     "pos": "WR",
-     "rate": 0.34
+     "rate": 0.8266666666666667
     },
     {
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.27666666666666667
+     "rate": 0.36
+    },
+    {
+     "round": 7,
+     "player": "Christian Watson",
+     "pos": "WR",
+     "rate": 0.29
     },
     {
      "round": 7,
      "player": "Harold Fannin",
      "pos": "TE",
-     "rate": 0.19
+     "rate": 0.17
     },
     {
      "round": 8,
      "player": "Trevor Lawrence",
      "pos": "QB",
-     "rate": 0.52
+     "rate": 0.53
     },
     {
      "round": 8,
      "player": "Brock Purdy",
      "pos": "QB",
-     "rate": 0.3566666666666667
+     "rate": 0.3466666666666667
     }
    ]
   },
   {
    "slot": 2,
    "strategy": "Anchor+TE",
-   "mean_starters": 1959.8,
-   "edge_over_2nd": 5.7,
-   "second": "Early TE",
+   "mean_starters": 1965.3,
+   "edge_over_2nd": 3.7,
+   "second": "Pure VORP",
    "common_picks": [
     {
      "round": 1,
      "player": "Bijan Robinson",
      "pos": "RB",
-     "rate": 0.67
+     "rate": 0.8233333333333334
     },
     {
      "round": 1,
      "player": "Jahmyr Gibbs",
      "pos": "RB",
-     "rate": 0.33
+     "rate": 0.17666666666666667
     },
     {
      "round": 2,
      "player": "Nico Collins",
      "pos": "WR",
-     "rate": 0.84
-    },
-    {
-     "round": 2,
-     "player": "George Pickens",
-     "pos": "WR",
-     "rate": 0.13
+     "rate": 0.87
     },
     {
      "round": 3,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.7833333333333333
+     "rate": 0.8533333333333334
     },
     {
      "round": 3,
      "player": "Brock Bowers",
      "pos": "TE",
-     "rate": 0.20333333333333334
+     "rate": 0.14
     },
     {
      "round": 4,
      "player": "Mike Evans",
      "pos": "WR",
-     "rate": 0.65
+     "rate": 0.5266666666666666
     },
     {
      "round": 4,
      "player": "Garrett Wilson",
      "pos": "WR",
-     "rate": 0.24
+     "rate": 0.39
     },
     {
      "round": 5,
      "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.93
+     "rate": 0.9166666666666666
     },
     {
      "round": 6,
      "player": "Parker Washington",
      "pos": "WR",
-     "rate": 0.8533333333333334
+     "rate": 0.84
     },
     {
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.38666666666666666
+     "rate": 0.43666666666666665
     },
     {
      "round": 7,
      "player": "Christian Watson",
      "pos": "WR",
-     "rate": 0.25
+     "rate": 0.23
     },
     {
      "round": 7,
      "player": "Harold Fannin",
      "pos": "TE",
-     "rate": 0.18
+     "rate": 0.18666666666666668
     },
     {
      "round": 8,
      "player": "Trevor Lawrence",
      "pos": "QB",
-     "rate": 0.6266666666666667
+     "rate": 0.59
     },
     {
      "round": 8,
      "player": "Brock Purdy",
      "pos": "QB",
-     "rate": 0.28
+     "rate": 0.2866666666666667
     }
    ]
   },
   {
    "slot": 3,
    "strategy": "Anchor+TE",
-   "mean_starters": 1930.3,
-   "edge_over_2nd": 1.0,
+   "mean_starters": 1946.3,
+   "edge_over_2nd": 0.1,
    "second": "Early TE",
    "common_picks": [
     {
      "round": 1,
      "player": "Christian McCaffrey",
      "pos": "RB",
-     "rate": 0.7666666666666667
+     "rate": 0.4866666666666667
     },
     {
      "round": 1,
      "player": "Bijan Robinson",
      "pos": "RB",
-     "rate": 0.18666666666666668
+     "rate": 0.48
     },
     {
      "round": 2,
      "player": "Nico Collins",
      "pos": "WR",
-     "rate": 0.8866666666666667
+     "rate": 0.91
     },
     {
      "round": 3,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.8566666666666667
-    },
-    {
-     "round": 3,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 0.13666666666666666
-    },
-    {
-     "round": 4,
-     "player": "Mike Evans",
-     "pos": "WR",
-     "rate": 0.48333333333333334
+     "rate": 0.9233333333333333
     },
     {
      "round": 4,
      "player": "Garrett Wilson",
      "pos": "WR",
-     "rate": 0.2833333333333333
+     "rate": 0.51
     },
     {
      "round": 4,
-     "player": "Zay Flowers",
+     "player": "Mike Evans",
      "pos": "WR",
-     "rate": 0.16666666666666666
+     "rate": 0.35
     },
     {
      "round": 5,
      "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.9066666666666666
+     "rate": 0.9033333333333333
     },
     {
      "round": 6,
      "player": "Parker Washington",
      "pos": "WR",
-     "rate": 0.8566666666666667
+     "rate": 0.8933333333333333
     },
     {
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.4
+     "rate": 0.5266666666666666
     },
     {
      "round": 7,
      "player": "Harold Fannin",
      "pos": "TE",
-     "rate": 0.24666666666666667
+     "rate": 0.20666666666666667
     },
     {
      "round": 7,
      "player": "Christian Watson",
      "pos": "WR",
-     "rate": 0.19
+     "rate": 0.16666666666666666
     },
     {
      "round": 8,
      "player": "Trevor Lawrence",
      "pos": "QB",
-     "rate": 0.66
+     "rate": 0.67
     },
     {
      "round": 8,
      "player": "Brock Purdy",
      "pos": "QB",
-     "rate": 0.23333333333333334
+     "rate": 0.22333333333333333
     }
    ]
   },
   {
    "slot": 4,
-   "strategy": "Early TE",
-   "mean_starters": 1923.4,
-   "edge_over_2nd": 0.4,
-   "second": "Pure VORP",
+   "strategy": "Anchor+TE",
+   "mean_starters": 1932.3,
+   "edge_over_2nd": 3.4,
+   "second": "Early TE",
    "common_picks": [
     {
      "round": 1,
      "player": "Christian McCaffrey",
      "pos": "RB",
-     "rate": 0.9166666666666666
+     "rate": 0.77
+    },
+    {
+     "round": 1,
+     "player": "Bijan Robinson",
+     "pos": "RB",
+     "rate": 0.17333333333333334
+    },
+    {
+     "round": 2,
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 0.9666666666666667
+    },
+    {
+     "round": 3,
+     "player": "Colston Loveland",
+     "pos": "TE",
+     "rate": 0.9733333333333334
+    },
+    {
+     "round": 4,
+     "player": "Garrett Wilson",
+     "pos": "WR",
+     "rate": 0.5666666666666667
+    },
+    {
+     "round": 4,
+     "player": "Mike Evans",
+     "pos": "WR",
+     "rate": 0.17666666666666667
+    },
+    {
+     "round": 4,
+     "player": "Zay Flowers",
+     "pos": "WR",
+     "rate": 0.14333333333333334
+    },
+    {
+     "round": 5,
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.8366666666666667
+    },
+    {
+     "round": 6,
+     "player": "Parker Washington",
+     "pos": "WR",
+     "rate": 0.88
+    },
+    {
+     "round": 7,
+     "player": "Jayden Reed",
+     "pos": "WR",
+     "rate": 0.5533333333333333
+    },
+    {
+     "round": 7,
+     "player": "Harold Fannin",
+     "pos": "TE",
+     "rate": 0.17333333333333334
+    },
+    {
+     "round": 7,
+     "player": "Christian Watson",
+     "pos": "WR",
+     "rate": 0.13666666666666666
+    },
+    {
+     "round": 8,
+     "player": "Trevor Lawrence",
+     "pos": "QB",
+     "rate": 0.7
+    },
+    {
+     "round": 8,
+     "player": "Brock Purdy",
+     "pos": "QB",
+     "rate": 0.19666666666666666
+    }
+   ]
+  },
+  {
+   "slot": 5,
+   "strategy": "Early TE",
+   "mean_starters": 1919.9,
+   "edge_over_2nd": 0.5,
+   "second": "Anchor+TE",
+   "common_picks": [
+    {
+     "round": 1,
+     "player": "Christian McCaffrey",
+     "pos": "RB",
+     "rate": 0.82
+    },
+    {
+     "round": 1,
+     "player": "Puka Nacua",
+     "pos": "WR",
+     "rate": 0.12333333333333334
     },
     {
      "round": 2,
      "player": "Brock Bowers",
      "pos": "TE",
-     "rate": 0.8066666666666666
-    },
-    {
-     "round": 2,
-     "player": "Trey McBride",
-     "pos": "TE",
-     "rate": 0.15
+     "rate": 0.9133333333333333
     },
     {
      "round": 3,
      "player": "Chris Olave",
      "pos": "WR",
-     "rate": 0.6666666666666666
+     "rate": 0.6
     },
     {
      "round": 3,
-     "player": "Nico Collins",
-     "pos": "WR",
-     "rate": 0.17
+     "player": "Breece Hall",
+     "pos": "RB",
+     "rate": 0.18666666666666668
     },
     {
      "round": 4,
      "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.8233333333333334
+     "rate": 0.6266666666666667
     },
     {
      "round": 4,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.17666666666666667
+     "rate": 0.37333333333333335
     },
     {
      "round": 5,
      "player": "David Montgomery",
      "pos": "RB",
-     "rate": 0.5133333333333333
+     "rate": 0.35
     },
     {
      "round": 5,
      "player": "Mike Evans",
      "pos": "WR",
-     "rate": 0.2833333333333333
+     "rate": 0.31333333333333335
     },
     {
      "round": 5,
      "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.15
+     "rate": 0.2866666666666667
     },
     {
      "round": 6,
@@ -576,82 +663,343 @@
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.5933333333333334
-    },
-    {
-     "round": 7,
-     "player": "Christian Watson",
-     "pos": "WR",
-     "rate": 0.15666666666666668
+     "rate": 0.7266666666666667
     },
     {
      "round": 8,
      "player": "Trevor Lawrence",
      "pos": "QB",
-     "rate": 0.7066666666666667
+     "rate": 0.71
     },
     {
      "round": 8,
      "player": "Brock Purdy",
      "pos": "QB",
-     "rate": 0.21333333333333335
+     "rate": 0.15666666666666668
     }
    ]
   },
   {
-   "slot": 5,
-   "strategy": "Early TE",
-   "mean_starters": 1918.5,
-   "edge_over_2nd": 1.4,
-   "second": "Pure VORP",
+   "slot": 6,
+   "strategy": "Anchor+TE",
+   "mean_starters": 1909.7,
+   "edge_over_2nd": 6.2,
+   "second": "Early TE",
    "common_picks": [
     {
      "round": 1,
      "player": "Christian McCaffrey",
      "pos": "RB",
-     "rate": 0.74
+     "rate": 0.55
     },
     {
      "round": 1,
-     "player": "Puka Nacua",
-     "pos": "WR",
-     "rate": 0.21
+     "player": "Jonathan Taylor",
+     "pos": "RB",
+     "rate": 0.45
     },
     {
      "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 0.9233333333333333
-    },
-    {
-     "round": 3,
-     "player": "Chris Olave",
+     "player": "Nico Collins",
      "pos": "WR",
-     "rate": 0.7033333333333334
+     "rate": 1.0
     },
     {
      "round": 3,
-     "player": "Breece Hall",
-     "pos": "RB",
-     "rate": 0.13666666666666666
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.7866666666666666
-    },
-    {
-     "round": 4,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.21333333333333335
+     "rate": 1.0
+    },
+    {
+     "round": 4,
+     "player": "Garrett Wilson",
+     "pos": "WR",
+     "rate": 0.4033333333333333
+    },
+    {
+     "round": 4,
+     "player": "Zay Flowers",
+     "pos": "WR",
+     "rate": 0.35
+    },
+    {
+     "round": 4,
+     "player": "Ladd McConkey",
+     "pos": "WR",
+     "rate": 0.12
     },
     {
      "round": 5,
-     "player": "David Montgomery",
+     "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.42333333333333334
+     "rate": 0.71
+    },
+    {
+     "round": 5,
+     "player": "Mike Evans",
+     "pos": "WR",
+     "rate": 0.17
+    },
+    {
+     "round": 6,
+     "player": "Parker Washington",
+     "pos": "WR",
+     "rate": 0.8433333333333334
+    },
+    {
+     "round": 7,
+     "player": "Jayden Reed",
+     "pos": "WR",
+     "rate": 0.71
+    },
+    {
+     "round": 7,
+     "player": "Harold Fannin",
+     "pos": "TE",
+     "rate": 0.14333333333333334
+    },
+    {
+     "round": 8,
+     "player": "Trevor Lawrence",
+     "pos": "QB",
+     "rate": 0.7566666666666667
+    },
+    {
+     "round": 8,
+     "player": "Brock Purdy",
+     "pos": "QB",
+     "rate": 0.12333333333333334
+    }
+   ]
+  },
+  {
+   "slot": 7,
+   "strategy": "Anchor+TE",
+   "mean_starters": 1899.0,
+   "edge_over_2nd": 10.2,
+   "second": "Early TE",
+   "common_picks": [
+    {
+     "round": 1,
+     "player": "Jonathan Taylor",
+     "pos": "RB",
+     "rate": 0.8866666666666667
+    },
+    {
+     "round": 2,
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 1.0
+    },
+    {
+     "round": 3,
+     "player": "Colston Loveland",
+     "pos": "TE",
+     "rate": 0.9966666666666667
+    },
+    {
+     "round": 4,
+     "player": "Zay Flowers",
+     "pos": "WR",
+     "rate": 0.4033333333333333
+    },
+    {
+     "round": 4,
+     "player": "Garrett Wilson",
+     "pos": "WR",
+     "rate": 0.2966666666666667
+    },
+    {
+     "round": 4,
+     "player": "Ladd McConkey",
+     "pos": "WR",
+     "rate": 0.17333333333333334
+    },
+    {
+     "round": 5,
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.7133333333333334
+    },
+    {
+     "round": 5,
+     "player": "Mike Evans",
+     "pos": "WR",
+     "rate": 0.17
+    },
+    {
+     "round": 6,
+     "player": "Parker Washington",
+     "pos": "WR",
+     "rate": 0.8466666666666667
+    },
+    {
+     "round": 7,
+     "player": "Jayden Reed",
+     "pos": "WR",
+     "rate": 0.7833333333333333
+    },
+    {
+     "round": 8,
+     "player": "Trevor Lawrence",
+     "pos": "QB",
+     "rate": 0.7733333333333333
+    },
+    {
+     "round": 8,
+     "player": "Dak Prescott",
+     "pos": "QB",
+     "rate": 0.12
+    }
+   ]
+  },
+  {
+   "slot": 8,
+   "strategy": "Anchor+TE",
+   "mean_starters": 1886.7,
+   "edge_over_2nd": 5.7,
+   "second": "TE Round 3",
+   "common_picks": [
+    {
+     "round": 1,
+     "player": "James Cook",
+     "pos": "RB",
+     "rate": 0.5766666666666667
+    },
+    {
+     "round": 1,
+     "player": "Jonathan Taylor",
+     "pos": "RB",
+     "rate": 0.4033333333333333
+    },
+    {
+     "round": 2,
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 1.0
+    },
+    {
+     "round": 3,
+     "player": "Colston Loveland",
+     "pos": "TE",
+     "rate": 1.0
+    },
+    {
+     "round": 4,
+     "player": "Zay Flowers",
+     "pos": "WR",
+     "rate": 0.3933333333333333
+    },
+    {
+     "round": 4,
+     "player": "Ladd McConkey",
+     "pos": "WR",
+     "rate": 0.28
+    },
+    {
+     "round": 4,
+     "player": "DeVonta Smith",
+     "pos": "WR",
+     "rate": 0.18666666666666668
+    },
+    {
+     "round": 4,
+     "player": "Garrett Wilson",
+     "pos": "WR",
+     "rate": 0.13666666666666666
+    },
+    {
+     "round": 5,
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.5933333333333334
+    },
+    {
+     "round": 5,
+     "player": "Mike Evans",
+     "pos": "WR",
+     "rate": 0.27666666666666667
+    },
+    {
+     "round": 6,
+     "player": "Parker Washington",
+     "pos": "WR",
+     "rate": 0.7866666666666666
+    },
+    {
+     "round": 7,
+     "player": "Jayden Reed",
+     "pos": "WR",
+     "rate": 0.8233333333333334
+    },
+    {
+     "round": 8,
+     "player": "Trevor Lawrence",
+     "pos": "QB",
+     "rate": 0.7533333333333333
+    },
+    {
+     "round": 8,
+     "player": "Dak Prescott",
+     "pos": "QB",
+     "rate": 0.15666666666666668
+    }
+   ]
+  },
+  {
+   "slot": 9,
+   "strategy": "Anchor+TE",
+   "mean_starters": 1878.4,
+   "edge_over_2nd": 1.9,
+   "second": "TE Round 3",
+   "common_picks": [
+    {
+     "round": 1,
+     "player": "James Cook",
+     "pos": "RB",
+     "rate": 0.78
+    },
+    {
+     "round": 1,
+     "player": "Jonathan Taylor",
+     "pos": "RB",
+     "rate": 0.17333333333333334
+    },
+    {
+     "round": 2,
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 1.0
+    },
+    {
+     "round": 3,
+     "player": "Colston Loveland",
+     "pos": "TE",
+     "rate": 0.9933333333333333
+    },
+    {
+     "round": 4,
+     "player": "DeVonta Smith",
+     "pos": "WR",
+     "rate": 0.3566666666666667
+    },
+    {
+     "round": 4,
+     "player": "Ladd McConkey",
+     "pos": "WR",
+     "rate": 0.31666666666666665
+    },
+    {
+     "round": 4,
+     "player": "Zay Flowers",
+     "pos": "WR",
+     "rate": 0.29
+    },
+    {
+     "round": 5,
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.49333333333333335
     },
     {
      "round": 5,
@@ -660,493 +1008,22 @@
      "rate": 0.35333333333333333
     },
     {
-     "round": 5,
-     "player": "D'Andre Swift",
-     "pos": "RB",
+     "round": 6,
+     "player": "Parker Washington",
+     "pos": "WR",
+     "rate": 0.71
+    },
+    {
+     "round": 6,
+     "player": "Sam LaPorta",
+     "pos": "TE",
      "rate": 0.18
     },
     {
-     "round": 6,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.86
-    },
-    {
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.7166666666666667
-    },
-    {
-     "round": 7,
-     "player": "Christian Watson",
-     "pos": "WR",
-     "rate": 0.12333333333333334
-    },
-    {
-     "round": 8,
-     "player": "Trevor Lawrence",
-     "pos": "QB",
-     "rate": 0.7666666666666667
-    },
-    {
-     "round": 8,
-     "player": "Brock Purdy",
-     "pos": "QB",
-     "rate": 0.15
-    }
-   ]
-  },
-  {
-   "slot": 6,
-   "strategy": "Early TE",
-   "mean_starters": 1904.3,
-   "edge_over_2nd": 0.9,
-   "second": "Pure VORP",
-   "common_picks": [
-    {
-     "round": 1,
-     "player": "Jonathan Taylor",
-     "pos": "RB",
-     "rate": 0.4866666666666667
-    },
-    {
-     "round": 1,
-     "player": "Christian McCaffrey",
-     "pos": "RB",
-     "rate": 0.46
-    },
-    {
-     "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 0.96
-    },
-    {
-     "round": 3,
-     "player": "Chris Olave",
-     "pos": "WR",
-     "rate": 0.66
-    },
-    {
-     "round": 3,
-     "player": "Breece Hall",
-     "pos": "RB",
-     "rate": 0.26
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.6433333333333333
-    },
-    {
-     "round": 4,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.3566666666666667
-    },
-    {
-     "round": 5,
-     "player": "Mike Evans",
-     "pos": "WR",
-     "rate": 0.4066666666666667
-    },
-    {
-     "round": 5,
-     "player": "David Montgomery",
-     "pos": "RB",
-     "rate": 0.3
-    },
-    {
-     "round": 5,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.26
-    },
-    {
-     "round": 6,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.8266666666666667
-    },
-    {
-     "round": 6,
-     "player": "Sam LaPorta",
-     "pos": "TE",
-     "rate": 0.12666666666666668
-    },
-    {
-     "round": 7,
-     "player": "Jayden Reed",
-     "pos": "WR",
-     "rate": 0.7933333333333333
-    },
-    {
-     "round": 8,
-     "player": "Trevor Lawrence",
-     "pos": "QB",
-     "rate": 0.8
-    }
-   ]
-  },
-  {
-   "slot": 7,
-   "strategy": "Early TE",
-   "mean_starters": 1893.0,
-   "edge_over_2nd": 4.1,
-   "second": "Pure VORP",
-   "common_picks": [
-    {
-     "round": 1,
-     "player": "Jonathan Taylor",
-     "pos": "RB",
-     "rate": 0.65
-    },
-    {
-     "round": 1,
-     "player": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "rate": 0.18333333333333332
-    },
-    {
-     "round": 1,
-     "player": "Christian McCaffrey",
-     "pos": "RB",
-     "rate": 0.16333333333333333
-    },
-    {
-     "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 0.9833333333333333
-    },
-    {
-     "round": 3,
-     "player": "Chris Olave",
-     "pos": "WR",
-     "rate": 0.5666666666666667
-    },
-    {
-     "round": 3,
-     "player": "Breece Hall",
-     "pos": "RB",
-     "rate": 0.3566666666666667
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.54
-    },
-    {
-     "round": 4,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.4533333333333333
-    },
-    {
-     "round": 5,
-     "player": "Mike Evans",
-     "pos": "WR",
-     "rate": 0.42
-    },
-    {
-     "round": 5,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.31666666666666665
-    },
-    {
-     "round": 5,
-     "player": "David Montgomery",
-     "pos": "RB",
-     "rate": 0.22333333333333333
-    },
-    {
-     "round": 6,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.8133333333333334
-    },
-    {
-     "round": 6,
-     "player": "Sam LaPorta",
-     "pos": "TE",
-     "rate": 0.12
-    },
-    {
-     "round": 7,
-     "player": "Jayden Reed",
-     "pos": "WR",
-     "rate": 0.8066666666666666
-    },
-    {
-     "round": 8,
-     "player": "Trevor Lawrence",
-     "pos": "QB",
-     "rate": 0.7933333333333333
-    }
-   ]
-  },
-  {
-   "slot": 8,
-   "strategy": "TE Round 3",
-   "mean_starters": 1882.1,
-   "edge_over_2nd": 1.2,
-   "second": "Early TE",
-   "common_picks": [
-    {
-     "round": 1,
-     "player": "Jonathan Taylor",
-     "pos": "RB",
-     "rate": 0.4633333333333333
-    },
-    {
-     "round": 1,
-     "player": "James Cook",
-     "pos": "RB",
-     "rate": 0.35
-    },
-    {
-     "round": 1,
-     "player": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "rate": 0.14
-    },
-    {
-     "round": 2,
-     "player": "Chase Brown",
-     "pos": "RB",
-     "rate": 0.68
-    },
-    {
-     "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 0.2833333333333333
-    },
-    {
-     "round": 3,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.99
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.9866666666666667
-    },
-    {
-     "round": 5,
-     "player": "Mike Evans",
-     "pos": "WR",
-     "rate": 0.6466666666666666
-    },
-    {
-     "round": 5,
-     "player": "David Montgomery",
-     "pos": "RB",
-     "rate": 0.21666666666666667
-    },
-    {
-     "round": 6,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.8066666666666666
-    },
-    {
-     "round": 6,
-     "player": "Sam LaPorta",
-     "pos": "TE",
-     "rate": 0.15
-    },
-    {
-     "round": 7,
-     "player": "Jayden Reed",
-     "pos": "WR",
-     "rate": 0.8733333333333333
-    },
-    {
-     "round": 8,
-     "player": "Trevor Lawrence",
-     "pos": "QB",
-     "rate": 0.8033333333333333
-    },
-    {
-     "round": 8,
-     "player": "Dak Prescott",
-     "pos": "QB",
-     "rate": 0.13
-    }
-   ]
-  },
-  {
-   "slot": 9,
-   "strategy": "TE Round 3",
-   "mean_starters": 1876.8,
-   "edge_over_2nd": 1.5,
-   "second": "Pure VORP",
-   "common_picks": [
-    {
-     "round": 1,
-     "player": "James Cook",
-     "pos": "RB",
-     "rate": 0.6333333333333333
-    },
-    {
-     "round": 1,
-     "player": "Jonathan Taylor",
-     "pos": "RB",
-     "rate": 0.25666666666666665
-    },
-    {
-     "round": 2,
-     "player": "Chase Brown",
-     "pos": "RB",
-     "rate": 0.7166666666666667
-    },
-    {
-     "round": 2,
-     "player": "Ashton Jeanty",
-     "pos": "RB",
-     "rate": 0.16333333333333333
-    },
-    {
-     "round": 3,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.9866666666666667
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.9666666666666667
-    },
-    {
-     "round": 5,
-     "player": "Mike Evans",
-     "pos": "WR",
-     "rate": 0.6666666666666666
-    },
-    {
-     "round": 5,
-     "player": "David Montgomery",
-     "pos": "RB",
-     "rate": 0.15
-    },
-    {
-     "round": 6,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.7533333333333333
-    },
-    {
-     "round": 6,
-     "player": "Sam LaPorta",
-     "pos": "TE",
-     "rate": 0.21333333333333335
-    },
-    {
-     "round": 7,
-     "player": "Jayden Reed",
-     "pos": "WR",
-     "rate": 0.8866666666666667
-    },
-    {
-     "round": 8,
-     "player": "Trevor Lawrence",
-     "pos": "QB",
-     "rate": 0.78
-    },
-    {
-     "round": 8,
-     "player": "Dak Prescott",
-     "pos": "QB",
-     "rate": 0.18333333333333332
-    }
-   ]
-  },
-  {
-   "slot": 10,
-   "strategy": "Early TE",
-   "mean_starters": 1873.5,
-   "edge_over_2nd": 1.5,
-   "second": "TE Round 3",
-   "common_picks": [
-    {
-     "round": 1,
-     "player": "James Cook",
-     "pos": "RB",
-     "rate": 0.7
-    },
-    {
-     "round": 1,
-     "player": "Ashton Jeanty",
-     "pos": "RB",
-     "rate": 0.24666666666666667
-    },
-    {
-     "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 1.0
-    },
-    {
-     "round": 3,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.44333333333333336
-    },
-    {
-     "round": 3,
-     "player": "Breece Hall",
-     "pos": "RB",
-     "rate": 0.36333333333333334
-    },
-    {
-     "round": 3,
-     "player": "Chris Olave",
-     "pos": "WR",
-     "rate": 0.19
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.57
-    },
-    {
-     "round": 4,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.4266666666666667
-    },
-    {
-     "round": 5,
-     "player": "Mike Evans",
-     "pos": "WR",
-     "rate": 0.5033333333333333
-    },
-    {
-     "round": 5,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.20333333333333334
-    },
-    {
-     "round": 6,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.7833333333333333
-    },
-    {
-     "round": 7,
-     "player": "Jayden Reed",
-     "pos": "WR",
-     "rate": 0.9766666666666667
+     "rate": 0.8833333333333333
     },
     {
      "round": 8,
@@ -1158,187 +1035,280 @@
      "round": 8,
      "player": "Dak Prescott",
      "pos": "QB",
-     "rate": 0.25333333333333335
+     "rate": 0.21666666666666667
+    }
+   ]
+  },
+  {
+   "slot": 10,
+   "strategy": "RB-WR-RB",
+   "mean_starters": 1875.6,
+   "edge_over_2nd": 2.1,
+   "second": "Early TE",
+   "common_picks": [
+    {
+     "round": 1,
+     "player": "James Cook",
+     "pos": "RB",
+     "rate": 0.7133333333333334
+    },
+    {
+     "round": 1,
+     "player": "Ashton Jeanty",
+     "pos": "RB",
+     "rate": 0.26
+    },
+    {
+     "round": 2,
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 1.0
+    },
+    {
+     "round": 3,
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.6433333333333333
+    },
+    {
+     "round": 3,
+     "player": "Breece Hall",
+     "pos": "RB",
+     "rate": 0.32
+    },
+    {
+     "round": 4,
+     "player": "Colston Loveland",
+     "pos": "TE",
+     "rate": 0.86
+    },
+    {
+     "round": 5,
+     "player": "Mike Evans",
+     "pos": "WR",
+     "rate": 0.56
+    },
+    {
+     "round": 5,
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.16
+    },
+    {
+     "round": 5,
+     "player": "Sam LaPorta",
+     "pos": "TE",
+     "rate": 0.13
+    },
+    {
+     "round": 6,
+     "player": "Parker Washington",
+     "pos": "WR",
+     "rate": 0.6566666666666666
+    },
+    {
+     "round": 6,
+     "player": "Sam LaPorta",
+     "pos": "TE",
+     "rate": 0.21666666666666667
+    },
+    {
+     "round": 7,
+     "player": "Jayden Reed",
+     "pos": "WR",
+     "rate": 0.91
+    },
+    {
+     "round": 8,
+     "player": "Trevor Lawrence",
+     "pos": "QB",
+     "rate": 0.5733333333333334
+    },
+    {
+     "round": 8,
+     "player": "Dak Prescott",
+     "pos": "QB",
+     "rate": 0.38666666666666666
     }
    ]
   },
   {
    "slot": 11,
-   "strategy": "Early TE",
-   "mean_starters": 1872.7,
-   "edge_over_2nd": 3.2,
-   "second": "Robust RB",
+   "strategy": "RB-WR-RB",
+   "mean_starters": 1875.0,
+   "edge_over_2nd": 1.7,
+   "second": "Early TE",
    "common_picks": [
     {
      "round": 1,
      "player": "Ashton Jeanty",
      "pos": "RB",
-     "rate": 0.6933333333333334
+     "rate": 0.52
     },
     {
      "round": 1,
      "player": "James Cook",
      "pos": "RB",
-     "rate": 0.29333333333333333
+     "rate": 0.4633333333333333
     },
     {
      "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 1.0
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 0.9766666666666667
     },
     {
      "round": 3,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.6366666666666667
+     "player": "D'Andre Swift",
+     "pos": "RB",
+     "rate": 0.79
     },
     {
      "round": 3,
      "player": "Breece Hall",
      "pos": "RB",
-     "rate": 0.24
-    },
-    {
-     "round": 4,
-     "player": "D'Andre Swift",
-     "pos": "RB",
-     "rate": 0.6866666666666666
+     "rate": 0.20333333333333334
     },
     {
      "round": 4,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.29
+     "rate": 0.9033333333333333
     },
     {
      "round": 5,
      "player": "Mike Evans",
      "pos": "WR",
-     "rate": 0.5633333333333334
+     "rate": 0.5733333333333334
     },
     {
      "round": 5,
-     "player": "Parker Washington",
-     "pos": "WR",
-     "rate": 0.17333333333333334
+     "player": "Sam LaPorta",
+     "pos": "TE",
+     "rate": 0.20333333333333334
     },
     {
      "round": 6,
      "player": "Parker Washington",
      "pos": "WR",
-     "rate": 0.69
+     "rate": 0.55
     },
     {
      "round": 6,
-     "player": "Rome Odunze",
-     "pos": "WR",
-     "rate": 0.15333333333333332
+     "player": "Sam LaPorta",
+     "pos": "TE",
+     "rate": 0.3
     },
     {
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.9766666666666667
+     "rate": 0.93
     },
     {
      "round": 8,
      "player": "Trevor Lawrence",
      "pos": "QB",
-     "rate": 0.5266666666666666
+     "rate": 0.5133333333333333
     },
     {
      "round": 8,
      "player": "Dak Prescott",
      "pos": "QB",
-     "rate": 0.46
+     "rate": 0.4766666666666667
     }
    ]
   },
   {
    "slot": 12,
-   "strategy": "Early TE",
-   "mean_starters": 1870.2,
-   "edge_over_2nd": 4.1,
-   "second": "Robust RB",
+   "strategy": "RB-WR-RB",
+   "mean_starters": 1874.1,
+   "edge_over_2nd": 2.2,
+   "second": "Early TE",
    "common_picks": [
     {
      "round": 1,
      "player": "Ashton Jeanty",
      "pos": "RB",
-     "rate": 0.8633333333333333
+     "rate": 0.7033333333333334
+    },
+    {
+     "round": 1,
+     "player": "James Cook",
+     "pos": "RB",
+     "rate": 0.28
     },
     {
      "round": 2,
-     "player": "Brock Bowers",
-     "pos": "TE",
-     "rate": 1.0
+     "player": "Nico Collins",
+     "pos": "WR",
+     "rate": 0.9166666666666666
     },
     {
      "round": 3,
-     "player": "Colston Loveland",
-     "pos": "TE",
-     "rate": 0.7666666666666667
-    },
-    {
-     "round": 3,
-     "player": "Breece Hall",
-     "pos": "RB",
-     "rate": 0.15333333333333332
-    },
-    {
-     "round": 4,
      "player": "D'Andre Swift",
      "pos": "RB",
-     "rate": 0.77
+     "rate": 0.8833333333333333
     },
     {
      "round": 4,
      "player": "Colston Loveland",
      "pos": "TE",
-     "rate": 0.15666666666666668
+     "rate": 0.9633333333333334
     },
     {
      "round": 5,
      "player": "Mike Evans",
      "pos": "WR",
-     "rate": 0.44666666666666666
+     "rate": 0.5
+    },
+    {
+     "round": 5,
+     "player": "Sam LaPorta",
+     "pos": "TE",
+     "rate": 0.26
     },
     {
      "round": 5,
      "player": "Parker Washington",
      "pos": "WR",
-     "rate": 0.34
+     "rate": 0.12
     },
     {
      "round": 6,
      "player": "Parker Washington",
      "pos": "WR",
-     "rate": 0.49333333333333335
+     "rate": 0.42333333333333334
+    },
+    {
+     "round": 6,
+     "player": "Sam LaPorta",
+     "pos": "TE",
+     "rate": 0.28
     },
     {
      "round": 6,
      "player": "Rome Odunze",
      "pos": "WR",
-     "rate": 0.32
+     "rate": 0.12
     },
     {
      "round": 7,
      "player": "Jayden Reed",
      "pos": "WR",
-     "rate": 0.9766666666666667
+     "rate": 0.9666666666666667
     },
     {
      "round": 8,
      "player": "Dak Prescott",
      "pos": "QB",
-     "rate": 0.5366666666666666
+     "rate": 0.64
     },
     {
      "round": 8,
      "player": "Trevor Lawrence",
      "pos": "QB",
-     "rate": 0.45
+     "rate": 0.3466666666666667
     }
    ]
   }
@@ -1349,7 +1319,7 @@
    "player": "Jahmyr Gibbs",
    "pos": "RB",
    "team": "DET",
-   "adp_ppr": 1.5,
+   "adp_ppr": 1.3,
    "pts_ppr": 331.4,
    "games": 18.0,
    "rec": 63.0,
@@ -1372,7 +1342,7 @@
    "player": "Bijan Robinson",
    "pos": "RB",
    "team": "ATL",
-   "adp_ppr": 2.2,
+   "adp_ppr": 2.9,
    "pts_ppr": 324.9,
    "games": 18.0,
    "rec": 64.0,
@@ -1395,7 +1365,7 @@
    "player": "Christian McCaffrey",
    "pos": "RB",
    "team": "SF",
-   "adp_ppr": 5.8,
+   "adp_ppr": 5.2,
    "pts_ppr": 291.0,
    "games": 18.0,
    "rec": 70.0,
@@ -1410,15 +1380,15 @@
    "years_exp": 9.0,
    "vorp": 137.3,
    "vorp_rank": 3,
-   "adp_rank": 5,
-   "value_gap": 2
+   "adp_rank": 6,
+   "value_gap": 3
   },
   {
    "player_id": 9493,
    "player": "Puka Nacua",
    "pos": "WR",
    "team": "LAR",
-   "adp_ppr": 4.5,
+   "adp_ppr": 4.0,
    "pts_ppr": 312.5,
    "games": 18.0,
    "rec": 107.0,
@@ -1441,7 +1411,7 @@
    "player": "Ja'Marr Chase",
    "pos": "WR",
    "team": "CIN",
-   "adp_ppr": 3.7,
+   "adp_ppr": 3.3,
    "pts_ppr": 311.1,
    "games": 18.0,
    "rec": 109.0,
@@ -1464,7 +1434,7 @@
    "player": "Jonathan Taylor",
    "pos": "RB",
    "team": "IND",
-   "adp_ppr": 7.6,
+   "adp_ppr": 7.8,
    "pts_ppr": 272.3,
    "games": 18.0,
    "rec": 36.0,
@@ -1487,7 +1457,7 @@
    "player": "Jaxon Smith-Njigba",
    "pos": "WR",
    "team": "SEA",
-   "adp_ppr": 6.6,
+   "adp_ppr": 5.1,
    "pts_ppr": 284.6,
    "games": 18.0,
    "rec": 99.0,
@@ -1502,15 +1472,15 @@
    "years_exp": 3.0,
    "vorp": 107.3,
    "vorp_rank": 7,
-   "adp_rank": 6,
-   "value_gap": -1
+   "adp_rank": 5,
+   "value_gap": -2
   },
   {
    "player_id": 8138,
    "player": "James Cook",
    "pos": "RB",
    "team": "BUF",
-   "adp_ppr": 10.0,
+   "adp_ppr": 10.8,
    "pts_ppr": 260.8,
    "games": 18.0,
    "rec": 31.0,
@@ -1533,7 +1503,7 @@
    "player": "Ashton Jeanty",
    "pos": "RB",
    "team": "LV",
-   "adp_ppr": 14.3,
+   "adp_ppr": 14.8,
    "pts_ppr": 259.5,
    "games": 18.0,
    "rec": 50.0,
@@ -1556,7 +1526,7 @@
    "player": "De'Von Achane",
    "pos": "RB",
    "team": "MIA",
-   "adp_ppr": 12.8,
+   "adp_ppr": 11.6,
    "pts_ppr": 257.4,
    "games": 18.0,
    "rec": 55.0,
@@ -1579,7 +1549,7 @@
    "player": "Amon-Ra St. Brown",
    "pos": "WR",
    "team": "DET",
-   "adp_ppr": 8.2,
+   "adp_ppr": 8.4,
    "pts_ppr": 280.5,
    "games": 18.0,
    "rec": 106.0,
@@ -1625,7 +1595,7 @@
    "player": "Brock Bowers",
    "pos": "TE",
    "team": "LV",
-   "adp_ppr": 22.8,
+   "adp_ppr": 22.5,
    "pts_ppr": 253.5,
    "games": 18.0,
    "rec": 102.0,
@@ -1648,7 +1618,7 @@
    "player": "Derrick Henry",
    "pos": "RB",
    "team": "BAL",
-   "adp_ppr": 21.6,
+   "adp_ppr": 21.3,
    "pts_ppr": 246.9,
    "games": 18.0,
    "rec": 17.0,
@@ -1671,7 +1641,7 @@
    "player": "CeeDee Lamb",
    "pos": "WR",
    "team": "DAL",
-   "adp_ppr": 8.3,
+   "adp_ppr": 9.7,
    "pts_ppr": 270.5,
    "games": 18.0,
    "rec": 96.0,
@@ -1694,7 +1664,7 @@
    "player": "Saquon Barkley",
    "pos": "RB",
    "team": "PHI",
-   "adp_ppr": 13.8,
+   "adp_ppr": 13.3,
    "pts_ppr": 246.7,
    "games": 18.0,
    "rec": 37.0,
@@ -1717,7 +1687,7 @@
    "player": "Kenneth Walker",
    "pos": "RB",
    "team": "KC",
-   "adp_ppr": 19.6,
+   "adp_ppr": 19.3,
    "pts_ppr": 244.0,
    "games": 18.0,
    "rec": 37.0,
@@ -1740,7 +1710,7 @@
    "player": "Omarion Hampton",
    "pos": "RB",
    "team": "LAC",
-   "adp_ppr": 15.4,
+   "adp_ppr": 15.5,
    "pts_ppr": 242.9,
    "games": 18.0,
    "rec": 48.0,
@@ -1759,11 +1729,34 @@
    "value_gap": -3
   },
   {
+   "player_id": 7569,
+   "player": "Nico Collins",
+   "pos": "WR",
+   "team": "HOU",
+   "adp_ppr": 25.6,
+   "pts_ppr": 262.0,
+   "games": 18.0,
+   "rec": 84.0,
+   "rec_yd": 1262.0,
+   "rec_td": 8.0,
+   "rush_att": 3.0,
+   "rush_yd": 18.0,
+   "rush_td": NaN,
+   "pass_yd": NaN,
+   "pass_td": NaN,
+   "injury_status": NaN,
+   "years_exp": 5.0,
+   "vorp": 84.69999999999999,
+   "vorp_rank": 19,
+   "adp_rank": 25,
+   "value_gap": 6
+  },
+  {
    "player_id": 8130,
    "player": "Trey McBride",
    "pos": "TE",
    "team": "ARI",
-   "adp_ppr": 20.4,
+   "adp_ppr": 20.3,
    "pts_ppr": 234.9,
    "games": 18.0,
    "rec": 96.0,
@@ -1777,16 +1770,16 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": 75.1,
-   "vorp_rank": 19,
+   "vorp_rank": 20,
    "adp_rank": 20,
-   "value_gap": 1
+   "value_gap": 0
   },
   {
    "player_id": 4984,
    "player": "Josh Allen",
    "pos": "QB",
    "team": "BUF",
-   "adp_ppr": 24.7,
+   "adp_ppr": 23.8,
    "pts_ppr": 361.5,
    "games": 18.0,
    "rec": NaN,
@@ -1800,39 +1793,16 @@
    "injury_status": NaN,
    "years_exp": 8.0,
    "vorp": 74.82,
-   "vorp_rank": 20,
-   "adp_rank": 24,
-   "value_gap": 4
-  },
-  {
-   "player_id": 7569,
-   "player": "Nico Collins",
-   "pos": "WR",
-   "team": "HOU",
-   "adp_ppr": 25.2,
-   "pts_ppr": 251.5,
-   "games": 18.0,
-   "rec": 82.0,
-   "rec_yd": 1237.0,
-   "rec_td": 7.0,
-   "rush_att": 3.0,
-   "rush_yd": 18.0,
-   "rush_td": NaN,
-   "pass_yd": NaN,
-   "pass_td": NaN,
-   "injury_status": NaN,
-   "years_exp": 5.0,
-   "vorp": 74.19999999999999,
    "vorp_rank": 21,
-   "adp_rank": 25,
-   "value_gap": 4
+   "adp_rank": 23,
+   "value_gap": 2
   },
   {
    "player_id": 6794,
    "player": "Justin Jefferson",
    "pos": "WR",
    "team": "MIN",
-   "adp_ppr": 11.7,
+   "adp_ppr": 11.5,
    "pts_ppr": 250.4,
    "games": 18.0,
    "rec": 90.0,
@@ -1855,7 +1825,7 @@
    "player": "Drake London",
    "pos": "WR",
    "team": "ATL",
-   "adp_ppr": 16.8,
+   "adp_ppr": 16.0,
    "pts_ppr": 250.2,
    "games": 18.0,
    "rec": 90.0,
@@ -1878,7 +1848,7 @@
    "player": "A.J. Brown",
    "pos": "WR",
    "team": "NE",
-   "adp_ppr": 17.4,
+   "adp_ppr": 17.5,
    "pts_ppr": 247.2,
    "games": 18.0,
    "rec": 79.0,
@@ -1901,7 +1871,7 @@
    "player": "George Pickens",
    "pos": "WR",
    "team": "DAL",
-   "adp_ppr": 23.3,
+   "adp_ppr": 23.9,
    "pts_ppr": 245.7,
    "games": 18.0,
    "rec": 80.0,
@@ -1916,15 +1886,15 @@
    "years_exp": 4.0,
    "vorp": 68.39999999999998,
    "vorp_rank": 25,
-   "adp_rank": 23,
-   "value_gap": -2
+   "adp_rank": 24,
+   "value_gap": -1
   },
   {
    "player_id": 8144,
    "player": "Chris Olave",
    "pos": "WR",
    "team": "NO",
-   "adp_ppr": 30.9,
+   "adp_ppr": 29.3,
    "pts_ppr": 235.9,
    "games": 18.0,
    "rec": 82.0,
@@ -1939,15 +1909,15 @@
    "years_exp": 4.0,
    "vorp": 58.6,
    "vorp_rank": 26,
-   "adp_rank": 30,
-   "value_gap": 4
+   "adp_rank": 29,
+   "value_gap": 3
   },
   {
    "player_id": 13287,
    "player": "Jeremiyah Love",
    "pos": "RB",
    "team": "ARI",
-   "adp_ppr": 26.7,
+   "adp_ppr": 26.4,
    "pts_ppr": 211.8,
    "games": 18.0,
    "rec": 47.0,
@@ -1962,15 +1932,15 @@
    "years_exp": 0.0,
    "vorp": 58.10000000000002,
    "vorp_rank": 27,
-   "adp_rank": 27,
-   "value_gap": 0
+   "adp_rank": 26,
+   "value_gap": -1
   },
   {
    "player_id": 8155,
    "player": "Breece Hall",
    "pos": "RB",
    "team": "NYJ",
-   "adp_ppr": 32.7,
+   "adp_ppr": 32.2,
    "pts_ppr": 211.0,
    "games": 18.0,
    "rec": 37.0,
@@ -1993,7 +1963,7 @@
    "player": "Colston Loveland",
    "pos": "TE",
    "team": "CHI",
-   "adp_ppr": 41.0,
+   "adp_ppr": 41.8,
    "pts_ppr": 215.4,
    "games": 18.0,
    "rec": 84.0,
@@ -2008,15 +1978,15 @@
    "years_exp": 1.0,
    "vorp": 55.6,
    "vorp_rank": 29,
-   "adp_rank": 41,
-   "value_gap": 12
+   "adp_rank": 42,
+   "value_gap": 13
   },
   {
    "player_id": 8150,
    "player": "Kyren Williams",
    "pos": "RB",
    "team": "LAR",
-   "adp_ppr": 29.9,
+   "adp_ppr": 29.7,
    "pts_ppr": 208.0,
    "games": 18.0,
    "rec": 32.0,
@@ -2031,15 +2001,15 @@
    "years_exp": 4.0,
    "vorp": 54.30000000000001,
    "vorp_rank": 30,
-   "adp_rank": 29,
-   "value_gap": -1
+   "adp_rank": 30,
+   "value_gap": 0
   },
   {
    "player_id": 6790,
    "player": "D'Andre Swift",
    "pos": "RB",
    "team": "CHI",
-   "adp_ppr": 56.8,
+   "adp_ppr": 56.6,
    "pts_ppr": 208.0,
    "games": 18.0,
    "rec": 37.0,
@@ -2062,7 +2032,7 @@
    "player": "Travis Etienne",
    "pos": "RB",
    "team": "NO",
-   "adp_ppr": 44.7,
+   "adp_ppr": 44.4,
    "pts_ppr": 207.7,
    "games": 18.0,
    "rec": 36.0,
@@ -2077,8 +2047,8 @@
    "years_exp": 5.0,
    "vorp": 54.0,
    "vorp_rank": 32,
-   "adp_rank": 45,
-   "value_gap": 13
+   "adp_rank": 44,
+   "value_gap": 12
   },
   {
    "player_id": 7588,
@@ -2100,15 +2070,15 @@
    "years_exp": 5.0,
    "vorp": 53.60000000000002,
    "vorp_rank": 33,
-   "adp_rank": 36,
-   "value_gap": 3
+   "adp_rank": 35,
+   "value_gap": 2
   },
   {
    "player_id": 5892,
    "player": "David Montgomery",
    "pos": "RB",
    "team": "HOU",
-   "adp_ppr": 51.9,
+   "adp_ppr": 51.4,
    "pts_ppr": 206.1,
    "games": 18.0,
    "rec": 32.0,
@@ -2131,7 +2101,7 @@
    "player": "Rashee Rice",
    "pos": "WR",
    "team": "KC",
-   "adp_ppr": 26.5,
+   "adp_ppr": 27.8,
    "pts_ppr": 229.3,
    "games": 18.0,
    "rec": 88.0,
@@ -2146,15 +2116,15 @@
    "years_exp": 3.0,
    "vorp": 52.0,
    "vorp_rank": 35,
-   "adp_rank": 26,
-   "value_gap": -9
+   "adp_rank": 27,
+   "value_gap": -8
   },
   {
    "player_id": 7525,
    "player": "DeVonta Smith",
    "pos": "WR",
    "team": "PHI",
-   "adp_ppr": 37.2,
+   "adp_ppr": 37.1,
    "pts_ppr": 229.2,
    "games": 18.0,
    "rec": 80.0,
@@ -2173,34 +2143,11 @@
    "value_gap": 1
   },
   {
-   "player_id": 9997,
-   "player": "Zay Flowers",
-   "pos": "WR",
-   "team": "BAL",
-   "adp_ppr": 42.3,
-   "pts_ppr": 228.2,
-   "games": 18.0,
-   "rec": 81.0,
-   "rec_yd": 1103.0,
-   "rec_td": 6.0,
-   "rush_att": 5.0,
-   "rush_yd": 29.0,
-   "rush_td": NaN,
-   "pass_yd": NaN,
-   "pass_td": NaN,
-   "injury_status": NaN,
-   "years_exp": 3.0,
-   "vorp": 50.89999999999998,
-   "vorp_rank": 37,
-   "adp_rank": 42,
-   "value_gap": 5
-  },
-  {
    "player_id": 11635,
    "player": "Ladd McConkey",
    "pos": "WR",
    "team": "LAC",
-   "adp_ppr": 38.4,
+   "adp_ppr": 38.2,
    "pts_ppr": 228.2,
    "games": 18.0,
    "rec": 81.0,
@@ -2214,9 +2161,32 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": 50.89999999999998,
-   "vorp_rank": 38,
+   "vorp_rank": 37,
    "adp_rank": 38,
-   "value_gap": 0
+   "value_gap": 1
+  },
+  {
+   "player_id": 9997,
+   "player": "Zay Flowers",
+   "pos": "WR",
+   "team": "BAL",
+   "adp_ppr": 41.2,
+   "pts_ppr": 228.2,
+   "games": 18.0,
+   "rec": 81.0,
+   "rec_yd": 1103.0,
+   "rec_td": 6.0,
+   "rush_att": 5.0,
+   "rush_yd": 29.0,
+   "rush_td": NaN,
+   "pass_yd": NaN,
+   "pass_td": NaN,
+   "injury_status": NaN,
+   "years_exp": 3.0,
+   "vorp": 50.89999999999998,
+   "vorp_rank": 38,
+   "adp_rank": 41,
+   "value_gap": 3
   },
   {
    "player_id": 11632,
@@ -2246,7 +2216,7 @@
    "player": "Josh Jacobs",
    "pos": "RB",
    "team": "GB",
-   "adp_ppr": 31.1,
+   "adp_ppr": 31.9,
    "pts_ppr": 202.6,
    "games": 18.0,
    "rec": 33.0,
@@ -2269,7 +2239,7 @@
    "player": "Garrett Wilson",
    "pos": "WR",
    "team": "NYJ",
-   "adp_ppr": 44.1,
+   "adp_ppr": 45.6,
    "pts_ppr": 224.9,
    "games": 18.0,
    "rec": 83.0,
@@ -2284,15 +2254,15 @@
    "years_exp": 4.0,
    "vorp": 47.6,
    "vorp_rank": 41,
-   "adp_rank": 44,
-   "value_gap": 3
+   "adp_rank": 45,
+   "value_gap": 4
   },
   {
    "player_id": 12481,
    "player": "Cam Skattebo",
    "pos": "RB",
    "team": "NYG",
-   "adp_ppr": 43.9,
+   "adp_ppr": 43.5,
    "pts_ppr": 201.2,
    "games": 18.0,
    "rec": 42.0,
@@ -2315,7 +2285,7 @@
    "player": "Tee Higgins",
    "pos": "WR",
    "team": "CIN",
-   "adp_ppr": 34.1,
+   "adp_ppr": 34.3,
    "pts_ppr": 224.4,
    "games": 18.0,
    "rec": 75.0,
@@ -2338,7 +2308,7 @@
    "player": "Emeka Egbuka",
    "pos": "WR",
    "team": "TB",
-   "adp_ppr": 40.0,
+   "adp_ppr": 40.9,
    "pts_ppr": 224.0,
    "games": 18.0,
    "rec": 77.0,
@@ -2361,7 +2331,7 @@
    "player": "Tetairoa McMillan",
    "pos": "WR",
    "team": "CAR",
-   "adp_ppr": 35.2,
+   "adp_ppr": 35.4,
    "pts_ppr": 223.0,
    "games": 18.0,
    "rec": 77.0,
@@ -2376,15 +2346,15 @@
    "years_exp": 1.0,
    "vorp": 45.69999999999999,
    "vorp_rank": 45,
-   "adp_rank": 35,
-   "value_gap": -10
+   "adp_rank": 36,
+   "value_gap": -9
   },
   {
    "player_id": 2216,
    "player": "Mike Evans",
    "pos": "WR",
    "team": "SF",
-   "adp_ppr": 59.2,
+   "adp_ppr": 59.1,
    "pts_ppr": 222.2,
    "games": 18.0,
    "rec": 70.0,
@@ -2407,7 +2377,7 @@
    "player": "Jaylen Waddle",
    "pos": "WR",
    "team": "DEN",
-   "adp_ppr": 47.2,
+   "adp_ppr": 47.1,
    "pts_ppr": 221.0,
    "games": 18.0,
    "rec": 77.0,
@@ -2418,7 +2388,7 @@
    "rush_td": NaN,
    "pass_yd": NaN,
    "pass_td": NaN,
-   "injury_status": "Questionable",
+   "injury_status": NaN,
    "years_exp": 5.0,
    "vorp": 43.69999999999999,
    "vorp_rank": 47,
@@ -2430,7 +2400,7 @@
    "player": "Bucky Irving",
    "pos": "RB",
    "team": "TB",
-   "adp_ppr": 39.5,
+   "adp_ppr": 39.6,
    "pts_ppr": 197.3,
    "games": 18.0,
    "rec": 36.0,
@@ -2453,7 +2423,7 @@
    "player": "Quinshon Judkins",
    "pos": "RB",
    "team": "CLE",
-   "adp_ppr": 53.1,
+   "adp_ppr": 53.8,
    "pts_ppr": 196.0,
    "games": 18.0,
    "rec": 32.0,
@@ -2464,19 +2434,19 @@
    "rush_td": 6.0,
    "pass_yd": NaN,
    "pass_td": NaN,
-   "injury_status": NaN,
+   "injury_status": "Questionable",
    "years_exp": 1.0,
    "vorp": 42.30000000000001,
    "vorp_rank": 49,
-   "adp_rank": 53,
-   "value_gap": 4
+   "adp_rank": 54,
+   "value_gap": 5
   },
   {
    "player_id": 12518,
    "player": "Tyler Warren",
    "pos": "TE",
    "team": "IND",
-   "adp_ppr": 46.8,
+   "adp_ppr": 46.1,
    "pts_ppr": 201.1,
    "games": 18.0,
    "rec": 83.0,
@@ -2487,7 +2457,7 @@
    "rush_td": NaN,
    "pass_yd": NaN,
    "pass_td": NaN,
-   "injury_status": NaN,
+   "injury_status": "Questionable",
    "years_exp": 1.0,
    "vorp": 41.29999999999998,
    "vorp_rank": 50,
@@ -2499,7 +2469,7 @@
    "player": "Lamar Jackson",
    "pos": "QB",
    "team": "BAL",
-   "adp_ppr": 33.1,
+   "adp_ppr": 33.5,
    "pts_ppr": 326.0,
    "games": 18.0,
    "rec": NaN,
@@ -2522,7 +2492,7 @@
    "player": "Sam LaPorta",
    "pos": "TE",
    "team": "DET",
-   "adp_ppr": 60.5,
+   "adp_ppr": 59.1,
    "pts_ppr": 196.5,
    "games": 18.0,
    "rec": 76.0,
@@ -2545,7 +2515,7 @@
    "player": "Terry McLaurin",
    "pos": "WR",
    "team": "WAS",
-   "adp_ppr": 55.2,
+   "adp_ppr": 55.3,
    "pts_ppr": 213.8,
    "games": 18.0,
    "rec": 74.0,
@@ -2568,7 +2538,7 @@
    "player": "Parker Washington",
    "pos": "WR",
    "team": "JAX",
-   "adp_ppr": 78.8,
+   "adp_ppr": 77.4,
    "pts_ppr": 212.4,
    "games": 18.0,
    "rec": 72.0,
@@ -2591,7 +2561,7 @@
    "player": "Drake Maye",
    "pos": "QB",
    "team": "NE",
-   "adp_ppr": 48.6,
+   "adp_ppr": 47.4,
    "pts_ppr": 320.76,
    "games": 18.0,
    "rec": NaN,
@@ -2614,7 +2584,7 @@
    "player": "Luther Burden",
    "pos": "WR",
    "team": "CHI",
-   "adp_ppr": 49.4,
+   "adp_ppr": 49.5,
    "pts_ppr": 209.0,
    "games": 18.0,
    "rec": 72.0,
@@ -2637,7 +2607,7 @@
    "player": "Rome Odunze",
    "pos": "WR",
    "team": "CHI",
-   "adp_ppr": 66.0,
+   "adp_ppr": 65.6,
    "pts_ppr": 207.9,
    "games": 18.0,
    "rec": 68.0,
@@ -2652,15 +2622,15 @@
    "years_exp": 2.0,
    "vorp": 30.599999999999994,
    "vorp_rank": 57,
-   "adp_rank": 66,
-   "value_gap": 9
+   "adp_rank": 65,
+   "value_gap": 8
   },
   {
    "player_id": 8167,
    "player": "Christian Watson",
    "pos": "WR",
    "team": "GB",
-   "adp_ppr": 70.9,
+   "adp_ppr": 70.7,
    "pts_ppr": 207.6,
    "games": 18.0,
    "rec": 63.0,
@@ -2683,7 +2653,7 @@
    "player": "Jameson Williams",
    "pos": "WR",
    "team": "DET",
-   "adp_ppr": 57.4,
+   "adp_ppr": 57.6,
    "pts_ppr": 206.2,
    "games": 18.0,
    "rec": 60.0,
@@ -2694,7 +2664,7 @@
    "rush_td": NaN,
    "pass_yd": NaN,
    "pass_td": NaN,
-   "injury_status": "Questionable",
+   "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": 28.899999999999977,
    "vorp_rank": 59,
@@ -2706,7 +2676,7 @@
    "player": "Jalen Hurts",
    "pos": "QB",
    "team": "PHI",
-   "adp_ppr": 62.2,
+   "adp_ppr": 62.1,
    "pts_ppr": 310.54,
    "games": 18.0,
    "rec": NaN,
@@ -2729,7 +2699,7 @@
    "player": "Jayden Daniels",
    "pos": "QB",
    "team": "WAS",
-   "adp_ppr": 62.5,
+   "adp_ppr": 63.2,
    "pts_ppr": 308.72,
    "games": 18.0,
    "rec": NaN,
@@ -2752,7 +2722,7 @@
    "player": "Bhayshul Tuten",
    "pos": "RB",
    "team": "JAX",
-   "adp_ppr": 61.5,
+   "adp_ppr": 61.1,
    "pts_ppr": 174.8,
    "games": 18.0,
    "rec": 32.0,
@@ -2775,7 +2745,7 @@
    "player": "Harold Fannin",
    "pos": "TE",
    "team": "CLE",
-   "adp_ppr": 67.0,
+   "adp_ppr": 67.3,
    "pts_ppr": 180.4,
    "games": 18.0,
    "rec": 74.0,
@@ -2798,7 +2768,7 @@
    "player": "Jayden Reed",
    "pos": "WR",
    "team": "GB",
-   "adp_ppr": 114.1,
+   "adp_ppr": 113.7,
    "pts_ppr": 197.6,
    "games": 18.0,
    "rec": 70.0,
@@ -2821,7 +2791,7 @@
    "player": "Joe Burrow",
    "pos": "QB",
    "team": "CIN",
-   "adp_ppr": 53.7,
+   "adp_ppr": 53.1,
    "pts_ppr": 306.12,
    "games": 18.0,
    "rec": NaN,
@@ -2836,15 +2806,15 @@
    "years_exp": 6.0,
    "vorp": 19.44,
    "vorp_rank": 65,
-   "adp_rank": 54,
-   "value_gap": -11
+   "adp_rank": 53,
+   "value_gap": -12
   },
   {
    "player_id": 11631,
    "player": "Brian Thomas",
    "pos": "WR",
    "team": "JAX",
-   "adp_ppr": 71.1,
+   "adp_ppr": 71.5,
    "pts_ppr": 195.4,
    "games": 18.0,
    "rec": 62.0,
@@ -2859,15 +2829,15 @@
    "years_exp": 2.0,
    "vorp": 18.099999999999994,
    "vorp_rank": 66,
-   "adp_rank": 71,
-   "value_gap": 5
+   "adp_rank": 72,
+   "value_gap": 6
   },
   {
    "player_id": 12529,
    "player": "TreVeyon Henderson",
    "pos": "RB",
    "team": "NE",
-   "adp_ppr": 52.0,
+   "adp_ppr": 52.8,
    "pts_ppr": 171.0,
    "games": 18.0,
    "rec": 35.0,
@@ -2890,7 +2860,7 @@
    "player": "Dak Prescott",
    "pos": "QB",
    "team": "DAL",
-   "adp_ppr": 80.4,
+   "adp_ppr": 81.5,
    "pts_ppr": 303.88,
    "games": 18.0,
    "rec": NaN,
@@ -2905,15 +2875,15 @@
    "years_exp": 10.0,
    "vorp": 17.19999999999999,
    "vorp_rank": 68,
-   "adp_rank": 80,
-   "value_gap": 12
+   "adp_rank": 81,
+   "value_gap": 13
   },
   {
    "player_id": 8228,
    "player": "Jaylen Warren",
    "pos": "RB",
    "team": "PIT",
-   "adp_ppr": 73.8,
+   "adp_ppr": 73.0,
    "pts_ppr": 170.6,
    "games": 18.0,
    "rec": 36.0,
@@ -2936,7 +2906,7 @@
    "player": "Trevor Lawrence",
    "pos": "QB",
    "team": "JAX",
-   "adp_ppr": 98.5,
+   "adp_ppr": 98.4,
    "pts_ppr": 303.42,
    "games": 18.0,
    "rec": NaN,
@@ -2959,7 +2929,7 @@
    "player": "Brock Purdy",
    "pos": "QB",
    "team": "SF",
-   "adp_ppr": 116.5,
+   "adp_ppr": 119.1,
    "pts_ppr": 303.2,
    "games": 18.0,
    "rec": NaN,
@@ -2974,15 +2944,15 @@
    "years_exp": 4.0,
    "vorp": 16.519999999999982,
    "vorp_rank": 71,
-   "adp_rank": 112,
-   "value_gap": 41
+   "adp_rank": 114,
+   "value_gap": 43
   },
   {
    "player_id": 13286,
    "player": "Jadarian Price",
    "pos": "RB",
    "team": "SEA",
-   "adp_ppr": 69.2,
+   "adp_ppr": 69.7,
    "pts_ppr": 170.0,
    "games": 18.0,
    "rec": 19.0,
@@ -3028,7 +2998,7 @@
    "player": "Davante Adams",
    "pos": "WR",
    "team": "LAR",
-   "adp_ppr": 50.7,
+   "adp_ppr": 50.5,
    "pts_ppr": 192.5,
    "games": 18.0,
    "rec": 63.0,
@@ -3051,7 +3021,7 @@
    "player": "Tucker Kraft",
    "pos": "TE",
    "team": "GB",
-   "adp_ppr": 65.4,
+   "adp_ppr": 65.8,
    "pts_ppr": 174.4,
    "games": 18.0,
    "rec": 67.0,
@@ -3066,15 +3036,15 @@
    "years_exp": 3.0,
    "vorp": 14.599999999999994,
    "vorp_rank": 75,
-   "adp_rank": 65,
-   "value_gap": -10
+   "adp_rank": 66,
+   "value_gap": -9
   },
   {
    "player_id": 11560,
    "player": "Caleb Williams",
    "pos": "QB",
    "team": "CHI",
-   "adp_ppr": 71.8,
+   "adp_ppr": 71.2,
    "pts_ppr": 299.34,
    "games": 18.0,
    "rec": NaN,
@@ -3089,8 +3059,8 @@
    "years_exp": 2.0,
    "vorp": 12.659999999999968,
    "vorp_rank": 76,
-   "adp_rank": 72,
-   "value_gap": -4
+   "adp_rank": 71,
+   "value_gap": -5
   },
   {
    "player_id": 7553,
@@ -3120,7 +3090,7 @@
    "player": "Travis Kelce",
    "pos": "TE",
    "team": "KC",
-   "adp_ppr": 93.1,
+   "adp_ppr": 93.8,
    "pts_ppr": 171.4,
    "games": 18.0,
    "rec": 70.0,
@@ -3143,7 +3113,7 @@
    "player": "Jaxson Dart",
    "pos": "QB",
    "team": "NYG",
-   "adp_ppr": 82.8,
+   "adp_ppr": 82.5,
    "pts_ppr": 296.54,
    "games": 18.0,
    "rec": NaN,
@@ -3166,7 +3136,7 @@
    "player": "George Kittle",
    "pos": "TE",
    "team": "SF",
-   "adp_ppr": 91.9,
+   "adp_ppr": 91.2,
    "pts_ppr": 169.3,
    "games": 18.0,
    "rec": 62.0,
@@ -3189,7 +3159,7 @@
    "player": "Bo Nix",
    "pos": "QB",
    "team": "DEN",
-   "adp_ppr": 121.3,
+   "adp_ppr": 121.7,
    "pts_ppr": 295.72,
    "games": 18.0,
    "rec": NaN,
@@ -3212,7 +3182,7 @@
    "player": "Marvin Harrison",
    "pos": "WR",
    "team": "ARI",
-   "adp_ppr": 75.6,
+   "adp_ppr": 75.5,
    "pts_ppr": 186.2,
    "games": 18.0,
    "rec": 62.0,
@@ -3235,7 +3205,7 @@
    "player": "Justin Herbert",
    "pos": "QB",
    "team": "LAC",
-   "adp_ppr": 84.7,
+   "adp_ppr": 84.0,
    "pts_ppr": 295.48,
    "games": 18.0,
    "rec": NaN,
@@ -3258,7 +3228,7 @@
    "player": "Rico Dowdle",
    "pos": "RB",
    "team": "PIT",
-   "adp_ppr": 88.5,
+   "adp_ppr": 88.4,
    "pts_ppr": 161.1,
    "games": 18.0,
    "rec": 38.0,
@@ -3281,7 +3251,7 @@
    "player": "J.K. Dobbins",
    "pos": "RB",
    "team": "DEN",
-   "adp_ppr": 92.9,
+   "adp_ppr": 92.2,
    "pts_ppr": 160.2,
    "games": 18.0,
    "rec": 26.0,
@@ -3304,7 +3274,7 @@
    "player": "Tony Pollard",
    "pos": "RB",
    "team": "TEN",
-   "adp_ppr": 87.5,
+   "adp_ppr": 87.4,
    "pts_ppr": 160.1,
    "games": 18.0,
    "rec": 28.0,
@@ -3315,7 +3285,7 @@
    "rush_td": 5.0,
    "pass_yd": NaN,
    "pass_td": NaN,
-   "injury_status": "Questionable",
+   "injury_status": NaN,
    "years_exp": 7.0,
    "vorp": 6.400000000000006,
    "vorp_rank": 86,
@@ -3327,7 +3297,7 @@
    "player": "DK Metcalf",
    "pos": "WR",
    "team": "PIT",
-   "adp_ppr": 74.2,
+   "adp_ppr": 74.6,
    "pts_ppr": 183.3,
    "games": 18.0,
    "rec": 62.0,
@@ -3350,7 +3320,7 @@
    "player": "Dalton Kincaid",
    "pos": "TE",
    "team": "BUF",
-   "adp_ppr": 89.7,
+   "adp_ppr": 89.4,
    "pts_ppr": 163.6,
    "games": 18.0,
    "rec": 66.0,
@@ -3373,7 +3343,7 @@
    "player": "Mark Andrews",
    "pos": "TE",
    "team": "BAL",
-   "adp_ppr": 130.5,
+   "adp_ppr": 129.9,
    "pts_ppr": 162.5,
    "games": 18.0,
    "rec": 60.0,
@@ -3388,15 +3358,15 @@
    "years_exp": 8.0,
    "vorp": 2.6999999999999886,
    "vorp_rank": 89,
-   "adp_rank": 122,
-   "value_gap": 33
+   "adp_rank": 121,
+   "value_gap": 32
   },
   {
    "player_id": 4983,
    "player": "DJ Moore",
    "pos": "WR",
    "team": "BUF",
-   "adp_ppr": 58.3,
+   "adp_ppr": 58.2,
    "pts_ppr": 179.0,
    "games": 18.0,
    "rec": 63.0,
@@ -3419,7 +3389,7 @@
    "player": "Jonathon Brooks",
    "pos": "RB",
    "team": "CAR",
-   "adp_ppr": 119.7,
+   "adp_ppr": 117.6,
    "pts_ppr": 154.9,
    "games": 18.0,
    "rec": 34.0,
@@ -3434,15 +3404,15 @@
    "years_exp": 2.0,
    "vorp": 1.200000000000017,
    "vorp_rank": 91,
-   "adp_rank": 114,
-   "value_gap": 23
+   "adp_rank": 113,
+   "value_gap": 22
   },
   {
    "player_id": 9480,
    "player": "Brenton Strange",
    "pos": "TE",
    "team": "JAX",
-   "adp_ppr": 150.7,
+   "adp_ppr": 151.0,
    "pts_ppr": 161.0,
    "games": 18.0,
    "rec": 63.0,
@@ -3465,7 +3435,7 @@
    "player": "Kyle Monangai",
    "pos": "RB",
    "team": "CHI",
-   "adp_ppr": 96.2,
+   "adp_ppr": 95.4,
    "pts_ppr": 154.6,
    "games": 18.0,
    "rec": 23.0,
@@ -3480,15 +3450,15 @@
    "years_exp": 1.0,
    "vorp": 0.9000000000000057,
    "vorp_rank": 93,
-   "adp_rank": 94,
-   "value_gap": 1
+   "adp_rank": 93,
+   "value_gap": 0
   },
   {
    "player_id": 8142,
    "player": "Alec Pierce",
    "pos": "WR",
    "team": "IND",
-   "adp_ppr": 97.9,
+   "adp_ppr": 97.0,
    "pts_ppr": 177.9,
    "games": 18.0,
    "rec": 54.0,
@@ -3507,34 +3477,11 @@
    "value_gap": 1
   },
   {
-   "player_id": 8110,
-   "player": "Jake Ferguson",
-   "pos": "TE",
-   "team": "DAL",
-   "adp_ppr": 100.2,
-   "pts_ppr": 159.8,
-   "games": 18.0,
-   "rec": 70.0,
-   "rec_yd": 618.0,
-   "rec_td": 5.0,
-   "rush_att": NaN,
-   "rush_yd": NaN,
-   "rush_td": NaN,
-   "pass_yd": NaN,
-   "pass_td": NaN,
-   "injury_status": NaN,
-   "years_exp": 4.0,
-   "vorp": 0.0,
-   "vorp_rank": 95,
-   "adp_rank": 98,
-   "value_gap": 3
-  },
-  {
    "player_id": 8408,
    "player": "Jordan Mason",
    "pos": "RB",
    "team": "MIN",
-   "adp_ppr": 120.8,
+   "adp_ppr": 119.7,
    "pts_ppr": 153.7,
    "games": 18.0,
    "rec": 20.0,
@@ -3548,16 +3495,39 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": 0.0,
-   "vorp_rank": 96,
+   "vorp_rank": 95,
    "adp_rank": 115,
-   "value_gap": 19
+   "value_gap": 20
+  },
+  {
+   "player_id": 8110,
+   "player": "Jake Ferguson",
+   "pos": "TE",
+   "team": "DAL",
+   "adp_ppr": 100.9,
+   "pts_ppr": 159.8,
+   "games": 18.0,
+   "rec": 70.0,
+   "rec_yd": 618.0,
+   "rec_td": 5.0,
+   "rush_att": NaN,
+   "rush_yd": NaN,
+   "rush_td": NaN,
+   "pass_yd": NaN,
+   "pass_td": NaN,
+   "injury_status": NaN,
+   "years_exp": 4.0,
+   "vorp": 0.0,
+   "vorp_rank": 96,
+   "adp_rank": 98,
+   "value_gap": 2
   },
   {
    "player_id": 4046,
    "player": "Patrick Mahomes",
    "pos": "QB",
    "team": "KC",
-   "adp_ppr": 106.0,
+   "adp_ppr": 106.6,
    "pts_ppr": 286.68,
    "games": 18.0,
    "rec": NaN,
@@ -3580,7 +3550,7 @@
    "player": "Carnell Tate",
    "pos": "WR",
    "team": "TEN",
-   "adp_ppr": 64.0,
+   "adp_ppr": 64.8,
    "pts_ppr": 177.3,
    "games": 18.0,
    "rec": 65.0,
@@ -3603,7 +3573,7 @@
    "player": "Kenny Gainwell",
    "pos": "RB",
    "team": "TB",
-   "adp_ppr": 111.0,
+   "adp_ppr": 111.7,
    "pts_ppr": 152.3,
    "games": 18.0,
    "rec": 47.0,
@@ -3626,7 +3596,7 @@
    "player": "Isaiah Likely",
    "pos": "TE",
    "team": "NYG",
-   "adp_ppr": 113.4,
+   "adp_ppr": 113.6,
    "pts_ppr": 157.3,
    "games": 18.0,
    "rec": 62.0,
@@ -3649,7 +3619,7 @@
    "player": "Courtland Sutton",
    "pos": "WR",
    "team": "DEN",
-   "adp_ppr": 80.9,
+   "adp_ppr": 80.3,
    "pts_ppr": 174.3,
    "games": 18.0,
    "rec": 59.0,
@@ -3664,15 +3634,15 @@
    "years_exp": 8.0,
    "vorp": -3.0,
    "vorp_rank": 101,
-   "adp_rank": 81,
-   "value_gap": -20
+   "adp_rank": 80,
+   "value_gap": -21
   },
   {
    "player_id": 3163,
    "player": "Jared Goff",
    "pos": "QB",
    "team": "DET",
-   "adp_ppr": 133.5,
+   "adp_ppr": 133.8,
    "pts_ppr": 283.46,
    "games": 18.0,
    "rec": NaN,
@@ -3695,7 +3665,7 @@
    "player": "Chris Godwin",
    "pos": "WR",
    "team": "TB",
-   "adp_ppr": 95.9,
+   "adp_ppr": 95.8,
    "pts_ppr": 173.6,
    "games": 18.0,
    "rec": 68.0,
@@ -3710,15 +3680,15 @@
    "years_exp": 9.0,
    "vorp": -3.700000000000017,
    "vorp_rank": 103,
-   "adp_rank": 93,
-   "value_gap": -10
+   "adp_rank": 94,
+   "value_gap": -9
   },
   {
    "player_id": 5844,
    "player": "T.J. Hockenson",
    "pos": "TE",
    "team": "MIN",
-   "adp_ppr": 164.5,
+   "adp_ppr": 164.3,
    "pts_ppr": 155.0,
    "games": 18.0,
    "rec": 66.0,
@@ -3733,15 +3703,15 @@
    "years_exp": 7.0,
    "vorp": -4.800000000000011,
    "vorp_rank": 104,
-   "adp_rank": 145,
-   "value_gap": 41
+   "adp_rank": 144,
+   "value_gap": 40
   },
   {
    "player_id": 9500,
    "player": "Josh Downs",
    "pos": "WR",
    "team": "IND",
-   "adp_ppr": 110.3,
+   "adp_ppr": 110.9,
    "pts_ppr": 172.3,
    "games": 18.0,
    "rec": 70.0,
@@ -3764,7 +3734,7 @@
    "player": "Jordan Addison",
    "pos": "WR",
    "team": "MIN",
-   "adp_ppr": 105.2,
+   "adp_ppr": 105.3,
    "pts_ppr": 171.7,
    "games": 18.0,
    "rec": 60.0,
@@ -3787,7 +3757,7 @@
    "player": "Chuba Hubbard",
    "pos": "RB",
    "team": "CAR",
-   "adp_ppr": 76.5,
+   "adp_ppr": 76.7,
    "pts_ppr": 147.9,
    "games": 18.0,
    "rec": 22.0,
@@ -3810,7 +3780,7 @@
    "player": "Hunter Henry",
    "pos": "TE",
    "team": "NE",
-   "adp_ppr": 132.7,
+   "adp_ppr": 131.3,
    "pts_ppr": 153.5,
    "games": 18.0,
    "rec": 58.0,
@@ -3825,15 +3795,15 @@
    "years_exp": 10.0,
    "vorp": -6.300000000000011,
    "vorp_rank": 108,
-   "adp_rank": 124,
-   "value_gap": 16
+   "adp_rank": 123,
+   "value_gap": 15
   },
   {
    "player_id": 6819,
    "player": "Michael Pittman",
    "pos": "WR",
    "team": "PIT",
-   "adp_ppr": 102.2,
+   "adp_ppr": 101.4,
    "pts_ppr": 170.9,
    "games": 18.0,
    "rec": 69.0,
@@ -3856,7 +3826,7 @@
    "player": "Matthew Stafford",
    "pos": "QB",
    "team": "LAR",
-   "adp_ppr": 98.7,
+   "adp_ppr": 99.9,
    "pts_ppr": 280.22,
    "games": 18.0,
    "rec": NaN,
@@ -3875,34 +3845,11 @@
    "value_gap": -13
   },
   {
-   "player_id": 8134,
-   "player": "Khalil Shakir",
-   "pos": "WR",
-   "team": "BUF",
-   "adp_ppr": 138.3,
-   "pts_ppr": 170.7,
-   "games": 18.0,
-   "rec": 71.0,
-   "rec_yd": 747.0,
-   "rec_td": 4.0,
-   "rush_att": 2.0,
-   "rush_yd": 10.0,
-   "rush_td": NaN,
-   "pass_yd": NaN,
-   "pass_td": NaN,
-   "injury_status": NaN,
-   "years_exp": 4.0,
-   "vorp": -6.600000000000023,
-   "vorp_rank": 111,
-   "adp_rank": 127,
-   "value_gap": 16
-  },
-  {
    "player_id": 8126,
    "player": "Wan'Dale Robinson",
    "pos": "WR",
    "team": "TEN",
-   "adp_ppr": 109.1,
+   "adp_ppr": 109.9,
    "pts_ppr": 170.7,
    "games": 18.0,
    "rec": 71.0,
@@ -3916,16 +3863,39 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -6.600000000000023,
-   "vorp_rank": 112,
+   "vorp_rank": 111,
    "adp_rank": 105,
-   "value_gap": -7
+   "value_gap": -6
+  },
+  {
+   "player_id": 8134,
+   "player": "Khalil Shakir",
+   "pos": "WR",
+   "team": "BUF",
+   "adp_ppr": 137.3,
+   "pts_ppr": 170.7,
+   "games": 18.0,
+   "rec": 71.0,
+   "rec_yd": 747.0,
+   "rec_td": 4.0,
+   "rush_att": 2.0,
+   "rush_yd": 10.0,
+   "rush_td": NaN,
+   "pass_yd": NaN,
+   "pass_td": NaN,
+   "injury_status": NaN,
+   "years_exp": 4.0,
+   "vorp": -6.600000000000023,
+   "vorp_rank": 112,
+   "adp_rank": 127,
+   "value_gap": 15
   },
   {
    "player_id": 12501,
    "player": "Matthew Golden",
    "pos": "WR",
    "team": "GB",
-   "adp_ppr": 131.5,
+   "adp_ppr": 131.7,
    "pts_ppr": 170.1,
    "games": 18.0,
    "rec": 58.0,
@@ -3940,15 +3910,15 @@
    "years_exp": 1.0,
    "vorp": -7.200000000000017,
    "vorp_rank": 113,
-   "adp_rank": 123,
-   "value_gap": 10
+   "adp_rank": 124,
+   "value_gap": 11
   },
   {
    "player_id": 5947,
    "player": "Jakobi Meyers",
    "pos": "WR",
    "team": "JAX",
-   "adp_ppr": 103.3,
+   "adp_ppr": 104.3,
    "pts_ppr": 169.3,
    "games": 18.0,
    "rec": 64.0,
@@ -3963,15 +3933,15 @@
    "years_exp": 7.0,
    "vorp": -8.0,
    "vorp_rank": 114,
-   "adp_rank": 100,
-   "value_gap": -14
+   "adp_rank": 101,
+   "value_gap": -13
   },
   {
    "player_id": 6804,
    "player": "Jordan Love",
    "pos": "QB",
    "team": "GB",
-   "adp_ppr": 146.2,
+   "adp_ppr": 146.4,
    "pts_ppr": 278.52,
    "games": 18.0,
    "rec": NaN,
@@ -3986,15 +3956,15 @@
    "years_exp": 6.0,
    "vorp": -8.160000000000025,
    "vorp_rank": 115,
-   "adp_rank": 134,
-   "value_gap": 19
+   "adp_rank": 133,
+   "value_gap": 18
   },
   {
    "player_id": 13294,
    "player": "Makai Lemon",
    "pos": "WR",
    "team": "PHI",
-   "adp_ppr": 86.8,
+   "adp_ppr": 86.3,
    "pts_ppr": 168.5,
    "games": 18.0,
    "rec": 60.0,
@@ -4017,7 +3987,7 @@
    "player": "RJ Harvey",
    "pos": "RB",
    "team": "DEN",
-   "adp_ppr": 79.7,
+   "adp_ppr": 79.6,
    "pts_ppr": 144.1,
    "games": 18.0,
    "rec": 37.0,
@@ -4040,7 +4010,7 @@
    "player": "Michael Wilson",
    "pos": "WR",
    "team": "ARI",
-   "adp_ppr": 83.5,
+   "adp_ppr": 83.7,
    "pts_ppr": 166.0,
    "games": 18.0,
    "rec": 59.0,
@@ -4063,7 +4033,7 @@
    "player": "Jalen Coker",
    "pos": "WR",
    "team": "CAR",
-   "adp_ppr": 145.3,
+   "adp_ppr": 144.0,
    "pts_ppr": 165.9,
    "games": 18.0,
    "rec": 60.0,
@@ -4078,15 +4048,15 @@
    "years_exp": 2.0,
    "vorp": -11.400000000000006,
    "vorp_rank": 119,
-   "adp_rank": 133,
-   "value_gap": 14
+   "adp_rank": 131,
+   "value_gap": 12
   },
   {
    "player_id": 4892,
    "player": "Baker Mayfield",
    "pos": "QB",
    "team": "TB",
-   "adp_ppr": 142.7,
+   "adp_ppr": 140.8,
    "pts_ppr": 274.88,
    "games": 18.0,
    "rec": NaN,
@@ -4101,38 +4071,15 @@
    "years_exp": 8.0,
    "vorp": -11.800000000000011,
    "vorp_rank": 120,
-   "adp_rank": 131,
-   "value_gap": 11
-  },
-  {
-   "player_id": 12484,
-   "player": "Jayden Higgins",
-   "pos": "WR",
-   "team": "HOU",
-   "adp_ppr": 140.5,
-   "pts_ppr": 165.4,
-   "games": 18.0,
-   "rec": 57.0,
-   "rec_yd": 778.0,
-   "rec_td": 5.0,
-   "rush_att": 1.0,
-   "rush_yd": 6.0,
-   "rush_td": NaN,
-   "pass_yd": NaN,
-   "pass_td": NaN,
-   "injury_status": "Questionable",
-   "years_exp": 1.0,
-   "vorp": -11.900000000000006,
-   "vorp_rank": 121,
    "adp_rank": 129,
-   "value_gap": 8
+   "value_gap": 9
   },
   {
    "player_id": 5849,
    "player": "Kyler Murray",
    "pos": "QB",
    "team": "MIN",
-   "adp_ppr": 159.4,
+   "adp_ppr": 159.3,
    "pts_ppr": 274.66,
    "games": 18.0,
    "rec": NaN,
@@ -4146,8 +4093,8 @@
    "injury_status": NaN,
    "years_exp": 7.0,
    "vorp": -12.019999999999982,
-   "vorp_rank": 122,
-   "adp_rank": 141,
+   "vorp_rank": 121,
+   "adp_rank": 140,
    "value_gap": 19
   },
   {
@@ -4155,7 +4102,7 @@
    "player": "Quentin Johnston",
    "pos": "WR",
    "team": "LAC",
-   "adp_ppr": 107.4,
+   "adp_ppr": 108.0,
    "pts_ppr": 163.9,
    "games": 18.0,
    "rec": 58.0,
@@ -4169,16 +4116,16 @@
    "injury_status": "Questionable",
    "years_exp": 3.0,
    "vorp": -13.400000000000006,
-   "vorp_rank": 123,
+   "vorp_rank": 122,
    "adp_rank": 104,
-   "value_gap": -19
+   "value_gap": -18
   },
   {
    "player_id": 8210,
    "player": "Chig Okonkwo",
    "pos": "TE",
    "team": "WAS",
-   "adp_ppr": 170.7,
+   "adp_ppr": 171.3,
    "pts_ppr": 144.1,
    "games": 18.0,
    "rec": 61.0,
@@ -4192,8 +4139,8 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -15.700000000000015,
-   "vorp_rank": 124,
-   "adp_rank": 151,
+   "vorp_rank": 123,
+   "adp_rank": 150,
    "value_gap": 27
   },
   {
@@ -4201,7 +4148,7 @@
    "player": "Tyler Shough",
    "pos": "QB",
    "team": "NO",
-   "adp_ppr": 168.5,
+   "adp_ppr": 167.9,
    "pts_ppr": 270.94,
    "games": 18.0,
    "rec": NaN,
@@ -4215,8 +4162,8 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -15.740000000000007,
-   "vorp_rank": 125,
-   "adp_rank": 148,
+   "vorp_rank": 124,
+   "adp_rank": 147,
    "value_gap": 23
   },
   {
@@ -4224,7 +4171,7 @@
    "player": "Xavier Worthy",
    "pos": "WR",
    "team": "KC",
-   "adp_ppr": 139.5,
+   "adp_ppr": 139.1,
    "pts_ppr": 161.5,
    "games": 18.0,
    "rec": 55.0,
@@ -4238,16 +4185,16 @@
    "injury_status": "Questionable",
    "years_exp": 2.0,
    "vorp": -15.800000000000011,
-   "vorp_rank": 126,
+   "vorp_rank": 125,
    "adp_rank": 128,
-   "value_gap": 2
+   "value_gap": 3
   },
   {
    "player_id": 8121,
    "player": "Romeo Doubs",
    "pos": "WR",
    "team": "NE",
-   "adp_ppr": 129.2,
+   "adp_ppr": 130.3,
    "pts_ppr": 161.2,
    "games": 18.0,
    "rec": 57.0,
@@ -4261,9 +4208,9 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -16.100000000000023,
-   "vorp_rank": 127,
-   "adp_rank": 121,
-   "value_gap": -6
+   "vorp_rank": 126,
+   "adp_rank": 122,
+   "value_gap": -4
   },
   {
    "player_id": 8161,
@@ -4284,8 +4231,8 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -16.560000000000002,
-   "vorp_rank": 128,
-   "adp_rank": 165,
+   "vorp_rank": 127,
+   "adp_rank": 164,
    "value_gap": 37
   },
   {
@@ -4293,7 +4240,7 @@
    "player": "Aaron Jones",
    "pos": "RB",
    "team": "MIN",
-   "adp_ppr": 123.4,
+   "adp_ppr": 123.1,
    "pts_ppr": 137.1,
    "games": 18.0,
    "rec": 34.0,
@@ -4307,16 +4254,16 @@
    "injury_status": NaN,
    "years_exp": 9.0,
    "vorp": -16.599999999999994,
-   "vorp_rank": 129,
+   "vorp_rank": 128,
    "adp_rank": 117,
-   "value_gap": -12
+   "value_gap": -11
   },
   {
    "player_id": 11603,
    "player": "AJ Barner",
    "pos": "TE",
    "team": "SEA",
-   "adp_ppr": 186.8,
+   "adp_ppr": 185.8,
    "pts_ppr": 142.4,
    "games": 18.0,
    "rec": 58.0,
@@ -4330,8 +4277,8 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": -17.400000000000006,
-   "vorp_rank": 130,
-   "adp_rank": 161,
+   "vorp_rank": 129,
+   "adp_rank": 160,
    "value_gap": 31
   },
   {
@@ -4353,8 +4300,8 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -18.0,
-   "vorp_rank": 131,
-   "adp_rank": 113,
+   "vorp_rank": 130,
+   "adp_rank": 112,
    "value_gap": -18
   },
   {
@@ -4362,7 +4309,7 @@
    "player": "Blake Corum",
    "pos": "RB",
    "team": "LAR",
-   "adp_ppr": 104.6,
+   "adp_ppr": 103.0,
    "pts_ppr": 135.3,
    "games": 18.0,
    "rec": 15.0,
@@ -4376,8 +4323,8 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": -18.399999999999977,
-   "vorp_rank": 132,
-   "adp_rank": 101,
+   "vorp_rank": 131,
+   "adp_rank": 100,
    "value_gap": -31
   },
   {
@@ -4385,7 +4332,7 @@
    "player": "Juwan Johnson",
    "pos": "TE",
    "team": "NO",
-   "adp_ppr": 187.3,
+   "adp_ppr": 187.5,
    "pts_ppr": 140.9,
    "games": 18.0,
    "rec": 56.0,
@@ -4399,8 +4346,8 @@
    "injury_status": NaN,
    "years_exp": 6.0,
    "vorp": -18.90000000000001,
-   "vorp_rank": 133,
-   "adp_rank": 162,
+   "vorp_rank": 132,
+   "adp_rank": 161,
    "value_gap": 29
   },
   {
@@ -4408,7 +4355,7 @@
    "player": "Stefon Diggs",
    "pos": "WR",
    "team": "WAS",
-   "adp_ppr": 115.4,
+   "adp_ppr": 115.7,
    "pts_ppr": 157.3,
    "games": 18.0,
    "rec": 64.0,
@@ -4422,16 +4369,16 @@
    "injury_status": NaN,
    "years_exp": 11.0,
    "vorp": -20.0,
-   "vorp_rank": 134,
+   "vorp_rank": 133,
    "adp_rank": 111,
-   "value_gap": -23
+   "value_gap": -22
   },
   {
    "player_id": 5001,
    "player": "Dalton Schultz",
    "pos": "TE",
    "team": "HOU",
-   "adp_ppr": 194.2,
+   "adp_ppr": 194.7,
    "pts_ppr": 139.2,
    "games": 18.0,
    "rec": 58.0,
@@ -4445,8 +4392,8 @@
    "injury_status": NaN,
    "years_exp": 8.0,
    "vorp": -20.600000000000023,
-   "vorp_rank": 135,
-   "adp_rank": 169,
+   "vorp_rank": 134,
+   "adp_rank": 168,
    "value_gap": 34
   },
   {
@@ -4468,16 +4415,16 @@
    "injury_status": NaN,
    "years_exp": 0.0,
    "vorp": -20.90000000000001,
-   "vorp_rank": 136,
+   "vorp_rank": 135,
    "adp_rank": 119,
-   "value_gap": -17
+   "value_gap": -16
   },
   {
    "player_id": 10219,
    "player": "Chris Rodriguez",
    "pos": "RB",
    "team": "JAX",
-   "adp_ppr": 157.7,
+   "adp_ppr": 147.4,
    "pts_ppr": 132.5,
    "games": 18.0,
    "rec": 15.0,
@@ -4491,16 +4438,16 @@
    "injury_status": NaN,
    "years_exp": 3.0,
    "vorp": -21.19999999999999,
-   "vorp_rank": 137,
-   "adp_rank": 139,
-   "value_gap": 2
+   "vorp_rank": 136,
+   "adp_rank": 134,
+   "value_gap": -2
   },
   {
    "player_id": 5872,
    "player": "Deebo Samuel",
    "pos": "WR",
    "team": "SF",
-   "adp_ppr": 137.2,
+   "adp_ppr": 137.0,
    "pts_ppr": 155.7,
    "games": 18.0,
    "rec": 56.0,
@@ -4514,9 +4461,9 @@
    "injury_status": NaN,
    "years_exp": 7.0,
    "vorp": -21.600000000000023,
-   "vorp_rank": 138,
+   "vorp_rank": 137,
    "adp_rank": 126,
-   "value_gap": -12
+   "value_gap": -11
   },
   {
    "player_id": 5022,
@@ -4537,16 +4484,16 @@
    "injury_status": NaN,
    "years_exp": 8.0,
    "vorp": -23.80000000000001,
-   "vorp_rank": 139,
+   "vorp_rank": 138,
    "adp_rank": 118,
-   "value_gap": -21
+   "value_gap": -20
   },
   {
    "player_id": 4943,
    "player": "Sam Darnold",
    "pos": "QB",
    "team": "SEA",
-   "adp_ppr": 176.0,
+   "adp_ppr": 177.1,
    "pts_ppr": 262.74,
    "games": 18.0,
    "rec": NaN,
@@ -4560,16 +4507,16 @@
    "injury_status": NaN,
    "years_exp": 8.0,
    "vorp": -23.94,
-   "vorp_rank": 140,
+   "vorp_rank": 139,
    "adp_rank": 154,
-   "value_gap": 14
+   "value_gap": 15
   },
   {
    "player_id": 8136,
    "player": "Rachaad White",
    "pos": "RB",
    "team": "WAS",
-   "adp_ppr": 128.5,
+   "adp_ppr": 128.4,
    "pts_ppr": 128.1,
    "games": 18.0,
    "rec": 34.0,
@@ -4580,19 +4527,19 @@
    "rush_td": 3.0,
    "pass_yd": NaN,
    "pass_td": NaN,
-   "injury_status": NaN,
+   "injury_status": "Questionable",
    "years_exp": 4.0,
    "vorp": -25.599999999999994,
-   "vorp_rank": 141,
+   "vorp_rank": 140,
    "adp_rank": 120,
-   "value_gap": -21
+   "value_gap": -20
   },
   {
    "player_id": 12533,
    "player": "Jacory Croskey-Merritt",
    "pos": "RB",
    "team": "WAS",
-   "adp_ppr": 112.3,
+   "adp_ppr": 112.7,
    "pts_ppr": 127.9,
    "games": 18.0,
    "rec": 19.0,
@@ -4606,16 +4553,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -25.799999999999983,
-   "vorp_rank": 142,
+   "vorp_rank": 141,
    "adp_rank": 108,
-   "value_gap": -34
+   "value_gap": -33
   },
   {
    "player_id": 12502,
    "player": "Gunnar Helm",
    "pos": "TE",
    "team": "TEN",
-   "adp_ppr": 236.7,
+   "adp_ppr": 236.1,
    "pts_ppr": 130.3,
    "games": 18.0,
    "rec": 57.0,
@@ -4629,9 +4576,9 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -29.5,
-   "vorp_rank": 143,
-   "adp_rank": 220,
-   "value_gap": 77
+   "vorp_rank": 142,
+   "adp_rank": 217,
+   "value_gap": 75
   },
   {
    "player_id": 7600,
@@ -4652,39 +4599,16 @@
    "injury_status": NaN,
    "years_exp": 5.0,
    "vorp": -31.40000000000001,
-   "vorp_rank": 144,
+   "vorp_rank": 143,
    "adp_rank": 228,
-   "value_gap": 84
-  },
-  {
-   "player_id": 9758,
-   "player": "C.J. Stroud",
-   "pos": "QB",
-   "team": "HOU",
-   "adp_ppr": 202.7,
-   "pts_ppr": 253.1,
-   "games": 18.0,
-   "rec": NaN,
-   "rec_yd": NaN,
-   "rec_td": NaN,
-   "rush_att": 53.0,
-   "rush_yd": 201.0,
-   "rush_td": 2.0,
-   "pass_yd": 3625.0,
-   "pass_td": 23.0,
-   "injury_status": NaN,
-   "years_exp": 3.0,
-   "vorp": -33.58000000000001,
-   "vorp_rank": 145,
-   "adp_rank": 174,
-   "value_gap": 29
+   "value_gap": 85
   },
   {
    "player_id": 8111,
    "player": "Cade Otton",
    "pos": "TE",
    "team": "TB",
-   "adp_ppr": 215.9,
+   "adp_ppr": 214.0,
    "pts_ppr": 122.3,
    "games": 18.0,
    "rec": 53.0,
@@ -4698,16 +4622,39 @@
    "injury_status": "Questionable",
    "years_exp": 4.0,
    "vorp": -37.500000000000014,
-   "vorp_rank": 146,
-   "adp_rank": 189,
+   "vorp_rank": 144,
+   "adp_rank": 187,
    "value_gap": 43
+  },
+  {
+   "player_id": 9758,
+   "player": "C.J. Stroud",
+   "pos": "QB",
+   "team": "HOU",
+   "adp_ppr": 202.3,
+   "pts_ppr": 247.82,
+   "games": 18.0,
+   "rec": NaN,
+   "rec_yd": NaN,
+   "rec_td": NaN,
+   "rush_att": 53.0,
+   "rush_yd": 201.0,
+   "rush_td": 2.0,
+   "pass_yd": 3593.0,
+   "pass_td": 22.0,
+   "injury_status": NaN,
+   "years_exp": 3.0,
+   "vorp": -38.860000000000014,
+   "vorp_rank": 145,
+   "adp_rank": 173,
+   "value_gap": 28
   },
   {
    "player_id": 9508,
    "player": "Tyjae Spears",
    "pos": "RB",
    "team": "TEN",
-   "adp_ppr": 170.1,
+   "adp_ppr": 170.7,
    "pts_ppr": 114.6,
    "games": 18.0,
    "rec": 35.0,
@@ -4721,8 +4668,8 @@
    "injury_status": NaN,
    "years_exp": 3.0,
    "vorp": -39.1,
-   "vorp_rank": 147,
-   "adp_rank": 150,
+   "vorp_rank": 146,
+   "adp_rank": 149,
    "value_gap": 3
   },
   {
@@ -4730,7 +4677,7 @@
    "player": "Rashid Shaheed",
    "pos": "WR",
    "team": "SEA",
-   "adp_ppr": 158.1,
+   "adp_ppr": 158.2,
    "pts_ppr": 138.1,
    "games": 18.0,
    "rec": 45.0,
@@ -4744,8 +4691,8 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -39.20000000000002,
-   "vorp_rank": 148,
-   "adp_rank": 140,
+   "vorp_rank": 147,
+   "adp_rank": 139,
    "value_gap": -8
   },
   {
@@ -4767,8 +4714,8 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": -42.39999999999999,
-   "vorp_rank": 149,
-   "adp_rank": 143,
+   "vorp_rank": 148,
+   "adp_rank": 142,
    "value_gap": -6
   },
   {
@@ -4776,7 +4723,7 @@
    "player": "Denzel Boston",
    "pos": "WR",
    "team": "CLE",
-   "adp_ppr": 163.6,
+   "adp_ppr": 163.2,
    "pts_ppr": 134.7,
    "games": 18.0,
    "rec": 53.0,
@@ -4790,8 +4737,8 @@
    "injury_status": NaN,
    "years_exp": 0.0,
    "vorp": -42.60000000000002,
-   "vorp_rank": 150,
-   "adp_rank": 144,
+   "vorp_rank": 149,
+   "adp_rank": 143,
    "value_gap": -6
   },
   {
@@ -4799,7 +4746,7 @@
    "player": "Malik Washington",
    "pos": "WR",
    "team": "MIA",
-   "adp_ppr": 199.8,
+   "adp_ppr": 199.0,
    "pts_ppr": 131.3,
    "games": 18.0,
    "rec": 48.0,
@@ -4813,8 +4760,8 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": -46.0,
-   "vorp_rank": 151,
-   "adp_rank": 173,
+   "vorp_rank": 150,
+   "adp_rank": 172,
    "value_gap": 22
   },
   {
@@ -4822,7 +4769,7 @@
    "player": "Jalen Nailor",
    "pos": "WR",
    "team": "LV",
-   "adp_ppr": 182.8,
+   "adp_ppr": 183.6,
    "pts_ppr": 130.6,
    "games": 18.0,
    "rec": 46.0,
@@ -4836,16 +4783,16 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -46.70000000000002,
-   "vorp_rank": 152,
+   "vorp_rank": 151,
    "adp_rank": 158,
-   "value_gap": 6
+   "value_gap": 7
   },
   {
    "player_id": 8172,
    "player": "Greg Dulcich",
    "pos": "TE",
    "team": "MIA",
-   "adp_ppr": 233.6,
+   "adp_ppr": 232.4,
    "pts_ppr": 110.9,
    "games": 18.0,
    "rec": 47.0,
@@ -4859,16 +4806,16 @@
    "injury_status": NaN,
    "years_exp": 4.0,
    "vorp": -48.900000000000006,
-   "vorp_rank": 153,
-   "adp_rank": 215,
-   "value_gap": 62
+   "vorp_rank": 152,
+   "adp_rank": 211,
+   "value_gap": 59
   },
   {
    "player_id": 13417,
    "player": "De'Zhaun Stribling",
    "pos": "WR",
    "team": "SF",
-   "adp_ppr": 155.3,
+   "adp_ppr": 155.1,
    "pts_ppr": 128.4,
    "games": 18.0,
    "rec": 46.0,
@@ -4882,16 +4829,16 @@
    "injury_status": NaN,
    "years_exp": 0.0,
    "vorp": -48.900000000000006,
-   "vorp_rank": 154,
+   "vorp_rank": 153,
    "adp_rank": 138,
-   "value_gap": -16
+   "value_gap": -15
   },
   {
    "player_id": 11618,
    "player": "Jalen McMillan",
    "pos": "WR",
    "team": "TB",
-   "adp_ppr": 195.5,
+   "adp_ppr": 195.3,
    "pts_ppr": 127.4,
    "games": 18.0,
    "rec": 44.0,
@@ -4905,8 +4852,8 @@
    "injury_status": "Questionable",
    "years_exp": 2.0,
    "vorp": -49.900000000000006,
-   "vorp_rank": 155,
-   "adp_rank": 170,
+   "vorp_rank": 154,
+   "adp_rank": 169,
    "value_gap": 15
   },
   {
@@ -4928,8 +4875,8 @@
    "injury_status": NaN,
    "years_exp": 0.0,
    "vorp": -50.20000000000002,
-   "vorp_rank": 156,
-   "adp_rank": 152,
+   "vorp_rank": 155,
+   "adp_rank": 151,
    "value_gap": -4
   },
   {
@@ -4937,7 +4884,7 @@
    "player": "Bryce Young",
    "pos": "QB",
    "team": "CAR",
-   "adp_ppr": 228.7,
+   "adp_ppr": 229.1,
    "pts_ppr": 235.58,
    "games": 18.0,
    "rec": NaN,
@@ -4951,16 +4898,16 @@
    "injury_status": NaN,
    "years_exp": 3.0,
    "vorp": -51.1,
-   "vorp_rank": 157,
-   "adp_rank": 204,
-   "value_gap": 47
+   "vorp_rank": 156,
+   "adp_rank": 205,
+   "value_gap": 49
   },
   {
    "player_id": 10213,
    "player": "Tre Tucker",
    "pos": "WR",
    "team": "LV",
-   "adp_ppr": 204.3,
+   "adp_ppr": 203.2,
    "pts_ppr": 125.9,
    "games": 18.0,
    "rec": 46.0,
@@ -4974,16 +4921,16 @@
    "injury_status": NaN,
    "years_exp": 3.0,
    "vorp": -51.400000000000006,
-   "vorp_rank": 158,
-   "adp_rank": 176,
-   "value_gap": 18
+   "vorp_rank": 157,
+   "adp_rank": 174,
+   "value_gap": 17
   },
   {
    "player_id": 11783,
    "player": "Ryan Flournoy",
    "pos": "WR",
    "team": "DAL",
-   "adp_ppr": 237.6,
+   "adp_ppr": 237.8,
    "pts_ppr": 121.2,
    "games": 18.0,
    "rec": 47.0,
@@ -4997,8 +4944,8 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": -56.10000000000001,
-   "vorp_rank": 159,
-   "adp_rank": 222,
+   "vorp_rank": 158,
+   "adp_rank": 221,
    "value_gap": 63
   },
   {
@@ -5006,7 +4953,7 @@
    "player": "Keaton Mitchell",
    "pos": "RB",
    "team": "LAC",
-   "adp_ppr": 179.9,
+   "adp_ppr": 179.7,
    "pts_ppr": 96.9,
    "games": 18.0,
    "rec": 18.0,
@@ -5020,8 +4967,8 @@
    "injury_status": NaN,
    "years_exp": 3.0,
    "vorp": -56.79999999999998,
-   "vorp_rank": 160,
-   "adp_rank": 157,
+   "vorp_rank": 159,
+   "adp_rank": 156,
    "value_gap": -3
   },
   {
@@ -5029,7 +4976,7 @@
    "player": "Jerry Jeudy",
    "pos": "WR",
    "team": "CLE",
-   "adp_ppr": 192.3,
+   "adp_ppr": 191.1,
    "pts_ppr": 119.6,
    "games": 18.0,
    "rec": 43.0,
@@ -5043,16 +4990,16 @@
    "injury_status": NaN,
    "years_exp": 6.0,
    "vorp": -57.70000000000002,
-   "vorp_rank": 161,
-   "adp_rank": 167,
-   "value_gap": 6
+   "vorp_rank": 160,
+   "adp_rank": 165,
+   "value_gap": 5
   },
   {
    "player_id": 12522,
    "player": "Cam Ward",
    "pos": "QB",
    "team": "TEN",
-   "adp_ppr": 206.2,
+   "adp_ppr": 207.8,
    "pts_ppr": 227.84,
    "games": 18.0,
    "rec": NaN,
@@ -5066,16 +5013,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -58.84,
-   "vorp_rank": 162,
+   "vorp_rank": 161,
    "adp_rank": 178,
-   "value_gap": 16
+   "value_gap": 17
   },
   {
    "player_id": 12487,
    "player": "Terrance Ferguson",
    "pos": "TE",
    "team": "LAR",
-   "adp_ppr": 210.6,
+   "adp_ppr": 209.8,
    "pts_ppr": 100.3,
    "games": 18.0,
    "rec": 35.0,
@@ -5089,16 +5036,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -59.500000000000014,
-   "vorp_rank": 163,
-   "adp_rank": 182,
-   "value_gap": 19
+   "vorp_rank": 162,
+   "adp_rank": 180,
+   "value_gap": 18
   },
   {
    "player_id": 13330,
    "player": "Kenyon Sadiq",
    "pos": "TE",
    "team": "NYJ",
-   "adp_ppr": 144.0,
+   "adp_ppr": 145.7,
    "pts_ppr": 100.2,
    "games": 18.0,
    "rec": 40.0,
@@ -5112,16 +5059,39 @@
    "injury_status": "Questionable",
    "years_exp": 0.0,
    "vorp": -59.60000000000001,
-   "vorp_rank": 164,
+   "vorp_rank": 163,
    "adp_rank": 132,
-   "value_gap": -32
+   "value_gap": -31
+  },
+  {
+   "player_id": 9502,
+   "player": "Tank Dell",
+   "pos": "WR",
+   "team": "HOU",
+   "adp_ppr": 176.5,
+   "pts_ppr": 115.8,
+   "games": 18.0,
+   "rec": 41.0,
+   "rec_yd": 539.0,
+   "rec_td": 3.0,
+   "rush_att": 5.0,
+   "rush_yd": 29.0,
+   "rush_td": NaN,
+   "pass_yd": NaN,
+   "pass_td": NaN,
+   "injury_status": "Questionable",
+   "years_exp": 3.0,
+   "vorp": -61.500000000000014,
+   "vorp_rank": 164,
+   "adp_rank": 153,
+   "value_gap": -11
   },
   {
    "player_id": 5870,
    "player": "Daniel Jones",
    "pos": "QB",
    "team": "IND",
-   "adp_ppr": 205.2,
+   "adp_ppr": 205.6,
    "pts_ppr": 223.54,
    "games": 18.0,
    "rec": NaN,
@@ -5136,8 +5106,31 @@
    "years_exp": 7.0,
    "vorp": -63.140000000000015,
    "vorp_rank": 165,
-   "adp_rank": 177,
-   "value_gap": 12
+   "adp_rank": 176,
+   "value_gap": 11
+  },
+  {
+   "player_id": 12536,
+   "player": "Jaylin Noel",
+   "pos": "WR",
+   "team": "HOU",
+   "adp_ppr": 213.7,
+   "pts_ppr": 113.9,
+   "games": 18.0,
+   "rec": 42.0,
+   "rec_yd": 489.0,
+   "rec_td": 3.0,
+   "rush_att": 10.0,
+   "rush_yd": 50.0,
+   "rush_td": NaN,
+   "pass_yd": NaN,
+   "pass_td": NaN,
+   "injury_status": "Questionable",
+   "years_exp": 1.0,
+   "vorp": -63.400000000000006,
+   "vorp_rank": 166,
+   "adp_rank": 186,
+   "value_gap": 20
   },
   {
    "player_id": 12498,
@@ -5158,16 +5151,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -63.400000000000006,
-   "vorp_rank": 166,
-   "adp_rank": 198,
-   "value_gap": 32
+   "vorp_rank": 167,
+   "adp_rank": 197,
+   "value_gap": 30
   },
   {
    "player_id": 12509,
    "player": "Tre' Harris",
    "pos": "WR",
    "team": "LAC",
-   "adp_ppr": 209.4,
+   "adp_ppr": 208.4,
    "pts_ppr": 112.9,
    "games": 18.0,
    "rec": 39.0,
@@ -5181,16 +5174,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -64.4,
-   "vorp_rank": 167,
-   "adp_rank": 181,
-   "value_gap": 14
+   "vorp_rank": 168,
+   "adp_rank": 179,
+   "value_gap": 11
   },
   {
    "player_id": 12469,
    "player": "Dylan Sampson",
    "pos": "RB",
    "team": "CLE",
-   "adp_ppr": 188.2,
+   "adp_ppr": 189.8,
    "pts_ppr": 88.7,
    "games": 18.0,
    "rec": 23.0,
@@ -5204,16 +5197,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -64.99999999999999,
-   "vorp_rank": 168,
+   "vorp_rank": 169,
    "adp_rank": 163,
-   "value_gap": -5
+   "value_gap": -6
   },
   {
    "player_id": 13281,
    "player": "Jordyn Tyson",
    "pos": "WR",
    "team": "NO",
-   "adp_ppr": 77.8,
+   "adp_ppr": 77.1,
    "pts_ppr": 111.0,
    "games": 18.0,
    "rec": 41.0,
@@ -5227,9 +5220,9 @@
    "injury_status": "Doubtful",
    "years_exp": 0.0,
    "vorp": -66.30000000000001,
-   "vorp_rank": 169,
+   "vorp_rank": 170,
    "adp_rank": 77,
-   "value_gap": -92
+   "value_gap": -93
   },
   {
    "player_id": 11834,
@@ -5250,16 +5243,16 @@
    "injury_status": NaN,
    "years_exp": 2.0,
    "vorp": -66.70000000000002,
-   "vorp_rank": 170,
-   "adp_rank": 227,
-   "value_gap": 57
+   "vorp_rank": 171,
+   "adp_rank": 226,
+   "value_gap": 55
   },
   {
    "player_id": 12474,
    "player": "Woody Marks",
    "pos": "RB",
    "team": "HOU",
-   "adp_ppr": 166.1,
+   "adp_ppr": 166.6,
    "pts_ppr": 83.8,
    "games": 18.0,
    "rec": 19.0,
@@ -5273,9 +5266,9 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -69.89999999999999,
-   "vorp_rank": 171,
-   "adp_rank": 147,
-   "value_gap": -24
+   "vorp_rank": 172,
+   "adp_rank": 146,
+   "value_gap": -26
   },
   {
    "player_id": 1479,
@@ -5296,16 +5289,16 @@
    "injury_status": NaN,
    "years_exp": 13.0,
    "vorp": -70.50000000000001,
-   "vorp_rank": 172,
+   "vorp_rank": 173,
    "adp_rank": 213,
-   "value_gap": 41
+   "value_gap": 40
   },
   {
    "player_id": 7049,
    "player": "Jauan Jennings",
    "pos": "WR",
    "team": "MIN",
-   "adp_ppr": 191.9,
+   "adp_ppr": 193.2,
    "pts_ppr": 105.7,
    "games": 18.0,
    "rec": 39.0,
@@ -5319,8 +5312,8 @@
    "injury_status": NaN,
    "years_exp": 6.0,
    "vorp": -71.60000000000001,
-   "vorp_rank": 173,
-   "adp_rank": 166,
+   "vorp_rank": 174,
+   "adp_rank": 167,
    "value_gap": -7
   },
   {
@@ -5328,7 +5321,7 @@
    "player": "Ja'Kobi Lane",
    "pos": "WR",
    "team": "BAL",
-   "adp_ppr": 175.0,
+   "adp_ppr": 175.6,
    "pts_ppr": 104.9,
    "games": 18.0,
    "rec": 35.0,
@@ -5342,16 +5335,16 @@
    "injury_status": NaN,
    "years_exp": 0.0,
    "vorp": -72.4,
-   "vorp_rank": 174,
-   "adp_rank": 153,
-   "value_gap": -21
+   "vorp_rank": 175,
+   "adp_rank": 152,
+   "value_gap": -23
   },
   {
    "player_id": 13269,
    "player": "Fernando Mendoza",
    "pos": "QB",
    "team": "LV",
-   "adp_ppr": 178.4,
+   "adp_ppr": 178.9,
    "pts_ppr": 212.16,
    "games": 18.0,
    "rec": NaN,
@@ -5365,9 +5358,9 @@
    "injury_status": NaN,
    "years_exp": 0.0,
    "vorp": -74.52000000000001,
-   "vorp_rank": 175,
-   "adp_rank": 156,
-   "value_gap": -19
+   "vorp_rank": 176,
+   "adp_rank": 155,
+   "value_gap": -21
   },
   {
    "player_id": 7571,
@@ -5388,16 +5381,16 @@
    "injury_status": NaN,
    "years_exp": 5.0,
    "vorp": -75.00000000000001,
-   "vorp_rank": 176,
+   "vorp_rank": 177,
    "adp_rank": 212,
-   "value_gap": 36
+   "value_gap": 35
   },
   {
    "player_id": 12530,
    "player": "Travis Hunter",
    "pos": "WR",
    "team": "JAX",
-   "adp_ppr": 165.0,
+   "adp_ppr": 165.9,
    "pts_ppr": 100.6,
    "games": 18.0,
    "rec": 35.0,
@@ -5411,39 +5404,16 @@
    "injury_status": NaN,
    "years_exp": 1.0,
    "vorp": -76.70000000000002,
-   "vorp_rank": 177,
-   "adp_rank": 146,
-   "value_gap": -31
-  },
-  {
-   "player_id": 13349,
-   "player": "Eli Stowers",
-   "pos": "TE",
-   "team": "PHI",
-   "adp_ppr": 238.3,
-   "pts_ppr": 81.4,
-   "games": 18.0,
-   "rec": 31.0,
-   "rec_yd": 319.0,
-   "rec_td": 3.0,
-   "rush_att": 2.0,
-   "rush_yd": 5.0,
-   "rush_td": NaN,
-   "pass_yd": NaN,
-   "pass_td": NaN,
-   "injury_status": NaN,
-   "years_exp": 0.0,
-   "vorp": -78.4,
    "vorp_rank": 178,
-   "adp_rank": 224,
-   "value_gap": 46
+   "adp_rank": 145,
+   "value_gap": -33
   },
   {
    "player_id": 13274,
    "player": "Germie Bernard",
    "pos": "WR",
    "team": "PIT",
-   "adp_ppr": 231.8,
+   "adp_ppr": 231.2,
    "pts_ppr": 98.9,
    "games": 18.0,
    "rec": 36.0,
@@ -5458,31 +5428,31 @@
    "years_exp": 0.0,
    "vorp": -78.4,
    "vorp_rank": 179,
-   "adp_rank": 210,
-   "value_gap": 31
+   "adp_rank": 209,
+   "value_gap": 30
   },
   {
-   "player_id": 11625,
-   "player": "Adonai Mitchell",
-   "pos": "WR",
-   "team": "NYJ",
-   "adp_ppr": 217.8,
-   "pts_ppr": 98.3,
+   "player_id": 13349,
+   "player": "Eli Stowers",
+   "pos": "TE",
+   "team": "PHI",
+   "adp_ppr": 238.1,
+   "pts_ppr": 81.4,
    "games": 18.0,
-   "rec": 35.0,
-   "rec_yd": 443.0,
+   "rec": 31.0,
+   "rec_yd": 319.0,
    "rec_td": 3.0,
-   "rush_att": 1.0,
-   "rush_yd": 10.0,
+   "rush_att": 2.0,
+   "rush_yd": 5.0,
    "rush_td": NaN,
    "pass_yd": NaN,
    "pass_td": NaN,
    "injury_status": NaN,
-   "years_exp": 2.0,
-   "vorp": -79.00000000000001,
+   "years_exp": 0.0,
+   "vorp": -78.4,
    "vorp_rank": 180,
-   "adp_rank": 191,
-   "value_gap": 11
+   "adp_rank": 222,
+   "value_gap": 42
   }
  ]
 }
