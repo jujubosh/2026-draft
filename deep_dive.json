@@ -3,10 +3,10 @@
  "slots": {
   "1": {
    "strategy": "Anchor+TE",
-   "mean_starters": 1972.2,
-   "floor_p10": 1810.1,
-   "ceiling_p90": 2342.0,
-   "top3_rate": 0.557,
+   "mean_starters": 1966.3,
+   "floor_p10": 1804.3,
+   "ceiling_p90": 2315.1,
+   "top3_rate": 0.555,
    "rounds": [
     {
      "round": 1,
@@ -30,26 +30,26 @@
       {
        "player": "Nico Collins",
        "pos": "WR",
-       "rate": 0.713,
-       "cond": 0.713
+       "rate": 0.521,
+       "cond": 0.521
       },
       {
        "player": "Malik Nabers",
        "pos": "WR",
-       "rate": 0.146,
-       "cond": 0.508
+       "rate": 0.221,
+       "cond": 0.462
       },
       {
        "player": "George Pickens",
        "pos": "WR",
-       "rate": 0.098,
-       "cond": 0.693
+       "rate": 0.203,
+       "cond": 0.788
       },
       {
        "player": "Drake London",
        "pos": "WR",
-       "rate": 0.039,
-       "cond": 0.892
+       "rate": 0.043,
+       "cond": 0.78
       }
      ],
      "pos_mix": {
@@ -63,19 +63,19 @@
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.738,
-       "cond": 0.738
+       "rate": 0.785,
+       "cond": 0.785
       },
       {
        "player": "Brock Bowers",
        "pos": "TE",
-       "rate": 0.165,
-       "cond": 0.628
+       "rate": 0.131,
+       "cond": 0.61
       },
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.097,
+       "rate": 0.084,
        "cond": 1.0
       }
      ],
@@ -90,25 +90,25 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.713,
-       "cond": 0.713
+       "rate": 0.711,
+       "cond": 0.711
       },
       {
        "player": "Garrett Wilson",
        "pos": "WR",
        "rate": 0.267,
-       "cond": 0.93
+       "cond": 0.924
       },
       {
        "player": "Zay Flowers",
        "pos": "WR",
-       "rate": 0.019,
-       "cond": 0.967
+       "rate": 0.02,
+       "cond": 0.909
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.001,
+       "rate": 0.002,
        "cond": 1.0
       }
      ],
@@ -123,32 +123,32 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.777,
-       "cond": 0.777
+       "rate": 0.715,
+       "cond": 0.715
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.094,
+       "rate": 0.12,
        "cond": 0.421
       },
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.043,
-       "cond": 0.335
+       "rate": 0.067,
+       "cond": 0.403
       },
       {
-       "player": "Travis Etienne",
+       "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.031,
-       "cond": 0.364
+       "rate": 0.036,
+       "cond": 0.365
       }
      ],
      "pos_mix": {
-      "RB": 0.934,
-      "WR": 0.059,
-      "TE": 0.007
+      "RB": 0.907,
+      "WR": 0.091,
+      "TE": 0.001
      }
     },
     {
@@ -156,33 +156,34 @@
      "pick": 72,
      "options": [
       {
-       "player": "Parker Washington",
-       "pos": "WR",
-       "rate": 0.564,
-       "cond": 0.564
-      },
-      {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.304,
-       "cond": 0.697
+       "rate": 0.457,
+       "cond": 0.457
+      },
+      {
+       "player": "Parker Washington",
+       "pos": "WR",
+       "rate": 0.446,
+       "cond": 0.822
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.091,
-       "cond": 0.692
+       "rate": 0.058,
+       "cond": 0.6
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.033,
-       "cond": 0.803
+       "rate": 0.031,
+       "cond": 0.793
       }
      ],
      "pos_mix": {
-      "WR": 0.997,
-      "QB": 0.003
+      "WR": 0.995,
+      "QB": 0.003,
+      "TE": 0.002
      }
     },
     {
@@ -192,33 +193,33 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.565,
-       "cond": 0.565
-      },
-      {
-       "player": "Brian Thomas",
-       "pos": "WR",
-       "rate": 0.151,
-       "cond": 0.348
+       "rate": 0.469,
+       "cond": 0.469
       },
       {
        "player": "Jayden Daniels",
        "pos": "QB",
-       "rate": 0.113,
-       "cond": 0.398
+       "rate": 0.235,
+       "cond": 0.442
       },
       {
-       "player": "Christian Watson",
+       "player": "Brian Thomas",
        "pos": "WR",
-       "rate": 0.101,
-       "cond": 0.59
+       "rate": 0.158,
+       "cond": 0.534
+      },
+      {
+       "player": "Harold Fannin",
+       "pos": "TE",
+       "rate": 0.055,
+       "cond": 0.401
       }
      ],
      "pos_mix": {
-      "WR": 0.843,
-      "QB": 0.12,
-      "TE": 0.031,
-      "RB": 0.006
+      "WR": 0.697,
+      "QB": 0.24,
+      "TE": 0.055,
+      "RB": 0.007
      }
     },
     {
@@ -228,33 +229,33 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.675,
-       "cond": 0.675
+       "rate": 0.58,
+       "cond": 0.58
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.201,
-       "cond": 0.618
-      },
-      {
-       "player": "Alec Pierce",
-       "pos": "WR",
-       "rate": 0.041,
-       "cond": 0.333
+       "rate": 0.177,
+       "cond": 0.421
       },
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.041,
-       "cond": 0.492
+       "rate": 0.08,
+       "cond": 0.329
+      },
+      {
+       "player": "Alec Pierce",
+       "pos": "WR",
+       "rate": 0.075,
+       "cond": 0.461
       }
      ],
      "pos_mix": {
-      "QB": 0.877,
-      "TE": 0.058,
-      "WR": 0.045,
-      "RB": 0.02
+      "QB": 0.757,
+      "TE": 0.113,
+      "WR": 0.078,
+      "RB": 0.053
      }
     },
     {
@@ -262,34 +263,34 @@
      "pick": 97,
      "options": [
       {
-       "player": "Alec Pierce",
-       "pos": "WR",
-       "rate": 0.293,
-       "cond": 0.293
-      },
-      {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.269,
-       "cond": 0.38
+       "rate": 0.323,
+       "cond": 0.323
       },
       {
-       "player": "Jayden Reed",
+       "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.113,
-       "cond": 0.259
+       "rate": 0.227,
+       "cond": 0.335
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.111,
-       "cond": 0.341
+       "rate": 0.137,
+       "cond": 0.305
+      },
+      {
+       "player": "Jonathon Brooks",
+       "pos": "RB",
+       "rate": 0.079,
+       "cond": 0.252
       }
      ],
      "pos_mix": {
-      "WR": 0.407,
-      "TE": 0.377,
-      "RB": 0.216
+      "TE": 0.422,
+      "WR": 0.289,
+      "RB": 0.289
      }
     },
     {
@@ -299,32 +300,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.4,
-       "cond": 0.4
+       "rate": 0.491,
+       "cond": 0.491
       },
       {
        "player": "Brenton Strange",
        "pos": "TE",
-       "rate": 0.288,
-       "cond": 0.48
+       "rate": 0.225,
+       "cond": 0.443
       },
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.234,
-       "cond": 0.75
+       "rate": 0.179,
+       "cond": 0.633
       },
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.032,
-       "cond": 0.41
+       "rate": 0.048,
+       "cond": 0.462
       }
      ],
      "pos_mix": {
-      "TE": 0.522,
-      "RB": 0.411,
-      "WR": 0.067
+      "RB": 0.505,
+      "TE": 0.405,
+      "WR": 0.091
      }
     },
     {
@@ -332,34 +333,34 @@
      "pick": 121,
      "options": [
       {
-       "player": "MarShawn Lloyd",
-       "pos": "RB",
-       "rate": 0.446,
-       "cond": 0.446
-      },
-      {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.351,
-       "cond": 0.634
+       "rate": 0.409,
+       "cond": 0.409
+      },
+      {
+       "player": "MarShawn Lloyd",
+       "pos": "RB",
+       "rate": 0.358,
+       "cond": 0.605
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
-       "rate": 0.133,
-       "cond": 0.658
+       "rate": 0.147,
+       "cond": 0.629
       },
       {
        "player": "Matthew Golden",
        "pos": "WR",
-       "rate": 0.023,
-       "cond": 0.327
+       "rate": 0.047,
+       "cond": 0.538
       }
      ],
      "pos_mix": {
-      "WR": 0.545,
-      "RB": 0.453,
-      "TE": 0.002
+      "WR": 0.638,
+      "RB": 0.361,
+      "TE": 0.001
      }
     },
     {
@@ -369,32 +370,31 @@
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.416,
-       "cond": 0.416
+       "rate": 0.537,
+       "cond": 0.537
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.209,
+       "rate": 0.165,
        "cond": 0.357
       },
       {
        "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.183,
-       "cond": 0.487
+       "rate": 0.111,
+       "cond": 0.374
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.114,
-       "cond": 0.592
+       "rate": 0.097,
+       "cond": 0.521
       }
      ],
      "pos_mix": {
-      "WR": 0.535,
-      "RB": 0.463,
-      "TE": 0.002
+      "RB": 0.597,
+      "WR": 0.403
      }
     },
     {
@@ -419,26 +419,26 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.751,
-       "cond": 0.751
+       "rate": 0.763,
+       "cond": 0.763
       },
       {
        "player": "Tyler Loop",
        "pos": "K",
-       "rate": 0.131,
-       "cond": 0.524
+       "rate": 0.108,
+       "cond": 0.456
       },
       {
        "player": "Harrison Mevis",
        "pos": "K",
-       "rate": 0.081,
-       "cond": 0.685
+       "rate": 0.066,
+       "cond": 0.513
       },
       {
        "player": "Chris Boswell",
        "pos": "K",
-       "rate": 0.027,
-       "cond": 0.714
+       "rate": 0.045,
+       "cond": 0.713
       }
      ],
      "pos_mix": {
@@ -452,41 +452,42 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.429,
-       "cond": 0.429
+       "rate": 0.468,
+       "cond": 0.468
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.393,
-       "cond": 0.689
+       "rate": 0.365,
+       "cond": 0.685
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.109,
-       "cond": 0.613
+       "rate": 0.089,
+       "cond": 0.534
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.049,
-       "cond": 0.709
+       "rate": 0.065,
+       "cond": 0.838
       }
      ],
      "pos_mix": {
-      "RB": 0.539,
-      "WR": 0.461
+      "RB": 0.557,
+      "WR": 0.442,
+      "TE": 0.001
      }
     }
    ]
   },
   "2": {
-   "strategy": "TE Round 3",
-   "mean_starters": 1961.4,
-   "floor_p10": 1813.6,
-   "ceiling_p90": 2336.3,
-   "top3_rate": 0.541,
+   "strategy": "Anchor+TE",
+   "mean_starters": 1957.5,
+   "floor_p10": 1804.3,
+   "ceiling_p90": 2333.8,
+   "top3_rate": 0.563,
    "rounds": [
     {
      "round": 1,
@@ -495,13 +496,13 @@
       {
        "player": "Bijan Robinson",
        "pos": "RB",
-       "rate": 0.773,
-       "cond": 0.773
+       "rate": 0.745,
+       "cond": 0.745
       },
       {
        "player": "Jahmyr Gibbs",
        "pos": "RB",
-       "rate": 0.227,
+       "rate": 0.255,
        "cond": 1.0
       }
      ],
@@ -516,32 +517,30 @@
       {
        "player": "Nico Collins",
        "pos": "WR",
-       "rate": 0.777,
-       "cond": 0.777
+       "rate": 0.649,
+       "cond": 0.649
       },
       {
-       "player": "Trey McBride",
-       "pos": "TE",
-       "rate": 0.097,
-       "cond": 0.437
+       "player": "George Pickens",
+       "pos": "WR",
+       "rate": 0.209,
+       "cond": 0.595
       },
       {
        "player": "Drake London",
        "pos": "WR",
-       "rate": 0.063,
-       "cond": 0.5
+       "rate": 0.075,
+       "cond": 0.531
       },
       {
-       "player": "Kenneth Walker",
-       "pos": "RB",
-       "rate": 0.036,
-       "cond": 0.574
+       "player": "Malik Nabers",
+       "pos": "WR",
+       "rate": 0.067,
+       "cond": 1.0
       }
      ],
      "pos_mix": {
-      "WR": 0.842,
-      "TE": 0.097,
-      "RB": 0.061
+      "WR": 1.0
      }
     },
     {
@@ -551,19 +550,19 @@
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.509,
-       "cond": 0.509
+       "rate": 0.629,
+       "cond": 0.629
       },
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.302,
-       "cond": 0.615
+       "rate": 0.207,
+       "cond": 0.559
       },
       {
        "player": "Brock Bowers",
        "pos": "TE",
-       "rate": 0.189,
+       "rate": 0.163,
        "cond": 1.0
       }
      ],
@@ -576,34 +575,32 @@
      "pick": 47,
      "options": [
       {
-       "player": "D'Andre Swift",
-       "pos": "RB",
-       "rate": 0.824,
-       "cond": 0.824
-      },
-      {
-       "player": "David Montgomery",
-       "pos": "RB",
-       "rate": 0.076,
-       "cond": 0.432
-      },
-      {
-       "player": "Travis Etienne",
-       "pos": "RB",
-       "rate": 0.036,
-       "cond": 0.36
+       "player": "Mike Evans",
+       "pos": "WR",
+       "rate": 0.577,
+       "cond": 0.577
       },
       {
        "player": "Garrett Wilson",
        "pos": "WR",
-       "rate": 0.033,
-       "cond": 0.521
+       "rate": 0.376,
+       "cond": 0.888
+      },
+      {
+       "player": "Zay Flowers",
+       "pos": "WR",
+       "rate": 0.046,
+       "cond": 0.972
+      },
+      {
+       "player": "Terry McLaurin",
+       "pos": "WR",
+       "rate": 0.001,
+       "cond": 0.5
       }
      ],
      "pos_mix": {
-      "RB": 0.937,
-      "WR": 0.06,
-      "TE": 0.003
+      "WR": 1.0
      }
     },
     {
@@ -611,34 +608,34 @@
      "pick": 50,
      "options": [
       {
+       "player": "D'Andre Swift",
+       "pos": "RB",
+       "rate": 0.539,
+       "cond": 0.539
+      },
+      {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.624,
-       "cond": 0.624
+       "rate": 0.177,
+       "cond": 0.384
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.187,
-       "cond": 0.498
+       "rate": 0.113,
+       "cond": 0.399
       },
       {
-       "player": "Garrett Wilson",
-       "pos": "WR",
-       "rate": 0.112,
-       "cond": 0.594
-      },
-      {
-       "player": "Travis Etienne",
+       "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.043,
-       "cond": 0.565
+       "rate": 0.103,
+       "cond": 0.605
       }
      ],
      "pos_mix": {
-      "WR": 0.749,
-      "RB": 0.248,
-      "TE": 0.003
+      "RB": 0.788,
+      "WR": 0.205,
+      "TE": 0.007
      }
     },
     {
@@ -648,31 +645,31 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.656,
-       "cond": 0.656
+       "rate": 0.54,
+       "cond": 0.54
       },
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.205,
-       "cond": 0.595
+       "rate": 0.305,
+       "cond": 0.662
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.091,
-       "cond": 0.651
+       "rate": 0.079,
+       "cond": 0.511
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.033,
-       "cond": 0.685
+       "rate": 0.055,
+       "cond": 0.728
       }
      ],
      "pos_mix": {
-      "WR": 0.995,
-      "QB": 0.004,
+      "WR": 0.991,
+      "QB": 0.008,
       "TE": 0.001
      }
     },
@@ -683,32 +680,32 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.685,
-       "cond": 0.685
-      },
-      {
-       "player": "Brian Thomas",
-       "pos": "WR",
-       "rate": 0.089,
-       "cond": 0.283
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.079,
-       "cond": 0.348
+       "rate": 0.649,
+       "cond": 0.649
       },
       {
        "player": "Jayden Daniels",
        "pos": "QB",
-       "rate": 0.062,
-       "cond": 0.421
+       "rate": 0.145,
+       "cond": 0.414
+      },
+      {
+       "player": "Brian Thomas",
+       "pos": "WR",
+       "rate": 0.095,
+       "cond": 0.464
+      },
+      {
+       "player": "Harold Fannin",
+       "pos": "TE",
+       "rate": 0.053,
+       "cond": 0.479
       }
      ],
      "pos_mix": {
-      "WR": 0.876,
-      "QB": 0.071,
-      "TE": 0.044,
+      "WR": 0.787,
+      "QB": 0.151,
+      "TE": 0.053,
       "RB": 0.009
      }
     },
@@ -719,33 +716,33 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.763,
-       "cond": 0.763
+       "rate": 0.681,
+       "cond": 0.681
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.161,
-       "cond": 0.679
+       "rate": 0.159,
+       "cond": 0.5
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.021,
+       "rate": 0.043,
        "cond": 0.272
       },
       {
-       "player": "Travis Kelce",
+       "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.015,
-       "cond": 0.265
+       "rate": 0.037,
+       "cond": 0.316
       }
      ],
      "pos_mix": {
-      "QB": 0.925,
-      "TE": 0.029,
-      "WR": 0.027,
-      "RB": 0.02
+      "QB": 0.841,
+      "TE": 0.071,
+      "WR": 0.047,
+      "RB": 0.042
      }
     },
     {
@@ -753,34 +750,34 @@
      "pick": 98,
      "options": [
       {
-       "player": "Alec Pierce",
-       "pos": "WR",
-       "rate": 0.327,
-       "cond": 0.327
-      },
-      {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.325,
-       "cond": 0.484
+       "rate": 0.397,
+       "cond": 0.397
       },
       {
-       "player": "Jayden Reed",
+       "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.095,
-       "cond": 0.274
+       "rate": 0.24,
+       "cond": 0.398
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.077,
-       "cond": 0.304
+       "rate": 0.128,
+       "cond": 0.352
+      },
+      {
+       "player": "Jonathon Brooks",
+       "pos": "RB",
+       "rate": 0.062,
+       "cond": 0.263
       }
      ],
      "pos_mix": {
-      "WR": 0.423,
-      "TE": 0.391,
-      "RB": 0.186
+      "TE": 0.475,
+      "WR": 0.276,
+      "RB": 0.249
      }
     },
     {
@@ -790,32 +787,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.464,
-       "cond": 0.464
-      },
-      {
-       "player": "Brenton Strange",
-       "pos": "TE",
-       "rate": 0.223,
-       "cond": 0.415
+       "rate": 0.498,
+       "cond": 0.498
       },
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.205,
-       "cond": 0.655
+       "rate": 0.203,
+       "cond": 0.404
       },
       {
-       "player": "Khalil Shakir",
+       "player": "Brenton Strange",
+       "pos": "TE",
+       "rate": 0.185,
+       "cond": 0.619
+      },
+      {
+       "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.034,
-       "cond": 0.315
+       "rate": 0.037,
+       "cond": 0.322
       }
      ],
      "pos_mix": {
-      "RB": 0.483,
-      "TE": 0.428,
-      "WR": 0.089
+      "RB": 0.526,
+      "TE": 0.388,
+      "WR": 0.086
      }
     },
     {
@@ -825,32 +822,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.452,
-       "cond": 0.452
+       "rate": 0.442,
+       "cond": 0.442
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.374,
-       "cond": 0.682
+       "rate": 0.355,
+       "cond": 0.636
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
-       "rate": 0.105,
-       "cond": 0.605
+       "rate": 0.131,
+       "cond": 0.643
       },
       {
        "player": "Matthew Golden",
        "pos": "WR",
-       "rate": 0.027,
-       "cond": 0.398
+       "rate": 0.036,
+       "cond": 0.495
       }
      ],
      "pos_mix": {
-      "WR": 0.618,
-      "RB": 0.379,
-      "TE": 0.003
+      "WR": 0.637,
+      "RB": 0.359,
+      "TE": 0.005
      }
     },
     {
@@ -860,32 +857,31 @@
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.417,
-       "cond": 0.417
+       "rate": 0.447,
+       "cond": 0.447
       },
       {
        "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.207,
-       "cond": 0.356
-      },
-      {
-       "player": "Denzel Boston",
-       "pos": "WR",
-       "rate": 0.151,
-       "cond": 0.403
+       "rate": 0.166,
+       "cond": 0.3
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.145,
-       "cond": 0.649
+       "rate": 0.143,
+       "cond": 0.369
+      },
+      {
+       "player": "Denzel Boston",
+       "pos": "WR",
+       "rate": 0.139,
+       "cond": 0.571
       }
      ],
      "pos_mix": {
-      "WR": 0.545,
-      "RB": 0.454,
-      "TE": 0.001
+      "RB": 0.511,
+      "WR": 0.489
      }
     },
     {
@@ -895,13 +891,13 @@
       {
        "player": "Houston Texans",
        "pos": "DST",
-       "rate": 0.542,
-       "cond": 0.542
+       "rate": 0.537,
+       "cond": 0.537
       },
       {
        "player": "Los Angeles Rams",
        "pos": "DST",
-       "rate": 0.458,
+       "rate": 0.463,
        "cond": 1.0
       }
      ],
@@ -916,26 +912,26 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.785,
-       "cond": 0.785
+       "rate": 0.812,
+       "cond": 0.812
       },
       {
        "player": "Tyler Loop",
        "pos": "K",
-       "rate": 0.087,
-       "cond": 0.402
+       "rate": 0.079,
+       "cond": 0.422
       },
       {
        "player": "Harrison Mevis",
        "pos": "K",
-       "rate": 0.081,
-       "cond": 0.632
+       "rate": 0.06,
+       "cond": 0.552
       },
       {
        "player": "Chris Boswell",
        "pos": "K",
-       "rate": 0.041,
-       "cond": 0.873
+       "rate": 0.047,
+       "cond": 0.959
       }
      ],
      "pos_mix": {
@@ -947,43 +943,43 @@
      "pick": 170,
      "options": [
       {
-       "player": "Denzel Boston",
-       "pos": "WR",
-       "rate": 0.438,
-       "cond": 0.438
-      },
-      {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.393,
-       "cond": 0.7
+       "rate": 0.441,
+       "cond": 0.441
+      },
+      {
+       "player": "Denzel Boston",
+       "pos": "WR",
+       "rate": 0.371,
+       "cond": 0.664
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.11,
-       "cond": 0.652
+       "rate": 0.118,
+       "cond": 0.628
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.044,
-       "cond": 0.75
+       "rate": 0.053,
+       "cond": 0.762
       }
      ],
      "pos_mix": {
-      "RB": 0.504,
-      "WR": 0.496
+      "RB": 0.56,
+      "WR": 0.44
      }
     }
    ]
   },
   "3": {
    "strategy": "TE Round 3",
-   "mean_starters": 1938.4,
-   "floor_p10": 1793.1,
-   "ceiling_p90": 2315.1,
-   "top3_rate": 0.523,
+   "mean_starters": 1940.7,
+   "floor_p10": 1803.1,
+   "ceiling_p90": 2307.0,
+   "top3_rate": 0.519,
    "rounds": [
     {
      "round": 1,
@@ -992,19 +988,19 @@
       {
        "player": "Christian McCaffrey",
        "pos": "RB",
-       "rate": 0.62,
-       "cond": 0.62
+       "rate": 0.504,
+       "cond": 0.504
       },
       {
        "player": "Bijan Robinson",
        "pos": "RB",
-       "rate": 0.343,
-       "cond": 0.902
+       "rate": 0.443,
+       "cond": 0.892
       },
       {
        "player": "Jahmyr Gibbs",
        "pos": "RB",
-       "rate": 0.037,
+       "rate": 0.053,
        "cond": 1.0
       }
      ],
@@ -1019,32 +1015,32 @@
       {
        "player": "Nico Collins",
        "pos": "WR",
-       "rate": 0.748,
-       "cond": 0.748
+       "rate": 0.705,
+       "cond": 0.705
       },
       {
        "player": "Kenneth Walker",
        "pos": "RB",
-       "rate": 0.109,
-       "cond": 0.434
-      },
-      {
-       "player": "Derrick Henry",
-       "pos": "RB",
-       "rate": 0.078,
-       "cond": 0.547
+       "rate": 0.096,
+       "cond": 0.325
       },
       {
        "player": "Drake London",
        "pos": "WR",
-       "rate": 0.037,
-       "cond": 0.577
+       "rate": 0.077,
+       "cond": 0.388
+      },
+      {
+       "player": "Trey McBride",
+       "pos": "TE",
+       "rate": 0.075,
+       "cond": 0.612
       }
      ],
      "pos_mix": {
-      "WR": 0.785,
-      "RB": 0.191,
-      "TE": 0.024
+      "WR": 0.782,
+      "RB": 0.143,
+      "TE": 0.075
      }
     },
     {
@@ -1054,19 +1050,19 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.516,
-       "cond": 0.516
+       "rate": 0.491,
+       "cond": 0.491
       },
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.373,
-       "cond": 0.771
+       "rate": 0.407,
+       "cond": 0.798
       },
       {
        "player": "Brock Bowers",
        "pos": "TE",
-       "rate": 0.111,
+       "rate": 0.103,
        "cond": 1.0
       }
      ],
@@ -1081,32 +1077,32 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.891,
-       "cond": 0.891
+       "rate": 0.838,
+       "cond": 0.838
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.044,
-       "cond": 0.405
+       "rate": 0.078,
+       "cond": 0.481
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
-       "rate": 0.037,
-       "cond": 0.567
+       "rate": 0.039,
+       "cond": 0.468
       },
       {
-       "player": "Zay Flowers",
+       "player": "Garrett Wilson",
        "pos": "WR",
-       "rate": 0.011,
-       "cond": 0.405
+       "rate": 0.018,
+       "cond": 0.403
       }
      ],
      "pos_mix": {
-      "RB": 0.974,
-      "WR": 0.021,
-      "TE": 0.005
+      "RB": 0.957,
+      "WR": 0.039,
+      "TE": 0.004
      }
     },
     {
@@ -1116,32 +1112,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.76,
-       "cond": 0.76
+       "rate": 0.757,
+       "cond": 0.757
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.134,
-       "cond": 0.558
+       "rate": 0.122,
+       "cond": 0.501
       },
       {
        "player": "Garrett Wilson",
        "pos": "WR",
-       "rate": 0.078,
-       "cond": 0.736
+       "rate": 0.088,
+       "cond": 0.725
       },
       {
-       "player": "Travis Etienne",
+       "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.017,
-       "cond": 0.595
+       "rate": 0.015,
+       "cond": 0.46
       }
      ],
      "pos_mix": {
-      "WR": 0.841,
-      "RB": 0.157,
-      "TE": 0.002
+      "WR": 0.85,
+      "RB": 0.147,
+      "TE": 0.003
      }
     },
     {
@@ -1151,32 +1147,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.704,
-       "cond": 0.704
+       "rate": 0.608,
+       "cond": 0.608
       },
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.125,
-       "cond": 0.421
+       "rate": 0.213,
+       "cond": 0.543
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.103,
-       "cond": 0.599
+       "rate": 0.089,
+       "cond": 0.494
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.051,
-       "cond": 0.738
+       "rate": 0.067,
+       "cond": 0.743
       }
      ],
      "pos_mix": {
-      "WR": 0.993,
-      "QB": 0.004,
-      "TE": 0.003
+      "WR": 0.987,
+      "QB": 0.007,
+      "TE": 0.006
      }
     },
     {
@@ -1186,32 +1182,32 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.789,
-       "cond": 0.789
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.065,
-       "cond": 0.31
-      },
-      {
-       "player": "Brian Thomas",
-       "pos": "WR",
-       "rate": 0.046,
-       "cond": 0.317
+       "rate": 0.757,
+       "cond": 0.757
       },
       {
        "player": "Jayden Daniels",
        "pos": "QB",
-       "rate": 0.037,
-       "cond": 0.376
+       "rate": 0.091,
+       "cond": 0.374
+      },
+      {
+       "player": "Brian Thomas",
+       "pos": "WR",
+       "rate": 0.057,
+       "cond": 0.373
+      },
+      {
+       "player": "Harold Fannin",
+       "pos": "TE",
+       "rate": 0.055,
+       "cond": 0.573
       }
      ],
      "pos_mix": {
-      "WR": 0.917,
-      "QB": 0.045,
-      "TE": 0.035,
+      "WR": 0.841,
+      "QB": 0.101,
+      "TE": 0.055,
       "RB": 0.003
      }
     },
@@ -1222,33 +1218,33 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.826,
-       "cond": 0.826
+       "rate": 0.756,
+       "cond": 0.756
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.125,
-       "cond": 0.72
+       "rate": 0.135,
+       "cond": 0.555
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.013,
-       "cond": 0.26
+       "rate": 0.03,
+       "cond": 0.276
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.01,
-       "cond": 0.278
+       "rate": 0.025,
+       "cond": 0.322
       }
      ],
      "pos_mix": {
-      "QB": 0.951,
-      "TE": 0.019,
-      "WR": 0.016,
-      "RB": 0.014
+      "QB": 0.892,
+      "TE": 0.041,
+      "RB": 0.035,
+      "WR": 0.032
      }
     },
     {
@@ -1258,32 +1254,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.448,
-       "cond": 0.448
+       "rate": 0.483,
+       "cond": 0.483
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.307,
-       "cond": 0.557
-      },
-      {
-       "player": "Jayden Reed",
-       "pos": "WR",
-       "rate": 0.069,
-       "cond": 0.281
+       "rate": 0.207,
+       "cond": 0.401
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.059,
-       "cond": 0.337
+       "rate": 0.1,
+       "cond": 0.323
+      },
+      {
+       "player": "Jonathon Brooks",
+       "pos": "RB",
+       "rate": 0.063,
+       "cond": 0.298
       }
      ],
      "pos_mix": {
-      "TE": 0.501,
-      "WR": 0.376,
-      "RB": 0.123
+      "TE": 0.535,
+      "RB": 0.237,
+      "WR": 0.228
      }
     },
     {
@@ -1293,32 +1289,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.48,
-       "cond": 0.48
+       "rate": 0.57,
+       "cond": 0.57
       },
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.238,
-       "cond": 0.458
+       "rate": 0.159,
+       "cond": 0.369
       },
       {
        "player": "Brenton Strange",
        "pos": "TE",
-       "rate": 0.169,
-       "cond": 0.6
+       "rate": 0.119,
+       "cond": 0.44
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.042,
-       "cond": 0.373
+       "rate": 0.05,
+       "cond": 0.329
       }
      ],
      "pos_mix": {
-      "RB": 0.513,
-      "TE": 0.407,
-      "WR": 0.079
+      "RB": 0.621,
+      "TE": 0.278,
+      "WR": 0.101
      }
     },
     {
@@ -1328,31 +1324,31 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.477,
-       "cond": 0.477
+       "rate": 0.537,
+       "cond": 0.537
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.371,
-       "cond": 0.71
+       "rate": 0.283,
+       "cond": 0.611
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
-       "rate": 0.085,
-       "cond": 0.564
+       "rate": 0.106,
+       "cond": 0.589
       },
       {
        "player": "Matthew Golden",
        "pos": "WR",
-       "rate": 0.026,
-       "cond": 0.394
+       "rate": 0.03,
+       "cond": 0.405
       }
      ],
      "pos_mix": {
-      "WR": 0.625,
-      "RB": 0.372,
+      "WR": 0.713,
+      "RB": 0.284,
       "TE": 0.003
      }
     },
@@ -1363,32 +1359,31 @@
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.364,
-       "cond": 0.364
-      },
-      {
-       "player": "Rashid Shaheed",
-       "pos": "WR",
-       "rate": 0.235,
-       "cond": 0.37
+       "rate": 0.445,
+       "cond": 0.445
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.177,
-       "cond": 0.443
+       "rate": 0.179,
+       "cond": 0.322
+      },
+      {
+       "player": "Rashid Shaheed",
+       "pos": "WR",
+       "rate": 0.155,
+       "cond": 0.413
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.129,
-       "cond": 0.576
+       "rate": 0.107,
+       "cond": 0.486
       }
      ],
      "pos_mix": {
-      "WR": 0.588,
-      "RB": 0.411,
-      "TE": 0.001
+      "RB": 0.503,
+      "WR": 0.497
      }
     },
     {
@@ -1398,14 +1393,14 @@
       {
        "player": "Houston Texans",
        "pos": "DST",
-       "rate": 0.601,
-       "cond": 0.601
+       "rate": 0.617,
+       "cond": 0.617
       },
       {
        "player": "Seattle Seahawks",
        "pos": "DST",
-       "rate": 0.259,
-       "cond": 0.648
+       "rate": 0.241,
+       "cond": 0.631
       },
       {
        "player": "Los Angeles Rams",
@@ -1425,26 +1420,26 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.821,
-       "cond": 0.821
+       "rate": 0.854,
+       "cond": 0.854
       },
       {
        "player": "Harrison Mevis",
        "pos": "K",
-       "rate": 0.081,
-       "cond": 0.455
-      },
-      {
-       "player": "Chris Boswell",
-       "pos": "K",
-       "rate": 0.044,
-       "cond": 0.452
+       "rate": 0.054,
+       "cond": 0.37
       },
       {
        "player": "Tyler Loop",
        "pos": "K",
-       "rate": 0.044,
-       "cond": 0.825
+       "rate": 0.051,
+       "cond": 0.558
+      },
+      {
+       "player": "Chris Boswell",
+       "pos": "K",
+       "rate": 0.038,
+       "cond": 0.934
       }
      ],
      "pos_mix": {
@@ -1456,43 +1451,43 @@
      "pick": 171,
      "options": [
       {
-       "player": "Denzel Boston",
-       "pos": "WR",
-       "rate": 0.413,
-       "cond": 0.413
-      },
-      {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.383,
-       "cond": 0.653
+       "rate": 0.448,
+       "cond": 0.448
+      },
+      {
+       "player": "Denzel Boston",
+       "pos": "WR",
+       "rate": 0.356,
+       "cond": 0.645
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.143,
-       "cond": 0.702
+       "rate": 0.133,
+       "cond": 0.677
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.038,
-       "cond": 0.626
+       "rate": 0.047,
+       "cond": 0.737
       }
      ],
      "pos_mix": {
-      "RB": 0.526,
-      "WR": 0.474
+      "RB": 0.581,
+      "WR": 0.419
      }
     }
    ]
   },
   "4": {
    "strategy": "TE Round 3",
-   "mean_starters": 1922.6,
-   "floor_p10": 1779.4,
-   "ceiling_p90": 2277.7,
-   "top3_rate": 0.487,
+   "mean_starters": 1925.2,
+   "floor_p10": 1775.5,
+   "ceiling_p90": 2299.7,
+   "top3_rate": 0.505,
    "rounds": [
     {
      "round": 1,
@@ -1501,31 +1496,31 @@
       {
        "player": "Christian McCaffrey",
        "pos": "RB",
-       "rate": 0.809,
-       "cond": 0.809
-      },
-      {
-       "player": "Puka Nacua",
-       "pos": "WR",
-       "rate": 0.101,
-       "cond": 0.531
+       "rate": 0.819,
+       "cond": 0.819
       },
       {
        "player": "Bijan Robinson",
        "pos": "RB",
-       "rate": 0.085,
-       "cond": 0.955
+       "rate": 0.132,
+       "cond": 0.728
+      },
+      {
+       "player": "Puka Nacua",
+       "pos": "WR",
+       "rate": 0.044,
+       "cond": 0.892
       },
       {
        "player": "Jahmyr Gibbs",
        "pos": "RB",
-       "rate": 0.004,
+       "rate": 0.005,
        "cond": 1.0
       }
      ],
      "pos_mix": {
-      "RB": 0.899,
-      "WR": 0.101
+      "RB": 0.956,
+      "WR": 0.044
      }
     },
     {
@@ -1535,32 +1530,32 @@
       {
        "player": "Nico Collins",
        "pos": "WR",
-       "rate": 0.571,
-       "cond": 0.571
+       "rate": 0.639,
+       "cond": 0.639
       },
       {
        "player": "Kenneth Walker",
        "pos": "RB",
-       "rate": 0.215,
-       "cond": 0.502
+       "rate": 0.206,
+       "cond": 0.571
       },
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.175,
-       "cond": 0.816
+       "rate": 0.11,
+       "cond": 0.711
       },
       {
-       "player": "Ashton Jeanty",
-       "pos": "RB",
-       "rate": 0.021,
-       "cond": 0.525
+       "player": "Drake London",
+       "pos": "WR",
+       "rate": 0.036,
+       "cond": 0.806
       }
      ],
      "pos_mix": {
-      "WR": 0.587,
-      "RB": 0.412,
-      "TE": 0.001
+      "WR": 0.675,
+      "RB": 0.323,
+      "TE": 0.002
      }
     },
     {
@@ -1570,19 +1565,25 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.718,
-       "cond": 0.718
+       "rate": 0.695,
+       "cond": 0.695
       },
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.235,
-       "cond": 0.832
+       "rate": 0.259,
+       "cond": 0.851
       },
       {
        "player": "Brock Bowers",
        "pos": "TE",
-       "rate": 0.047,
+       "rate": 0.044,
+       "cond": 0.971
+      },
+      {
+       "player": "Tyler Warren",
+       "pos": "TE",
+       "rate": 0.001,
        "cond": 1.0
       }
      ],
@@ -1597,31 +1598,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.917,
-       "cond": 0.917
-      },
-      {
-       "player": "Travis Etienne",
-       "pos": "RB",
-       "rate": 0.043,
-       "cond": 0.52
+       "rate": 0.909,
+       "cond": 0.909
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.024,
-       "cond": 0.6
+       "rate": 0.035,
+       "cond": 0.382
+      },
+      {
+       "player": "Travis Etienne",
+       "pos": "RB",
+       "rate": 0.031,
+       "cond": 0.548
       },
       {
        "player": "Zay Flowers",
        "pos": "WR",
-       "rate": 0.011,
-       "cond": 0.708
+       "rate": 0.018,
+       "cond": 0.711
       }
      ],
      "pos_mix": {
-      "RB": 0.984,
-      "WR": 0.015,
+      "RB": 0.975,
+      "WR": 0.024,
       "TE": 0.001
      }
     },
@@ -1632,31 +1633,31 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.87,
-       "cond": 0.87
+       "rate": 0.856,
+       "cond": 0.856
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.063,
-       "cond": 0.487
+       "rate": 0.07,
+       "cond": 0.486
       },
       {
        "player": "Garrett Wilson",
        "pos": "WR",
-       "rate": 0.049,
-       "cond": 0.74
+       "rate": 0.053,
+       "cond": 0.712
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.009,
-       "cond": 0.5
+       "rate": 0.016,
+       "cond": 0.75
       }
      ],
      "pos_mix": {
-      "WR": 0.923,
-      "RB": 0.075,
+      "WR": 0.91,
+      "RB": 0.088,
       "TE": 0.002
      }
     },
@@ -1667,32 +1668,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.757,
-       "cond": 0.757
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.094,
-       "cond": 0.387
+       "rate": 0.686,
+       "cond": 0.686
       },
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.076,
-       "cond": 0.511
+       "rate": 0.122,
+       "cond": 0.389
+      },
+      {
+       "player": "Christian Watson",
+       "pos": "WR",
+       "rate": 0.089,
+       "cond": 0.462
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.056,
-       "cond": 0.771
+       "rate": 0.081,
+       "cond": 0.781
       }
      ],
      "pos_mix": {
-      "WR": 0.998,
-      "QB": 0.001,
-      "TE": 0.001
+      "WR": 0.989,
+      "QB": 0.006,
+      "TE": 0.005
      }
     },
     {
@@ -1702,33 +1703,33 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.877,
-       "cond": 0.877
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.035,
-       "cond": 0.283
-      },
-      {
-       "player": "Brian Thomas",
-       "pos": "WR",
-       "rate": 0.032,
-       "cond": 0.364
+       "rate": 0.859,
+       "cond": 0.859
       },
       {
        "player": "Harold Fannin",
        "pos": "TE",
-       "rate": 0.023,
+       "rate": 0.045,
+       "cond": 0.321
+      },
+      {
+       "player": "Jayden Daniels",
+       "pos": "QB",
+       "rate": 0.04,
        "cond": 0.417
+      },
+      {
+       "player": "Brian Thomas",
+       "pos": "WR",
+       "rate": 0.029,
+       "cond": 0.524
       }
      ],
      "pos_mix": {
-      "WR": 0.951,
-      "QB": 0.023,
-      "TE": 0.023,
-      "RB": 0.003
+      "WR": 0.904,
+      "QB": 0.049,
+      "TE": 0.045,
+      "RB": 0.002
      }
     },
     {
@@ -1738,33 +1739,33 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.87,
-       "cond": 0.87
+       "rate": 0.849,
+       "cond": 0.849
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.105,
-       "cond": 0.805
-      },
-      {
-       "player": "Alec Pierce",
-       "pos": "WR",
-       "rate": 0.008,
-       "cond": 0.316
+       "rate": 0.095,
+       "cond": 0.63
       },
       {
        "player": "Travis Kelce",
        "pos": "TE",
-       "rate": 0.006,
-       "cond": 0.346
+       "rate": 0.019,
+       "cond": 0.333
+      },
+      {
+       "player": "J.K. Dobbins",
+       "pos": "RB",
+       "rate": 0.015,
+       "cond": 0.411
       }
      ],
      "pos_mix": {
-      "QB": 0.975,
-      "WR": 0.012,
-      "TE": 0.007,
-      "RB": 0.005
+      "QB": 0.945,
+      "TE": 0.027,
+      "RB": 0.018,
+      "WR": 0.01
      }
     },
     {
@@ -1774,32 +1775,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.609,
-       "cond": 0.609
+       "rate": 0.623,
+       "cond": 0.623
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.249,
-       "cond": 0.638
-      },
-      {
-       "player": "Jayden Reed",
-       "pos": "WR",
-       "rate": 0.035,
-       "cond": 0.245
+       "rate": 0.176,
+       "cond": 0.466
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.033,
-       "cond": 0.312
+       "rate": 0.069,
+       "cond": 0.344
+      },
+      {
+       "player": "Travis Kelce",
+       "pos": "TE",
+       "rate": 0.035,
+       "cond": 0.268
       }
      ],
      "pos_mix": {
-      "TE": 0.649,
-      "WR": 0.284,
-      "RB": 0.067
+      "TE": 0.669,
+      "WR": 0.189,
+      "RB": 0.143
      }
     },
     {
@@ -1809,32 +1810,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.503,
-       "cond": 0.503
+       "rate": 0.543,
+       "cond": 0.543
       },
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.194,
-       "cond": 0.391
+       "rate": 0.153,
+       "cond": 0.335
       },
       {
        "player": "Brenton Strange",
        "pos": "TE",
-       "rate": 0.119,
-       "cond": 0.394
+       "rate": 0.093,
+       "cond": 0.305
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.075,
-       "cond": 0.411
+       "rate": 0.086,
+       "cond": 0.407
       }
      ],
      "pos_mix": {
-      "RB": 0.573,
-      "TE": 0.313,
-      "WR": 0.113
+      "RB": 0.633,
+      "TE": 0.246,
+      "WR": 0.121
      }
     },
     {
@@ -1844,31 +1845,31 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.525,
-       "cond": 0.525
+       "rate": 0.55,
+       "cond": 0.55
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.323,
-       "cond": 0.68
+       "rate": 0.297,
+       "cond": 0.659
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
        "rate": 0.075,
-       "cond": 0.496
+       "cond": 0.491
       },
       {
-       "player": "Jakobi Meyers",
+       "player": "Matthew Golden",
        "pos": "WR",
-       "rate": 0.027,
-       "cond": 0.357
+       "rate": 0.026,
+       "cond": 0.333
       }
      ],
      "pos_mix": {
-      "WR": 0.675,
-      "RB": 0.323,
+      "WR": 0.7,
+      "RB": 0.297,
       "TE": 0.003
      }
     },
@@ -1879,32 +1880,31 @@
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.327,
-       "cond": 0.327
-      },
-      {
-       "player": "Rashid Shaheed",
-       "pos": "WR",
-       "rate": 0.253,
-       "cond": 0.375
+       "rate": 0.377,
+       "cond": 0.377
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.208,
-       "cond": 0.494
+       "rate": 0.231,
+       "cond": 0.371
+      },
+      {
+       "player": "Rashid Shaheed",
+       "pos": "WR",
+       "rate": 0.171,
+       "cond": 0.437
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.092,
-       "cond": 0.433
+       "rate": 0.085,
+       "cond": 0.387
       }
      ],
      "pos_mix": {
-      "WR": 0.607,
-      "RB": 0.392,
-      "TE": 0.001
+      "WR": 0.545,
+      "RB": 0.455
      }
     },
     {
@@ -1914,31 +1914,31 @@
       {
        "player": "Seattle Seahawks",
        "pos": "DST",
-       "rate": 0.631,
-       "cond": 0.631
+       "rate": 0.611,
+       "cond": 0.611
       },
       {
        "player": "Houston Texans",
        "pos": "DST",
-       "rate": 0.271,
-       "cond": 0.733
+       "rate": 0.312,
+       "cond": 0.801
       },
       {
        "player": "Brandon Aubrey",
        "pos": "K",
-       "rate": 0.074,
-       "cond": 0.75
+       "rate": 0.051,
+       "cond": 0.664
       },
       {
        "player": "Los Angeles Rams",
        "pos": "DST",
-       "rate": 0.025,
+       "rate": 0.026,
        "cond": 1.0
       }
      ],
      "pos_mix": {
-      "DST": 0.926,
-      "K": 0.074
+      "DST": 0.949,
+      "K": 0.051
      }
     },
     {
@@ -1948,31 +1948,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.789,
-       "cond": 0.789
-      },
-      {
-       "player": "Harrison Mevis",
-       "pos": "K",
-       "rate": 0.069,
-       "cond": 0.329
+       "rate": 0.837,
+       "cond": 0.837
       },
       {
        "player": "Chris Boswell",
        "pos": "K",
-       "rate": 0.042,
-       "cond": 0.297
+       "rate": 0.048,
+       "cond": 0.294
       },
       {
-       "player": "Minnesota Vikings",
-       "pos": "DST",
-       "rate": 0.033,
-       "cond": 0.336
+       "player": "Harrison Mevis",
+       "pos": "K",
+       "rate": 0.035,
+       "cond": 0.306
+      },
+      {
+       "player": "Tyler Loop",
+       "pos": "K",
+       "rate": 0.025,
+       "cond": 0.308
       }
      ],
      "pos_mix": {
-      "K": 0.926,
-      "DST": 0.074
+      "K": 0.949,
+      "DST": 0.051
      }
     },
     {
@@ -1980,43 +1980,43 @@
      "pick": 172,
      "options": [
       {
-       "player": "Denzel Boston",
-       "pos": "WR",
-       "rate": 0.433,
-       "cond": 0.433
-      },
-      {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.364,
-       "cond": 0.642
+       "rate": 0.459,
+       "cond": 0.459
+      },
+      {
+       "player": "Denzel Boston",
+       "pos": "WR",
+       "rate": 0.328,
+       "cond": 0.606
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.136,
-       "cond": 0.671
+       "rate": 0.143,
+       "cond": 0.672
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.042,
-       "cond": 0.63
+       "rate": 0.052,
+       "cond": 0.743
       }
      ],
      "pos_mix": {
-      "RB": 0.501,
-      "WR": 0.499
+      "RB": 0.602,
+      "WR": 0.398
      }
     }
    ]
   },
   "5": {
    "strategy": "TE Round 3",
-   "mean_starters": 1913.7,
-   "floor_p10": 1772.8,
-   "ceiling_p90": 2276.5,
-   "top3_rate": 0.496,
+   "mean_starters": 1913.2,
+   "floor_p10": 1778.4,
+   "ceiling_p90": 2284.2,
+   "top3_rate": 0.463,
    "rounds": [
     {
      "round": 1,
@@ -2025,31 +2025,31 @@
       {
        "player": "Christian McCaffrey",
        "pos": "RB",
-       "rate": 0.657,
-       "cond": 0.657
+       "rate": 0.813,
+       "cond": 0.813
       },
       {
        "player": "Puka Nacua",
        "pos": "WR",
-       "rate": 0.273,
-       "cond": 0.798
+       "rate": 0.143,
+       "cond": 0.764
       },
       {
        "player": "Ja'Marr Chase",
        "pos": "WR",
-       "rate": 0.055,
-       "cond": 0.798
+       "rate": 0.031,
+       "cond": 0.697
       },
       {
        "player": "Bijan Robinson",
        "pos": "RB",
-       "rate": 0.014,
+       "rate": 0.013,
        "cond": 1.0
       }
      ],
      "pos_mix": {
-      "RB": 0.671,
-      "WR": 0.329
+      "RB": 0.827,
+      "WR": 0.173
      }
     },
     {
@@ -2057,33 +2057,33 @@
      "pick": 20,
      "options": [
       {
+       "player": "Nico Collins",
+       "pos": "WR",
+       "rate": 0.351,
+       "cond": 0.351
+      },
+      {
        "player": "Kenneth Walker",
        "pos": "RB",
-       "rate": 0.327,
-       "cond": 0.327
+       "rate": 0.347,
+       "cond": 0.535
       },
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.319,
-       "cond": 0.475
-      },
-      {
-       "player": "Nico Collins",
-       "pos": "WR",
-       "rate": 0.289,
-       "cond": 0.819
+       "rate": 0.279,
+       "cond": 0.923
       },
       {
        "player": "Ashton Jeanty",
        "pos": "RB",
-       "rate": 0.061,
-       "cond": 0.948
+       "rate": 0.013,
+       "cond": 0.571
       }
      ],
      "pos_mix": {
-      "RB": 0.71,
-      "WR": 0.29
+      "RB": 0.646,
+      "WR": 0.354
      }
     },
     {
@@ -2093,25 +2093,25 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.867,
-       "cond": 0.867
+       "rate": 0.833,
+       "cond": 0.833
       },
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.115,
-       "cond": 0.86
+       "rate": 0.149,
+       "cond": 0.888
       },
       {
        "player": "Brock Bowers",
        "pos": "TE",
        "rate": 0.017,
-       "cond": 0.893
+       "cond": 0.929
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.002,
+       "rate": 0.001,
        "cond": 1.0
       }
      ],
@@ -2126,31 +2126,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.949,
-       "cond": 0.949
+       "rate": 0.935,
+       "cond": 0.935
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
-       "rate": 0.028,
-       "cond": 0.553
-      },
-      {
-       "player": "David Montgomery",
-       "pos": "RB",
-       "rate": 0.011,
-       "cond": 0.5
+       "rate": 0.031,
+       "cond": 0.48
       },
       {
        "player": "Zay Flowers",
        "pos": "WR",
-       "rate": 0.009,
-       "cond": 0.824
+       "rate": 0.015,
+       "cond": 0.451
+      },
+      {
+       "player": "David Montgomery",
+       "pos": "RB",
+       "rate": 0.015,
+       "cond": 0.786
       }
      ],
      "pos_mix": {
-      "RB": 0.989,
-      "WR": 0.01,
+      "RB": 0.981,
+      "WR": 0.018,
       "TE": 0.001
      }
     },
@@ -2161,31 +2161,31 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.895,
-       "cond": 0.895
-      },
-      {
-       "player": "Garrett Wilson",
-       "pos": "WR",
-       "rate": 0.034,
-       "cond": 0.325
+       "rate": 0.906,
+       "cond": 0.906
       },
       {
        "player": "David Montgomery",
        "pos": "RB",
-       "rate": 0.032,
-       "cond": 0.453
+       "rate": 0.036,
+       "cond": 0.383
+      },
+      {
+       "player": "Garrett Wilson",
+       "pos": "WR",
+       "rate": 0.024,
+       "cond": 0.414
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.022,
-       "cond": 0.569
+       "rate": 0.021,
+       "cond": 0.608
       }
      ],
      "pos_mix": {
       "WR": 0.935,
-      "RB": 0.057,
+      "RB": 0.058,
       "TE": 0.007
      }
     },
@@ -2196,32 +2196,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.841,
-       "cond": 0.841
+       "rate": 0.751,
+       "cond": 0.751
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.061,
-       "cond": 0.385
+       "rate": 0.093,
+       "cond": 0.375
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.054,
-       "cond": 0.551
+       "rate": 0.073,
+       "cond": 0.472
       },
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.028,
-       "cond": 0.636
+       "rate": 0.055,
+       "cond": 0.667
       }
      ],
      "pos_mix": {
-      "WR": 0.994,
-      "TE": 0.003,
-      "QB": 0.003
+      "WR": 0.991,
+      "QB": 0.007,
+      "TE": 0.002
      }
     },
     {
@@ -2231,32 +2231,32 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.945,
-       "cond": 0.945
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.019,
-       "cond": 0.349
+       "rate": 0.936,
+       "cond": 0.936
       },
       {
        "player": "Harold Fannin",
        "pos": "TE",
-       "rate": 0.013,
-       "cond": 0.352
+       "rate": 0.027,
+       "cond": 0.417
+      },
+      {
+       "player": "Jayden Daniels",
+       "pos": "QB",
+       "rate": 0.015,
+       "cond": 0.411
       },
       {
        "player": "Brian Thomas",
        "pos": "WR",
-       "rate": 0.01,
-       "cond": 0.429
+       "rate": 0.008,
+       "cond": 0.364
       }
      ],
      "pos_mix": {
-      "WR": 0.98,
-      "TE": 0.013,
-      "QB": 0.007,
+      "WR": 0.949,
+      "TE": 0.028,
+      "QB": 0.022,
       "RB": 0.001
      }
     },
@@ -2267,33 +2267,33 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.907,
-       "cond": 0.907
+       "rate": 0.886,
+       "cond": 0.886
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
        "rate": 0.082,
-       "cond": 0.885
+       "cond": 0.719
       },
       {
        "player": "Travis Kelce",
        "pos": "TE",
-       "rate": 0.003,
-       "cond": 0.312
+       "rate": 0.016,
+       "cond": 0.5
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.002,
-       "cond": 0.273
+       "rate": 0.004,
+       "cond": 0.25
       }
      ],
      "pos_mix": {
-      "QB": 0.991,
-      "TE": 0.004,
-      "RB": 0.003,
-      "WR": 0.002
+      "QB": 0.971,
+      "TE": 0.017,
+      "RB": 0.007,
+      "WR": 0.004
      }
     },
     {
@@ -2303,32 +2303,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.703,
-       "cond": 0.703
+       "rate": 0.741,
+       "cond": 0.741
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.201,
-       "cond": 0.675
-      },
-      {
-       "player": "Jayden Reed",
-       "pos": "WR",
-       "rate": 0.023,
-       "cond": 0.241
+       "rate": 0.125,
+       "cond": 0.483
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.021,
-       "cond": 0.282
+       "rate": 0.047,
+       "cond": 0.348
+      },
+      {
+       "player": "Kyle Monangai",
+       "pos": "RB",
+       "rate": 0.037,
+       "cond": 0.42
       }
      ],
      "pos_mix": {
-      "TE": 0.727,
-      "WR": 0.224,
-      "RB": 0.049
+      "TE": 0.765,
+      "WR": 0.13,
+      "RB": 0.105
      }
     },
     {
@@ -2338,32 +2338,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.496,
-       "cond": 0.496
+       "rate": 0.533,
+       "cond": 0.533
       },
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.167,
-       "cond": 0.332
+       "rate": 0.115,
+       "cond": 0.246
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.103,
-       "cond": 0.307
+       "rate": 0.104,
+       "cond": 0.295
       },
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.084,
-       "cond": 0.36
+       "rate": 0.085,
+       "cond": 0.341
       }
      ],
      "pos_mix": {
-      "RB": 0.625,
-      "TE": 0.242,
-      "WR": 0.133
+      "RB": 0.694,
+      "TE": 0.175,
+      "WR": 0.131
      }
     },
     {
@@ -2373,32 +2373,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.571,
-       "cond": 0.571
+       "rate": 0.559,
+       "cond": 0.559
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.301,
-       "cond": 0.7
+       "rate": 0.299,
+       "cond": 0.678
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
-       "rate": 0.05,
-       "cond": 0.389
+       "rate": 0.053,
+       "cond": 0.376
       },
       {
-       "player": "Jakobi Meyers",
+       "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.031,
-       "cond": 0.398
+       "rate": 0.032,
+       "cond": 0.361
       }
      ],
      "pos_mix": {
-      "WR": 0.696,
+      "WR": 0.694,
       "RB": 0.301,
-      "TE": 0.003
+      "TE": 0.005
      }
     },
     {
@@ -2408,31 +2408,31 @@
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.283,
-       "cond": 0.283
-      },
-      {
-       "player": "Rashid Shaheed",
-       "pos": "WR",
-       "rate": 0.265,
-       "cond": 0.37
+       "rate": 0.31,
+       "cond": 0.31
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.263,
-       "cond": 0.583
+       "rate": 0.255,
+       "cond": 0.369
       },
       {
-       "player": "Khalil Shakir",
+       "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.054,
-       "cond": 0.286
+       "rate": 0.213,
+       "cond": 0.49
+      },
+      {
+       "player": "Chris Rodriguez",
+       "pos": "RB",
+       "rate": 0.063,
+       "cond": 0.282
       }
      ],
      "pos_mix": {
-      "WR": 0.64,
-      "RB": 0.36
+      "WR": 0.589,
+      "RB": 0.411
      }
     },
     {
@@ -2442,31 +2442,31 @@
       {
        "player": "Philadelphia Eagles",
        "pos": "DST",
-       "rate": 0.621,
-       "cond": 0.621
+       "rate": 0.585,
+       "cond": 0.585
       },
       {
        "player": "Seattle Seahawks",
        "pos": "DST",
-       "rate": 0.307,
-       "cond": 0.808
+       "rate": 0.338,
+       "cond": 0.814
       },
       {
        "player": "Houston Texans",
        "pos": "DST",
-       "rate": 0.058,
-       "cond": 0.798
+       "rate": 0.062,
+       "cond": 0.802
       },
       {
        "player": "Brandon Aubrey",
        "pos": "K",
-       "rate": 0.015,
-       "cond": 1.0
+       "rate": 0.01,
+       "cond": 0.652
       }
      ],
      "pos_mix": {
-      "DST": 0.985,
-      "K": 0.015
+      "DST": 0.99,
+      "K": 0.01
      }
     },
     {
@@ -2476,31 +2476,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.878,
-       "cond": 0.878
+       "rate": 0.887,
+       "cond": 0.887
       },
       {
        "player": "Chris Boswell",
        "pos": "K",
-       "rate": 0.046,
-       "cond": 0.377
+       "rate": 0.043,
+       "cond": 0.385
       },
       {
        "player": "Harrison Mevis",
        "pos": "K",
-       "rate": 0.037,
-       "cond": 0.491
+       "rate": 0.031,
+       "cond": 0.442
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.013,
-       "cond": 0.328
+       "rate": 0.015,
+       "cond": 0.397
       }
      ],
      "pos_mix": {
-      "K": 0.985,
-      "DST": 0.015
+      "K": 0.99,
+      "DST": 0.01
      }
     },
     {
@@ -2508,43 +2508,43 @@
      "pick": 173,
      "options": [
       {
-       "player": "Denzel Boston",
-       "pos": "WR",
-       "rate": 0.423,
-       "cond": 0.423
-      },
-      {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.361,
-       "cond": 0.627
+       "rate": 0.447,
+       "cond": 0.447
+      },
+      {
+       "player": "Denzel Boston",
+       "pos": "WR",
+       "rate": 0.308,
+       "cond": 0.557
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.151,
-       "cond": 0.703
+       "rate": 0.173,
+       "cond": 0.704
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.041,
-       "cond": 0.646
+       "rate": 0.042,
+       "cond": 0.578
       }
      ],
      "pos_mix": {
-      "RB": 0.513,
-      "WR": 0.487
+      "RB": 0.62,
+      "WR": 0.38
      }
     }
    ]
   },
   "6": {
    "strategy": "TE Round 3",
-   "mean_starters": 1901.6,
-   "floor_p10": 1773.1,
-   "ceiling_p90": 2271.2,
-   "top3_rate": 0.465,
+   "mean_starters": 1897.0,
+   "floor_p10": 1765.0,
+   "ceiling_p90": 2269.9,
+   "top3_rate": 0.455,
    "rounds": [
     {
      "round": 1,
@@ -2553,31 +2553,31 @@
       {
        "player": "Jonathan Taylor",
        "pos": "RB",
-       "rate": 0.465,
-       "cond": 0.465
+       "rate": 0.54,
+       "cond": 0.54
       },
       {
        "player": "Christian McCaffrey",
        "pos": "RB",
-       "rate": 0.341,
-       "cond": 0.636
+       "rate": 0.399,
+       "cond": 0.868
       },
       {
        "player": "Puka Nacua",
        "pos": "WR",
-       "rate": 0.171,
-       "cond": 0.877
+       "rate": 0.055,
+       "cond": 0.912
       },
       {
        "player": "Ja'Marr Chase",
        "pos": "WR",
-       "rate": 0.022,
-       "cond": 0.917
+       "rate": 0.005,
+       "cond": 0.875
       }
      ],
      "pos_mix": {
-      "RB": 0.807,
-      "WR": 0.193
+      "RB": 0.94,
+      "WR": 0.06
      }
     },
     {
@@ -2587,31 +2587,31 @@
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.477,
-       "cond": 0.477
+       "rate": 0.465,
+       "cond": 0.465
       },
       {
        "player": "Kenneth Walker",
        "pos": "RB",
-       "rate": 0.312,
-       "cond": 0.596
-      },
-      {
-       "player": "Ashton Jeanty",
-       "pos": "RB",
-       "rate": 0.146,
-       "cond": 0.691
+       "rate": 0.39,
+       "cond": 0.729
       },
       {
        "player": "Nico Collins",
        "pos": "WR",
-       "rate": 0.054,
-       "cond": 0.827
+       "rate": 0.074,
+       "cond": 0.509
+      },
+      {
+       "player": "Ashton Jeanty",
+       "pos": "RB",
+       "rate": 0.049,
+       "cond": 0.682
       }
      ],
      "pos_mix": {
-      "RB": 0.946,
-      "WR": 0.054
+      "RB": 0.926,
+      "WR": 0.074
      }
     },
     {
@@ -2621,25 +2621,25 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.947,
-       "cond": 0.947
+       "rate": 0.927,
+       "cond": 0.927
       },
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.046,
-       "cond": 0.863
-      },
-      {
-       "player": "Tyler Warren",
-       "pos": "TE",
-       "rate": 0.004,
-       "cond": 0.545
+       "rate": 0.065,
+       "cond": 0.899
       },
       {
        "player": "Brock Bowers",
        "pos": "TE",
-       "rate": 0.003,
+       "rate": 0.005,
+       "cond": 0.727
+      },
+      {
+       "player": "Tyler Warren",
+       "pos": "TE",
+       "rate": 0.002,
        "cond": 1.0
       }
      ],
@@ -2654,32 +2654,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.957,
-       "cond": 0.957
+       "rate": 0.952,
+       "cond": 0.952
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
-       "rate": 0.025,
-       "cond": 0.569
-      },
-      {
-       "player": "Breece Hall",
-       "pos": "RB",
-       "rate": 0.008,
-       "cond": 0.429
+       "rate": 0.033,
+       "cond": 0.694
       },
       {
        "player": "Zay Flowers",
        "pos": "WR",
-       "rate": 0.005,
+       "rate": 0.007,
        "cond": 0.5
+      },
+      {
+       "player": "David Montgomery",
+       "pos": "RB",
+       "rate": 0.005,
+       "cond": 0.636
       }
      ],
      "pos_mix": {
-      "RB": 0.993,
-      "WR": 0.006,
-      "TE": 0.001
+      "RB": 0.991,
+      "WR": 0.009
      }
     },
     {
@@ -2689,32 +2688,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.942,
-       "cond": 0.942
-      },
-      {
-       "player": "David Montgomery",
-       "pos": "RB",
-       "rate": 0.016,
-       "cond": 0.276
+       "rate": 0.934,
+       "cond": 0.934
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.015,
-       "cond": 0.365
+       "rate": 0.027,
+       "cond": 0.404
       },
       {
-       "player": "Garrett Wilson",
+       "player": "David Montgomery",
+       "pos": "RB",
+       "rate": 0.014,
+       "cond": 0.356
+      },
+      {
+       "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.008,
-       "cond": 0.3
+       "rate": 0.013,
+       "cond": 0.526
       }
      ],
      "pos_mix": {
-      "WR": 0.961,
-      "RB": 0.033,
-      "TE": 0.006
+      "WR": 0.954,
+      "RB": 0.041,
+      "TE": 0.005
      }
     },
     {
@@ -2724,32 +2723,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.875,
-       "cond": 0.875
+       "rate": 0.817,
+       "cond": 0.817
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.059,
-       "cond": 0.468
+       "rate": 0.077,
+       "cond": 0.423
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.045,
-       "cond": 0.68
+       "rate": 0.069,
+       "cond": 0.652
       },
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.007,
-       "cond": 0.312
+       "rate": 0.02,
+       "cond": 0.545
       }
      ],
      "pos_mix": {
-      "WR": 0.993,
-      "TE": 0.003,
-      "QB": 0.003
+      "WR": 0.99,
+      "TE": 0.006,
+      "QB": 0.004
      }
     },
     {
@@ -2759,32 +2758,32 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.975,
-       "cond": 0.975
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.015,
-       "cond": 0.595
+       "rate": 0.972,
+       "cond": 0.972
       },
       {
        "player": "Harold Fannin",
        "pos": "TE",
-       "rate": 0.003,
-       "cond": 0.333
+       "rate": 0.009,
+       "cond": 0.31
       },
       {
-       "player": "Jalen Hurts",
-       "pos": "QB",
-       "rate": 0.002,
-       "cond": 0.3
+       "player": "Christian Watson",
+       "pos": "WR",
+       "rate": 0.005,
+       "cond": 0.276
+      },
+      {
+       "player": "Brian Thomas",
+       "pos": "WR",
+       "rate": 0.004,
+       "cond": 0.286
       }
      ],
      "pos_mix": {
-      "WR": 0.992,
-      "TE": 0.004,
-      "QB": 0.004
+      "WR": 0.982,
+      "TE": 0.009,
+      "QB": 0.009
      }
     },
     {
@@ -2794,33 +2793,33 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.913,
-       "cond": 0.913
+       "rate": 0.912,
+       "cond": 0.912
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.075,
-       "cond": 0.863
+       "rate": 0.069,
+       "cond": 0.788
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.005,
-       "cond": 0.389
+       "rate": 0.006,
+       "cond": 0.321
       },
       {
-       "player": "J.K. Dobbins",
-       "pos": "RB",
-       "rate": 0.002,
-       "cond": 0.273
+       "player": "Travis Kelce",
+       "pos": "TE",
+       "rate": 0.005,
+       "cond": 0.421
       }
      ],
      "pos_mix": {
-      "QB": 0.993,
-      "RB": 0.003,
-      "TE": 0.003,
-      "WR": 0.002
+      "QB": 0.987,
+      "RB": 0.006,
+      "TE": 0.005,
+      "WR": 0.001
      }
     },
     {
@@ -2830,32 +2829,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.777,
-       "cond": 0.777
+       "rate": 0.805,
+       "cond": 0.805
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.153,
-       "cond": 0.684
+       "rate": 0.113,
+       "cond": 0.58
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.012,
-       "cond": 0.17
+       "rate": 0.03,
+       "cond": 0.366
       },
       {
-       "player": "Travis Kelce",
-       "pos": "TE",
-       "rate": 0.011,
-       "cond": 0.193
+       "player": "Kyle Monangai",
+       "pos": "RB",
+       "rate": 0.015,
+       "cond": 0.295
       }
      ],
      "pos_mix": {
-      "TE": 0.8,
-      "WR": 0.163,
-      "RB": 0.037
+      "TE": 0.815,
+      "WR": 0.119,
+      "RB": 0.066
      }
     },
     {
@@ -2865,32 +2864,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.487,
-       "cond": 0.487
+       "rate": 0.451,
+       "cond": 0.451
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.138,
-       "cond": 0.269
-      },
-      {
-       "player": "Mark Andrews",
-       "pos": "TE",
-       "rate": 0.125,
-       "cond": 0.335
+       "rate": 0.147,
+       "cond": 0.268
       },
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.115,
-       "cond": 0.463
+       "rate": 0.117,
+       "cond": 0.292
+      },
+      {
+       "player": "Mark Andrews",
+       "pos": "TE",
+       "rate": 0.107,
+       "cond": 0.375
       }
      ],
      "pos_mix": {
-      "RB": 0.671,
-      "TE": 0.175,
-      "WR": 0.154
+      "RB": 0.685,
+      "WR": 0.162,
+      "TE": 0.153
      }
     },
     {
@@ -2900,31 +2899,31 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.567,
-       "cond": 0.567
+       "rate": 0.534,
+       "cond": 0.534
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.291,
-       "cond": 0.671
+       "rate": 0.321,
+       "cond": 0.69
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.045,
-       "cond": 0.318
+       "rate": 0.048,
+       "cond": 0.332
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
-       "rate": 0.037,
-       "cond": 0.377
+       "rate": 0.034,
+       "cond": 0.352
       }
      ],
      "pos_mix": {
-      "WR": 0.702,
-      "RB": 0.291,
+      "WR": 0.671,
+      "RB": 0.321,
       "TE": 0.007
      }
     },
@@ -2935,32 +2934,31 @@
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.291,
-       "cond": 0.291
-      },
-      {
-       "player": "Rashid Shaheed",
-       "pos": "WR",
-       "rate": 0.277,
-       "cond": 0.39
+       "rate": 0.303,
+       "cond": 0.303
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.216,
-       "cond": 0.499
+       "rate": 0.233,
+       "cond": 0.334
+      },
+      {
+       "player": "Rashid Shaheed",
+       "pos": "WR",
+       "rate": 0.21,
+       "cond": 0.452
       },
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.069,
-       "cond": 0.32
+       "rate": 0.075,
+       "cond": 0.296
       }
      ],
      "pos_mix": {
-      "WR": 0.687,
-      "RB": 0.313,
-      "TE": 0.001
+      "WR": 0.648,
+      "RB": 0.352
      }
     },
     {
@@ -2970,31 +2968,31 @@
       {
        "player": "Philadelphia Eagles",
        "pos": "DST",
-       "rate": 0.759,
-       "cond": 0.759
-      },
-      {
-       "player": "Denver Broncos",
-       "pos": "DST",
-       "rate": 0.127,
-       "cond": 0.528
+       "rate": 0.76,
+       "cond": 0.76
       },
       {
        "player": "Seattle Seahawks",
        "pos": "DST",
-       "rate": 0.097,
-       "cond": 0.848
+       "rate": 0.117,
+       "cond": 0.489
+      },
+      {
+       "player": "Denver Broncos",
+       "pos": "DST",
+       "rate": 0.109,
+       "cond": 0.886
       },
       {
        "player": "Houston Texans",
        "pos": "DST",
        "rate": 0.013,
-       "cond": 0.769
+       "cond": 0.905
       }
      ],
      "pos_mix": {
-      "DST": 0.996,
-      "K": 0.004
+      "DST": 0.999,
+      "K": 0.001
      }
     },
     {
@@ -3004,31 +3002,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.884,
-       "cond": 0.884
+       "rate": 0.903,
+       "cond": 0.903
       },
       {
        "player": "Chris Boswell",
        "pos": "K",
-       "rate": 0.041,
-       "cond": 0.351
+       "rate": 0.046,
+       "cond": 0.473
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.035,
-       "cond": 0.46
+       "rate": 0.023,
+       "cond": 0.455
       },
       {
        "player": "Harrison Mevis",
        "pos": "K",
-       "rate": 0.023,
-       "cond": 0.557
+       "rate": 0.016,
+       "cond": 0.571
       }
      ],
      "pos_mix": {
-      "K": 0.996,
-      "DST": 0.004
+      "K": 0.999,
+      "DST": 0.001
      }
     },
     {
@@ -3038,41 +3036,41 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.397,
-       "cond": 0.397
+       "rate": 0.434,
+       "cond": 0.434
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.393,
-       "cond": 0.652
+       "rate": 0.321,
+       "cond": 0.567
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.141,
-       "cond": 0.67
+       "rate": 0.167,
+       "cond": 0.682
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.039,
-       "cond": 0.567
+       "rate": 0.059,
+       "cond": 0.761
       }
      ],
      "pos_mix": {
-      "RB": 0.539,
-      "WR": 0.461
+      "RB": 0.602,
+      "WR": 0.398
      }
     }
    ]
   },
   "7": {
    "strategy": "TE Round 3",
-   "mean_starters": 1896.9,
-   "floor_p10": 1767.7,
-   "ceiling_p90": 2265.4,
-   "top3_rate": 0.443,
+   "mean_starters": 1891.7,
+   "floor_p10": 1765.4,
+   "ceiling_p90": 2258.3,
+   "top3_rate": 0.427,
    "rounds": [
     {
      "round": 1,
@@ -3081,31 +3079,31 @@
       {
        "player": "Jonathan Taylor",
        "pos": "RB",
-       "rate": 0.421,
-       "cond": 0.421
+       "rate": 0.659,
+       "cond": 0.659
       },
       {
        "player": "Jaxon Smith-Njigba",
        "pos": "WR",
-       "rate": 0.384,
-       "cond": 0.664
+       "rate": 0.203,
+       "cond": 0.596
       },
       {
        "player": "Christian McCaffrey",
        "pos": "RB",
-       "rate": 0.134,
-       "cond": 0.688
+       "rate": 0.131,
+       "cond": 0.947
       },
       {
        "player": "Puka Nacua",
        "pos": "WR",
-       "rate": 0.057,
-       "cond": 0.945
+       "rate": 0.007,
+       "cond": 0.909
       }
      ],
      "pos_mix": {
-      "RB": 0.555,
-      "WR": 0.445
+      "RB": 0.789,
+      "WR": 0.211
      }
     },
     {
@@ -3115,26 +3113,26 @@
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.525,
-       "cond": 0.525
-      },
-      {
-       "player": "Ashton Jeanty",
-       "pos": "RB",
-       "rate": 0.292,
-       "cond": 0.615
+       "rate": 0.59,
+       "cond": 0.59
       },
       {
        "player": "Kenneth Walker",
        "pos": "RB",
-       "rate": 0.169,
-       "cond": 0.927
+       "rate": 0.215,
+       "cond": 0.524
       },
       {
-       "player": "Omarion Hampton",
+       "player": "Ashton Jeanty",
        "pos": "RB",
-       "rate": 0.006,
-       "cond": 0.45
+       "rate": 0.157,
+       "cond": 0.802
+      },
+      {
+       "player": "Chase Brown",
+       "pos": "RB",
+       "rate": 0.021,
+       "cond": 0.552
       }
      ],
      "pos_mix": {
@@ -3148,19 +3146,25 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.979,
-       "cond": 0.979
+       "rate": 0.975,
+       "cond": 0.975
       },
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.013,
-       "cond": 0.645
+       "rate": 0.019,
+       "cond": 0.763
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.007,
+       "rate": 0.005,
+       "cond": 0.778
+      },
+      {
+       "player": "Brock Bowers",
+       "pos": "TE",
+       "rate": 0.001,
        "cond": 1.0
       }
      ],
@@ -3175,31 +3179,32 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.971,
-       "cond": 0.971
-      },
-      {
-       "player": "Breece Hall",
-       "pos": "RB",
-       "rate": 0.013,
-       "cond": 0.455
+       "rate": 0.967,
+       "cond": 0.967
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
-       "rate": 0.013,
-       "cond": 0.792
+       "rate": 0.017,
+       "cond": 0.531
       },
       {
-       "player": "Javonte Williams",
+       "player": "Breece Hall",
        "pos": "RB",
-       "rate": 0.002,
-       "cond": 0.6
+       "rate": 0.007,
+       "cond": 0.435
+      },
+      {
+       "player": "Zay Flowers",
+       "pos": "WR",
+       "rate": 0.005,
+       "cond": 0.538
       }
      ],
      "pos_mix": {
-      "RB": 0.999,
-      "WR": 0.001
+      "RB": 0.994,
+      "WR": 0.005,
+      "TE": 0.001
      }
     },
     {
@@ -3209,32 +3214,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.933,
-       "cond": 0.933
+       "rate": 0.932,
+       "cond": 0.932
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.032,
-       "cond": 0.475
+       "rate": 0.03,
+       "cond": 0.441
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.019,
-       "cond": 0.547
+       "rate": 0.021,
+       "cond": 0.561
       },
       {
-       "player": "David Montgomery",
-       "pos": "RB",
+       "player": "Parker Washington",
+       "pos": "WR",
        "rate": 0.006,
-       "cond": 0.375
+       "cond": 0.36
       }
      ],
      "pos_mix": {
-      "WR": 0.957,
-      "RB": 0.039,
-      "TE": 0.003
+      "WR": 0.961,
+      "RB": 0.035,
+      "TE": 0.005
      }
     },
     {
@@ -3244,32 +3249,33 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.907,
-       "cond": 0.907
+       "rate": 0.865,
+       "cond": 0.865
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.045,
-       "cond": 0.479
+       "rate": 0.071,
+       "cond": 0.53
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.035,
-       "cond": 0.712
+       "rate": 0.041,
+       "cond": 0.642
       },
       {
-       "player": "Terry McLaurin",
-       "pos": "WR",
-       "rate": 0.003,
-       "cond": 0.238
+       "player": "Sam LaPorta",
+       "pos": "TE",
+       "rate": 0.006,
+       "cond": 0.265
       }
      ],
      "pos_mix": {
-      "WR": 0.996,
-      "TE": 0.003,
-      "QB": 0.001
+      "WR": 0.991,
+      "TE": 0.006,
+      "QB": 0.002,
+      "RB": 0.001
      }
     },
     {
@@ -3279,31 +3285,32 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.992,
-       "cond": 0.992
+       "rate": 0.988,
+       "cond": 0.988
       },
       {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.004,
-       "cond": 0.5
-      },
-      {
-       "player": "Parker Washington",
-       "pos": "WR",
-       "rate": 0.001,
-       "cond": 0.333
+       "player": "Jayden Daniels",
+       "pos": "QB",
+       "rate": 0.002,
+       "cond": 0.167
       },
       {
        "player": "Harold Fannin",
        "pos": "TE",
+       "rate": 0.002,
+       "cond": 0.2
+      },
+      {
+       "player": "Christian Watson",
+       "pos": "WR",
        "rate": 0.001,
-       "cond": 0.5
+       "cond": 0.167
       }
      ],
      "pos_mix": {
-      "WR": 0.999,
-      "TE": 0.001
+      "WR": 0.992,
+      "QB": 0.005,
+      "TE": 0.003
      }
     },
     {
@@ -3313,30 +3320,32 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.945,
-       "cond": 0.945
+       "rate": 0.916,
+       "cond": 0.916
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.044,
-       "cond": 0.805
+       "rate": 0.059,
+       "cond": 0.698
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.01,
-       "cond": 0.938
+       "rate": 0.018,
+       "cond": 0.711
       },
       {
-       "player": "J.K. Dobbins",
-       "pos": "RB",
-       "rate": 0.001,
-       "cond": 1.0
+       "player": "Travis Kelce",
+       "pos": "TE",
+       "rate": 0.005,
+       "cond": 0.636
       }
      ],
      "pos_mix": {
-      "QB": 0.999,
+      "QB": 0.993,
+      "TE": 0.005,
+      "WR": 0.001,
       "RB": 0.001
      }
     },
@@ -3347,32 +3356,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.853,
-       "cond": 0.853
+       "rate": 0.868,
+       "cond": 0.868
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.107,
-       "cond": 0.727
+       "rate": 0.074,
+       "cond": 0.561
       },
       {
        "player": "J.K. Dobbins",
        "pos": "RB",
-       "rate": 0.009,
-       "cond": 0.233
+       "rate": 0.023,
+       "cond": 0.402
       },
       {
        "player": "Kyle Monangai",
        "pos": "RB",
-       "rate": 0.009,
-       "cond": 0.283
+       "rate": 0.015,
+       "cond": 0.442
       }
      ],
      "pos_mix": {
-      "TE": 0.861,
-      "WR": 0.11,
-      "RB": 0.029
+      "TE": 0.872,
+      "WR": 0.076,
+      "RB": 0.052
      }
     },
     {
@@ -3382,32 +3391,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.419,
-       "cond": 0.419
+       "rate": 0.386,
+       "cond": 0.386
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.179,
-       "cond": 0.309
+       "rate": 0.185,
+       "cond": 0.302
       },
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.155,
-       "cond": 0.385
+       "rate": 0.141,
+       "cond": 0.33
       },
       {
-       "player": "Mark Andrews",
-       "pos": "TE",
-       "rate": 0.09,
-       "cond": 0.365
+       "player": "Jordan Mason",
+       "pos": "RB",
+       "rate": 0.122,
+       "cond": 0.425
       }
      ],
      "pos_mix": {
-      "RB": 0.678,
-      "WR": 0.196,
-      "TE": 0.126
+      "RB": 0.702,
+      "WR": 0.195,
+      "TE": 0.103
      }
     },
     {
@@ -3417,32 +3426,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.568,
-       "cond": 0.568
+       "rate": 0.536,
+       "cond": 0.536
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.281,
-       "cond": 0.65
+       "rate": 0.325,
+       "cond": 0.701
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.062,
-       "cond": 0.41
+       "rate": 0.055,
+       "cond": 0.394
       },
       {
        "player": "Wan'Dale Robinson",
        "pos": "WR",
-       "rate": 0.033,
-       "cond": 0.366
+       "rate": 0.028,
+       "cond": 0.333
       }
      ],
      "pos_mix": {
-      "WR": 0.713,
-      "RB": 0.281,
-      "TE": 0.005
+      "WR": 0.669,
+      "RB": 0.325,
+      "TE": 0.006
      }
     },
     {
@@ -3452,31 +3461,31 @@
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.359,
-       "cond": 0.359
+       "rate": 0.353,
+       "cond": 0.353
       },
       {
        "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.242,
-       "cond": 0.378
+       "rate": 0.201,
+       "cond": 0.311
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.159,
-       "cond": 0.4
+       "rate": 0.157,
+       "cond": 0.352
       },
       {
        "player": "Chris Rodriguez",
        "pos": "RB",
-       "rate": 0.093,
-       "cond": 0.39
+       "rate": 0.101,
+       "cond": 0.351
       }
      ],
      "pos_mix": {
-      "WR": 0.71,
-      "RB": 0.29
+      "WR": 0.693,
+      "RB": 0.307
      }
     },
     {
@@ -3486,31 +3495,31 @@
       {
        "player": "Philadelphia Eagles",
        "pos": "DST",
-       "rate": 0.699,
-       "cond": 0.699
+       "rate": 0.707,
+       "cond": 0.707
       },
       {
        "player": "Denver Broncos",
        "pos": "DST",
-       "rate": 0.157,
-       "cond": 0.521
+       "rate": 0.143,
+       "cond": 0.487
       },
       {
        "player": "Ka'imi Fairbairn",
        "pos": "K",
-       "rate": 0.111,
-       "cond": 0.773
+       "rate": 0.105,
+       "cond": 0.702
       },
       {
        "player": "Seattle Seahawks",
        "pos": "DST",
-       "rate": 0.031,
-       "cond": 0.939
+       "rate": 0.044,
+       "cond": 0.985
       }
      ],
      "pos_mix": {
-      "DST": 0.888,
-      "K": 0.112
+      "DST": 0.895,
+      "K": 0.105
      }
     },
     {
@@ -3520,31 +3529,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.791,
-       "cond": 0.791
+       "rate": 0.802,
+       "cond": 0.802
       },
       {
        "player": "Minnesota Vikings",
        "pos": "DST",
-       "rate": 0.06,
-       "cond": 0.287
+       "rate": 0.057,
+       "cond": 0.286
       },
       {
        "player": "Detroit Lions",
        "pos": "DST",
-       "rate": 0.044,
-       "cond": 0.295
+       "rate": 0.043,
+       "cond": 0.307
       },
       {
-       "player": "Cam Little",
+       "player": "Chris Boswell",
        "pos": "K",
-       "rate": 0.037,
-       "cond": 0.348
+       "rate": 0.041,
+       "cond": 0.415
       }
      ],
      "pos_mix": {
-      "K": 0.888,
-      "DST": 0.112
+      "K": 0.895,
+      "DST": 0.105
      }
     },
     {
@@ -3552,43 +3561,43 @@
      "pick": 175,
      "options": [
       {
-       "player": "Denzel Boston",
-       "pos": "WR",
-       "rate": 0.409,
-       "cond": 0.409
-      },
-      {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.371,
-       "cond": 0.628
+       "rate": 0.453,
+       "cond": 0.453
+      },
+      {
+       "player": "Denzel Boston",
+       "pos": "WR",
+       "rate": 0.297,
+       "cond": 0.543
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.15,
-       "cond": 0.682
+       "rate": 0.179,
+       "cond": 0.717
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.041,
-       "cond": 0.581
+       "rate": 0.043,
+       "cond": 0.604
       }
      ],
      "pos_mix": {
-      "RB": 0.521,
-      "WR": 0.479
+      "RB": 0.633,
+      "WR": 0.367
      }
     }
    ]
   },
   "8": {
    "strategy": "TE Round 3",
-   "mean_starters": 1880.8,
-   "floor_p10": 1742.3,
-   "ceiling_p90": 2257.8,
-   "top3_rate": 0.423,
+   "mean_starters": 1883.0,
+   "floor_p10": 1761.2,
+   "ceiling_p90": 2250.4,
+   "top3_rate": 0.433,
    "rounds": [
     {
      "round": 1,
@@ -3597,31 +3606,31 @@
       {
        "player": "James Cook",
        "pos": "RB",
-       "rate": 0.793,
-       "cond": 0.793
+       "rate": 0.542,
+       "cond": 0.542
       },
       {
        "player": "Jonathan Taylor",
        "pos": "RB",
-       "rate": 0.107,
-       "cond": 0.514
+       "rate": 0.346,
+       "cond": 0.755
       },
       {
        "player": "Jaxon Smith-Njigba",
        "pos": "WR",
-       "rate": 0.089,
-       "cond": 0.887
+       "rate": 0.083,
+       "cond": 0.738
       },
       {
        "player": "Christian McCaffrey",
        "pos": "RB",
-       "rate": 0.007,
-       "cond": 0.647
+       "rate": 0.029,
+       "cond": 1.0
       }
      ],
      "pos_mix": {
-      "RB": 0.907,
-      "WR": 0.093
+      "RB": 0.917,
+      "WR": 0.083
      }
     },
     {
@@ -3629,28 +3638,28 @@
      "pick": 17,
      "options": [
       {
-       "player": "Ashton Jeanty",
-       "pos": "RB",
-       "rate": 0.478,
-       "cond": 0.478
-      },
-      {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.435,
-       "cond": 0.833
+       "rate": 0.505,
+       "cond": 0.505
+      },
+      {
+       "player": "Ashton Jeanty",
+       "pos": "RB",
+       "rate": 0.343,
+       "cond": 0.693
+      },
+      {
+       "player": "Chase Brown",
+       "pos": "RB",
+       "rate": 0.084,
+       "cond": 0.553
       },
       {
        "player": "Kenneth Walker",
        "pos": "RB",
-       "rate": 0.041,
-       "cond": 0.466
-      },
-      {
-       "player": "De'Von Achane",
-       "pos": "RB",
-       "rate": 0.024,
-       "cond": 0.514
+       "rate": 0.051,
+       "cond": 0.745
       }
      ],
      "pos_mix": {
@@ -3664,19 +3673,19 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.984,
-       "cond": 0.984
+       "rate": 0.979,
+       "cond": 0.979
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.013,
-       "cond": 0.833
+       "rate": 0.017,
+       "cond": 0.781
       },
       {
        "player": "Trey McBride",
        "pos": "TE",
-       "rate": 0.003,
+       "rate": 0.005,
        "cond": 1.0
       }
      ],
@@ -3691,30 +3700,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.951,
-       "cond": 0.951
+       "rate": 0.96,
+       "cond": 0.96
       },
       {
        "player": "Breece Hall",
        "pos": "RB",
-       "rate": 0.035,
-       "cond": 0.712
+       "rate": 0.025,
+       "cond": 0.617
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
        "rate": 0.011,
-       "cond": 0.762
+       "cond": 0.696
       },
       {
-       "player": "Javonte Williams",
-       "pos": "RB",
+       "player": "Zay Flowers",
+       "pos": "WR",
        "rate": 0.003,
-       "cond": 1.0
+       "cond": 0.571
       }
      ],
      "pos_mix": {
-      "RB": 1.0
+      "RB": 0.996,
+      "WR": 0.004
      }
     },
     {
@@ -3724,32 +3734,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.918,
-       "cond": 0.918
-      },
-      {
-       "player": "Terry McLaurin",
-       "pos": "WR",
-       "rate": 0.032,
-       "cond": 0.39
+       "rate": 0.913,
+       "cond": 0.913
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.024,
-       "cond": 0.48
+       "rate": 0.031,
+       "cond": 0.362
+      },
+      {
+       "player": "Terry McLaurin",
+       "pos": "WR",
+       "rate": 0.028,
+       "cond": 0.506
       },
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.015,
-       "cond": 0.564
+       "rate": 0.021,
+       "cond": 0.756
       }
      ],
      "pos_mix": {
-      "WR": 0.966,
-      "RB": 0.029,
-      "TE": 0.005
+      "WR": 0.963,
+      "RB": 0.035,
+      "TE": 0.001
      }
     },
     {
@@ -3759,33 +3769,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.905,
-       "cond": 0.905
+       "rate": 0.871,
+       "cond": 0.871
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.053,
-       "cond": 0.563
+       "rate": 0.069,
+       "cond": 0.539
       },
       {
        "player": "Christian Watson",
        "pos": "WR",
-       "rate": 0.019,
-       "cond": 0.452
+       "rate": 0.025,
+       "cond": 0.427
       },
       {
-       "player": "Terry McLaurin",
-       "pos": "WR",
-       "rate": 0.007,
-       "cond": 0.324
+       "player": "Sam LaPorta",
+       "pos": "TE",
+       "rate": 0.017,
+       "cond": 0.51
       }
      ],
      "pos_mix": {
-      "WR": 0.991,
-      "TE": 0.007,
-      "RB": 0.002,
-      "QB": 0.001
+      "WR": 0.979,
+      "TE": 0.017,
+      "RB": 0.003
      }
     },
     {
@@ -3799,28 +3808,28 @@
        "cond": 0.993
       },
       {
-       "player": "Christian Watson",
-       "pos": "WR",
+       "player": "Harold Fannin",
+       "pos": "TE",
        "rate": 0.003,
-       "cond": 0.455
+       "cond": 0.4
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.001,
-       "cond": 0.333
+       "rate": 0.002,
+       "cond": 0.5
       },
       {
-       "player": "Harold Fannin",
-       "pos": "TE",
+       "player": "Trevor Lawrence",
+       "pos": "QB",
        "rate": 0.001,
-       "cond": 0.5
+       "cond": 0.333
       }
      ],
      "pos_mix": {
-      "WR": 0.997,
-      "QB": 0.002,
-      "TE": 0.001
+      "WR": 0.995,
+      "QB": 0.003,
+      "TE": 0.003
      }
     },
     {
@@ -3830,20 +3839,20 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.936,
-       "cond": 0.936
+       "rate": 0.916,
+       "cond": 0.916
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.037,
-       "cond": 0.583
+       "rate": 0.049,
+       "cond": 0.579
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.024,
-       "cond": 0.9
+       "rate": 0.033,
+       "cond": 0.925
       },
       {
        "player": "Travis Kelce",
@@ -3854,8 +3863,8 @@
      ],
      "pos_mix": {
       "QB": 0.997,
-      "TE": 0.002,
-      "RB": 0.001
+      "RB": 0.001,
+      "TE": 0.001
      }
     },
     {
@@ -3865,32 +3874,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.875,
-       "cond": 0.875
+       "rate": 0.906,
+       "cond": 0.906
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.074,
-       "cond": 0.59
+       "rate": 0.042,
+       "cond": 0.447
       },
       {
        "player": "Kyle Monangai",
        "pos": "RB",
-       "rate": 0.017,
-       "cond": 0.325
+       "rate": 0.018,
+       "cond": 0.346
       },
       {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.015,
-       "cond": 0.442
+       "rate": 0.013,
+       "cond": 0.373
       }
      ],
      "pos_mix": {
-      "TE": 0.877,
-      "WR": 0.077,
-      "RB": 0.047
+      "TE": 0.908,
+      "RB": 0.049,
+      "WR": 0.043
      }
     },
     {
@@ -3900,32 +3909,32 @@
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.325,
-       "cond": 0.325
+       "rate": 0.314,
+       "cond": 0.314
       },
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.205,
-       "cond": 0.304
+       "rate": 0.178,
+       "cond": 0.259
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.183,
-       "cond": 0.391
+       "rate": 0.177,
+       "cond": 0.349
       },
       {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.137,
-       "cond": 0.478
+       "rate": 0.159,
+       "cond": 0.482
       }
      ],
      "pos_mix": {
-      "RB": 0.703,
-      "WR": 0.195,
-      "TE": 0.103
+      "RB": 0.747,
+      "WR": 0.188,
+      "TE": 0.065
      }
     },
     {
@@ -3935,31 +3944,31 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.549,
-       "cond": 0.549
+       "rate": 0.533,
+       "cond": 0.533
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.309,
-       "cond": 0.684
+       "rate": 0.318,
+       "cond": 0.681
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.079,
-       "cond": 0.551
+       "rate": 0.084,
+       "cond": 0.565
       },
       {
        "player": "Jakobi Meyers",
        "pos": "WR",
-       "rate": 0.028,
-       "cond": 0.438
+       "rate": 0.022,
+       "cond": 0.34
       }
      ],
      "pos_mix": {
-      "WR": 0.685,
-      "RB": 0.31,
+      "WR": 0.676,
+      "RB": 0.319,
       "TE": 0.005
      }
     },
@@ -3970,32 +3979,31 @@
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.374,
-       "cond": 0.374
+       "rate": 0.377,
+       "cond": 0.377
       },
       {
        "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.219,
-       "cond": 0.35
+       "rate": 0.185,
+       "cond": 0.297
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.109,
-       "cond": 0.269
+       "rate": 0.12,
+       "cond": 0.274
       },
       {
-       "player": "Khalil Shakir",
-       "pos": "WR",
-       "rate": 0.102,
-       "cond": 0.343
+       "player": "Chris Rodriguez",
+       "pos": "RB",
+       "rate": 0.11,
+       "cond": 0.346
       }
      ],
      "pos_mix": {
-      "WR": 0.751,
-      "RB": 0.249,
-      "TE": 0.001
+      "WR": 0.704,
+      "RB": 0.296
      }
     },
     {
@@ -4005,31 +4013,31 @@
       {
        "player": "Philadelphia Eagles",
        "pos": "DST",
-       "rate": 0.559,
-       "cond": 0.559
+       "rate": 0.538,
+       "cond": 0.538
       },
       {
        "player": "Ka'imi Fairbairn",
        "pos": "K",
-       "rate": 0.274,
-       "cond": 0.622
+       "rate": 0.299,
+       "cond": 0.648
       },
       {
        "player": "Denver Broncos",
        "pos": "DST",
-       "rate": 0.131,
-       "cond": 0.784
+       "rate": 0.109,
+       "cond": 0.672
       },
       {
        "player": "Baltimore Ravens",
        "pos": "DST",
-       "rate": 0.03,
-       "cond": 0.833
+       "rate": 0.043,
+       "cond": 0.812
       }
      ],
      "pos_mix": {
-      "DST": 0.726,
-      "K": 0.274
+      "DST": 0.701,
+      "K": 0.299
      }
     },
     {
@@ -4039,31 +4047,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.629,
-       "cond": 0.629
+       "rate": 0.621,
+       "cond": 0.621
       },
       {
        "player": "Minnesota Vikings",
        "pos": "DST",
-       "rate": 0.164,
-       "cond": 0.442
+       "rate": 0.19,
+       "cond": 0.502
       },
       {
        "player": "Detroit Lions",
        "pos": "DST",
-       "rate": 0.073,
-       "cond": 0.35
+       "rate": 0.083,
+       "cond": 0.438
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.043,
-       "cond": 0.322
+       "rate": 0.035,
+       "cond": 0.333
       }
      ],
      "pos_mix": {
-      "K": 0.726,
-      "DST": 0.274
+      "K": 0.701,
+      "DST": 0.299
      }
     },
     {
@@ -4073,41 +4081,41 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.396,
-       "cond": 0.396
+       "rate": 0.48,
+       "cond": 0.48
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.374,
-       "cond": 0.619
+       "rate": 0.264,
+       "cond": 0.508
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.147,
-       "cond": 0.638
+       "rate": 0.171,
+       "cond": 0.667
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.049,
-       "cond": 0.592
+       "rate": 0.052,
+       "cond": 0.609
       }
      ],
      "pos_mix": {
-      "RB": 0.543,
-      "WR": 0.457
+      "RB": 0.651,
+      "WR": 0.349
      }
     }
    ]
   },
   "9": {
    "strategy": "TE Round 3",
-   "mean_starters": 1884.5,
-   "floor_p10": 1759.9,
-   "ceiling_p90": 2256.6,
-   "top3_rate": 0.436,
+   "mean_starters": 1882.3,
+   "floor_p10": 1763.7,
+   "ceiling_p90": 2238.7,
+   "top3_rate": 0.426,
    "rounds": [
     {
      "round": 1,
@@ -4116,31 +4124,31 @@
       {
        "player": "James Cook",
        "pos": "RB",
-       "rate": 0.718,
-       "cond": 0.718
+       "rate": 0.744,
+       "cond": 0.744
       },
       {
        "player": "Amon-Ra St. Brown",
        "pos": "WR",
-       "rate": 0.261,
-       "cond": 0.927
+       "rate": 0.146,
+       "cond": 0.57
       },
       {
        "player": "Jonathan Taylor",
        "pos": "RB",
-       "rate": 0.01,
-       "cond": 0.484
+       "rate": 0.099,
+       "cond": 0.903
       },
       {
        "player": "Jaxon Smith-Njigba",
        "pos": "WR",
        "rate": 0.009,
-       "cond": 0.875
+       "cond": 0.812
       }
      ],
      "pos_mix": {
-      "RB": 0.729,
-      "WR": 0.271
+      "RB": 0.845,
+      "WR": 0.155
      }
     },
     {
@@ -4150,26 +4158,26 @@
       {
        "player": "Ashton Jeanty",
        "pos": "RB",
-       "rate": 0.647,
-       "cond": 0.647
+       "rate": 0.451,
+       "cond": 0.451
       },
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.179,
-       "cond": 0.506
-      },
-      {
-       "player": "De'Von Achane",
-       "pos": "RB",
-       "rate": 0.102,
-       "cond": 0.584
+       "rate": 0.252,
+       "cond": 0.459
       },
       {
        "player": "Chase Brown",
        "pos": "RB",
-       "rate": 0.073,
-       "cond": 1.0
+       "rate": 0.215,
+       "cond": 0.722
+      },
+      {
+       "player": "De'Von Achane",
+       "pos": "RB",
+       "rate": 0.08,
+       "cond": 0.968
       }
      ],
      "pos_mix": {
@@ -4183,19 +4191,13 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.971,
-       "cond": 0.971
+       "rate": 0.969,
+       "cond": 0.969
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.027,
-       "cond": 0.953
-      },
-      {
-       "player": "Trey McBride",
-       "pos": "TE",
-       "rate": 0.001,
+       "rate": 0.031,
        "cond": 1.0
       }
      ],
@@ -4210,31 +4212,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.892,
-       "cond": 0.892
+       "rate": 0.919,
+       "cond": 0.919
       },
       {
        "player": "Breece Hall",
        "pos": "RB",
-       "rate": 0.076,
-       "cond": 0.704
-      },
-      {
-       "player": "Javonte Williams",
-       "pos": "RB",
-       "rate": 0.023,
-       "cond": 0.729
+       "rate": 0.069,
+       "cond": 0.844
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
-       "rate": 0.007,
-       "cond": 0.769
+       "rate": 0.009,
+       "cond": 0.684
+      },
+      {
+       "player": "Javonte Williams",
+       "pos": "RB",
+       "rate": 0.003,
+       "cond": 0.667
       }
      ],
      "pos_mix": {
-      "RB": 0.998,
-      "WR": 0.002
+      "RB": 0.999,
+      "WR": 0.001
      }
     },
     {
@@ -4244,32 +4246,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.888,
-       "cond": 0.888
-      },
-      {
-       "player": "Terry McLaurin",
-       "pos": "WR",
-       "rate": 0.045,
-       "cond": 0.405
+       "rate": 0.895,
+       "cond": 0.895
       },
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.039,
-       "cond": 0.58
+       "rate": 0.041,
+       "cond": 0.386
+      },
+      {
+       "player": "Terry McLaurin",
+       "pos": "WR",
+       "rate": 0.032,
+       "cond": 0.495
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.02,
-       "cond": 0.714
+       "rate": 0.029,
+       "cond": 0.898
       }
      ],
      "pos_mix": {
-      "WR": 0.973,
-      "RB": 0.025,
-      "TE": 0.003
+      "WR": 0.967,
+      "RB": 0.031,
+      "TE": 0.001
      }
     },
     {
@@ -4279,33 +4281,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.893,
-       "cond": 0.893
+       "rate": 0.871,
+       "cond": 0.871
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.048,
-       "cond": 0.447
-      },
-      {
-       "player": "Terry McLaurin",
-       "pos": "WR",
-       "rate": 0.019,
-       "cond": 0.326
+       "rate": 0.065,
+       "cond": 0.5
       },
       {
        "player": "Sam LaPorta",
        "pos": "TE",
-       "rate": 0.014,
-       "cond": 0.35
+       "rate": 0.017,
+       "cond": 0.258
+      },
+      {
+       "player": "Christian Watson",
+       "pos": "WR",
+       "rate": 0.016,
+       "cond": 0.333
       }
      ],
      "pos_mix": {
-      "WR": 0.981,
-      "TE": 0.014,
-      "RB": 0.005,
-      "QB": 0.001
+      "WR": 0.975,
+      "TE": 0.017,
+      "RB": 0.009
      }
     },
     {
@@ -4315,32 +4316,32 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.993,
-       "cond": 0.993
+       "rate": 0.997,
+       "cond": 0.997
       },
       {
-       "player": "Christian Watson",
-       "pos": "WR",
-       "rate": 0.002,
-       "cond": 0.3
-      },
-      {
-       "player": "Parker Washington",
-       "pos": "WR",
+       "player": "Harold Fannin",
+       "pos": "TE",
        "rate": 0.001,
-       "cond": 0.286
+       "cond": 0.5
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
        "rate": 0.001,
-       "cond": 0.4
+       "cond": 0.5
+      },
+      {
+       "player": "Parker Washington",
+       "pos": "WR",
+       "rate": 0.001,
+       "cond": 1.0
       }
      ],
      "pos_mix": {
-      "WR": 0.997,
-      "QB": 0.003,
-      "TE": 0.001
+      "WR": 0.998,
+      "TE": 0.001,
+      "QB": 0.001
      }
     },
     {
@@ -4350,32 +4351,31 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.935,
-       "cond": 0.935
+       "rate": 0.9,
+       "cond": 0.9
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.031,
-       "cond": 0.48
+       "rate": 0.069,
+       "cond": 0.693
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.031,
-       "cond": 0.902
+       "rate": 0.03,
+       "cond": 0.978
       },
       {
        "player": "Travis Kelce",
        "pos": "TE",
        "rate": 0.001,
-       "cond": 0.4
+       "cond": 1.0
       }
      ],
      "pos_mix": {
-      "QB": 0.997,
-      "TE": 0.002,
-      "RB": 0.001
+      "QB": 0.999,
+      "TE": 0.001
      }
     },
     {
@@ -4385,32 +4385,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.89,
-       "cond": 0.89
+       "rate": 0.903,
+       "cond": 0.903
       },
       {
        "player": "Alec Pierce",
        "pos": "WR",
-       "rate": 0.049,
-       "cond": 0.448
-      },
-      {
-       "player": "Jordan Mason",
-       "pos": "RB",
-       "rate": 0.023,
-       "cond": 0.374
+       "rate": 0.035,
+       "cond": 0.356
       },
       {
        "player": "Kyle Monangai",
        "pos": "RB",
+       "rate": 0.031,
+       "cond": 0.489
+      },
+      {
+       "player": "Jordan Mason",
+       "pos": "RB",
        "rate": 0.017,
-       "cond": 0.439
+       "cond": 0.521
       }
      ],
      "pos_mix": {
-      "TE": 0.897,
-      "WR": 0.053,
-      "RB": 0.049
+      "TE": 0.906,
+      "RB": 0.059,
+      "WR": 0.035
      }
     },
     {
@@ -4420,32 +4420,32 @@
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.249,
-       "cond": 0.249
-      },
-      {
-       "player": "MarShawn Lloyd",
-       "pos": "RB",
-       "rate": 0.238,
-       "cond": 0.317
-      },
-      {
-       "player": "Josh Downs",
-       "pos": "WR",
-       "rate": 0.203,
-       "cond": 0.395
+       "rate": 0.223,
+       "cond": 0.223
       },
       {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.181,
-       "cond": 0.583
+       "rate": 0.199,
+       "cond": 0.256
+      },
+      {
+       "player": "MarShawn Lloyd",
+       "pos": "RB",
+       "rate": 0.197,
+       "cond": 0.341
+      },
+      {
+       "player": "Josh Downs",
+       "pos": "WR",
+       "rate": 0.175,
+       "cond": 0.459
       }
      ],
      "pos_mix": {
-      "RB": 0.712,
-      "WR": 0.21,
-      "TE": 0.078
+      "RB": 0.749,
+      "WR": 0.187,
+      "TE": 0.063
      }
     },
     {
@@ -4455,32 +4455,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.52,
-       "cond": 0.52
+       "rate": 0.487,
+       "cond": 0.487
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.304,
-       "cond": 0.633
+       "rate": 0.333,
+       "cond": 0.649
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.111,
-       "cond": 0.633
+       "rate": 0.106,
+       "cond": 0.589
       },
       {
        "player": "Jakobi Meyers",
        "pos": "WR",
        "rate": 0.019,
-       "cond": 0.299
+       "cond": 0.261
       }
      ],
      "pos_mix": {
-      "WR": 0.685,
-      "RB": 0.31,
-      "TE": 0.005
+      "WR": 0.652,
+      "RB": 0.337,
+      "TE": 0.011
      }
     },
     {
@@ -4490,31 +4490,31 @@
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.382,
-       "cond": 0.382
+       "rate": 0.385,
+       "cond": 0.385
       },
       {
        "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.18,
-       "cond": 0.291
+       "rate": 0.148,
+       "cond": 0.241
       },
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.125,
-       "cond": 0.285
+       "rate": 0.135,
+       "cond": 0.29
       },
       {
        "player": "Chris Rodriguez",
        "pos": "RB",
-       "rate": 0.113,
-       "cond": 0.36
+       "rate": 0.121,
+       "cond": 0.365
       }
      ],
      "pos_mix": {
-      "WR": 0.748,
-      "RB": 0.252
+      "WR": 0.741,
+      "RB": 0.259
      }
     },
     {
@@ -4522,33 +4522,33 @@
      "pick": 153,
      "options": [
       {
-       "player": "Philadelphia Eagles",
-       "pos": "DST",
-       "rate": 0.397,
-       "cond": 0.397
-      },
-      {
        "player": "Ka'imi Fairbairn",
        "pos": "K",
-       "rate": 0.363,
-       "cond": 0.601
+       "rate": 0.386,
+       "cond": 0.386
+      },
+      {
+       "player": "Philadelphia Eagles",
+       "pos": "DST",
+       "rate": 0.369,
+       "cond": 0.602
       },
       {
        "player": "Baltimore Ravens",
        "pos": "DST",
-       "rate": 0.135,
-       "cond": 0.56
+       "rate": 0.167,
+       "cond": 0.681
       },
       {
        "player": "Denver Broncos",
        "pos": "DST",
-       "rate": 0.095,
-       "cond": 0.893
+       "rate": 0.071,
+       "cond": 0.915
       }
      ],
      "pos_mix": {
-      "DST": 0.628,
-      "K": 0.372
+      "DST": 0.607,
+      "K": 0.393
      }
     },
     {
@@ -4558,31 +4558,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.522,
-       "cond": 0.522
+       "rate": 0.524,
+       "cond": 0.524
       },
       {
        "player": "Minnesota Vikings",
        "pos": "DST",
-       "rate": 0.223,
-       "cond": 0.467
+       "rate": 0.256,
+       "cond": 0.538
       },
       {
        "player": "Detroit Lions",
        "pos": "DST",
-       "rate": 0.06,
-       "cond": 0.236
+       "rate": 0.063,
+       "cond": 0.288
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.059,
-       "cond": 0.301
+       "rate": 0.053,
+       "cond": 0.34
       }
      ],
      "pos_mix": {
-      "K": 0.628,
-      "DST": 0.372
+      "K": 0.607,
+      "DST": 0.393
      }
     },
     {
@@ -4592,40 +4592,40 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.442,
-       "cond": 0.442
+       "rate": 0.467,
+       "cond": 0.467
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.341,
-       "cond": 0.612
+       "rate": 0.259,
+       "cond": 0.485
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.127,
-       "cond": 0.585
+       "rate": 0.171,
+       "cond": 0.621
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.053,
-       "cond": 0.593
+       "rate": 0.068,
+       "cond": 0.654
       }
      ],
      "pos_mix": {
-      "RB": 0.569,
-      "WR": 0.431
+      "RB": 0.637,
+      "WR": 0.363
      }
     }
    ]
   },
   "10": {
    "strategy": "TE Round 3",
-   "mean_starters": 1881.0,
-   "floor_p10": 1750.9,
-   "ceiling_p90": 2246.0,
+   "mean_starters": 1879.1,
+   "floor_p10": 1761.2,
+   "ceiling_p90": 2260.4,
    "top3_rate": 0.428,
    "rounds": [
     {
@@ -4633,33 +4633,33 @@
      "pick": 10,
      "options": [
       {
-       "player": "De'Von Achane",
-       "pos": "RB",
-       "rate": 0.457,
-       "cond": 0.457
-      },
-      {
        "player": "James Cook",
        "pos": "RB",
-       "rate": 0.395,
-       "cond": 0.728
+       "rate": 0.481,
+       "cond": 0.481
+      },
+      {
+       "player": "De'Von Achane",
+       "pos": "RB",
+       "rate": 0.44,
+       "cond": 0.848
       },
       {
        "player": "Amon-Ra St. Brown",
        "pos": "WR",
-       "rate": 0.146,
-       "cond": 0.986
+       "rate": 0.063,
+       "cond": 0.805
       },
       {
        "player": "Jonathan Taylor",
        "pos": "RB",
-       "rate": 0.002,
+       "rate": 0.015,
        "cond": 1.0
       }
      ],
      "pos_mix": {
-      "RB": 0.854,
-      "WR": 0.146
+      "RB": 0.937,
+      "WR": 0.063
      }
     },
     {
@@ -4667,33 +4667,32 @@
      "pick": 15,
      "options": [
       {
-       "player": "Ashton Jeanty",
-       "pos": "RB",
-       "rate": 0.601,
-       "cond": 0.601
-      },
-      {
        "player": "Chase Brown",
        "pos": "RB",
-       "rate": 0.237,
-       "cond": 0.595
+       "rate": 0.431,
+       "cond": 0.431
+      },
+      {
+       "player": "Ashton Jeanty",
+       "pos": "RB",
+       "rate": 0.425,
+       "cond": 0.747
       },
       {
        "player": "De'Von Achane",
        "pos": "RB",
-       "rate": 0.142,
-       "cond": 0.88
+       "rate": 0.113,
+       "cond": 0.782
       },
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.017,
-       "cond": 0.862
+       "rate": 0.031,
+       "cond": 1.0
       }
      ],
      "pos_mix": {
-      "RB": 0.997,
-      "WR": 0.003
+      "RB": 1.0
      }
     },
     {
@@ -4703,13 +4702,13 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.955,
-       "cond": 0.955
+       "rate": 0.943,
+       "cond": 0.943
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.045,
+       "rate": 0.057,
        "cond": 1.0
       }
      ],
@@ -4724,31 +4723,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.791,
-       "cond": 0.791
+       "rate": 0.863,
+       "cond": 0.863
       },
       {
        "player": "Breece Hall",
        "pos": "RB",
-       "rate": 0.153,
-       "cond": 0.735
+       "rate": 0.123,
+       "cond": 0.898
       },
       {
        "player": "Javonte Williams",
        "pos": "RB",
-       "rate": 0.051,
-       "cond": 0.916
+       "rate": 0.008,
+       "cond": 0.571
       },
       {
        "player": "Travis Etienne",
        "pos": "RB",
-       "rate": 0.003,
-       "cond": 0.571
+       "rate": 0.005,
+       "cond": 0.778
       }
      ],
      "pos_mix": {
-      "RB": 0.998,
-      "WR": 0.002
+      "RB": 0.999,
+      "WR": 0.001
      }
     },
     {
@@ -4758,31 +4757,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.853,
-       "cond": 0.853
+       "rate": 0.869,
+       "cond": 0.869
       },
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.08,
-       "cond": 0.545
+       "rate": 0.067,
+       "cond": 0.513
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.041,
-       "cond": 0.61
+       "rate": 0.035,
+       "cond": 0.542
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
        "rate": 0.025,
-       "cond": 0.974
+       "cond": 0.864
       }
      ],
      "pos_mix": {
-      "WR": 0.974,
-      "RB": 0.026
+      "WR": 0.971,
+      "RB": 0.027,
+      "TE": 0.002
      }
     },
     {
@@ -4792,33 +4792,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.842,
-       "cond": 0.842
+       "rate": 0.824,
+       "cond": 0.824
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.067,
-       "cond": 0.422
+       "rate": 0.061,
+       "cond": 0.345
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.04,
-       "cond": 0.438
+       "rate": 0.043,
+       "cond": 0.376
       },
       {
        "player": "Sam LaPorta",
        "pos": "TE",
-       "rate": 0.026,
-       "cond": 0.506
+       "rate": 0.03,
+       "cond": 0.417
       }
      ],
      "pos_mix": {
-      "WR": 0.965,
-      "TE": 0.026,
-      "RB": 0.008,
-      "QB": 0.001
+      "WR": 0.957,
+      "TE": 0.03,
+      "RB": 0.013
      }
     },
     {
@@ -4832,27 +4831,27 @@
        "cond": 0.995
       },
       {
-       "player": "Parker Washington",
-       "pos": "WR",
-       "rate": 0.002,
-       "cond": 0.375
-      },
-      {
-       "player": "Christian Watson",
-       "pos": "WR",
+       "player": "Trevor Lawrence",
+       "pos": "QB",
        "rate": 0.001,
-       "cond": 0.4
+       "cond": 0.286
       },
       {
        "player": "Harold Fannin",
        "pos": "TE",
        "rate": 0.001,
+       "cond": 0.4
+      },
+      {
+       "player": "Parker Washington",
+       "pos": "WR",
+       "rate": 0.001,
        "cond": 0.333
       }
      ],
      "pos_mix": {
-      "WR": 0.998,
-      "QB": 0.001,
+      "WR": 0.996,
+      "QB": 0.003,
       "TE": 0.001
      }
     },
@@ -4863,32 +4862,31 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.881,
-       "cond": 0.881
+       "rate": 0.871,
+       "cond": 0.871
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.099,
-       "cond": 0.827
+       "rate": 0.109,
+       "cond": 0.84
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.018,
-       "cond": 0.871
+       "rate": 0.017,
+       "cond": 0.806
       },
       {
        "player": "Travis Kelce",
        "pos": "TE",
        "rate": 0.002,
-       "cond": 0.75
+       "cond": 0.5
       }
      ],
      "pos_mix": {
       "QB": 0.997,
-      "TE": 0.002,
-      "WR": 0.001
+      "TE": 0.003
      }
     },
     {
@@ -4898,32 +4896,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.921,
-       "cond": 0.921
-      },
-      {
-       "player": "Jordan Mason",
-       "pos": "RB",
-       "rate": 0.027,
-       "cond": 0.345
-      },
-      {
-       "player": "Alec Pierce",
-       "pos": "WR",
-       "rate": 0.022,
-       "cond": 0.423
+       "rate": 0.9,
+       "cond": 0.9
       },
       {
        "player": "Kyle Monangai",
        "pos": "RB",
+       "rate": 0.039,
+       "cond": 0.387
+      },
+      {
+       "player": "Jordan Mason",
+       "pos": "RB",
+       "rate": 0.029,
+       "cond": 0.478
+      },
+      {
+       "player": "Alec Pierce",
+       "pos": "WR",
        "rate": 0.015,
-       "cond": 0.511
+       "cond": 0.479
       }
      ],
      "pos_mix": {
-      "TE": 0.926,
-      "RB": 0.049,
-      "WR": 0.025
+      "TE": 0.907,
+      "RB": 0.077,
+      "WR": 0.016
      }
     },
     {
@@ -4933,32 +4931,32 @@
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.276,
-       "cond": 0.276
+       "rate": 0.243,
+       "cond": 0.243
       },
       {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.226,
-       "cond": 0.312
+       "rate": 0.229,
+       "cond": 0.302
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.205,
-       "cond": 0.411
+       "rate": 0.172,
+       "cond": 0.325
       },
       {
-       "player": "MarShawn Lloyd",
+       "player": "Kyle Monangai",
        "pos": "RB",
-       "rate": 0.165,
-       "cond": 0.561
+       "rate": 0.161,
+       "cond": 0.452
       }
      ],
      "pos_mix": {
-      "RB": 0.744,
-      "WR": 0.213,
-      "TE": 0.043
+      "RB": 0.771,
+      "WR": 0.18,
+      "TE": 0.049
      }
     },
     {
@@ -4968,32 +4966,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.507,
-       "cond": 0.507
+       "rate": 0.477,
+       "cond": 0.477
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.278,
-       "cond": 0.564
+       "rate": 0.312,
+       "cond": 0.597
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.145,
-       "cond": 0.677
+       "rate": 0.141,
+       "cond": 0.668
       },
       {
        "player": "Jakobi Meyers",
        "pos": "WR",
-       "rate": 0.027,
-       "cond": 0.394
+       "rate": 0.017,
+       "cond": 0.238
       }
      ],
      "pos_mix": {
-      "WR": 0.705,
-      "RB": 0.292,
-      "TE": 0.003
+      "WR": 0.671,
+      "RB": 0.321,
+      "TE": 0.008
      }
     },
     {
@@ -5003,31 +5001,31 @@
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.382,
-       "cond": 0.382
-      },
-      {
-       "player": "Rashid Shaheed",
-       "pos": "WR",
-       "rate": 0.16,
-       "cond": 0.259
-      },
-      {
-       "player": "Chris Rodriguez",
-       "pos": "RB",
-       "rate": 0.136,
-       "cond": 0.297
+       "rate": 0.401,
+       "cond": 0.401
       },
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.115,
-       "cond": 0.358
+       "rate": 0.131,
+       "cond": 0.219
+      },
+      {
+       "player": "Rashid Shaheed",
+       "pos": "WR",
+       "rate": 0.125,
+       "cond": 0.268
+      },
+      {
+       "player": "Chris Rodriguez",
+       "pos": "RB",
+       "rate": 0.119,
+       "cond": 0.346
       }
      ],
      "pos_mix": {
-      "WR": 0.735,
-      "RB": 0.265
+      "WR": 0.753,
+      "RB": 0.247
      }
     },
     {
@@ -5037,31 +5035,31 @@
       {
        "player": "Ka'imi Fairbairn",
        "pos": "K",
-       "rate": 0.347,
-       "cond": 0.347
+       "rate": 0.351,
+       "cond": 0.351
       },
       {
        "player": "Baltimore Ravens",
        "pos": "DST",
-       "rate": 0.303,
-       "cond": 0.464
+       "rate": 0.328,
+       "cond": 0.505
       },
       {
        "player": "Philadelphia Eagles",
        "pos": "DST",
-       "rate": 0.265,
-       "cond": 0.756
+       "rate": 0.253,
+       "cond": 0.786
       },
       {
        "player": "Cam Little",
        "pos": "K",
        "rate": 0.044,
-       "cond": 0.516
+       "cond": 0.641
       }
      ],
      "pos_mix": {
-      "DST": 0.608,
-      "K": 0.392
+      "DST": 0.604,
+      "K": 0.396
      }
     },
     {
@@ -5071,31 +5069,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.483,
-       "cond": 0.483
+       "rate": 0.509,
+       "cond": 0.509
       },
       {
        "player": "Minnesota Vikings",
        "pos": "DST",
-       "rate": 0.217,
-       "cond": 0.419
+       "rate": 0.237,
+       "cond": 0.483
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.087,
-       "cond": 0.289
+       "rate": 0.067,
+       "cond": 0.262
       },
       {
-       "player": "New England Patriots",
+       "player": "Baltimore Ravens",
        "pos": "DST",
-       "rate": 0.073,
-       "cond": 0.341
+       "rate": 0.066,
+       "cond": 0.352
       }
      ],
      "pos_mix": {
-      "K": 0.608,
-      "DST": 0.392
+      "K": 0.604,
+      "DST": 0.396
      }
     },
     {
@@ -5105,41 +5103,41 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.455,
-       "cond": 0.455
+       "rate": 0.511,
+       "cond": 0.511
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.324,
-       "cond": 0.594
+       "rate": 0.244,
+       "cond": 0.499
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.107,
-       "cond": 0.482
+       "rate": 0.129,
+       "cond": 0.527
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.061,
-       "cond": 0.529
+       "rate": 0.077,
+       "cond": 0.661
       }
      ],
      "pos_mix": {
-      "RB": 0.561,
-      "WR": 0.439
+      "RB": 0.64,
+      "WR": 0.36
      }
     }
    ]
   },
   "11": {
    "strategy": "TE Round 3",
-   "mean_starters": 1877.8,
-   "floor_p10": 1756.5,
-   "ceiling_p90": 2245.4,
-   "top3_rate": 0.42,
+   "mean_starters": 1875.7,
+   "floor_p10": 1743.4,
+   "ceiling_p90": 2243.4,
+   "top3_rate": 0.434,
    "rounds": [
     {
      "round": 1,
@@ -5148,31 +5146,31 @@
       {
        "player": "De'Von Achane",
        "pos": "RB",
-       "rate": 0.759,
-       "cond": 0.759
+       "rate": 0.767,
+       "cond": 0.767
       },
       {
        "player": "James Cook",
        "pos": "RB",
-       "rate": 0.17,
-       "cond": 0.704
-      },
-      {
-       "player": "Amon-Ra St. Brown",
-       "pos": "WR",
-       "rate": 0.043,
-       "cond": 0.598
+       "rate": 0.187,
+       "cond": 0.802
       },
       {
        "player": "Chase Brown",
        "pos": "RB",
-       "rate": 0.029,
+       "rate": 0.033,
+       "cond": 0.725
+      },
+      {
+       "player": "Amon-Ra St. Brown",
+       "pos": "WR",
+       "rate": 0.013,
        "cond": 1.0
       }
      ],
      "pos_mix": {
-      "RB": 0.957,
-      "WR": 0.043
+      "RB": 0.987,
+      "WR": 0.013
      }
     },
     {
@@ -5182,26 +5180,26 @@
       {
        "player": "Chase Brown",
        "pos": "RB",
-       "rate": 0.554,
-       "cond": 0.554
+       "rate": 0.669,
+       "cond": 0.669
       },
       {
        "player": "Ashton Jeanty",
        "pos": "RB",
-       "rate": 0.326,
-       "cond": 0.731
+       "rate": 0.247,
+       "cond": 0.748
       },
       {
        "player": "De'Von Achane",
        "pos": "RB",
-       "rate": 0.117,
-       "cond": 0.972
+       "rate": 0.076,
+       "cond": 0.912
       },
       {
        "player": "Derrick Henry",
        "pos": "RB",
-       "rate": 0.002,
-       "cond": 0.6
+       "rate": 0.006,
+       "cond": 0.818
       }
      ],
      "pos_mix": {
@@ -5216,13 +5214,13 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.93,
-       "cond": 0.93
+       "rate": 0.913,
+       "cond": 0.913
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.07,
+       "rate": 0.087,
        "cond": 1.0
       }
      ],
@@ -5237,31 +5235,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.66,
-       "cond": 0.66
+       "rate": 0.752,
+       "cond": 0.752
       },
       {
        "player": "Breece Hall",
        "pos": "RB",
-       "rate": 0.241,
-       "cond": 0.708
+       "rate": 0.218,
+       "cond": 0.879
       },
       {
        "player": "Javonte Williams",
        "pos": "RB",
-       "rate": 0.091,
-       "cond": 0.919
+       "rate": 0.021,
+       "cond": 0.689
       },
       {
        "player": "Chris Olave",
        "pos": "WR",
-       "rate": 0.008,
-       "cond": 1.0
+       "rate": 0.007,
+       "cond": 0.786
       }
      ],
      "pos_mix": {
-      "RB": 0.992,
-      "WR": 0.008
+      "RB": 0.993,
+      "WR": 0.007
      }
     },
     {
@@ -5271,31 +5269,31 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.835,
-       "cond": 0.835
+       "rate": 0.807,
+       "cond": 0.807
       },
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.116,
-       "cond": 0.704
+       "rate": 0.124,
+       "cond": 0.641
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.033,
-       "cond": 0.671
+       "rate": 0.042,
+       "cond": 0.606
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.01,
-       "cond": 0.625
+       "rate": 0.025,
+       "cond": 0.902
       }
      ],
      "pos_mix": {
-      "WR": 0.984,
-      "RB": 0.015,
+      "WR": 0.974,
+      "RB": 0.025,
       "TE": 0.001
      }
     },
@@ -5306,32 +5304,33 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.762,
-       "cond": 0.762
-      },
-      {
-       "player": "Terry McLaurin",
-       "pos": "WR",
-       "rate": 0.078,
-       "cond": 0.328
+       "rate": 0.758,
+       "cond": 0.758
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
        "rate": 0.069,
-       "cond": 0.429
+       "cond": 0.284
+      },
+      {
+       "player": "Terry McLaurin",
+       "pos": "WR",
+       "rate": 0.063,
+       "cond": 0.362
       },
       {
        "player": "Sam LaPorta",
        "pos": "TE",
-       "rate": 0.045,
-       "cond": 0.496
+       "rate": 0.058,
+       "cond": 0.524
       }
      ],
      "pos_mix": {
-      "WR": 0.938,
-      "TE": 0.046,
-      "RB": 0.016
+      "WR": 0.918,
+      "TE": 0.058,
+      "RB": 0.023,
+      "QB": 0.001
      }
     },
     {
@@ -5341,32 +5340,33 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.997,
-       "cond": 0.997
+       "rate": 0.992,
+       "cond": 0.992
+      },
+      {
+       "player": "Harold Fannin",
+       "pos": "TE",
+       "rate": 0.003,
+       "cond": 0.417
       },
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
        "rate": 0.002,
-       "cond": 0.6
-      },
-      {
-       "player": "Harold Fannin",
-       "pos": "TE",
-       "rate": 0.001,
-       "cond": 0.5
+       "cond": 0.429
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
        "rate": 0.001,
-       "cond": 1.0
+       "cond": 0.5
       }
      ],
      "pos_mix": {
-      "WR": 0.997,
+      "WR": 0.993,
       "QB": 0.003,
-      "TE": 0.001
+      "TE": 0.003,
+      "RB": 0.001
      }
     },
     {
@@ -5376,32 +5376,32 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.814,
-       "cond": 0.814
+       "rate": 0.76,
+       "cond": 0.76
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.174,
-       "cond": 0.935
+       "rate": 0.223,
+       "cond": 0.928
       },
       {
        "player": "Brock Purdy",
        "pos": "QB",
-       "rate": 0.009,
-       "cond": 0.778
+       "rate": 0.011,
+       "cond": 0.615
       },
       {
        "player": "Travis Kelce",
        "pos": "TE",
-       "rate": 0.002,
-       "cond": 0.75
+       "rate": 0.003,
+       "cond": 0.4
       }
      ],
      "pos_mix": {
-      "QB": 0.997,
-      "TE": 0.002,
-      "WR": 0.001
+      "QB": 0.996,
+      "TE": 0.003,
+      "RB": 0.001
      }
     },
     {
@@ -5411,32 +5411,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.899,
-       "cond": 0.899
-      },
-      {
-       "player": "Jordan Mason",
-       "pos": "RB",
-       "rate": 0.031,
-       "cond": 0.309
+       "rate": 0.887,
+       "cond": 0.887
       },
       {
        "player": "Kyle Monangai",
        "pos": "RB",
-       "rate": 0.022,
-       "cond": 0.314
+       "rate": 0.044,
+       "cond": 0.388
       },
       {
-       "player": "Alec Pierce",
-       "pos": "WR",
+       "player": "Jordan Mason",
+       "pos": "RB",
+       "rate": 0.028,
+       "cond": 0.404
+      },
+      {
+       "player": "Kenny Gainwell",
+       "pos": "RB",
        "rate": 0.013,
-       "cond": 0.278
+       "cond": 0.323
       }
      ],
      "pos_mix": {
-      "TE": 0.91,
-      "RB": 0.07,
-      "WR": 0.02
+      "TE": 0.895,
+      "RB": 0.091,
+      "WR": 0.014
      }
     },
     {
@@ -5444,34 +5444,34 @@
      "pick": 110,
      "options": [
       {
-       "player": "Kenny Gainwell",
-       "pos": "RB",
-       "rate": 0.293,
-       "cond": 0.293
-      },
-      {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.266,
-       "cond": 0.376
+       "rate": 0.245,
+       "cond": 0.245
+      },
+      {
+       "player": "Kenny Gainwell",
+       "pos": "RB",
+       "rate": 0.241,
+       "cond": 0.319
+      },
+      {
+       "player": "Kyle Monangai",
+       "pos": "RB",
+       "rate": 0.215,
+       "cond": 0.419
       },
       {
        "player": "Josh Downs",
        "pos": "WR",
-       "rate": 0.183,
-       "cond": 0.415
-      },
-      {
-       "player": "MarShawn Lloyd",
-       "pos": "RB",
-       "rate": 0.107,
-       "cond": 0.413
+       "rate": 0.169,
+       "cond": 0.565
       }
      ],
      "pos_mix": {
-      "RB": 0.769,
-      "WR": 0.193,
-      "TE": 0.037
+      "RB": 0.792,
+      "WR": 0.177,
+      "TE": 0.031
      }
     },
     {
@@ -5481,32 +5481,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.488,
-       "cond": 0.488
+       "rate": 0.478,
+       "cond": 0.478
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
-       "rate": 0.263,
-       "cond": 0.513
+       "rate": 0.275,
+       "cond": 0.526
       },
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.176,
-       "cond": 0.706
+       "rate": 0.161,
+       "cond": 0.65
       },
       {
-       "player": "Chris Rodriguez",
-       "pos": "RB",
-       "rate": 0.016,
-       "cond": 0.218
+       "player": "Xavier Worthy",
+       "pos": "WR",
+       "rate": 0.019,
+       "cond": 0.215
       }
      ],
      "pos_mix": {
-      "WR": 0.706,
-      "RB": 0.291,
-      "TE": 0.003
+      "WR": 0.699,
+      "RB": 0.292,
+      "TE": 0.009
      }
     },
     {
@@ -5516,32 +5516,31 @@
       {
        "player": "Jalen Coker",
        "pos": "WR",
-       "rate": 0.391,
-       "cond": 0.391
-      },
-      {
-       "player": "Chris Rodriguez",
-       "pos": "RB",
-       "rate": 0.134,
-       "cond": 0.22
+       "rate": 0.4,
+       "cond": 0.4
       },
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.133,
-       "cond": 0.281
+       "rate": 0.138,
+       "cond": 0.23
+      },
+      {
+       "player": "Chris Rodriguez",
+       "pos": "RB",
+       "rate": 0.131,
+       "cond": 0.283
       },
       {
        "player": "Rashid Shaheed",
        "pos": "WR",
-       "rate": 0.127,
-       "cond": 0.373
+       "rate": 0.097,
+       "cond": 0.294
       }
      ],
      "pos_mix": {
-      "WR": 0.758,
-      "RB": 0.241,
-      "TE": 0.001
+      "WR": 0.761,
+      "RB": 0.239
      }
     },
     {
@@ -5551,31 +5550,31 @@
       {
        "player": "Baltimore Ravens",
        "pos": "DST",
-       "rate": 0.405,
-       "cond": 0.405
+       "rate": 0.429,
+       "cond": 0.429
       },
       {
        "player": "Ka'imi Fairbairn",
        "pos": "K",
-       "rate": 0.287,
-       "cond": 0.482
-      },
-      {
-       "player": "Philadelphia Eagles",
-       "pos": "DST",
-       "rate": 0.137,
-       "cond": 0.445
+       "rate": 0.249,
+       "cond": 0.437
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.125,
-       "cond": 0.728
+       "rate": 0.149,
+       "cond": 0.465
+      },
+      {
+       "player": "Philadelphia Eagles",
+       "pos": "DST",
+       "rate": 0.126,
+       "cond": 0.733
       }
      ],
      "pos_mix": {
-      "DST": 0.565,
-      "K": 0.435
+      "DST": 0.576,
+      "K": 0.424
      }
     },
     {
@@ -5585,31 +5584,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.409,
-       "cond": 0.409
+       "rate": 0.435,
+       "cond": 0.435
       },
       {
        "player": "Minnesota Vikings",
        "pos": "DST",
-       "rate": 0.236,
-       "cond": 0.399
-      },
-      {
-       "player": "New England Patriots",
-       "pos": "DST",
-       "rate": 0.119,
-       "cond": 0.336
+       "rate": 0.237,
+       "cond": 0.419
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.107,
-       "cond": 0.455
+       "rate": 0.108,
+       "cond": 0.329
+      },
+      {
+       "player": "New England Patriots",
+       "pos": "DST",
+       "rate": 0.103,
+       "cond": 0.468
       }
      ],
      "pos_mix": {
-      "K": 0.565,
-      "DST": 0.435
+      "K": 0.576,
+      "DST": 0.424
      }
     },
     {
@@ -5619,41 +5618,41 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.441,
-       "cond": 0.441
+       "rate": 0.517,
+       "cond": 0.517
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.324,
-       "cond": 0.58
+       "rate": 0.217,
+       "cond": 0.45
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.104,
-       "cond": 0.443
+       "rate": 0.126,
+       "cond": 0.475
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.069,
-       "cond": 0.531
+       "rate": 0.084,
+       "cond": 0.603
       }
      ],
      "pos_mix": {
-      "RB": 0.545,
-      "WR": 0.455
+      "RB": 0.643,
+      "WR": 0.357
      }
     }
    ]
   },
   "12": {
    "strategy": "TE Round 3",
-   "mean_starters": 1874.6,
-   "floor_p10": 1746.3,
-   "ceiling_p90": 2213.6,
-   "top3_rate": 0.395,
+   "mean_starters": 1873.0,
+   "floor_p10": 1760.5,
+   "ceiling_p90": 2259.6,
+   "top3_rate": 0.422,
    "rounds": [
     {
      "round": 1,
@@ -5662,31 +5661,31 @@
       {
        "player": "De'Von Achane",
        "pos": "RB",
-       "rate": 0.847,
-       "cond": 0.847
+       "rate": 0.794,
+       "cond": 0.794
       },
       {
        "player": "Chase Brown",
        "pos": "RB",
-       "rate": 0.091,
-       "cond": 0.596
+       "rate": 0.157,
+       "cond": 0.764
       },
       {
        "player": "James Cook",
        "pos": "RB",
-       "rate": 0.049,
-       "cond": 0.796
+       "rate": 0.046,
+       "cond": 0.945
       },
       {
        "player": "Amon-Ra St. Brown",
        "pos": "WR",
-       "rate": 0.01,
-       "cond": 0.789
+       "rate": 0.001,
+       "cond": 0.5
       }
      ],
      "pos_mix": {
-      "RB": 0.99,
-      "WR": 0.01
+      "RB": 0.999,
+      "WR": 0.001
      }
     },
     {
@@ -5696,26 +5695,26 @@
       {
        "player": "Chase Brown",
        "pos": "RB",
-       "rate": 0.727,
-       "cond": 0.727
+       "rate": 0.748,
+       "cond": 0.748
       },
       {
        "player": "Ashton Jeanty",
        "pos": "RB",
-       "rate": 0.221,
-       "cond": 0.81
+       "rate": 0.218,
+       "cond": 0.865
       },
       {
        "player": "De'Von Achane",
        "pos": "RB",
-       "rate": 0.049,
-       "cond": 0.936
+       "rate": 0.031,
+       "cond": 0.922
       },
       {
        "player": "CeeDee Lamb",
        "pos": "WR",
        "rate": 0.003,
-       "cond": 0.8
+       "cond": 1.0
       }
      ],
      "pos_mix": {
@@ -5730,13 +5729,13 @@
       {
        "player": "Colston Loveland",
        "pos": "TE",
-       "rate": 0.891,
-       "cond": 0.891
+       "rate": 0.871,
+       "cond": 0.871
       },
       {
        "player": "Tyler Warren",
        "pos": "TE",
-       "rate": 0.109,
+       "rate": 0.129,
        "cond": 1.0
       }
      ],
@@ -5751,31 +5750,31 @@
       {
        "player": "D'Andre Swift",
        "pos": "RB",
-       "rate": 0.48,
-       "cond": 0.48
+       "rate": 0.601,
+       "cond": 0.601
       },
       {
        "player": "Breece Hall",
        "pos": "RB",
-       "rate": 0.323,
-       "cond": 0.622
+       "rate": 0.325,
+       "cond": 0.816
       },
       {
        "player": "Javonte Williams",
        "pos": "RB",
-       "rate": 0.182,
-       "cond": 0.925
+       "rate": 0.055,
+       "cond": 0.745
       },
       {
        "player": "Chris Olave",
        "pos": "WR",
-       "rate": 0.015,
-       "cond": 1.0
+       "rate": 0.017,
+       "cond": 0.893
       }
      ],
      "pos_mix": {
-      "RB": 0.985,
-      "WR": 0.015
+      "RB": 0.983,
+      "WR": 0.017
      }
     },
     {
@@ -5785,32 +5784,32 @@
       {
        "player": "Mike Evans",
        "pos": "WR",
-       "rate": 0.764,
-       "cond": 0.764
+       "rate": 0.771,
+       "cond": 0.771
       },
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.179,
-       "cond": 0.76
+       "rate": 0.171,
+       "cond": 0.749
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
        "rate": 0.037,
-       "cond": 0.647
+       "cond": 0.64
       },
       {
        "player": "Quinshon Judkins",
        "pos": "RB",
-       "rate": 0.014,
-       "cond": 0.7
+       "rate": 0.015,
+       "cond": 0.742
       }
      ],
      "pos_mix": {
       "WR": 0.981,
-      "RB": 0.019,
-      "TE": 0.001
+      "RB": 0.017,
+      "TE": 0.002
      }
     },
     {
@@ -5820,32 +5819,32 @@
       {
        "player": "Parker Washington",
        "pos": "WR",
-       "rate": 0.694,
-       "cond": 0.694
+       "rate": 0.685,
+       "cond": 0.685
       },
       {
        "player": "Sam LaPorta",
        "pos": "TE",
        "rate": 0.091,
-       "cond": 0.296
+       "cond": 0.288
       },
       {
        "player": "Terry McLaurin",
        "pos": "WR",
-       "rate": 0.084,
-       "cond": 0.39
+       "rate": 0.073,
+       "cond": 0.324
       },
       {
        "player": "Rome Odunze",
        "pos": "WR",
-       "rate": 0.071,
-       "cond": 0.538
+       "rate": 0.07,
+       "cond": 0.463
       }
      ],
      "pos_mix": {
-      "WR": 0.881,
+      "WR": 0.86,
       "TE": 0.091,
-      "RB": 0.027
+      "RB": 0.049
      }
     },
     {
@@ -5855,25 +5854,31 @@
       {
        "player": "Jayden Reed",
        "pos": "WR",
-       "rate": 0.994,
-       "cond": 0.994
-      },
-      {
-       "player": "Trevor Lawrence",
-       "pos": "QB",
-       "rate": 0.003,
-       "cond": 0.556
+       "rate": 0.993,
+       "cond": 0.993
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
        "rate": 0.003,
+       "cond": 0.455
+      },
+      {
+       "player": "Parker Washington",
+       "pos": "WR",
+       "rate": 0.002,
+       "cond": 0.5
+      },
+      {
+       "player": "Trevor Lawrence",
+       "pos": "QB",
+       "rate": 0.002,
        "cond": 1.0
       }
      ],
      "pos_mix": {
-      "WR": 0.994,
-      "QB": 0.006
+      "WR": 0.995,
+      "QB": 0.005
      }
     },
     {
@@ -5883,33 +5888,32 @@
       {
        "player": "Trevor Lawrence",
        "pos": "QB",
-       "rate": 0.716,
-       "cond": 0.716
+       "rate": 0.676,
+       "cond": 0.676
       },
       {
        "player": "Dak Prescott",
        "pos": "QB",
-       "rate": 0.274,
-       "cond": 0.965
+       "rate": 0.305,
+       "cond": 0.942
       },
       {
        "player": "Jayden Daniels",
        "pos": "QB",
-       "rate": 0.003,
-       "cond": 0.333
+       "rate": 0.01,
+       "cond": 0.536
       },
       {
        "player": "Travis Kelce",
        "pos": "TE",
-       "rate": 0.003,
-       "cond": 0.5
+       "rate": 0.004,
+       "cond": 0.462
       }
      ],
      "pos_mix": {
-      "QB": 0.994,
+      "QB": 0.995,
       "TE": 0.004,
-      "RB": 0.001,
-      "WR": 0.001
+      "RB": 0.001
      }
     },
     {
@@ -5919,32 +5923,32 @@
       {
        "player": "Mark Andrews",
        "pos": "TE",
-       "rate": 0.836,
-       "cond": 0.836
+       "rate": 0.832,
+       "cond": 0.832
+      },
+      {
+       "player": "Kyle Monangai",
+       "pos": "RB",
+       "rate": 0.055,
+       "cond": 0.325
       },
       {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.055,
-       "cond": 0.337
+       "rate": 0.053,
+       "cond": 0.471
       },
       {
        "player": "Kenny Gainwell",
        "pos": "RB",
-       "rate": 0.028,
-       "cond": 0.258
-      },
-      {
-       "player": "Brenton Strange",
-       "pos": "TE",
-       "rate": 0.027,
-       "cond": 0.331
+       "rate": 0.023,
+       "cond": 0.378
       }
      ],
      "pos_mix": {
-      "TE": 0.863,
-      "RB": 0.113,
-      "WR": 0.024
+      "TE": 0.847,
+      "RB": 0.14,
+      "WR": 0.013
      }
     },
     {
@@ -5952,34 +5956,34 @@
      "pick": 109,
      "options": [
       {
-       "player": "Kenny Gainwell",
-       "pos": "RB",
-       "rate": 0.287,
-       "cond": 0.287
-      },
-      {
        "player": "Jordan Mason",
        "pos": "RB",
-       "rate": 0.274,
-       "cond": 0.384
-      },
-      {
-       "player": "Josh Downs",
-       "pos": "WR",
-       "rate": 0.168,
-       "cond": 0.382
+       "rate": 0.279,
+       "cond": 0.279
       },
       {
        "player": "Kyle Monangai",
        "pos": "RB",
-       "rate": 0.135,
-       "cond": 0.496
+       "rate": 0.257,
+       "cond": 0.356
+      },
+      {
+       "player": "Kenny Gainwell",
+       "pos": "RB",
+       "rate": 0.215,
+       "cond": 0.463
+      },
+      {
+       "player": "Josh Downs",
+       "pos": "WR",
+       "rate": 0.123,
+       "cond": 0.492
       }
      ],
      "pos_mix": {
-      "RB": 0.779,
-      "WR": 0.181,
-      "TE": 0.039
+      "RB": 0.819,
+      "WR": 0.137,
+      "TE": 0.044
      }
     },
     {
@@ -5989,32 +5993,32 @@
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.451,
-       "cond": 0.451
-      },
-      {
-       "player": "Jalen Coker",
-       "pos": "WR",
-       "rate": 0.239,
-       "cond": 0.434
+       "rate": 0.467,
+       "cond": 0.467
       },
       {
        "player": "MarShawn Lloyd",
        "pos": "RB",
        "rate": 0.219,
-       "cond": 0.704
+       "cond": 0.411
+      },
+      {
+       "player": "Jalen Coker",
+       "pos": "WR",
+       "rate": 0.198,
+       "cond": 0.631
       },
       {
        "player": "Chris Rodriguez",
        "pos": "RB",
-       "rate": 0.025,
-       "cond": 0.275
+       "rate": 0.035,
+       "cond": 0.299
       }
      ],
      "pos_mix": {
-      "WR": 0.74,
-      "RB": 0.258,
-      "TE": 0.002
+      "WR": 0.719,
+      "RB": 0.269,
+      "TE": 0.013
      }
     },
     {
@@ -6030,25 +6034,25 @@
       {
        "player": "Chris Rodriguez",
        "pos": "RB",
-       "rate": 0.159,
-       "cond": 0.256
+       "rate": 0.14,
+       "cond": 0.226
       },
       {
        "player": "Khalil Shakir",
        "pos": "WR",
-       "rate": 0.111,
-       "cond": 0.242
+       "rate": 0.127,
+       "cond": 0.266
       },
       {
-       "player": "Rashid Shaheed",
-       "pos": "WR",
-       "rate": 0.105,
-       "cond": 0.302
+       "player": "Rachaad White",
+       "pos": "RB",
+       "rate": 0.085,
+       "cond": 0.243
       }
      ],
      "pos_mix": {
-      "WR": 0.723,
-      "RB": 0.277
+      "WR": 0.749,
+      "RB": 0.251
      }
     },
     {
@@ -6058,31 +6062,31 @@
       {
        "player": "Baltimore Ravens",
        "pos": "DST",
-       "rate": 0.401,
-       "cond": 0.401
-      },
-      {
-       "player": "Ka'imi Fairbairn",
-       "pos": "K",
-       "rate": 0.183,
-       "cond": 0.305
+       "rate": 0.408,
+       "cond": 0.408
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.172,
-       "cond": 0.413
+       "rate": 0.175,
+       "cond": 0.296
+      },
+      {
+       "player": "Ka'imi Fairbairn",
+       "pos": "K",
+       "rate": 0.156,
+       "cond": 0.374
       },
       {
        "player": "New England Patriots",
        "pos": "DST",
-       "rate": 0.125,
-       "cond": 0.514
+       "rate": 0.151,
+       "cond": 0.578
       }
      ],
      "pos_mix": {
-      "DST": 0.608,
-      "K": 0.392
+      "DST": 0.626,
+      "K": 0.374
      }
     },
     {
@@ -6092,31 +6096,31 @@
       {
        "player": "Will Reichard",
        "pos": "K",
-       "rate": 0.454,
-       "cond": 0.454
+       "rate": 0.487,
+       "cond": 0.487
       },
       {
        "player": "Minnesota Vikings",
        "pos": "DST",
-       "rate": 0.166,
-       "cond": 0.304
+       "rate": 0.185,
+       "cond": 0.361
       },
       {
        "player": "New England Patriots",
        "pos": "DST",
-       "rate": 0.158,
-       "cond": 0.416
+       "rate": 0.135,
+       "cond": 0.413
       },
       {
        "player": "Cam Little",
        "pos": "K",
-       "rate": 0.117,
-       "cond": 0.526
+       "rate": 0.112,
+       "cond": 0.581
       }
      ],
      "pos_mix": {
-      "K": 0.608,
-      "DST": 0.392
+      "K": 0.626,
+      "DST": 0.374
      }
     },
     {
@@ -6126,31 +6130,31 @@
       {
        "player": "Tyrone Tracy",
        "pos": "RB",
-       "rate": 0.489,
-       "cond": 0.489
+       "rate": 0.521,
+       "cond": 0.521
       },
       {
        "player": "Denzel Boston",
        "pos": "WR",
-       "rate": 0.292,
-       "cond": 0.572
+       "rate": 0.206,
+       "cond": 0.43
       },
       {
        "player": "Tyjae Spears",
        "pos": "RB",
-       "rate": 0.078,
-       "cond": 0.357
+       "rate": 0.109,
+       "cond": 0.398
       },
       {
        "player": "Malik Washington",
        "pos": "WR",
-       "rate": 0.075,
-       "cond": 0.531
+       "rate": 0.09,
+       "cond": 0.547
       }
      ],
      "pos_mix": {
-      "RB": 0.567,
-      "WR": 0.433
+      "RB": 0.629,
+      "WR": 0.371
      }
     }
    ]
